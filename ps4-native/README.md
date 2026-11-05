@@ -1,42 +1,38 @@
-# HADES Store — aplicativo nativo para PS4
+# HADES Store — aplicativo nativo PS4
 
-> Estado: planejamento técnico. Este diretório ainda não contém um EBOOT nem um PKG instalável.
+**Status:** scaffold inicial; ainda não é um PKG compilado nem testado no console.
 
 ## Alvo inicial
 
-- Console: PS4
-- Firmware de teste informado: 13.52
-- Ambiente: Windows para desenvolvimento
-- Homebrew environment: GoldHEN
-- Toolchain a avaliar: OpenOrbis PS4 Toolchain
+- Console de teste: PS4 com firmware 13.52 (informado pelo mantenedor)
+- Ambiente: Windows
+- Homebrew: GoldHEN
+- SDK comunitário: OpenOrbis PS4 Toolchain
 
-## Por que o site não é um PKG
+## Estrutura
 
-O conteúdo da raiz deste repositório é uma aplicação web estática. Para gerar um pacote PS4 real é necessário compilar um executável nativo para a plataforma, preparar os metadados do aplicativo e empacotar os arquivos no formato esperado pelo console. Renomear um ZIP ou copiar o site para um arquivo .pkg não produz um aplicativo válido.
+- `src/main.cpp`: ponto de entrada inicial em C++ (placeholder, sem APIs gráficas ou de controle ainda).
+- `README.md`: dependências, marcos e critérios de validação.
 
-## Etapas de implementação
+## Preparar o Windows
 
-1. Instalar e validar a OpenOrbis PS4 Toolchain no Windows.
-2. Criar um projeto C/C++ nativo e confirmar a compilação de um EBOOT mínimo.
-3. Implementar a interface HADES Store e navegação com DualShock 4.
-4. Implementar catálogo HTTPS e download de arquivos com validação de URL, tamanho e integridade.
-5. Preparar param.sfo, ícone, assets e estrutura de pacote.
-6. Gerar o PKG com as ferramentas apropriadas da toolchain.
-7. Testar instalação, inicialização, rede, controles e retorno ao menu no PS4 com GoldHEN.
-8. Documentar compatibilidade real por firmware e versão.
+1. Instalar Visual Studio com o workload de desenvolvimento Desktop com C++.
+2. Instalar a release oficial da OpenOrbis PS4 Toolchain: https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain
+3. Seguir a documentação da mesma release para instalar as dependências e configurar `OO_PS4_TOOLCHAIN`.
+4. Compilar primeiro o exemplo oficial `hello_world` sem alterações. Não usar binários de SDK proprietário ou arquivos de origem duvidosa.
 
-## Critérios para considerar o PKG pronto
+## Marcos
 
-- O EBOOT foi compilado para PS4, não para Windows/Linux.
-- O pacote foi gerado pelas ferramentas da toolchain.
-- O pacote instala e inicia no hardware de teste.
-- Controles, rede e downloads foram testados.
-- Os arquivos distribuídos têm licença/autorização adequada.
+- [ ] Instalar e validar a toolchain no Windows.
+- [ ] Compilar o sample oficial hello_world.
+- [ ] Executar o primeiro EBOOT no PS4.
+- [ ] Criar interface e navegação DualShock 4.
+- [ ] Implementar catálogo HTTPS e downloads seguros.
+- [ ] Gerar metadados e PKG.
+- [ ] Testar instalação, inicialização e rede no firmware de teste.
 
-## Segurança e distribuição
+## Limites
 
-Não inclua chaves privadas, dumps de SDK, conteúdo protegido por direitos autorais ou pacotes de terceiros sem autorização. Use HTTPS e publique apenas homebrews e arquivos que você tem direito de redistribuir.
+A versão web na raiz não pode ser simplesmente convertida ou renomeada para `.pkg`. Um pacote válido precisa conter um executável PS4 e metadados adequados. Ainda não existe EBOOT nem PKG neste repositório. Compatibilidade com firmware 13.52 só poderá ser afirmada após testes reais.
 
-## Próximo passo técnico
-
-O próximo marco é preparar o ambiente OpenOrbis no Windows e compilar um EBOOT de teste. Somente depois disso faz sentido implementar a loja nativa e automatizar a geração do PKG.
+Distribua somente homebrews e arquivos que você tenha autorização para redistribuir. Não inclua SDK proprietário, chaves privadas ou conteúdo protegido.
