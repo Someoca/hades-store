@@ -1,0 +1,5 @@
+[
+  {"id":"sample-01","name":"Homebrew de exemplo","category":"Homebrews","version":"1.0","icon":"H","description":"Item demonstrativo. Substitua por um projeto autorizado.","size":"A definir","downloadUrl":""},
+  {"id":"sample-02","name":"Utilitário de exemplo","category":"Aplicativos","version":"1.0","icon":"⚙","description":"Espaço reservado para aplicativo de código aberto.","size":"A definir","downloadUrl":""},
+  {"id":"sample-03","name":"Emulador de exemplo","category":"Emuladores","version":"1.0","icon":"⌁","description":"Espaço reservado para emulador distribuído por fonte autorizada.","size":"A definir","downloadUrl":""}
+]
