@@ -1,27 +1,32 @@
-// HADES Store — native PS4 bootstrap
-// Stage: minimal application lifecycle, based on the OpenOrbis Hello World API.
-// This source deliberately avoids unverified graphics/network/controller APIs.
+// HADES Store — native PS4 application entry point.
+// This stage implements the application domain and navigation model.
+// Hardware input, graphics and network adapters remain isolated for later work.
 
 #include <cstdio>
+#include <cstdlib>
 #include <orbis/libkernel.h>
 
+#include "HadesApp.h"
+
 namespace {
-constexpr unsigned int kHeartbeatMicroseconds = 2'000'000;
+const unsigned int kHeartbeatMicroseconds = 2000000;
 }
 
 int main() {
-    // Keep stdout unbuffered so diagnostics are visible immediately.
-    std::setvbuf(stdout, nullptr, _IONBF, 0);
+    std::setvbuf(stdout, 0, _IONBF, 0);
 
-    std::puts("[HADES] Native bootstrap starting");
-    std::puts("[HADES] OpenOrbis libkernel entry point reached");
-    std::puts("[HADES] Graphics, controller and network modules are not enabled yet");
+    hades::HadesApp app;
+    std::puts("[HADES] Native application starting");
+    std::puts("[HADES] Application state and local catalog initialized");
+    std::puts("[HADES] Platform adapters: pending verified OpenOrbis integration");
 
     unsigned long long heartbeat = 0;
     for (;;) {
-        std::printf("[HADES] Running — heartbeat %llu\n", heartbeat++);
+        // No physical controller polling is performed in this stage.
+        app.Tick(hades::InputAction::None);
+        std::printf("[HADES] %s | %s | cycle %llu\n",
+                    app.ScreenName(), app.StatusMessage().c_str(), heartbeat++);
         sceKernelUsleep(kHeartbeatMicroseconds);
     }
-
     return 0;
 }
