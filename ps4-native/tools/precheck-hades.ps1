@@ -46,6 +46,7 @@ $required = @(
  "src\AppLoop.h", "src\AppView.h", "src\Input.h", "src\Platform.h",
  "src\ViewRenderer.h", "src\ControllerMapping.h", "sources.cmake",
  "tools\build-hades.ps1", "tools\build-config.example.psd1",
+ "tools\validate-package-metadata.ps1", "package\package-metadata.example.json",
  "src\CatalogService.h", "src\Settings.h", "catalog\catalog-v1.example.json",
  "catalog\SCHEMA.md"
 )
