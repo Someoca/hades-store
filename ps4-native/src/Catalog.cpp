@@ -1,4 +1,4 @@
-#include "Catalog.h"
+#include "Catalog.h"\n#include <cstdlib>
 
 namespace hades {
 
