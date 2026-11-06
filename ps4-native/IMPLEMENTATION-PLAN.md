@@ -35,7 +35,11 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [ ] Ligar catalogo remoto e gerenciador de downloads a interface e persistir configuracoes.
 - [x] Criar modelo declarativo dos metadados do pacote PS4.
 - [x] Criar validador de campos e identificadores obrigatorios.
-- [ ] Confirmar Title ID/Content ID oficiais e gerar param.sfo/GP4/FSELF/PKG com ferramentas validadas.
+- [x] Definir manifesto declarativo dos recursos obrigatorios do pacote.
+- [x] Criar validador de caminhos, duplicidades e presenca dos recursos.
+- [x] Incluir a estrutura de recursos no pre-check e documentar as limitacoes.
+- [ ] Criar/validar o icone final e gerar o FSELF a partir do ELF compilado.
+- [ ] Confirmar Title ID/Content ID oficiais e gerar param.sfo/GP4/PKG com ferramentas validadas.
 - [ ] Testar instalacao, inicializacao e rede no PS4 alvo.
 
 ## Arquitetura
