@@ -139,4 +139,79 @@ const char* HadesApp::ScreenHint() const {
     }
 }
 
+
+AppView HadesApp::BuildView() const {
+    AppView view;
+    view.title = std::string("HADES Store - ") + ScreenName();
+    view.hint = ScreenHint();
+    view.status = status_;
+
+    switch (screen_) {
+        case Screen::Home: {
+            view.detail = "Central de conteudo homebrew para PS4.";
+            const char* labels[] = {"Catalogo", "Downloads", "Configuracoes"};
+            view.selectedIndex = homeSelection_;
+            for (std::size_t i = 0; i < 3; ++i) {
+                ViewRow row;
+                row.title = labels[i];
+                row.subtitle = i == 0 ? "Explorar conteudo disponivel" :
+                               (i == 1 ? "Acompanhar tarefas de download" :
+                                         "Preferencias do aplicativo");
+                row.selected = i == homeSelection_;
+                view.rows.push_back(row);
+            }
+            break;
+        }
+        case Screen::Catalog: {
+            view.detail = "Itens carregados: " + std::to_string(catalog_.Count());
+            view.selectedIndex = catalog_.SelectedIndex();
+            const std::vector<CatalogItem>& items = catalog_.Items();
+            for (std::size_t i = 0; i < items.size(); ++i) {
+                ViewRow row;
+                row.title = items[i].title;
+                row.subtitle = items[i].version.empty() ? items[i].description :
+                               items[i].version + " - " + items[i].description;
+                row.selected = i == view.selectedIndex;
+                view.rows.push_back(row);
+            }
+            break;
+        }
+        case Screen::Details: {
+            const CatalogItem* item = catalog_.Selected();
+            if (item) {
+                view.detail = item->description + "\\nVersao: " + item->version +
+                              "\\nAutor: " + item->author;
+                ViewRow row;
+                row.title = item->title;
+                row.subtitle = item->packageSize == 0 ? "Tamanho nao informado" :
+                               "Pacote: " + std::to_string(item->packageSize) + " bytes";
+                row.selected = true;
+                view.rows.push_back(row);
+            } else {
+                view.detail = "Nenhum item selecionado no catalogo.";
+            }
+            break;
+        }
+        case Screen::Downloads:
+            view.detail = "A fila sera exibida quando o transporte HTTPS e o verificador SHA-256 forem conectados.";
+            break;
+        case Screen::Settings: {
+            const AppSettings& settings = settings_.Get();
+            const char* labels[] = {"Catalogo online", "Destaques primeiro", "Confirmar download"};
+            const bool values[] = {settings.enableOnlineCatalog, settings.showFeaturedFirst,
+                                   settings.confirmBeforeDownload};
+            view.selectedIndex = settingsSelection_;
+            for (std::size_t i = 0; i < 3; ++i) {
+                ViewRow row;
+                row.title = labels[i];
+                row.subtitle = values[i] ? "Ativado" : "Desativado";
+                row.selected = i == settingsSelection_;
+                view.rows.push_back(row);
+            }
+            break;
+        }
+    }
+    return view;
+}
+
 } // namespace hades
