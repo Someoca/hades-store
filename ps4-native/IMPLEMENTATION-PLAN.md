@@ -9,14 +9,14 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [x] Ponto de entrada minimo baseado no padrao libkernel do sample OpenOrbis.
 - [x] Modelo de catalogo local com validacao de campos, URLs HTTPS, SHA-256 declarado, limite de tamanho e IDs unicos.
 - [x] Camada de aplicacao com estados Inicio, Catalogo, Detalhes, Downloads e Configuracoes.
-- [x] Contratos abstratos para entrada, renderizacao e cliente HTTPS.
+- [x] Contratos abstratos para entrada, renderizacao e cliente HTTPS.\n- [x] Gerenciador de downloads com fila unica, limite de tamanho, HTTPS e verificacao SHA-256 por adaptador.\n- [x] Estados logicos e atalhos de navegacao para Catalogo, Downloads e Configuracoes.
 - [ ] Integrar os novos arquivos ao projeto de build Windows.
 - [ ] Confirmar a linkagem do conjunto de arquivos C++ com a toolchain instalada.
 - [ ] Implementar parser JSON com limites e validacao de esquema.
 - [ ] Integrar renderizacao nativa com APIs OpenOrbis confirmadas.
 - [ ] Mapear DualShock 4 para as acoes abstratas.
 - [ ] Implementar cliente HTTPS e tratamento de falhas.
-- [ ] Implementar downloads com limite de tamanho e verificacao SHA-256 real.
+- [ ] Implementar adaptador de transporte HTTPS e verificacao SHA-256 real para o PS4.\n- [ ] Integrar gerenciador de downloads a interface e persistencia segura.
 - [ ] Gerar metadados e PKG HADES.
 - [ ] Testar instalacao, inicializacao e rede no PS4 alvo.
 
