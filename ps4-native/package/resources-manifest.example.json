@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "packageRoot": "package",
+  "resources": [
+    {
+      "path": "eboot.bin",
+      "role": "applicationExecutable",
+      "required": true,
+      "generatedBy": "create-fself.exe"
+    },
+    {
+      "path": "sce_sys/icon0.png",
+      "role": "applicationIcon",
+      "required": true,
+      "generatedBy": "artwork"
+    }
+  ]
+}
