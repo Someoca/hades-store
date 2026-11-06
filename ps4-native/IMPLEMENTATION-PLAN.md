@@ -33,7 +33,9 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [ ] Implementar cliente HTTPS e tratamento de falhas.
 - [ ] Implementar adaptador real de transporte e hash SHA-256 no PS4.
 - [ ] Ligar catalogo remoto e gerenciador de downloads a interface e persistir configuracoes.
-- [ ] Gerar metadados e PKG HADES.
+- [x] Criar modelo declarativo dos metadados do pacote PS4.
+- [x] Criar validador de campos e identificadores obrigatorios.
+- [ ] Confirmar Title ID/Content ID oficiais e gerar param.sfo/GP4/FSELF/PKG com ferramentas validadas.
 - [ ] Testar instalacao, inicializacao e rede no PS4 alvo.
 
 ## Arquitetura
