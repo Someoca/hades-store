@@ -112,7 +112,7 @@ private:
                     unsigned int cp = 0;
                     if (!Hex4(cp)) return Fail(error, "Escape Unicode invalido");
                     if (cp >= 0xD800 && cp <= 0xDBFF) {
-                        if (pos + 2 > s.size() || s[pos] != '\\\\' || s[pos + 1] != 'u')
+                        if (pos + 2 > s.size() || s[pos] != '\\' || s[pos + 1] != 'u')
                             return Fail(error, "Par substituto Unicode incompleto");
                         pos += 2;
                         unsigned int low = 0;
