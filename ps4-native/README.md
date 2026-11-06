@@ -17,14 +17,14 @@
 - `src/Catalog.h/.cpp`: modelo de itens, selecao, validacao e leitura do catalogo JSON.
 - `src/Json.h/.cpp`: parser JSON com limites de entrada, profundidade e quantidade de nos.
 - `src/DownloadManager.h/.cpp`: fila unica, estados, limite de tamanho, HTTPS e verificacao SHA-256 delegada a adaptadores.
-- `src/Input.h`: acoes abstratas a mapear para o DualShock 4.
+- `src/Input.h`: acoes abstratas da aplicacao.\n- `src/ControllerMapping.h`: mapeamento logico dos botoes para acoes, aguardando o adaptador OpenOrbis.
 - `src/Platform.h`: contratos para entrada e HTTPS.\n- `src/AppView.h`: modelo independente de tela, linhas e selecao.\n- `src/ViewRenderer.h`: contrato para renderizadores concretos.\n- `src/CatalogService.h/.cpp`: atualizacao do catalogo via cliente HTTPS injetado.\n- `src/Settings.h/.cpp`: preferencias e contrato abstrato de persistencia.
 - `catalog/SCHEMA.md`: contrato do catalogo v1.
 - `catalog/catalog-v1.example.json`: exemplo de dados locais.
 
 ## Fluxo de telas
 
-Inicio, Catalogo, Detalhes, Downloads e Configuracoes. A camada aceita acoes logicas para abrir as areas e agora monta um modelo visual (`AppView`) com linhas, selecao, detalhes e preferencias. O renderizador grafico concreto ainda nao foi implementado. O mapeamento fisico do DualShock 4 e a renderizacao ainda precisam de adaptadores especificos OpenOrbis.
+Inicio, Catalogo, Detalhes, Downloads e Configuracoes. A camada aceita acoes logicas para abrir as areas e agora monta um modelo visual (`AppView`) com linhas, selecao, detalhes e preferencias. O renderizador grafico concreto ainda nao foi implementado. O mapeamento logico dos botoes esta definido em `ControllerMapping.h`; a leitura fisica do controle ainda precisa de um adaptador OpenOrbis confirmado. A renderizacao grafica concreta tambem permanece pendente.
 
 ## Catalogo e seguranca
 
