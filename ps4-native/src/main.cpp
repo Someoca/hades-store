@@ -1,13 +1,27 @@
 // HADES Store — native PS4 bootstrap
-// Initial source scaffold only. This is not yet a runnable PS4 application.
-// Next: replace this placeholder with the OpenOrbis sample entry point and
-// add verified PS4 graphics, controller, networking, and package APIs.
+// Stage: minimal application lifecycle, based on the OpenOrbis Hello World API.
+// This source deliberately avoids unverified graphics/network/controller APIs.
 
 #include <cstdio>
+#include <orbis/libkernel.h>
 
-int main(int argc, char* argv[]) {
-    (void)argc;
-    (void)argv;
-    std::puts("HADES Store native bootstrap: toolchain validation stage");
+namespace {
+constexpr unsigned int kHeartbeatMicroseconds = 2'000'000;
+}
+
+int main() {
+    // Keep stdout unbuffered so diagnostics are visible immediately.
+    std::setvbuf(stdout, nullptr, _IONBF, 0);
+
+    std::puts("[HADES] Native bootstrap starting");
+    std::puts("[HADES] OpenOrbis libkernel entry point reached");
+    std::puts("[HADES] Graphics, controller and network modules are not enabled yet");
+
+    unsigned long long heartbeat = 0;
+    for (;;) {
+        std::printf("[HADES] Running — heartbeat %llu\n", heartbeat++);
+        sceKernelUsleep(kHeartbeatMicroseconds);
+    }
+
     return 0;
 }
