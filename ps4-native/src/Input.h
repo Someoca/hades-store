@@ -11,7 +11,10 @@ enum class InputAction {
     Right,
     Confirm,
     Back,
-    Refresh
+    Refresh,
+    OpenCatalog,
+    OpenDownloads,
+    OpenSettings
 };
 
 } // namespace hades
