@@ -30,6 +30,7 @@ private:
     Screen screen_;
     std::string status_;
     unsigned int settingsSelection_;
+    unsigned int homeSelection_;
 };
 
 } // namespace hades
