@@ -45,6 +45,7 @@ $required = @(
  "src\HadesApp.h", "src\Catalog.h", "src\Json.h", "src\DownloadManager.h",
  "src\AppLoop.h", "src\AppView.h", "src\Input.h", "src\Platform.h",
  "src\ViewRenderer.h", "src\ControllerMapping.h", "sources.cmake",
+ "tools\build-hades.ps1", "tools\build-config.example.psd1",
  "src\CatalogService.h", "src\Settings.h", "catalog\catalog-v1.example.json",
  "catalog\SCHEMA.md"
 )
