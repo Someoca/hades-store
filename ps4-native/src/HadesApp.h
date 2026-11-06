@@ -3,6 +3,7 @@
 #include <string>
 #include "Catalog.h"
 #include "Input.h"
+#include "Settings.h"
 
 namespace hades {
 
@@ -14,6 +15,7 @@ public:
     void Tick(InputAction action);
     Screen CurrentScreen() const;
     const Catalog& GetCatalog() const;
+    const SettingsManager& GetSettings() const;
     const std::string& StatusMessage() const;
     const char* ScreenName() const;
     const char* ScreenHint() const;
@@ -22,8 +24,10 @@ private:
     void ActivateSelection();
     void GoBack();
     Catalog catalog_;
+    SettingsManager settings_;
     Screen screen_;
     std::string status_;
+    unsigned int settingsSelection_;
 };
 
 } // namespace hades
