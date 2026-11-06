@@ -4,7 +4,7 @@ namespace hades {
 
 HadesApp::HadesApp()
     : screen_(Screen::Home),
-      status_("Inicializacao concluida. Navegacao pronta para receber o controle.") {}
+      status_("Inicializacao concluida. Aguardando entrada do controle.") {}
 
 void HadesApp::Tick(InputAction action) {
     switch (action) {
@@ -29,8 +29,20 @@ void HadesApp::Tick(InputAction action) {
         case InputAction::Refresh:
             if (screen_ == Screen::Catalog) {
                 catalog_.ResetSelection();
-                SetStatus("Catalogo local atualizado.");
+                SetStatus("Selecao do catalogo reiniciada.");
             }
+            break;
+        case InputAction::OpenCatalog:
+            screen_ = Screen::Catalog;
+            SetStatus("Catalogo local aberto.");
+            break;
+        case InputAction::OpenDownloads:
+            screen_ = Screen::Downloads;
+            SetStatus("Gerenciador de downloads. Nenhum download iniciado.");
+            break;
+        case InputAction::OpenSettings:
+            screen_ = Screen::Settings;
+            SetStatus("Configuracoes do HADES.");
             break;
         case InputAction::Left:
         case InputAction::Right:
@@ -44,7 +56,7 @@ void HadesApp::ActivateSelection() {
     switch (screen_) {
         case Screen::Home:
             screen_ = Screen::Catalog;
-            SetStatus("Catalogo local aberto. Conteudo online ainda nao habilitado.");
+            SetStatus("Catalogo local aberto. Catalogo online ainda nao habilitado.");
             break;
         case Screen::Catalog:
             if (catalog_.Selected()) {
@@ -55,13 +67,13 @@ void HadesApp::ActivateSelection() {
             }
             break;
         case Screen::Details:
-            SetStatus("Este item e informativo; nenhum pacote sera instalado automaticamente.");
+            SetStatus("Item informativo. Nenhum pacote sera instalado automaticamente.");
             break;
         case Screen::Downloads:
-            SetStatus("Gerenciador de downloads sera integrado em etapa futura.");
+            SetStatus("Downloads aguardam integracao de transporte HTTPS e verificacao.");
             break;
         case Screen::Settings:
-            SetStatus("Configuracoes serao habilitadas em etapa futura.");
+            SetStatus("Configuracoes: interface e rede serao configuradas em etapas futuras.");
             break;
     }
 }
@@ -97,6 +109,17 @@ const char* HadesApp::ScreenName() const {
         case Screen::Downloads: return "Downloads";
         case Screen::Settings: return "Configuracoes";
         default: return "Desconhecida";
+    }
+}
+
+const char* HadesApp::ScreenHint() const {
+    switch (screen_) {
+        case Screen::Home: return "Catalogo | Downloads | Configuracoes";
+        case Screen::Catalog: return "Cima/Baixo: navegar | X: detalhes | O: voltar";
+        case Screen::Details: return "O: voltar ao catalogo";
+        case Screen::Downloads: return "Downloads verificados aparecerao aqui";
+        case Screen::Settings: return "Preferencias do aplicativo";
+        default: return "";
     }
 }
 
