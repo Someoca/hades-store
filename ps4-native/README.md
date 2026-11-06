@@ -94,3 +94,13 @@ A estrutura do driver foi adicionada, mas nao foi executada nem validada por com
 - `tools/validate-package-metadata.ps1`: valida os campos obrigatorios e rejeita identificadores ainda marcados como CHANGE_ME.
 - Defina identificadores oficiais/reservados antes de qualquer empacotamento. Nao reutilize Title ID de outro aplicativo.
 - Esta validacao nao gera `param.sfo`, GP4, FSELF ou PKG; esses formatos serao produzidos somente quando os parametros e ferramentas da release OpenOrbis estiverem confirmados.
+
+
+## Estrutura e validacao dos recursos do pacote
+
+- `package/README.md`: documenta a estrutura esperada e a origem de cada recurso.
+- `package/resources-manifest.example.json`: lista o executavel FSELF e o icone esperados.
+- `tools/validate-package-resources.ps1`: verifica caminhos relativos, duplicidades, existencia dos recursos obrigatorios e correspondencia com os metadados.
+- O pre-check Windows agora inclui esses arquivos de preparacao.
+
+O manifesto ainda aponta para arquivos que serao produzidos posteriormente. O validador deve sinalizar esses itens como pendentes enquanto nao existirem. Ele nao verifica a integridade interna do FSELF ou as dimensoes/formato do PNG, e nao gera GP4, param.sfo ou PKG.
