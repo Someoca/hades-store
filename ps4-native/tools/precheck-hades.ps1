@@ -44,7 +44,7 @@ $required = @(
  "src\DownloadManager.cpp", "src\CatalogService.cpp", "src\Settings.cpp",
  "src\HadesApp.h", "src\Catalog.h", "src\Json.h", "src\DownloadManager.h",
  "src\AppLoop.h", "src\AppView.h", "src\Input.h", "src\Platform.h",
- "src\ViewRenderer.h", "src\ControllerMapping.h", "sources.cmake",
+ "src\ViewRenderer.h", "src\UiTheme.h", "src\ControllerMapping.h", "sources.cmake",
  "tools\build-hades.ps1", "tools\build-config.example.psd1",
  "tools\validate-package-metadata.ps1", "package\package-metadata.example.json",
  "src\CatalogService.h", "src\Settings.h", "catalog\catalog-v1.example.json",
