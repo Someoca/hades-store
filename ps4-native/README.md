@@ -13,6 +13,7 @@
 ## Arquitetura atual
 
 - `src/main.cpp`: ponto de entrada libkernel e ciclo principal.
+- `sources.cmake`: manifesto central de arquivos C++ e headers para manter o build sincronizado.
 - `src/HadesApp.h/.cpp`: estado da aplicacao, telas, navegacao e montagem do modelo visual.
 - `src/AppLoop.h`: orquestrador de frame que conecta entrada, estado e renderizador.
 - `src/Catalog.h/.cpp`: modelo de itens, selecao, validacao e leitura do catalogo JSON.
@@ -60,7 +61,7 @@ Os headers sao incluidos pelos fontes. O processo Windows ainda precisa compilar
 
 ## Etapas futuras
 
-1. Atualizar o build Windows para todos os fontes.
+1. Usar `sources.cmake` como manifesto e atualizar o build Windows para todos os fontes.
 2. Integrar renderizacao nativa e entrada DualShock 4.
 3. Implementar adaptador HTTPS e SHA-256 real.
 4. Ligar catalogo remoto e downloads a interface.
