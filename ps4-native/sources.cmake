@@ -25,4 +25,5 @@ set(HADES_NATIVE_HEADERS
     src/Platform.h
     src/Settings.h
     src/ViewRenderer.h
+    src/UiTheme.h
 )
