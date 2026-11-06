@@ -3,13 +3,15 @@
 namespace hades {
 
 HadesApp::HadesApp()
-    : screen_(Screen::Home), settingsSelection_(0),
+    : screen_(Screen::Home), settingsSelection_(0), homeSelection_(0),
       status_("Inicializacao concluida. Aguardando entrada do controle.") {}
 
 void HadesApp::Tick(InputAction action) {
     switch (action) {
         case InputAction::Up:
-            if (screen_ == Screen::Catalog) {
+            if (screen_ == Screen::Home) {
+                homeSelection_ = homeSelection_ == 0 ? 2 : homeSelection_ - 1;
+            } else if (screen_ == Screen::Catalog) {
                 catalog_.MoveSelection(-1);
                 SetStatus("Item anterior selecionado.");
             } else if (screen_ == Screen::Settings) {
@@ -17,7 +19,9 @@ void HadesApp::Tick(InputAction action) {
             }
             break;
         case InputAction::Down:
-            if (screen_ == Screen::Catalog) {
+            if (screen_ == Screen::Home) {
+                homeSelection_ = (homeSelection_ + 1) % 3;
+            } else if (screen_ == Screen::Catalog) {
                 catalog_.MoveSelection(1);
                 SetStatus("Proximo item selecionado.");
             } else if (screen_ == Screen::Settings) {
@@ -67,8 +71,16 @@ void HadesApp::Tick(InputAction action) {
 void HadesApp::ActivateSelection() {
     switch (screen_) {
         case Screen::Home:
-            screen_ = Screen::Catalog;
-            SetStatus("Catalogo local aberto. Catalogo online ainda nao habilitado.");
+            if (homeSelection_ == 0) {
+                screen_ = Screen::Catalog;
+                SetStatus("Catalogo local aberto. Catalogo online ainda nao habilitado.");
+            } else if (homeSelection_ == 1) {
+                screen_ = Screen::Downloads;
+                SetStatus("Gerenciador de downloads aberto.");
+            } else {
+                screen_ = Screen::Settings;
+                SetStatus("Configuracoes do HADES.");
+            }
             break;
         case Screen::Catalog:
             if (catalog_.Selected()) {
