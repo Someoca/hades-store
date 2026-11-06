@@ -20,7 +20,9 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [x] Contrato ViewRenderer desacoplado das APIs graficas do console.
 - [x] Orquestrador AppLoop para executar entrada, atualizacao de estado e renderizacao por frame.
 - [x] BuildView preenchido com linhas, selecao e detalhes das telas.
-- [ ] Integrar todos os fontes C++ e o ponto de entrada ao projeto de build Windows.
+- [x] Criar manifesto central `sources.cmake` com fontes e headers nativos.
+- [x] Ampliar pre-check Windows para conferir os novos headers e o manifesto.
+- [ ] Integrar todos os fontes C++ e o ponto de entrada ao comando de build Windows.
 - [ ] Confirmar a linkagem do conjunto C++ com a toolchain instalada.
 - [ ] Implementar renderizador grafico concreto com APIs OpenOrbis confirmadas.
 - [x] Definir mapeamento logico dos botoes do controle para acoes abstratas.
