@@ -64,8 +64,13 @@ private:
         else if (cp <= 0x7FF) {
             out.push_back(static_cast<char>(0xC0 | (cp >> 6)));
             out.push_back(static_cast<char>(0x80 | (cp & 0x3F)));
-        } else {
+        } else if (cp <= 0xFFFF) {
             out.push_back(static_cast<char>(0xE0 | (cp >> 12)));
+            out.push_back(static_cast<char>(0x80 | ((cp >> 6) & 0x3F)));
+            out.push_back(static_cast<char>(0x80 | (cp & 0x3F)));
+        } else {
+            out.push_back(static_cast<char>(0xF0 | (cp >> 18)));
+            out.push_back(static_cast<char>(0x80 | ((cp >> 12) & 0x3F)));
             out.push_back(static_cast<char>(0x80 | ((cp >> 6) & 0x3F)));
             out.push_back(static_cast<char>(0x80 | (cp & 0x3F)));
         }
@@ -106,10 +111,21 @@ private:
                 case 'u': {
                     unsigned int cp = 0;
                     if (!Hex4(cp)) return Fail(error, "Escape Unicode invalido");
-                    // Surrogate pairs are rejected rather than decoded incorrectly.
-                    if (cp >= 0xD800 && cp <= 0xDFFF)
-                        return Fail(error, "Par substituto Unicode nao suportado");
-                    AppendUtf8(out, cp);
+                    if (cp >= 0xD800 && cp <= 0xDBFF) {
+                        if (pos + 2 > s.size() || s[pos] != '\\\\' || s[pos + 1] != 'u')
+                            return Fail(error, "Par substituto Unicode incompleto");
+                        pos += 2;
+                        unsigned int low = 0;
+                        if (!Hex4(low) || low < 0xDC00 || low > 0xDFFF)
+                            return Fail(error, "Par substituto Unicode invalido");
+                        const unsigned int codePoint = 0x10000 +
+                            ((cp - 0xD800) << 10) + (low - 0xDC00);
+                        AppendUtf8(out, codePoint);
+                    } else if (cp >= 0xDC00 && cp <= 0xDFFF) {
+                        return Fail(error, "Substituto Unicode baixo sem par");
+                    } else {
+                        AppendUtf8(out, cp);
+                    }
                     break;
                 }
                 default: return Fail(error, "Escape JSON desconhecido");
