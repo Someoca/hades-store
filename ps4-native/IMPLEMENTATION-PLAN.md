@@ -4,10 +4,10 @@ Este diretório é o aplicativo nativo PS4. A loja web na raiz é um projeto sep
 
 ## Estado do trabalho
 
-- [x] Criado branch isolado `native/ps4-bootstrap`.
-- [x] Registrado o diagnóstico dos artefatos de teste e seus limites.
-- [x] Substituído o placeholder por um bootstrap mínimo baseado no padrão libkernel do sample OpenOrbis.
-- [ ] Compilar o novo código no Windows do usuário com a toolchain OpenOrbis instalada.
+- [x] Branch isolado `native/ps4-bootstrap`.
+- [x] Diagnóstico dos artefatos de teste e seus limites registrado.
+- [x] Ponto de entrada mínimo baseado no padrão libkernel do sample OpenOrbis.
+- [ ] Compilar o novo código no Windows com a toolchain OpenOrbis instalada.
 - [ ] Inspecionar ELF/OELF/SELF com ferramentas PS4-aware.
 - [ ] Gerar PKG com identidade HADES própria e validar metadados, estrutura e hashes.
 - [ ] Testar instalação e inicialização no PS4 alvo.
@@ -18,7 +18,7 @@ Este diretório é o aplicativo nativo PS4. A loja web na raiz é um projeto sep
 
 ## Decisão técnica
 
-Não reutilizar nem instalar PKGs de teste como se fossem aplicativos prontos. O código gráfico Mandelbrot visto na pasta local depende de `Scene2D`, `graphics.h` e `log.h`; essas dependências ainda não foram localizadas/confirmadas. O `build.bat` local continua com metadados Hello World. Portanto, não portar esse código gráfico nem reutilizar seus artefatos no pacote HADES nesta etapa.
+Não reutilizar nem instalar PKGs de teste como se fossem aplicativos prontos. O código gráfico Mandelbrot local depende de `Scene2D`, `graphics.h` e `log.h`; essas dependências ainda não foram confirmadas. O `build.bat` local continua com metadados Hello World. Portanto, não portar esse código gráfico nem reutilizar seus artefatos no pacote HADES nesta etapa.
 
 O bootstrap atual usa apenas o padrão libkernel observado no Hello World oficial. Ainda precisa ser compilado e testado localmente.
 
