@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "hades-welcome",
+      "title": "Bem-vindo ao HADES",
+      "description": "Sua biblioteca homebrew em um unico lugar.",
+      "version": "0.1",
+      "author": "HADES",
+      "type": "utility",
+      "featured": true,
+      "packageUrl": "",
+      "sha256": "",
+      "packageSize": 0
+    },
+    {
+      "id": "catalog-online-placeholder",
+      "title": "Catalogo online",
+      "description": "A fonte remota sera configurada quando o endpoint HTTPS estiver pronto.",
+      "version": "Em desenvolvimento",
+      "author": "HADES",
+      "type": "homebrew",
+      "featured": false,
+      "packageUrl": "",
+      "sha256": "",
+      "packageSize": 0
+    }
+  ]
+}
