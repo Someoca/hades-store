@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "applicationName": "HADES Store",
+  "titleId": "CHANGE_ME",
+  "contentId": "CHANGE_ME",
+  "appVersion": "0.1.0",
+  "applicationCategory": "game",
+  "requiredSystemSoftwareVersion": "CHANGE_ME",
+  "publisher": "HADES",
+  "executable": "eboot.bin",
+  "icon": "sce_sys/icon0.png"
+}
