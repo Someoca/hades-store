@@ -86,3 +86,11 @@ Exemplo de chamada depois de configurar os argumentos:
 ```
 
 A estrutura do driver foi adicionada, mas nao foi executada nem validada por compilacao nesta etapa.
+
+
+## Metadados do pacote PS4
+
+- `package/package-metadata.example.json`: modelo declarativo para nome, Title ID, Content ID, versao, versao minima de sistema e recursos.
+- `tools/validate-package-metadata.ps1`: valida os campos obrigatorios e rejeita identificadores ainda marcados como CHANGE_ME.
+- Defina identificadores oficiais/reservados antes de qualquer empacotamento. Nao reutilize Title ID de outro aplicativo.
+- Esta validacao nao gera `param.sfo`, GP4, FSELF ou PKG; esses formatos serao produzidos somente quando os parametros e ferramentas da release OpenOrbis estiverem confirmados.
