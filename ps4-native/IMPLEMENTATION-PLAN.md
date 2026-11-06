@@ -2,24 +2,31 @@
 
 Este diretório é o aplicativo nativo PS4. A loja web na raiz é um projeto separado.
 
-## Estado confirmado
+## Estado do trabalho
 
-- O repositório ainda contém apenas um ponto de entrada C++ placeholder.
-- O pacote de teste local passou pela validação estrutural do PKG e pela verificação de hashes executada por `pkg_validate`.
-- O `eboot.bin` extraído começa com os bytes `4F 15 3D 1D`, compatíveis com o magic SELF em little-endian.
-- O `graphics.elf` analisado é ELF64 x86-64, tipo `ET_DYN`, ABI SystemV e entry `0x20`. Isso, sozinho, não demonstra que ele foi linkado para o ambiente PS4.
-- O `graphics.oelf` existe, mas ainda não foi inspecionado por uma ferramenta que valide seu conteúdo.
-- Nenhum teste de execução no PS4 foi confirmado.
+- [x] Criado branch isolado `native/ps4-bootstrap`.
+- [x] Registrado o diagnóstico dos artefatos de teste e seus limites.
+- [x] Substituído o placeholder por um bootstrap mínimo baseado no padrão libkernel do sample OpenOrbis.
+- [ ] Compilar o novo código no Windows do usuário com a toolchain OpenOrbis instalada.
+- [ ] Inspecionar ELF/OELF/SELF com ferramentas PS4-aware.
+- [ ] Gerar PKG com identidade HADES própria e validar metadados, estrutura e hashes.
+- [ ] Testar instalação e inicialização no PS4 alvo.
+- [ ] Implementar UI gráfica nativa com APIs verificadas.
+- [ ] Implementar navegação DualShock 4.
+- [ ] Implementar catálogo HTTPS e validação de JSON.
+- [ ] Implementar downloads com limites e verificação de integridade.
 
 ## Decisão técnica
 
-Não reutilizar nem instalar o PKG de teste como se fosse um aplicativo pronto. Primeiro estabelecer uma compilação mínima reproduzível a partir de um exemplo oficial OpenOrbis, com toolchain e flags documentadas. Só depois evoluir para interface, controle DualShock 4, catálogo HTTPS e downloads.
+Não reutilizar nem instalar PKGs de teste como se fossem aplicativos prontos. O código gráfico Mandelbrot visto na pasta local depende de `Scene2D`, `graphics.h` e `log.h`; essas dependências ainda não foram localizadas/confirmadas. O `build.bat` local continua com metadados Hello World. Portanto, não portar esse código gráfico nem reutilizar seus artefatos no pacote HADES nesta etapa.
+
+O bootstrap atual usa apenas o padrão libkernel observado no Hello World oficial. Ainda precisa ser compilado e testado localmente.
 
 ## Marcos e critérios de aceite
 
 1. **Ambiente** — detectar a toolchain OpenOrbis e registrar versões/caminhos dos utilitários.
 2. **Hello World oficial** — compilar sem alterações um exemplo oficial e preservar o log completo.
-3. **Bootstrap HADES** — portar o ponto de entrada mínimo para o projeto, sem APIs gráficas presumidas.
+3. **Bootstrap HADES** — compilar este ponto de entrada mínimo sem APIs gráficas presumidas.
 4. **Interface** — renderização nativa e navegação por controle, testadas no hardware.
 5. **Catálogo** — consumir JSON HTTPS com validação de esquema, limites e tratamento de falhas.
 6. **Downloads** — validar HTTPS, tamanho e integridade; não executar nem instalar conteúdo automaticamente.
