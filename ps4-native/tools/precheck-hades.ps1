@@ -43,6 +43,8 @@ $required = @(
  "src\main.cpp", "src\HadesApp.cpp", "src\Catalog.cpp", "src\Json.cpp",
  "src\DownloadManager.cpp", "src\CatalogService.cpp", "src\Settings.cpp",
  "src\HadesApp.h", "src\Catalog.h", "src\Json.h", "src\DownloadManager.h",
+ "src\AppLoop.h", "src\AppView.h", "src\Input.h", "src\Platform.h",
+ "src\ViewRenderer.h", "src\ControllerMapping.h", "sources.cmake",
  "src\CatalogService.h", "src\Settings.h", "catalog\catalog-v1.example.json",
  "catalog\SCHEMA.md"
 )
