@@ -22,7 +22,10 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [x] BuildView preenchido com linhas, selecao e detalhes das telas.
 - [x] Criar manifesto central `sources.cmake` com fontes e headers nativos.
 - [x] Ampliar pre-check Windows para conferir os novos headers e o manifesto.
-- [ ] Integrar todos os fontes C++ e o ponto de entrada ao comando de build Windows.
+- [x] Criar driver PowerShell configuravel que compila a lista do manifesto e chama o linker.
+- [x] Criar modelo local de configuracao sem presumir flags ou bibliotecas OpenOrbis.
+- [x] Incluir os arquivos de build no pre-check.
+- [ ] Preencher a configuracao com argumentos confirmados da toolchain instalada e executar o build em etapa posterior.
 - [ ] Confirmar a linkagem do conjunto C++ com a toolchain instalada.
 - [ ] Implementar renderizador grafico concreto com APIs OpenOrbis confirmadas.
 - [x] Definir mapeamento logico dos botoes do controle para acoes abstratas.
