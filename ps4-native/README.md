@@ -104,3 +104,11 @@ A estrutura do driver foi adicionada, mas nao foi executada nem validada por com
 - O pre-check Windows agora inclui esses arquivos de preparacao.
 
 O manifesto ainda aponta para arquivos que serao produzidos posteriormente. O validador deve sinalizar esses itens como pendentes enquanto nao existirem. Ele nao verifica a integridade interna do FSELF ou as dimensoes/formato do PNG, e nao gera GP4, param.sfo ou PKG.
+
+
+## Base visual independente da plataforma
+
+- `src/UiTheme.h`: tokens semanticos de cor e medidas de layout para o futuro renderizador.
+- A paleta define fundo, superficies, selecao, destaque, texto e aviso; as medidas padronizam margens, cabecalho, rodape e linhas.
+- Os valores sao RGBA logicos e nao presumem formato de framebuffer, API grafica ou resolucao do console.
+- O manifesto `sources.cmake` e o pre-check incluem o novo header.
