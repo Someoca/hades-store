@@ -13,12 +13,18 @@
 ## Arquitetura atual
 
 - `src/main.cpp`: ponto de entrada libkernel e ciclo principal.
-- `src/HadesApp.h/.cpp`: estado da aplicacao, telas e navegacao logica.
+- `src/HadesApp.h/.cpp`: estado da aplicacao, telas, navegacao e montagem do modelo visual.
+- `src/AppLoop.h`: orquestrador de frame que conecta entrada, estado e renderizador.
 - `src/Catalog.h/.cpp`: modelo de itens, selecao, validacao e leitura do catalogo JSON.
 - `src/Json.h/.cpp`: parser JSON com limites de entrada, profundidade e quantidade de nos.
 - `src/DownloadManager.h/.cpp`: fila unica, estados, limite de tamanho, HTTPS e verificacao SHA-256 delegada a adaptadores.
-- `src/Input.h`: acoes abstratas da aplicacao.\n- `src/ControllerMapping.h`: mapeamento logico dos botoes para acoes, aguardando o adaptador OpenOrbis.
-- `src/Platform.h`: contratos para entrada e HTTPS.\n- `src/AppView.h`: modelo independente de tela, linhas e selecao.\n- `src/ViewRenderer.h`: contrato para renderizadores concretos.\n- `src/CatalogService.h/.cpp`: atualizacao do catalogo via cliente HTTPS injetado.\n- `src/Settings.h/.cpp`: preferencias e contrato abstrato de persistencia.
+- `src/Input.h`: acoes abstratas da aplicacao.
+- `src/ControllerMapping.h`: mapeamento logico dos botoes para acoes, aguardando o adaptador OpenOrbis.
+- `src/Platform.h`: contratos para entrada e HTTPS.
+- `src/AppView.h`: modelo independente de tela, linhas e selecao.
+- `src/ViewRenderer.h`: contrato para renderizadores concretos.
+- `src/CatalogService.h/.cpp`: atualizacao do catalogo via cliente HTTPS injetado.
+- `src/Settings.h/.cpp`: preferencias e contrato abstrato de persistencia.
 - `catalog/SCHEMA.md`: contrato do catalogo v1.
 - `catalog/catalog-v1.example.json`: exemplo de dados locais.
 
@@ -47,8 +53,10 @@ O parser e o modelo estao implementados, mas conexao HTTPS, autenticacao da orig
 - `src/Catalog.cpp`
 - `src/Json.cpp`
 - `src/DownloadManager.cpp`
+- `src/CatalogService.cpp`
+- `src/Settings.cpp`
 
-Os headers sao incluidos pelos fontes. O processo Windows ainda precisa compilar e linkar todos esses arquivos.
+Os headers sao incluidos pelos fontes. O processo Windows ainda precisa compilar e linkar todos esses arquivos. `AppLoop.h` e os demais headers sao incluidos pelos fontes.
 
 ## Etapas futuras
 
