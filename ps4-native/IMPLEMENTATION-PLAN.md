@@ -12,11 +12,19 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [x] Gerenciador de downloads com fila unica, limite de tamanho e verificacao SHA-256 delegada.
 - [x] Parser JSON com limites de bytes, profundidade, nos e rejeicao de chaves duplicadas.
 - [x] Adaptador de documento JSON para o modelo do catalogo, com substituicao atomica apos validacao.
-- [x] Esquema v1 e documento de exemplo do catalogo.\n- [x] Servico de catalogo com validacao HTTPS e substituicao somente apos resposta valida.\n- [x] Modelo de configuracoes com limites e interface abstrata de persistencia.\n- [x] Navegacao logica das preferencias por acoes esquerda/direita.\n- [x] Modelo de apresentacao AppView para inicio, catalogo, detalhes, downloads e configuracoes.\n- [x] Contrato ViewRenderer desacoplado das APIs graficas do console.
-- [ ] Integrar os novos arquivos ao projeto de build Windows (incluindo CatalogService.cpp e Settings.cpp).
+- [x] Esquema v1 e documento de exemplo do catalogo.
+- [x] Servico de catalogo com validacao HTTPS e substituicao somente apos resposta valida.
+- [x] Modelo de configuracoes com limites e interface abstrata de persistencia.
+- [x] Navegacao logica das preferencias por acoes esquerda/direita.
+- [x] Modelo de apresentacao AppView para inicio, catalogo, detalhes, downloads e configuracoes.
+- [x] Contrato ViewRenderer desacoplado das APIs graficas do console.
+- [x] Orquestrador AppLoop para executar entrada, atualizacao de estado e renderizacao por frame.
+- [x] BuildView preenchido com linhas, selecao e detalhes das telas.
+- [ ] Integrar todos os fontes C++ e o ponto de entrada ao projeto de build Windows.
 - [ ] Confirmar a linkagem do conjunto C++ com a toolchain instalada.
 - [ ] Implementar renderizador grafico concreto com APIs OpenOrbis confirmadas.
-- [x] Definir mapeamento logico dos botoes do controle para acoes abstratas.\n- [ ] Implementar leitura fisica do DualShock 4 com APIs OpenOrbis confirmadas.
+- [x] Definir mapeamento logico dos botoes do controle para acoes abstratas.
+- [ ] Implementar leitura fisica do DualShock 4 com APIs OpenOrbis confirmadas.
 - [ ] Implementar cliente HTTPS e tratamento de falhas.
 - [ ] Implementar adaptador real de transporte e hash SHA-256 no PS4.
 - [ ] Ligar catalogo remoto e gerenciador de downloads a interface e persistir configuracoes.
@@ -26,7 +34,8 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 ## Arquitetura
 
 - `src/main.cpp`: entrada libkernel e ciclo principal.
-- `src/HadesApp.h/.cpp`: fluxo e estado da aplicacao.
+- `src/HadesApp.h/.cpp`: fluxo, estado e montagem do modelo visual.
+- `src/AppLoop.h`: orquestracao de cada frame com entrada e renderizador injetados.
 - `src/Catalog.h/.cpp`: modelo, validacao e carregamento JSON.
 - `src/Json.h/.cpp`: parser JSON limitado.
 - `src/DownloadManager.h/.cpp`: fila e verificacao delegada de downloads.
