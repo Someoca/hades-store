@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <vector>\n#include "Json.h"
 
 namespace hades {
 
@@ -41,7 +41,7 @@ public:
     // Adds only structurally valid entries. Network/JSON parsing is handled
     // by a later adapter and must call this validation boundary.
     bool Add(const CatalogItem& item, std::string* reason = 0);
-    static bool Validate(const CatalogItem& item, std::string* reason = 0);
+    static bool Validate(const CatalogItem& item, std::string* reason = 0);\n    bool LoadJson(const std::string& document, std::string* reason = 0);
 
 private:
     std::vector<CatalogItem> items_;
