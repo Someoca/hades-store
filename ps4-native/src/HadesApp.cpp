@@ -165,6 +165,13 @@ AppView HadesApp::BuildView() const {
         case Screen::Catalog: {
             view.detail = "Itens carregados: " + std::to_string(catalog_.Count());
             view.selectedIndex = catalog_.SelectedIndex();
+            if (catalog_.Count() == 0) {
+                ViewRow empty;
+                empty.title = "Catalogo vazio";
+                empty.subtitle = "Adicione itens ao catalogo local ou configure a fonte remota.";
+                empty.selected = true;
+                view.rows.push_back(empty);
+            }
             const std::vector<CatalogItem>& items = catalog_.Items();
             for (std::size_t i = 0; i < items.size(); ++i) {
                 ViewRow row;
@@ -179,8 +186,15 @@ AppView HadesApp::BuildView() const {
         case Screen::Details: {
             const CatalogItem* item = catalog_.Selected();
             if (item) {
-                view.detail = item->description + "\\nVersao: " + item->version +
-                              "\\nAutor: " + item->author;
+                const char* typeName = "Conteudo";
+                switch (item->type) {
+                    case ContentType::Homebrew: typeName = "Homebrew"; break;
+                    case ContentType::Utility: typeName = "Utilitario"; break;
+                    case ContentType::Emulator: typeName = "Emulador"; break;
+                    case ContentType::Game: typeName = "Jogo"; break;
+                }
+                view.detail = std::string(typeName) + "\\n" + item->description +
+                              "\\nVersao: " + item->version + "\\nAutor: " + item->author;
                 ViewRow row;
                 row.title = item->title;
                 row.subtitle = item->packageSize == 0 ? "Tamanho nao informado" :
