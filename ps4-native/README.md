@@ -70,3 +70,19 @@ Os headers sao incluidos pelos fontes. O processo Windows ainda precisa compilar
 7. Testar instalacao, inicializacao e rede no PS4 alvo.
 
 **Importante:** nenhuma compilacao ou teste de hardware foi executado nesta etapa. Compatibilidade com firmware 13.52 so podera ser afirmada apos validacao real.
+
+
+## Build Windows/OpenOrbis (estrutura inicial)
+
+- `tools/build-hades.ps1`: compila os arquivos C++ do manifesto e executa a etapa de linkagem.
+- `tools/build-config.example.psd1`: modelo para informar os caminhos do clang++/ld.lld e os argumentos exatos da toolchain instalada.
+- Copie o modelo para um arquivo local de configuracao e preencha os argumentos conforme a release OpenOrbis instalada. O script nao presume target, bibliotecas, linker script ou flags.
+- O driver gera somente o ELF. FSELF, GP4, PKG e instalacao continuam em etapas separadas.
+
+Exemplo de chamada depois de configurar os argumentos:
+
+```powershell
+.\tools\build-hades.ps1 -ConfigFile .\tools\build-config.local.psd1
+```
+
+A estrutura do driver foi adicionada, mas nao foi executada nem validada por compilacao nesta etapa.
