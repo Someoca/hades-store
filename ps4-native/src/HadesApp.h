@@ -4,6 +4,7 @@
 #include "Catalog.h"
 #include "Input.h"
 #include "Settings.h"
+#include "AppView.h"
 
 namespace hades {
 
@@ -19,6 +20,7 @@ public:
     const std::string& StatusMessage() const;
     const char* ScreenName() const;
     const char* ScreenHint() const;
+    AppView BuildView() const;
 private:
     void SetStatus(const std::string& message);
     void ActivateSelection();
