@@ -12,10 +12,10 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [x] Gerenciador de downloads com fila unica, limite de tamanho e verificacao SHA-256 delegada.
 - [x] Parser JSON com limites de bytes, profundidade, nos e rejeicao de chaves duplicadas.
 - [x] Adaptador de documento JSON para o modelo do catalogo, com substituicao atomica apos validacao.
-- [x] Esquema v1 e documento de exemplo do catalogo.\n- [x] Servico de catalogo com validacao HTTPS e substituicao somente apos resposta valida.\n- [x] Modelo de configuracoes com limites e interface abstrata de persistencia.\n- [x] Navegacao logica das preferencias por acoes esquerda/direita.
+- [x] Esquema v1 e documento de exemplo do catalogo.\n- [x] Servico de catalogo com validacao HTTPS e substituicao somente apos resposta valida.\n- [x] Modelo de configuracoes com limites e interface abstrata de persistencia.\n- [x] Navegacao logica das preferencias por acoes esquerda/direita.\n- [x] Modelo de apresentacao AppView para inicio, catalogo, detalhes, downloads e configuracoes.\n- [x] Contrato ViewRenderer desacoplado das APIs graficas do console.
 - [ ] Integrar os novos arquivos ao projeto de build Windows (incluindo CatalogService.cpp e Settings.cpp).
 - [ ] Confirmar a linkagem do conjunto C++ com a toolchain instalada.
-- [ ] Integrar renderizacao nativa com APIs OpenOrbis confirmadas.
+- [ ] Implementar renderizador grafico concreto com APIs OpenOrbis confirmadas.
 - [ ] Mapear DualShock 4 para as acoes abstratas.
 - [ ] Implementar cliente HTTPS e tratamento de falhas.
 - [ ] Implementar adaptador real de transporte e hash SHA-256 no PS4.
