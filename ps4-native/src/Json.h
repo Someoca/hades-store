@@ -1,6 +1,8 @@
 #pragma once
 
+#include <cstddef>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace hades {
@@ -20,11 +22,10 @@ struct JsonValue {
 
 class JsonParser {
 public:
-    JsonParser();
+    JsonParser() {}
     bool Parse(const std::string& input, JsonValue& output,
                std::string* error = 0) const;
 
-private:
     static const std::size_t kMaxInputBytes = 1024 * 1024;
     static const std::size_t kMaxDepth = 24;
     static const std::size_t kMaxNodes = 20000;
