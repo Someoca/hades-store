@@ -22,7 +22,7 @@ public:
     Screen CurrentScreen() const;
     const Catalog& GetCatalog() const;
     const std::string& StatusMessage() const;
-    const char* ScreenName() const;
+    const char* ScreenName() const;\n    const char* ScreenHint() const;
 
 private:
     void SetStatus(const std::string& message);
