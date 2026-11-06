@@ -16,7 +16,7 @@ Este diretorio contem o aplicativo nativo PS4. A loja web na raiz e um projeto s
 - [ ] Integrar os novos arquivos ao projeto de build Windows (incluindo CatalogService.cpp e Settings.cpp).
 - [ ] Confirmar a linkagem do conjunto C++ com a toolchain instalada.
 - [ ] Implementar renderizador grafico concreto com APIs OpenOrbis confirmadas.
-- [ ] Mapear DualShock 4 para as acoes abstratas.
+- [x] Definir mapeamento logico dos botoes do controle para acoes abstratas.\n- [ ] Implementar leitura fisica do DualShock 4 com APIs OpenOrbis confirmadas.
 - [ ] Implementar cliente HTTPS e tratamento de falhas.
 - [ ] Implementar adaptador real de transporte e hash SHA-256 no PS4.
 - [ ] Ligar catalogo remoto e gerenciador de downloads a interface e persistir configuracoes.
