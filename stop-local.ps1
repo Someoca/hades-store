@@ -5,10 +5,15 @@ if (-not (Test-Path -LiteralPath $pidFile)) {
     exit 0
 }
 
+$pidParts = (Get-Content -Raw -LiteralPath $pidFile).Trim().Split('|')
 $serverId = 0
-[void][int]::TryParse((Get-Content -Raw -LiteralPath $pidFile), [ref]$serverId)
-$serverProcess = if ($serverId -gt 0) { Get-CimInstance Win32_Process -Filter "ProcessId = $serverId" -ErrorAction SilentlyContinue }
-if ($serverProcess -and $serverProcess.CommandLine -like '*serve_local.py*') {
+[void][int]::TryParse($pidParts[0], [ref]$serverId)
+$serverProcess = if ($serverId -gt 0) { Get-Process -Id $serverId -ErrorAction SilentlyContinue }
+$isOurServer = $false
+if ($serverProcess -and $serverProcess.ProcessName -eq 'node' -and $pidParts.Count -gt 1) {
+    $isOurServer = $serverProcess.StartTime.ToUniversalTime().Ticks.ToString() -eq $pidParts[1]
+}
+if ($isOurServer) {
     Stop-Process -Id $serverId -Force
     Write-Output 'Servidor local da HADES Store encerrado.'
 } else {

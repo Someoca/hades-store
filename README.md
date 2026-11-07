@@ -19,7 +19,7 @@ A geração do PKG é uma etapa separada: requer código nativo, toolchain PS4, 
 
 ## Servidor local no Windows
 1. Conecte o PC e o PS4 à mesma rede local.
-2. Execute `start-local.ps1` no PowerShell. O servidor usa Python 3, escuta na interface IPv4 local do PC na porta `8000` e serve apenas a interface, o catálogo e as capas do site.
+2. Execute `start-local.ps1` no PowerShell. O servidor usa Node.js, escuta na interface IPv4 local do PC na porta `8000` e serve apenas a interface, o catálogo e as capas do site.
 3. Abra no navegador do PS4 o endereço mostrado pelo script, no formato `http://IP-LOCAL-DO-PC:8000/`.
 4. Execute `stop-local.ps1` para encerrar o servidor.
 
