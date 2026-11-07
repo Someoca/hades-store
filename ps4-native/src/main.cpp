@@ -10,7 +10,7 @@
 
 extern "C" int sceSystemServiceLaunchWebBrowser(const char* uri, void* reserved);
 
-static const int SW = 1920, SH = 1080, PAGE_SIZE = 12;
+static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 12;
 static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "HOMEBREWS", "EMULADORES"};
 static const int FILTER_COUNT = 5;
 static SDL_Window* windowHandle = nullptr;
@@ -108,7 +108,7 @@ static void draw(){
     text(1130,75,stats,98,223,233,2);
     int fx=60; for(int i=0;i<FILTER_COUNT;i++){int width=210;fill(fx,165,width,39,i==filterIndex?255:26,i==filterIndex?99:31,i==filterIndex?69:47);text(fx+14,177,FILTERS[i],i==filterIndex?12:204,i==filterIndex?13:210,i==filterIndex?18:220,2);fx+=width+10;}
     if(visible.empty()){text(75,330,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
-    else {int page=(selected/PAGE_SIZE)*PAGE_SIZE;for(int slot=0;slot<PAGE_SIZE&&page+slot<(int)visible.size();slot++)drawCard(slot,visible[page+slot],page+slot==selected);}
+    else {int page=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;for(int slot=0;slot<ITEMS_PER_PAGE&&page+slot<(int)visible.size();slot++)drawCard(slot,visible[page+slot],page+slot==selected);}
     fill(60,1020,1800,2,55,62,78);
     text(62,1034,"L1 R1 CATEGORIAS   DIRECIONAL NAVEGAR   X DETALHES   O VOLTAR",155,165,184,2);
     text(1540,1034,"SELECAO",255,172,90,2);
@@ -171,4 +171,5 @@ int main(int argc,char** argv){
     }draw();SDL_Delay(16);}
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
 }
+
 
