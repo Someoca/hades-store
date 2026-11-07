@@ -6,7 +6,7 @@ O DualShock 4 navega pela página inicial, filtros e itens. Cross abre detalhes,
 
 ## Gerar o PKG
 
-O build roda no workflow `.github/workflows/build-ps4-native.yml`, usando o contêiner OpenOrbis `v0.5.1`. Ele é acionado ao enviar mudanças no código nativo ou no catálogo para `main`, ou pelo botão **Run workflow** na página Actions do GitHub. O arquivo `HADES-Store-PS4-v1.0.pkg` fica disponível como artefato do workflow por 30 dias, acompanhado do SHA-256.
+O build roda no workflow `.github/workflows/build-ps4-native.yml`, usando o contêiner OpenOrbis `v0.5.1`. Ele é acionado ao enviar mudanças no código nativo ou no catálogo para `main`, ou pelo botão **Run workflow** na página Actions do GitHub. O arquivo `HADES-Store-PS4-v1.1.pkg` fica disponível como artefato do workflow por 30 dias, acompanhado do SHA-256.
 
 Também é possível compilar em um ambiente Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 

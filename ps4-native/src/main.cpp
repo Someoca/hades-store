@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <orbis/Sysmodule.h>
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <string>
@@ -19,10 +20,12 @@ static SDL_GameController* gameController = nullptr;
 static SDL_Texture* fontTexture = nullptr;
 static std::vector<SDL_Texture*> coverTextures;
 static SDL_Texture* hadesTexture = nullptr;
+static SDL_Texture* discTexture = nullptr;
 static std::vector<int> visible;
 static int selected = 0, filterIndex = 0;
 static int homeAction = 0;
 static bool homeScreen = true, showDetails = false, running = true;
+static bool frameDirty = true;
 
 struct Glyph { char key; unsigned char rows[7]; };
 static const Glyph FONT[] = {
@@ -119,6 +122,32 @@ static SDL_Texture* loadTexture(const char* path, bool alphaMask=false){
     if(texture)SDL_SetTextureBlendMode(texture,SDL_BLENDMODE_BLEND);
     return texture;
 }
+static SDL_Texture* createDiscTexture(){
+    const int size=256,center=size/2,radius=124;
+    SDL_Surface* surface=SDL_CreateRGBSurfaceWithFormat(0,size,size,32,SDL_PIXELFORMAT_RGBA32);
+    if(!surface)return nullptr;
+    if(SDL_MUSTLOCK(surface))SDL_LockSurface(surface);
+    for(int y=0;y<size;y++)for(int x=0;x<size;x++){
+        int dx=x-center,dy=y-center,d2=dx*dx+dy*dy;
+        Uint8 r=0,g=0,b=0,a=0;
+        if(d2<=radius*radius){
+            int ring=(int)(std::sqrt((double)d2))%13;
+            int shine=(dx+dy+size)/10;
+            Uint8 base=(Uint8)(ring<2?84:42);
+            r=(Uint8)std::min(145,(int)base+shine/2);g=(Uint8)std::min(143,(int)base+shine/2);b=(Uint8)std::min(156,(int)base+shine/2);a=255;
+            if(d2<42*42){r=34;g=33;b=40;}
+            if(d2<15*15){r=174;g=169;b=158;}
+            if(d2<8*8){r=20;g=20;b=25;}
+        }
+        Uint32 pixel=SDL_MapRGBA(surface->format,r,g,b,a);
+        std::memcpy((Uint8*)surface->pixels+y*surface->pitch+x*surface->format->BytesPerPixel,&pixel,surface->format->BytesPerPixel);
+    }
+    if(SDL_MUSTLOCK(surface))SDL_UnlockSurface(surface);
+    SDL_Texture* texture=SDL_CreateTextureFromSurface(renderer,surface);
+    SDL_FreeSurface(surface);
+    if(texture)SDL_SetTextureBlendMode(texture,SDL_BLENDMODE_BLEND);
+    return texture;
+}
 static SDL_Texture* coverTexture(int itemIndex){
     if(itemIndex<0||itemIndex>=STORE_ITEM_COUNT)return nullptr;
     if(coverTextures[itemIndex])return coverTextures[itemIndex];
@@ -140,9 +169,7 @@ static void drawCard(int slot,int itemIndex,bool active){
     outline(x,y,w,h,active?226:52,active?189:49,active?118:58,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
     fill(x+10,y+10,w-20,185,22,21,29);
-    int discX=x+288,discY=y+101;
-    circle(discX,discY,78,68,67,73);circle(discX,discY,73,33,33,40);circle(discX,discY,66,56,55,62);
-    circle(discX,discY,46,31,30,37);circle(discX,discY,15,151,144,132);circle(discX,discY,8,18,18,23);
+    if(discTexture){SDL_Rect discDst{x+208,y+21,160,160};SDL_RenderCopy(renderer,discTexture,nullptr,&discDst);}
     drawCover(itemIndex,x+57,y+16,126,174);
     text(x+20,y+211,trim(it.name,33),244,240,232,3,x+w-15);
     text(x+20,y+257,trim(it.description,48),170,166,161,2,x+w-15);
@@ -281,16 +308,19 @@ int main(int argc,char** argv){
     SDL_SetRenderDrawBlendMode(renderer,SDL_BLENDMODE_BLEND);
     fontTexture=loadTexture("/app0/sce_sys/fonts/atlas.bmp",true);
     hadesTexture=loadTexture("/app0/sce_sys/hades-hero.bmp");
+    discTexture=createDiscTexture();
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
-    while(running){SDL_Event e;while(SDL_PollEvent(&e)){
+    while(running){SDL_Event e;if(SDL_WaitEventTimeout(&e,16))do{
         if(e.type==SDL_QUIT)running=false;
-        else if(e.type==SDL_KEYDOWN)handleKey(e.key.keysym.sym);
-        else if(e.type==SDL_CONTROLLERBUTTONDOWN)handleControllerButton((SDL_GameControllerButton)e.cbutton.button);
-        else if(e.type==SDL_JOYBUTTONDOWN&&!gameController)handleButton(e.jbutton.button);
-        else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);}
-    }if(homeScreen)drawHome();else draw();SDL_Delay(16);}
+        else if(e.type==SDL_KEYDOWN){handleKey(e.key.keysym.sym);frameDirty=true;}
+        else if(e.type==SDL_CONTROLLERBUTTONDOWN){handleControllerButton((SDL_GameControllerButton)e.cbutton.button);frameDirty=true;}
+        else if(e.type==SDL_JOYBUTTONDOWN&&!gameController){handleButton(e.jbutton.button);frameDirty=true;}
+        else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);frameDirty=true;}
+        else if(e.type==SDL_WINDOWEVENT)frameDirty=true;
+    }while(SDL_PollEvent(&e));if(frameDirty){if(homeScreen)drawHome();else draw();frameDirty=false;}}
     if(hadesTexture)SDL_DestroyTexture(hadesTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
+    if(discTexture)SDL_DestroyTexture(discTexture);
     if(fontTexture)SDL_DestroyTexture(fontTexture);
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
 }
