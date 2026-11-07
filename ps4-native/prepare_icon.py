@@ -25,7 +25,7 @@ for y in range(size):
 background = background.convert("RGBA")
 background.alpha_composite(mascot, ((size - mascot.width) // 2, 12))
 draw = ImageDraw.Draw(background)
-draw.rounded_rectangle((5, 5, size - 6, size - 6), radius=44, outline=(235, 105, 77, 210), width=5)
+draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
 target.parent.mkdir(parents=True, exist_ok=True)
 background.convert("RGB").save(target, format="PNG", optimize=True)
 

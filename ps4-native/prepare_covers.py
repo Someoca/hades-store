@@ -28,7 +28,7 @@ def fallback(item):
             glow = max(0.0, 1.0 - (((x - W / 2) / 290) ** 2 + ((y - 170) / 390) ** 2) ** 0.5)
             pixels[x, y] = tuple(int(13 + (c - 13) * glow * 0.38) for c in accent)
     draw = ImageDraw.Draw(image)
-    draw.rounded_rectangle((18, 18, W - 18, H - 18), radius=18, outline=accent, width=3)
+    draw.rectangle((18, 18, W - 18, H - 18), outline=accent, width=3)
     font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
     title_font = ImageFont.truetype(font_path, 27) if pathlib.Path(font_path).exists() else ImageFont.load_default()
     small_font = ImageFont.truetype(font_path, 15) if pathlib.Path(font_path).exists() else ImageFont.load_default()
@@ -36,7 +36,7 @@ def fallback(item):
     words, lines, current = name.split(), [], ""
     for word in words:
         candidate = (current + " " + word).strip()
-        if draw.textbbox((0, 0), candidate, font=title_font)[2] > W - 52 and current:
+        if draw.textsize(candidate, font=title_font)[0] > W - 52 and current:
             lines.append(current)
             current = word
         else:
@@ -45,8 +45,8 @@ def fallback(item):
         lines.append(current)
     y = 205
     for line in lines[:5]:
-        bounds = draw.textbbox((0, 0), line, font=title_font)
-        draw.text(((W - (bounds[2] - bounds[0])) // 2, y), line, font=title_font, fill=(248, 244, 238))
+        width, _ = draw.textsize(line, font=title_font)
+        draw.text(((W - width) // 2, y), line, font=title_font, fill=(248, 244, 238))
         y += 38
     draw.text((32, H - 68), "HADES STORE  /  PS4", font=small_font, fill=accent)
     return image
