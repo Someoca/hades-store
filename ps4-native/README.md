@@ -23,7 +23,8 @@ O pacote será gravado em `ps4-native/dist/`. Ele é um pacote homebrew de teste
 - `generate_icon.py`: cria o ícone PNG do PKG usando apenas a biblioteca padrão de Python.
 - `prepare_icon.py`: cria o ícone de início com o mascote HADES.
 - `prepare_covers.py`: gera uma capa PNG otimizada para cada item, usando as imagens cadastradas ou a arte SVG local.
-- O build baixa a release oficial OpenOrbis v0.5.1 e reutiliza o Makefile, GP4, fonte e módulos de suporte do sample SDL2; o catálogo, as capas e o mascote HADES são incluídos no pacote.
+- `prepare_font.py`: cria a atlas de fonte suavizada para renderizar os textos no PS4.
+- O build baixa a release oficial OpenOrbis v0.5.1 e reutiliza o Makefile, GP4, fonte de referência e módulos de suporte; o catálogo, as capas, o mascote e a fonte rasterizada são incluídos no pacote.
 
 O app não contém jogos, BIOS, chaves nem firmware. Os jogos apontam para a PlayStation Store; aplicativos e emuladores usam os destinos cadastrados. Confirme procedência e compatibilidade antes de instalar arquivos externos.
 

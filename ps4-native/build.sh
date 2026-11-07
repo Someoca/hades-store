@@ -31,15 +31,15 @@ cp "$BUILD/bin/data/modules/libc.prx" "$BUILD/pkg/sce_module/libc.prx"
 cp "$BUILD/bin/data/modules/libSceFios2.prx" "$BUILD/pkg/sce_module/libSceFios2.prx"
 cp "$BUILD/bin/data/right.sprx" "$BUILD/pkg/sce_sys/about/right.sprx"
 cp "$BUILD/bin/data/param.sfo" "$BUILD/pkg/sce_sys/param.sfo"
-cp "$BUILD/samples/font/pkg/Gontserrat-Regular.ttf" "$BUILD/pkg/sce_sys/fonts/HADES.ttf"
 cp "$NATIVE/src/main.cpp" "$BUILD/build/main.cpp"
 python3 "$NATIVE/generate_catalog.py" "$ROOT/catalog/catalog.json" "$BUILD/build/generated_catalog.h"
 python3 "$NATIVE/prepare_icon.py" "$ROOT/assets/hades-gamer.svg" "$BUILD/pkg/sce_sys/icon0.png"
 python3 "$NATIVE/prepare_covers.py" "$ROOT" "$ROOT/catalog/catalog.json" "$BUILD/pkg/sce_sys/covers"
+python3 "$NATIVE/prepare_font.py" "$BUILD/samples/font/pkg/Gontserrat-Regular.ttf" "$BUILD/pkg/sce_sys/fonts/atlas.png"
 rsvg-convert -w 720 -h 816 -o "$BUILD/pkg/sce_sys/hades-hero.png" "$ROOT/assets/hades-gamer.svg"
 python3 "$NATIVE/generate_gp4.py" "$BUILD/samples/SDL2/pkg/pkg.gp4" "$BUILD/pkg/pkg.gp4" "$CONTENT_ID"
 
-sed -i 's|^LIBS        := .*|LIBS        := -lc -lkernel -lc++ -lSceUserService -lSceVideoOut -lSceAudioOut -lScePad -lSceSysmodule -lSceSystemService -lSceFreeType -lfreetype -lSDL2 -lSDL2_image|' "$BUILD/Makefile"
+sed -i 's|^LIBS        := .*|LIBS        := -lc -lkernel -lc++ -lSceUserService -lSceVideoOut -lSceAudioOut -lScePad -lSceSysmodule -lSceSystemService -lSceFreeType -lSDL2 -lSDL2_image|' "$BUILD/Makefile"
 make -C "$BUILD" clean
 make -C "$BUILD" -j2
 

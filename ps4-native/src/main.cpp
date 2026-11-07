@@ -1,8 +1,6 @@
 // HADES Store native catalog viewer for PS4 (OpenOrbis + SDL2).
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <ft2build.h>
-#include FT_FREETYPE_H
 #include <orbis/Sysmodule.h>
 #include <algorithm>
 #include <cstdio>
@@ -19,8 +17,7 @@ static const int FILTER_COUNT = 5;
 static SDL_Window* windowHandle = nullptr;
 static SDL_Renderer* renderer = nullptr;
 static SDL_GameController* gameController = nullptr;
-static FT_Library fontLibrary = nullptr;
-static FT_Face mainFont = nullptr;
+static SDL_Texture* fontTexture = nullptr;
 static std::vector<SDL_Texture*> coverTextures;
 static SDL_Texture* hadesTexture = nullptr;
 static std::vector<int> visible;
@@ -62,21 +59,13 @@ static const Glyph* glyph(char c) {
 }
 static int textWidth(const std::string& s,int scale){ return (int)s.size()*6*scale; }
 static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int scale=3,int maxWidth=0) {
-    if(mainFont){
-        FT_Set_Pixel_Sizes(mainFont,0,(FT_UInt)(scale*8));
-        int pen=x, baseline=y+(mainFont->size->metrics.ascender>>6);
+    if(fontTexture){
+        SDL_SetTextureColorMod(fontTexture,r,g,b);
+        int pen=x,cellW=6*scale,cellH=8*scale;
         for(unsigned char c:s){
-            if(FT_Load_Char(mainFont,c,FT_LOAD_RENDER))continue;
-            FT_GlyphSlot slot=mainFont->glyph;const FT_Bitmap& bitmap=slot->bitmap;
-            int left=pen+slot->bitmap_left, top=baseline-slot->bitmap_top;
-            if(maxWidth>0&&left+(int)bitmap.width>maxWidth)break;
-            for(unsigned int row=0;row<bitmap.rows;row++)for(unsigned int col=0;col<bitmap.width;col++){
-                int pitch=bitmap.pitch;const unsigned char* line=pitch>=0?bitmap.buffer+row*pitch:bitmap.buffer+(bitmap.rows-1-row)*(-pitch);
-                unsigned char alpha=bitmap.pixel_mode==FT_PIXEL_MODE_MONO?((line[col>>3]&(0x80>>(col&7)))?255:0):line[col];
-                if(alpha){color(r,g,b,alpha);SDL_RenderDrawPoint(renderer,left+(int)col,top+(int)row);}
-            }
-            pen+=(int)(slot->advance.x>>6);
-            if(maxWidth>0&&pen>=maxWidth)break;
+            if(maxWidth>0&&pen+cellW>maxWidth)break;
+            if(c>=32&&c<=126){int index=(int)c-32;SDL_Rect src{(index%16)*64,(index/16)*80,64,80};SDL_Rect dst{pen,y,cellW,cellH};SDL_RenderCopy(renderer,fontTexture,&src,&dst);}
+            pen+=cellW;
         }
         return;
     }
@@ -274,7 +263,7 @@ int main(int argc,char** argv){
     SDL_Surface* surface=SDL_GetWindowSurface(windowHandle);renderer=surface?SDL_CreateSoftwareRenderer(surface):nullptr;
     if(!renderer){SDL_DestroyWindow(windowHandle);SDL_Quit();return 3;}
     SDL_SetRenderDrawBlendMode(renderer,SDL_BLENDMODE_BLEND);
-    if(!FT_Init_FreeType(&fontLibrary))FT_New_Face(fontLibrary,"/app0/sce_sys/fonts/HADES.ttf",0,&mainFont);
+    fontTexture=loadTexture("/app0/sce_sys/fonts/atlas.png");
     hadesTexture=loadTexture("/app0/sce_sys/hades-hero.png");
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
@@ -286,7 +275,7 @@ int main(int argc,char** argv){
         else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);}
     }if(homeScreen)drawHome();else draw();SDL_Delay(16);}
     if(hadesTexture)SDL_DestroyTexture(hadesTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
-    if(mainFont)FT_Done_Face(mainFont);if(fontLibrary)FT_Done_FreeType(fontLibrary);
+    if(fontTexture)SDL_DestroyTexture(fontTexture);
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);IMG_Quit();SDL_Quit();return 0;
 }
 

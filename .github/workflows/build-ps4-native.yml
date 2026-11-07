@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'ps4-native/**'
+      - 'assets/hades-gamer.svg'
       - 'catalog/catalog.json'
       - '.github/workflows/build-ps4-native.yml'
   workflow_dispatch:
