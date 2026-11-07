@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build with the official OpenOrbis toolchain container
         run: |
-          docker run --rm \
+          docker run --rm --user 0 \
             -e OO_PS4_TOOLCHAIN=/lib/OpenOrbisSDK \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
@@ -31,5 +31,6 @@ jobs:
             ps4-native/dist/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
+
 
 
