@@ -1,0 +1,7 @@
+/build/
+/dist/
+/__pycache__/
+/template/sce_module/
+/template/sce_sys/
+/template/
+

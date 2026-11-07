@@ -39,7 +39,7 @@ const server = http.createServer((request, response) => {
   }
 
   let entry = staticFiles.get(route);
-  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|emulator-(dolphin|m33)\.svg)$/.exec(route);
+  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|emulator-(dolphin|m33)\.svg|apps\/app-[a-z0-9-]+\.svg)$/.exec(route);
   if (!entry && cover) entry = [`assets/covers/${cover[1]}`, "image/svg+xml; charset=utf-8"];
   if (!entry) {
     response.writeHead(404);
@@ -68,5 +68,7 @@ const server = http.createServer((request, response) => {
 server.listen(port, host, () => {
   console.log(`HADES Store local host running at http://${host}:${port}/`);
 });
+
+
 
 

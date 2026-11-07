@@ -1,46 +1,18 @@
-# HADES Store — catálogo online (base para GitHub Pages)
+# HADES Store — catálogo online
 
-Esta entrega é a **versão web do catálogo** preparada para hospedagem estática no GitHub Pages. Ela NÃO é um aplicativo PS4 nativo e NÃO contém um `.pkg` instalável.
+A versão web está publicada no GitHub Pages e compartilha o catálogo, os filtros e as imagens de capa com o pacote nativo. O catálogo tem 200 jogos, 14 aplicativos e 2 emuladores. As capas dos 150 jogos e dos aplicativos novos são arte HADES original; os 50 primeiros jogos usam imagens do CDN da PlayStation Store.
 
-## Publicar no GitHub Pages
-1. Crie um repositório público no GitHub chamado `hades-store`.
-2. Envie todos os arquivos desta pasta para a raiz do repositório (incluindo `.github/workflows`).
-3. Abra **Settings → Pages** e selecione **GitHub Actions** como fonte de publicação.
-4. Aguarde o workflow `Deploy HADES Store to GitHub Pages` terminar. A URL ficará no formato `https://SEU-USUARIO.github.io/hades-store/`.
-5. Abra a URL no navegador e teste busca, filtros e navegação por teclado.
+Os jogos abrem páginas da PlayStation Store brasileira. O catálogo não fornece arquivos de jogos comerciais. Consulte a loja oficial para confirmar edição, idioma, disponibilidade e DLC.
 
-## Catálogo de jogos PS4
-O catálogo contém 200 jogos PS4 e 14 aplicativos. Os 50 primeiros jogos usam artes oficiais carregadas do CDN da PlayStation Store; os 150 adicionados usam capas gráficas originais HADES com o título do jogo. As páginas de cada jogo apontam para a PlayStation Store brasileira. Os detalhes oferecem busca oficial por DLC e instruções de atualização no console. Idioma, disponibilidade e compatibilidade variam por edição; confirme na página da Store.
+## Servidor local
 
-## Adicionar um pacote legítimo ao catálogo
-- Publique o `.pkg` que você tem direito de distribuir em uma GitHub Release ou em um host HTTPS confiável.
-- Edite `catalog/catalog.json` e preencha `downloadUrl` com a URL HTTPS direta do arquivo, `version`, `size` e descrição.
-- Não use links de conteúdo pirateado, pacotes adulterados ou arquivos sem autorização de distribuição.
-- O botão de download apenas baixa/abre o arquivo. **Uma página web não consegue instalar um PKG automaticamente no PS4.** A instalação continua sendo feita pelo fluxo suportado pelo console/homebrew.
+Na raiz do repositório, use `start-local.ps1` com PC e PS4 na mesma rede para servir o site, o catálogo e as capas. Execute `stop-local.ps1` para encerrar.
 
-Exemplo de item:
-```json
-{
-  "id": "meu-app-01",
-  "name": "Meu Homebrew",
-  "category": "Homebrews",
-  "version": "1.0.0",
-  "icon": "H",
-  "description": "Descrição do projeto e requisitos.",
-  "size": "25 MB",
-  "downloadUrl": "https://github.com/SEU-USUARIO/SEU-REPO/releases/download/v1.0/app.pkg"
-}
-```
+## Emuladores
 
-## Sobre o PKG nativo
-Para gerar o aplicativo instalável é necessário um segundo projeto nativo (por exemplo, C/C++ com OpenOrbis), produzir `eboot.bin`, metadados e pacote com a toolchain, e testar no hardware/firmware de destino. Este repositório não afirma que isso já foi feito. Consulte: https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain
+DolphinPS4 e M33 aparecem na categoria Emuladores com links para releases oficiais. As cópias `.pkg` baixadas neste PC estão em `emuladores/` e são ignoradas pelo Git. Não incluem jogos, BIOS, chaves ou firmware.
 
-## Servidor local no Windows
-Na raiz do repositório, execute `start-local.ps1` com o PC e o PS4 na mesma rede. O site e o catálogo ficam disponíveis no endereço local exibido pelo script, na porta `8000`. Execute `stop-local.ps1` para encerrar. Esse servidor publica somente a interface web, o JSON do catálogo e as capas; o scaffold nativo de `ps4-native/` ainda não se conecta a ele.
+## Pacote nativo
 
-
-
-## Emuladores oficiais para PS4
-O catálogo inclui DolphinPS4 para GameCube/Wii e M33 (PPSSPP) para PSP, com capas HADES e links para as releases oficiais. Os instaladores baixados ficam na pasta muladores/ do PC e são ignorados pelo Git por tamanho; nenhum jogo, BIOS ou firmware acompanha os pacotes. Consulte muladores/README.md para requisitos e procedência.
-
+O workflow `.github/workflows/build-ps4-native.yml` cria um PKG de teste com OpenOrbis. O artefato fica na página Actions após o build. Instalação e navegação precisam ser verificadas no hardware antes de marcar o app como concluído.
 

@@ -1,38 +1,29 @@
-# HADES Store — aplicativo nativo PS4
+# HADES Store — aplicativo nativo para PS4
 
-**Status deste checkout:** o código-fonte nativo continua no estágio de scaffold. O mantenedor relata que uma versão da loja foi instalada e executada em um PS4 e que os comandos do controle funcionaram; esse resultado não pode ser reproduzido a partir dos arquivos nativos presentes neste checkout.
+Este projeto compila uma interface nativa usando SDL2 e a toolchain comunitária OpenOrbis. O catálogo de 200 jogos, 14 aplicativos e 2 emuladores é incorporado ao pacote durante o build. O DualShock 4 navega entre categorias e itens; X abre os detalhes e, em seguida, o link oficial no navegador do PS4. O círculo volta e Options encerra o aplicativo.
 
-## Alvo inicial
+## Gerar o PKG
 
-- Console de teste: PS4 com firmware 13.52 (informado pelo mantenedor)
-- Ambiente: Windows
-- Homebrew: GoldHEN
-- SDK comunitário: OpenOrbis PS4 Toolchain
+O build roda no workflow `.github/workflows/build-ps4-native.yml`, usando o contêiner OpenOrbis `v0.5.1`. Ele é acionado ao enviar mudanças no código nativo ou no catálogo para `main`, ou pelo botão **Run workflow** na página Actions do GitHub. O arquivo `HADES-Store-PS4-v1.0.pkg` fica disponível como artefato do workflow por 30 dias, acompanhado do SHA-256.
 
-## Estrutura
+Também é possível compilar em um ambiente Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 
-- `src/main.cpp`: ponto de entrada inicial em C++ (placeholder, sem APIs gráficas ou de controle ainda).
-- `README.md`: dependências, marcos e critérios de validação.
+```sh
+bash ps4-native/build.sh
+```
 
-## Preparar o Windows
+O pacote será gravado em `ps4-native/dist/`. Ele é um pacote homebrew de teste e requer console configurado para executar homebrew, como GoldHEN.
 
-1. Instalar Visual Studio com o workload de desenvolvimento Desktop com C++.
-2. Instalar a release oficial da OpenOrbis PS4 Toolchain: https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain
-3. Seguir a documentação da mesma release para instalar as dependências e configurar `OO_PS4_TOOLCHAIN`.
-4. Compilar primeiro o exemplo oficial `hello_world` sem alterações. Não usar binários de SDK proprietário ou arquivos de origem duvidosa.
+## Componentes e procedência
 
-## Marcos
+- `src/main.cpp`: interface SDL2, navegação pelo controle, detalhes dos itens e abertura dos links externos.
+- `generate_catalog.py`: gera o catálogo nativo a partir de `catalog/catalog.json`.
+- `generate_icon.py`: cria o ícone PNG do PKG usando apenas a biblioteca padrão de Python.
+- O build baixa a release oficial OpenOrbis v0.5.1 e reutiliza o Makefile, GP4 e módulos de suporte do sample SDL2; o catálogo e o ícone HADES são gerados para o pacote.
 
-- [ ] Instalar e validar a toolchain no Windows.
-- [ ] Compilar o sample oficial hello_world.
-- [x] Teste manual relatado pelo mantenedor: instalação e execução no PS4; comandos do controle funcionaram.
-- [ ] Criar interface e navegação DualShock 4.
-- [ ] Implementar catálogo HTTPS e downloads seguros.
-- [ ] Gerar metadados e PKG.
-- [ ] Testar instalação, inicialização e rede no firmware de teste.
+O app não contém jogos, BIOS, chaves nem firmware. Os jogos apontam para a PlayStation Store; aplicativos e emuladores usam os destinos cadastrados. Confirme procedência e compatibilidade antes de instalar arquivos externos.
 
-## Limites
+## Validação
 
-A versão web na raiz não pode ser simplesmente convertida ou renomeada para `.pkg`. Um pacote válido precisa conter um executável PS4 e metadados adequados. O EBOOT, o PKG e o código da versão relatada como testada não estão neste checkout. Compatibilidade com firmware 13.52 foi informada pelo mantenedor, mas não pode ser verificada pelos artefatos presentes aqui.
+O pipeline gera o pacote e a soma SHA-256. A instalação, inicialização, vídeo, leitura de botões e abertura de links precisam ser validadas no PS4 de destino antes de chamar este build de final. O firmware 13.52 foi mencionado anteriormente como console de teste, mas este ambiente não controla o console conectado.
 
-Distribua somente homebrews e arquivos que você tenha autorização para redistribuir. Não inclua SDK proprietário, chaves privadas ou conteúdo protegido.

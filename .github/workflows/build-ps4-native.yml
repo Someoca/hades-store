@@ -1,0 +1,35 @@
+name: Build HADES Store native PS4 PKG
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ps4-native/**'
+      - 'catalog/catalog.json'
+      - '.github/workflows/build-ps4-native.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with the official OpenOrbis toolchain container
+        run: |
+          docker run --rm \
+            -e OO_PS4_TOOLCHAIN=/lib/OpenOrbisSDK \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -w /workspace \
+            openorbisofficial/toolchain:v0.5.1 \
+            bash -lc "apt-get update && apt-get install -y python3 curl tar && bash ps4-native/build.sh"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HADES-Store-PS4-PKG
+          path: |
+            ps4-native/dist/HADES-Store-PS4-v1.0.pkg
+            ps4-native/dist/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
+
+

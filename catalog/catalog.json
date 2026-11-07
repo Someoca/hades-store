@@ -760,7 +760,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=cf1efd",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-remote-pkg-installer.svg"
   },
   {
     "id": "app-itemzflow",
@@ -773,7 +774,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=025673",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-itemzflow.svg"
   },
   {
     "id": "app-apollo-save-tool",
@@ -786,7 +788,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=025673",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-apollo-save-tool.svg"
   },
   {
     "id": "app-ps4-cheats-manager",
@@ -799,7 +802,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=bf0740",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ps4-cheats-manager.svg"
   },
   {
     "id": "app-ps4-xplorer-134",
@@ -812,7 +816,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=b30484",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ps4-xplorer-134.svg"
   },
   {
     "id": "app-ps4-xplorer-2",
@@ -825,7 +830,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=940ba5",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ps4-xplorer-2.svg"
   },
   {
     "id": "app-youtube",
@@ -838,7 +844,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=57c42c",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-youtube.svg"
   },
   {
     "id": "app-netflix",
@@ -851,7 +858,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=bfba56",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-netflix.svg"
   },
   {
     "id": "app-avatar-changer",
@@ -864,7 +872,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=82d3a8",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-avatar-changer.svg"
   },
   {
     "id": "app-ps4-toolset",
@@ -877,7 +886,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=00788f",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ps4-toolset.svg"
   },
   {
     "id": "app-ezremote-client",
@@ -890,7 +900,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=dae6a9",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ezremote-client.svg"
   },
   {
     "id": "app-payload-guest",
@@ -903,7 +914,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=9faaa6",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-payload-guest.svg"
   },
   {
     "id": "app-ps4-temperature",
@@ -916,7 +928,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=a2749c",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-ps4-temperature.svg"
   },
   {
     "id": "app-icon-mask",
@@ -929,7 +942,8 @@
     "language": "Confira os idiomas e requisitos na página de origem.",
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=316e2e",
-    "linkLabel": "ACESSAR LINK EXTERNO ↗"
+    "linkLabel": "ACESSAR LINK EXTERNO ↗",
+    "imageUrl": "assets/covers/apps/app-icon-mask.svg"
   },
   {
     "id": "ps4-extra-001",
