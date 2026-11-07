@@ -43,8 +43,16 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 .cover-image-missing .cover-fallback{display:flex}
 .app-card:hover .game-cover,.app-card:focus-visible .game-cover{transform:perspective(650px) rotateY(-2deg) translateY(-2px);box-shadow:0 16px 28px #000b,4px 0 0 #f1d69966}
 .hero-art .orbit,.hero-art .sigil,.hero-art .spark{display:none}
+
+/* Brushed silver PlayStation-style CD used across games, apps, and emulators. */
+.game-physical{background:radial-gradient(ellipse at 57% 55%,#e5e3e916,transparent 48%),linear-gradient(135deg,#11121a,#191a22)}
+.game-disc{border:1px solid #f4f0e8a8;background:repeating-conic-gradient(from -35deg,#e9e9e6 0deg 4deg,#9da0a8 7deg 13deg,#f7f6f2 16deg 21deg,#b8bac1 25deg 30deg,#eceae5 34deg 38deg,#999ca5 43deg 49deg);box-shadow:0 11px 28px #000c,inset 0 0 26px #ffffffa6,inset 0 0 4px #252530}
+.game-disc::before{inset:12px;border-color:#ffffffaa;background:radial-gradient(circle,#14151b 0 9%,#d7d7d8 10% 12%,#888b94 13% 14%,#c6c7ca 15% 16%,transparent 17%),repeating-radial-gradient(circle at 50% 50%,transparent 0 17px,#ffffff28 18px 19px,transparent 20px 29px),conic-gradient(from 8deg,#ffffff38,#8e91a055,#f4f1eb4a,#a995db35,#f5d98a3a,#ffffff22)}
+.game-disc span{width:28px;height:28px;border:6px solid #e5e4e2;background:#111218;box-shadow:0 0 0 1px #777984,0 0 9px #000d}
+@media(max-width:560px){.game-disc{background:repeating-conic-gradient(from -35deg,#e9e9e6 0deg 4deg,#9da0a8 7deg 13deg,#f7f6f2 16deg 21deg,#b8bac1 25deg 30deg,#eceae5 34deg 38deg,#999ca5 43deg 49deg)}}
 @media(max-width:900px){.hero-art{width:330px;height:360px;right:-42px;opacity:.3}.hades-mascot{animation:none}}
 @media(max-width:560px){.hero-art{width:255px;height:310px;right:-64px;opacity:.25}.game-cover{width:112px;height:150px;margin-left:-29px}}
 @media(prefers-reduced-motion:reduce){.hades-mascot{animation:none!important}}
 
 .game-support-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.game-support-links[hidden]{display:none}.secondary-btn{display:inline-flex;align-items:center;padding:12px 16px;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.6px}.game-support-links p{flex-basis:100%;margin:2px 0;color:var(--muted);font-size:13px;line-height:1.45}
+

@@ -5,6 +5,7 @@ on:
     paths:
       - 'ps4-native/**'
       - 'assets/hades-gamer.svg'
+      - 'assets/covers/**'
       - 'catalog/catalog.json'
       - '.github/workflows/build-ps4-native.yml'
   workflow_dispatch:
@@ -28,7 +29,7 @@ jobs:
         with:
           name: HADES-Store-PS4-PKG
           path: |
-            ps4-native/dist/HADES-Store-PS4-v1.1.pkg
+            ps4-native/dist/HADES-Store-PS4-v1.2.pkg
             ps4-native/dist/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30

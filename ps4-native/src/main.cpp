@@ -131,13 +131,16 @@ static SDL_Texture* createDiscTexture(){
         int dx=x-center,dy=y-center,d2=dx*dx+dy*dy;
         Uint8 r=0,g=0,b=0,a=0;
         if(d2<=radius*radius){
-            int ring=(int)(std::sqrt((double)d2))%13;
-            int shine=(dx+dy+size)/10;
-            Uint8 base=(Uint8)(ring<2?84:42);
-            r=(Uint8)std::min(145,(int)base+shine/2);g=(Uint8)std::min(143,(int)base+shine/2);b=(Uint8)std::min(156,(int)base+shine/2);a=255;
-            if(d2<42*42){r=34;g=33;b=40;}
-            if(d2<15*15){r=174;g=169;b=158;}
-            if(d2<8*8){r=20;g=20;b=25;}
+            int radial=(int)std::sqrt((double)d2),groove=radial%14;
+            int sheen=(dx-dy+size)/12;
+            int base=groove<2?198:151;
+            if(d2<45*45)base=126;
+            int silver=std::max(85,std::min(238,base+sheen));
+            r=(Uint8)std::min(245,silver+3);g=(Uint8)silver;b=(Uint8)std::min(250,silver+9);a=255;
+            if(groove==0){r=(Uint8)std::min(250,(int)r+12);g=(Uint8)std::min(250,(int)g+12);b=(Uint8)std::min(255,(int)b+12);}
+            if(d2<31*31){r=139;g=139;b=151;}
+            if(d2<18*18){r=207;g=202;b=187;}
+            if(d2<11*11){r=0;g=0;b=0;a=0;}
         }
         Uint32 pixel=SDL_MapRGBA(surface->format,r,g,b,a);
         std::memcpy((Uint8*)surface->pixels+y*surface->pitch+x*surface->format->BytesPerPixel,&pixel,surface->format->BytesPerPixel);

@@ -6,7 +6,7 @@ O DualShock 4 navega pela página inicial, filtros e itens. Cross abre detalhes,
 
 ## Gerar o PKG
 
-O build roda no workflow `.github/workflows/build-ps4-native.yml`, usando o contêiner OpenOrbis `v0.5.1`. Ele é acionado ao enviar mudanças no código nativo ou no catálogo para `main`, ou pelo botão **Run workflow** na página Actions do GitHub. O arquivo `HADES-Store-PS4-v1.1.pkg` fica disponível como artefato do workflow por 30 dias, acompanhado do SHA-256.
+O build roda no workflow `.github/workflows/build-ps4-native.yml`, usando o contêiner OpenOrbis `v0.5.1`. Ele é acionado ao enviar mudanças no código nativo, nas capas ou no catálogo para `main`, ou pelo botão **Run workflow** na página Actions do GitHub. O arquivo `HADES-Store-PS4-v1.2.pkg` fica disponível como artefato do workflow por 30 dias, acompanhado do SHA-256.
 
 Também é possível compilar em um ambiente Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 
@@ -23,6 +23,7 @@ O pacote será gravado em `ps4-native/dist/`. Ele é um pacote homebrew de teste
 - `prepare_icon.py`: cria o ícone PNG do PKG e a arte BMP do mascote para a home nativa.
 - `prepare_covers.py`: prepara uma capa BMP para cada item, usando as imagens cadastradas ou a arte SVG local.
 - `prepare_font.py`: cria a atlas BMP da fonte suavizada usada na interface.
+- `tools/generate-app-covers.mjs`: gera capas vetoriais individuais para aplicativos e emuladores.
 - O build baixa a release oficial OpenOrbis v0.5.1 e reutiliza o Makefile, GP4, fonte de referência e módulos de suporte; o catálogo, as capas, o mascote e a fonte rasterizada são incluídos no pacote.
 
 O app não contém jogos, BIOS, chaves nem firmware. Os jogos apontam para a PlayStation Store; aplicativos e emuladores usam os destinos cadastrados. Confirme procedência e compatibilidade antes de instalar arquivos externos.

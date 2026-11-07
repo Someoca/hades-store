@@ -44,7 +44,7 @@ make -C "$BUILD" -j2
 
 PKGTOOL="$OO_PS4_TOOLCHAIN/bin/linux/PkgTool.Core"
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" APP_TYPE --type Integer --maxsize 4 --value 1
-"$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" APP_VER --type Utf8 --maxsize 8 --value '1.01'
+"$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" APP_VER --type Utf8 --maxsize 8 --value '1.02'
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" ATTRIBUTE --type Integer --maxsize 4 --value 0
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" CATEGORY --type Utf8 --maxsize 4 --value 'gd'
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" CONTENT_ID --type Utf8 --maxsize 48 --value "$CONTENT_ID"
@@ -52,10 +52,10 @@ PKGTOOL="$OO_PS4_TOOLCHAIN/bin/linux/PkgTool.Core"
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" SYSTEM_VER --type Integer --maxsize 4 --value 0
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" TITLE --type Utf8 --maxsize 128 --value 'HADES Store'
 "$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" TITLE_ID --type Utf8 --maxsize 12 --value 'HADS00001'
-"$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" VERSION --type Utf8 --maxsize 8 --value '1.01'
+"$PKGTOOL" sfo_setentry "$BUILD/pkg/sce_sys/param.sfo" VERSION --type Utf8 --maxsize 8 --value '1.02'
 
 (cd "$BUILD" && "$PKGTOOL" pkg_build pkg/pkg.gp4 .)
-cp "$BUILD/$CONTENT_ID.pkg" "$OUT/HADES-Store-PS4-v1.1.pkg"
-sha256sum "$OUT/HADES-Store-PS4-v1.1.pkg" | tee "$OUT/SHA256SUMS.txt"
+cp "$BUILD/$CONTENT_ID.pkg" "$OUT/HADES-Store-PS4-v1.2.pkg"
+sha256sum "$OUT/HADES-Store-PS4-v1.2.pkg" | tee "$OUT/SHA256SUMS.txt"
 
 
