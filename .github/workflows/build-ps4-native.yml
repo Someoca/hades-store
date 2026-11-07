@@ -22,7 +22,7 @@ jobs:
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
             openorbisofficial/toolchain:v0.5.1 \
-            bash -lc "apt-get update && apt-get install -y python3 curl tar && bash ps4-native/build.sh"
+            bash -lc "apt-get update && apt-get install -y python3 python3-pil fonts-dejavu-core librsvg2-bin curl tar && bash ps4-native/build.sh"
       - uses: actions/upload-artifact@v4
         with:
           name: HADES-Store-PS4-PKG
@@ -31,6 +31,7 @@ jobs:
             ps4-native/dist/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
+
 
 
 

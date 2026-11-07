@@ -25,6 +25,12 @@ for target, source in [
     ("sce_module/libSceFios2.prx", "sce_module/libSceFios2.prx"),
 ]:
     ET.SubElement(files, "file", {"targ_path": target, "orig_path": source})
+for cover in sorted((pathlib.Path(output).parent / "sce_sys/covers").glob("*.png")):
+    relative = cover.relative_to(pathlib.Path(output).parent / "sce_sys").as_posix()
+    ET.SubElement(files, "file", {"targ_path": "sce_sys/" + relative, "orig_path": "sce_sys/" + relative})
+ET.SubElement(files, "file", {"targ_path": "sce_sys/hades-hero.png", "orig_path": "sce_sys/hades-hero.png"})
+ET.SubElement(files, "file", {"targ_path": "sce_sys/fonts/HADES.ttf", "orig_path": "sce_sys/fonts/HADES.ttf"})
 pathlib.Path(output).parent.mkdir(parents=True, exist_ok=True)
 tree.write(output, encoding="utf-8", xml_declaration=True)
+
 

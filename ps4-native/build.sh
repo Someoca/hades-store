@@ -16,11 +16,12 @@ command -v python3 >/dev/null
 command -v curl >/dev/null
 
 rm -rf "$BUILD"
-mkdir -p "$BUILD/build" "$BUILD/pkg/sce_sys/about" "$BUILD/pkg/sce_module" "$OUT"
+mkdir -p "$BUILD/build" "$BUILD/pkg/sce_sys/about" "$BUILD/pkg/sce_sys/covers" "$BUILD/pkg/sce_sys/fonts" "$BUILD/pkg/sce_module" "$OUT"
 curl -fL --retry 3 --retry-delay 2 "$SDK_URL" -o "$SDK_ARCHIVE"
 tar -xzf "$SDK_ARCHIVE" -C "$BUILD" \
   samples/SDL2/Makefile \
   samples/SDL2/pkg/pkg.gp4 \
+  samples/SDL2/pkg/Gontserrat-Regular.ttf \
   bin/data/param.sfo \
   bin/data/modules/libc.prx \
   bin/data/modules/libSceFios2.prx \
@@ -30,12 +31,15 @@ cp "$BUILD/bin/data/modules/libc.prx" "$BUILD/pkg/sce_module/libc.prx"
 cp "$BUILD/bin/data/modules/libSceFios2.prx" "$BUILD/pkg/sce_module/libSceFios2.prx"
 cp "$BUILD/bin/data/right.sprx" "$BUILD/pkg/sce_sys/about/right.sprx"
 cp "$BUILD/bin/data/param.sfo" "$BUILD/pkg/sce_sys/param.sfo"
+cp "$BUILD/samples/SDL2/pkg/Gontserrat-Regular.ttf" "$BUILD/pkg/sce_sys/fonts/HADES.ttf"
 cp "$NATIVE/src/main.cpp" "$BUILD/build/main.cpp"
 python3 "$NATIVE/generate_catalog.py" "$ROOT/catalog/catalog.json" "$BUILD/build/generated_catalog.h"
-python3 "$NATIVE/generate_icon.py" "$BUILD/pkg/sce_sys/icon0.png"
+python3 "$NATIVE/prepare_icon.py" "$ROOT/assets/hades-gamer.svg" "$BUILD/pkg/sce_sys/icon0.png"
+python3 "$NATIVE/prepare_covers.py" "$ROOT" "$ROOT/catalog/catalog.json" "$BUILD/pkg/sce_sys/covers"
+rsvg-convert -w 720 -h 816 -o "$BUILD/pkg/sce_sys/hades-hero.png" "$ROOT/assets/hades-gamer.svg"
 python3 "$NATIVE/generate_gp4.py" "$BUILD/samples/SDL2/pkg/pkg.gp4" "$BUILD/pkg/pkg.gp4" "$CONTENT_ID"
 
-sed -i 's|^LIBS        := .*|LIBS        := -lc -lkernel -lc++ -lSceUserService -lSceVideoOut -lSceAudioOut -lScePad -lSceSysmodule -lSceSystemService -lSceFreeType -lSDL2 -lSDL2_image|' "$BUILD/Makefile"
+sed -i 's|^LIBS        := .*|LIBS        := -lc -lkernel -lc++ -lSceUserService -lSceVideoOut -lSceAudioOut -lScePad -lSceSysmodule -lSceSystemService -lSceFreeType -lfreetype -lSDL2 -lSDL2_image|' "$BUILD/Makefile"
 make -C "$BUILD" clean
 make -C "$BUILD" -j2
 
@@ -54,3 +58,5 @@ PKGTOOL="$OO_PS4_TOOLCHAIN/bin/linux/PkgTool.Core"
 (cd "$BUILD" && "$PKGTOOL" pkg_build pkg/pkg.gp4 .)
 cp "$BUILD/$CONTENT_ID.pkg" "$OUT/HADES-Store-PS4-v1.0.pkg"
 sha256sum "$OUT/HADES-Store-PS4-v1.0.pkg" | tee "$OUT/SHA256SUMS.txt"
+
+
