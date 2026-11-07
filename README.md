@@ -6,7 +6,7 @@ Loja web comunitária com catálogo JSON remoto, busca, filtros e navegação po
 O workflow em `.github/workflows/pages.yml` publica o conteúdo da raiz no GitHub Pages a cada push na branch `main`.
 
 ## Catálogo
-O catálogo inclui 50 recomendações de jogos PS4 com links de busca para a PlayStation Store brasileira. As cartas carregam as capas oficiais dos produtos a partir do CDN da PlayStation Store e mostram discos ilustrativos. O mascote gamer Hades é uma ilustração SVG original da marca. A preferência é por versões com português do Brasil, mas texto, áudio, disponibilidade e compatibilidade variam entre edições; confira a página oficial antes de adquirir.
+O catálogo contém 200 jogos PS4 e 14 aplicativos. Os 50 primeiros jogos usam artes oficiais carregadas do CDN da PlayStation Store; os 150 adicionados usam capas gráficas originais HADES com o título do jogo. As páginas de cada jogo apontam para a PlayStation Store brasileira. Os detalhes oferecem busca oficial por DLC e instruções de atualização no console. Idioma, disponibilidade e compatibilidade variam por edição; confirme na página da Store.
 
 Os links dos jogos abrem a PlayStation Store e não apontam para arquivos PKG. Use `downloadUrl` somente para páginas ou arquivos que você tem autorização para distribuir. A interface inclui a categoria Jogos PS4 e exibe informações de idioma e formato no detalhe.
 
@@ -16,3 +16,4 @@ Use apenas pacotes que você tem autorização para distribuir. O botão abre o 
 
 ## Aplicativo PS4 nativo
 A geração do PKG é uma etapa separada: requer código nativo, toolchain PS4, eboot, metadados e testes no hardware/firmware alvo. Nenhum PKG é produzido por este repositório web.
+

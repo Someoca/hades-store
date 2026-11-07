@@ -10,7 +10,7 @@ Esta entrega é a **versão web do catálogo** preparada para hospedagem estáti
 5. Abra a URL no navegador e teste busca, filtros e navegação por teclado.
 
 ## Catálogo de jogos PS4
-A lista contém 50 recomendações com links de busca para a PlayStation Store brasileira. As cartas carregam capas oficiais da PlayStation Store e mostram discos ilustrativos. O mascote gamer Hades é uma ilustração SVG original da marca. O idioma em português do Brasil pode variar conforme edição e região; confira os detalhes oficiais de cada jogo. Os links comerciais levam à Store e não fornecem PKGs.
+O catálogo contém 200 jogos PS4 e 14 aplicativos. Os 50 primeiros jogos usam artes oficiais carregadas do CDN da PlayStation Store; os 150 adicionados usam capas gráficas originais HADES com o título do jogo. As páginas de cada jogo apontam para a PlayStation Store brasileira. Os detalhes oferecem busca oficial por DLC e instruções de atualização no console. Idioma, disponibilidade e compatibilidade variam por edição; confirme na página da Store.
 
 ## Adicionar um pacote legítimo ao catálogo
 - Publique o `.pkg` que você tem direito de distribuir em uma GitHub Release ou em um host HTTPS confiável.
@@ -34,3 +34,4 @@ Exemplo de item:
 
 ## Sobre o PKG nativo
 Para gerar o aplicativo instalável é necessário um segundo projeto nativo (por exemplo, C/C++ com OpenOrbis), produzir `eboot.bin`, metadados e pacote com a toolchain, e testar no hardware/firmware de destino. Este repositório não afirma que isso já foi feito. Consulte: https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain
+
