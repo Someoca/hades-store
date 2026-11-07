@@ -1,6 +1,6 @@
 # HADES Store — aplicativo nativo PS4
 
-**Status:** scaffold inicial; ainda não é um PKG compilado nem testado no console.
+**Status deste checkout:** o código-fonte nativo continua no estágio de scaffold. O mantenedor relata que uma versão da loja foi instalada e executada em um PS4 e que os comandos do controle funcionaram; esse resultado não pode ser reproduzido a partir dos arquivos nativos presentes neste checkout.
 
 ## Alvo inicial
 
@@ -25,7 +25,7 @@
 
 - [ ] Instalar e validar a toolchain no Windows.
 - [ ] Compilar o sample oficial hello_world.
-- [ ] Executar o primeiro EBOOT no PS4.
+- [x] Teste manual relatado pelo mantenedor: instalação e execução no PS4; comandos do controle funcionaram.
 - [ ] Criar interface e navegação DualShock 4.
 - [ ] Implementar catálogo HTTPS e downloads seguros.
 - [ ] Gerar metadados e PKG.
@@ -33,6 +33,6 @@
 
 ## Limites
 
-A versão web na raiz não pode ser simplesmente convertida ou renomeada para `.pkg`. Um pacote válido precisa conter um executável PS4 e metadados adequados. Ainda não existe EBOOT nem PKG neste repositório. Compatibilidade com firmware 13.52 só poderá ser afirmada após testes reais.
+A versão web na raiz não pode ser simplesmente convertida ou renomeada para `.pkg`. Um pacote válido precisa conter um executável PS4 e metadados adequados. O EBOOT, o PKG e o código da versão relatada como testada não estão neste checkout. Compatibilidade com firmware 13.52 foi informada pelo mantenedor, mas não pode ser verificada pelos artefatos presentes aqui.
 
 Distribua somente homebrews e arquivos que você tenha autorização para redistribuir. Não inclua SDK proprietário, chaves privadas ou conteúdo protegido.

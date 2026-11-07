@@ -19,7 +19,7 @@ function render(){
   items.forEach(item => {
     const card = document.createElement("article");
     card.className = "app-card"; card.tabIndex = 0; card.setAttribute("role","button");
-    card.innerHTML = `<div class="app-icon">${escapeHtml(item.icon)}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><div class="card-bottom"><span class="tag">${escapeHtml(item.category.toUpperCase())}</span><span class="version">v${escapeHtml(item.version)}</span></div>`;
+    const isGame=item.category==="Jogos";card.dataset.cover=String((parseInt(item.icon,10)-1+8)%8);const visual=isGame?`<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><span class="cover-brand">BIBLIOTECA HADES · PS4</span><strong>${escapeHtml(item.name)}</strong><span class="cover-edition">CAPA ILUSTRATIVA · PS4</span><b>${escapeHtml(item.icon||'')}</b></div></div>`:`<div class="app-icon">${escapeHtml(item.icon||'H')}</div>`;card.innerHTML = `${visual}<h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><div class="card-bottom"><span class="tag">${escapeHtml(item.category.toUpperCase())}</span><span class="version">${String(item.version)==="PS4"?"PS4":"v"+escapeHtml(item.version)}</span></div>`;
     card.addEventListener("click",()=>showDetails(item));
     card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showDetails(item)}});
     grid.appendChild(card);
@@ -33,9 +33,9 @@ function showDetails(item){
   document.querySelector("#detail-category").textContent=item.category.toUpperCase();
   document.querySelector("#detail-title").textContent=item.name;
   document.querySelector("#detail-description").textContent=item.description;
-  document.querySelector("#detail-meta").textContent=`Versão ${item.version} · Tamanho: ${item.size}`;
+  document.querySelector("#detail-meta").textContent=`Versão ${item.version} · ${item.size}${item.language?' · '+item.language:''}${item.format?' · Formato: '+item.format:''}`;
   const link=document.querySelector("#detail-download");
-  if(item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)){link.href=item.downloadUrl;link.style.display="inline-flex";link.textContent="BAIXAR / ABRIR ↗";}
+  if(item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)){link.href=item.downloadUrl;link.style.display="inline-flex";link.textContent="VER NA PLAYSTATION STORE ↗";}
   else{link.removeAttribute("href");link.style.display="none";}
   dialog.showModal();
 }

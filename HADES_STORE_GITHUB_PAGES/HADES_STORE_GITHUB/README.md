@@ -9,6 +9,9 @@ Esta entrega é a **versão web do catálogo** preparada para hospedagem estáti
 4. Aguarde o workflow `Deploy HADES Store to GitHub Pages` terminar. A URL ficará no formato `https://SEU-USUARIO.github.io/hades-store/`.
 5. Abra a URL no navegador e teste busca, filtros e navegação por teclado.
 
+## Catálogo de jogos PS4
+A lista contém 50 recomendações com links de busca para a PlayStation Store brasileira. As cartas usam capas estilizadas e discos ilustrados pela interface, não artes promocionais oficiais. O idioma em português do Brasil pode variar conforme edição e região; confira os detalhes oficiais de cada jogo. Os links comerciais levam à Store e não fornecem PKGs.
+
 ## Adicionar um pacote legítimo ao catálogo
 - Publique o `.pkg` que você tem direito de distribuir em uma GitHub Release ou em um host HTTPS confiável.
 - Edite `catalog/catalog.json` e preencha `downloadUrl` com a URL HTTPS direta do arquivo, `version`, `size` e descrição.
