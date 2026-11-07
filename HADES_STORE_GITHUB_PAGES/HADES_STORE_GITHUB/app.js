@@ -38,7 +38,7 @@ function showDetails(item){
   const link=document.querySelector("#detail-download");
   if(item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)){link.href=item.downloadUrl;link.style.display="inline-flex";link.textContent="VER NA PLAYSTATION STORE ↗";}
   else{link.removeAttribute("href");link.style.display="none";}
-  dialog.showModal();
+  document.querySelector('.dialog-note').textContent=item.linkLabel?'Link externo fornecido para download. Confira o destino, a procedência e a compatibilidade do PKG antes de instalar.':'O link abre a PlayStation Store. Idioma, edição e compatibilidade podem variar por região; confira os detalhes oficiais antes de adquirir.';dialog.showModal();
 }
 document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
   document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
@@ -87,3 +87,4 @@ document.addEventListener("click",e=>{
   document.querySelectorAll(".app-card.selected").forEach(el=>el.classList.remove("selected"));
   if(card)card.classList.add("selected");
 });
+
