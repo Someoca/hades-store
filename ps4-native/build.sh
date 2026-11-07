@@ -21,7 +21,7 @@ curl -fL --retry 3 --retry-delay 2 "$SDK_URL" -o "$SDK_ARCHIVE"
 tar -xzf "$SDK_ARCHIVE" -C "$BUILD" \
   samples/SDL2/Makefile \
   samples/SDL2/pkg/pkg.gp4 \
-  samples/SDL2/pkg/Gontserrat-Regular.ttf \
+  samples/font/pkg/Gontserrat-Regular.ttf \
   bin/data/param.sfo \
   bin/data/modules/libc.prx \
   bin/data/modules/libSceFios2.prx \
@@ -31,7 +31,7 @@ cp "$BUILD/bin/data/modules/libc.prx" "$BUILD/pkg/sce_module/libc.prx"
 cp "$BUILD/bin/data/modules/libSceFios2.prx" "$BUILD/pkg/sce_module/libSceFios2.prx"
 cp "$BUILD/bin/data/right.sprx" "$BUILD/pkg/sce_sys/about/right.sprx"
 cp "$BUILD/bin/data/param.sfo" "$BUILD/pkg/sce_sys/param.sfo"
-cp "$BUILD/samples/SDL2/pkg/Gontserrat-Regular.ttf" "$BUILD/pkg/sce_sys/fonts/HADES.ttf"
+cp "$BUILD/samples/font/pkg/Gontserrat-Regular.ttf" "$BUILD/pkg/sce_sys/fonts/HADES.ttf"
 cp "$NATIVE/src/main.cpp" "$BUILD/build/main.cpp"
 python3 "$NATIVE/generate_catalog.py" "$ROOT/catalog/catalog.json" "$BUILD/build/generated_catalog.h"
 python3 "$NATIVE/prepare_icon.py" "$ROOT/assets/hades-gamer.svg" "$BUILD/pkg/sce_sys/icon0.png"
