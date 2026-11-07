@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare sharp, offline PNG covers for the native PS4 catalog."""
+"""Prepare sharp, offline BMP covers for the native PS4 catalog."""
 import concurrent.futures
 import io
 import json
@@ -22,7 +22,7 @@ def fallback(item):
     image = Image.new("RGB", (W, H), (13, 16, 27))
     pixels = image.load()
     seed = sum(ord(c) for c in item.get("name", "HADES"))
-    accent = (244, 102 + seed % 40, 74) if seed % 2 else (91, 203, 219)
+    accent = (169, 149, 219) if seed % 2 else (226, 189, 118)
     for y in range(H):
         for x in range(W):
             glow = max(0.0, 1.0 - (((x - W / 2) / 290) ** 2 + ((y - 170) / 390) ** 2) ** 0.5)
@@ -80,8 +80,8 @@ def prepare(index_item):
     resampling = getattr(Image, "Resampling", Image)
     image = ImageOps.fit(image, (W, H), method=resampling.LANCZOS, centering=(0.5, 0.42))
     target = OUT / (item.get("id") or "item-%03d" % index)
-    target = target.with_suffix(".png")
-    image.save(target, format="PNG", optimize=True)
+    target = target.with_suffix(".bmp")
+    image.convert("RGB").save(target, format="BMP")
     return target.stat().st_size
 
 

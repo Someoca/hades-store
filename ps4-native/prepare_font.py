@@ -8,14 +8,15 @@ from PIL import Image, ImageDraw, ImageFont
 font_path, output_path = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 cell_w, cell_h, columns = 64, 80, 16
 font = ImageFont.truetype(str(font_path), 56)
-atlas = Image.new("RGBA", (cell_w * columns, cell_h * 6), (255, 255, 255, 0))
+atlas = Image.new("RGB", (cell_w * columns, cell_h * 6), (0, 0, 0))
 draw = ImageDraw.Draw(atlas)
 for code in range(32, 127):
     index = code - 32
-    width, height = font.getsize(chr(code))
+    left, top, right, bottom = font.getbbox(chr(code))
+    width, height = right - left, bottom - top
     x = (index % columns) * cell_w + (cell_w - min(width, cell_w)) // 2
-    y = (index // columns) * cell_h + max(0, (cell_h - height) // 2 - 3)
-    draw.text((x, y), chr(code), font=font, fill=(255, 255, 255, 255))
+    y = (index // columns) * cell_h + max(0, (cell_h - height) // 2 - top - 3)
+    draw.text((x, y), chr(code), font=font, fill=(255, 255, 255))
 output_path.parent.mkdir(parents=True, exist_ok=True)
-atlas.save(output_path, format="PNG", optimize=True)
+atlas.save(output_path, format="BMP")
 

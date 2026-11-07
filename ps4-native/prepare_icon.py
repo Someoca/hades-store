@@ -8,6 +8,7 @@ import sys
 from PIL import Image, ImageDraw
 
 source, target = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+hero_target = pathlib.Path(sys.argv[3]) if len(sys.argv) > 3 else target.with_name("hades-hero.bmp")
 rendered = subprocess.run(
     ["rsvg-convert", "-w", "430", "-h", "488", str(source)],
     check=True,
@@ -28,4 +29,17 @@ draw = ImageDraw.Draw(background)
 draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
 target.parent.mkdir(parents=True, exist_ok=True)
 background.convert("RGB").save(target, format="PNG", optimize=True)
+
+# Use an uncompressed BMP for the runtime hero so SDL's built-in BMP loader
+# can render it on the console without relying on SDL_image's PNG support.
+hero_render = subprocess.run(
+    ["rsvg-convert", "-w", "720", "-h", "816", str(source)],
+    check=True,
+    stdout=subprocess.PIPE,
+).stdout
+hero = Image.open(io.BytesIO(hero_render)).convert("RGBA")
+canvas = Image.new("RGB", (720, 816), (8, 9, 14))
+canvas.paste(hero, (0, 0), hero)
+hero_target.parent.mkdir(parents=True, exist_ok=True)
+canvas.save(hero_target, format="BMP")
 

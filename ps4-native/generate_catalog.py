@@ -22,7 +22,7 @@ for index, item in enumerate(items):
         url = item.get("storeProductUrl") or item.get("downloadUrl", "")
     else:
         url = item.get("downloadUrl", "")
-    image_path = "/app0/sce_sys/covers/%s.png" % ascii_text(item.get("id") or "item-%03d" % index)
+    image_path = "/app0/sce_sys/covers/%s.bmp" % ascii_text(item.get("id") or "item-%03d" % index)
     rows.append("    {%s, %s, %s, %s, %s}," % (
         cpp(item.get("name")), cpp(category), cpp(item.get("description")), cpp(url), cpp(image_path)
     ))

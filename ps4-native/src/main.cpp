@@ -1,6 +1,5 @@
 // HADES Store native catalog viewer for PS4 (OpenOrbis + SDL2).
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <orbis/Sysmodule.h>
 #include <algorithm>
 #include <cstdio>
@@ -11,8 +10,8 @@
 
 extern "C" int sceSystemServiceLaunchWebBrowser(const char* uri, void* reserved);
 
-static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 12;
-static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "HOMEBREWS", "EMULADORES"};
+static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 8;
+static const char* FILTERS[] = {"TODOS", "APLICATIVOS", "HOMEBREWS", "EMULADORES", "JOGOS PS4"};
 static const int FILTER_COUNT = 5;
 static SDL_Window* windowHandle = nullptr;
 static SDL_Renderer* renderer = nullptr;
@@ -80,10 +79,10 @@ static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int sc
 static std::string trim(const char* s,int max){ std::string v=s?s:""; if((int)v.size()>max){v=v.substr(0,max-3)+"...";} return v; }
 static bool matches(const char* category){
     if(filterIndex==0) return true;
-    if(filterIndex==1) return !std::strcmp(category,"Jogos");
-    if(filterIndex==2) return !std::strcmp(category,"Aplicativos");
-    if(filterIndex==3) return !std::strcmp(category,"Homebrews");
-    return !std::strcmp(category,"Emuladores");
+    if(filterIndex==1) return !std::strcmp(category,"Aplicativos");
+    if(filterIndex==2) return !std::strcmp(category,"Homebrews");
+    if(filterIndex==3) return !std::strcmp(category,"Emuladores");
+    return !std::strcmp(category,"Jogos");
 }
 static void refresh(){
     visible.clear();
@@ -94,11 +93,28 @@ static int countCategory(const char* category){int n=0;for(int i=0;i<STORE_ITEM_
 static void circle(int cx,int cy,int radius,Uint8 r,Uint8 g,Uint8 b){
     color(r,g,b); for(int y=-radius;y<=radius;y++){int xx=(int)(radius*radius-y*y);int x=0;while((x+1)*(x+1)<=xx)x++;SDL_RenderDrawLine(renderer,cx-x,cy+y,cx+x,cy+y);}
 }
-static SDL_Texture* loadTexture(const char* path){
+static SDL_Texture* loadTexture(const char* path, bool alphaMask=false){
     if(!path||!path[0])return nullptr;
-    SDL_Surface* source=IMG_Load(path);
+    SDL_Surface* source=SDL_LoadBMP(path);
     if(!source)return nullptr;
-    SDL_Texture* texture=SDL_CreateTextureFromSurface(renderer,source);
+    SDL_Surface* prepared=source;
+    if(alphaMask){
+        prepared=SDL_CreateRGBSurfaceWithFormat(0,source->w,source->h,32,SDL_PIXELFORMAT_RGBA32);
+        if(!prepared){SDL_FreeSurface(source);return nullptr;}
+        if(SDL_MUSTLOCK(source))SDL_LockSurface(source);
+        if(SDL_MUSTLOCK(prepared))SDL_LockSurface(prepared);
+        for(int y=0;y<source->h;y++)for(int x=0;x<source->w;x++){
+            Uint32 pixel;std::memcpy(&pixel,(Uint8*)source->pixels+y*source->pitch+x*source->format->BytesPerPixel,source->format->BytesPerPixel);
+            Uint8 r,g,b;SDL_GetRGB(pixel,source->format,&r,&g,&b);
+            Uint8 a=(Uint8)(((int)r+(int)g+(int)b)/3);
+            Uint32 out=SDL_MapRGBA(prepared->format,255,255,255,a);
+            std::memcpy((Uint8*)prepared->pixels+y*prepared->pitch+x*prepared->format->BytesPerPixel,&out,prepared->format->BytesPerPixel);
+        }
+        if(SDL_MUSTLOCK(prepared))SDL_UnlockSurface(prepared);
+        if(SDL_MUSTLOCK(source))SDL_UnlockSurface(source);
+    }
+    SDL_Texture* texture=SDL_CreateTextureFromSurface(renderer,prepared);
+    if(alphaMask)SDL_FreeSurface(prepared);
     SDL_FreeSurface(source);
     if(texture)SDL_SetTextureBlendMode(texture,SDL_BLENDMODE_BLEND);
     return texture;
@@ -119,43 +135,47 @@ static void drawCover(int itemIndex,int x,int y,int w,int h){
     }
 }
 static void drawCard(int slot,int itemIndex,bool active){
-    int col=slot%4,row=slot/4,x=60+col*455,y=215+row*270,w=435,h=245;
-    fill(x,y,w,h,active?32:19,active?26:23,active?41:34);
-    outline(x,y,w,h,active?255:57,active?172:65,active?82:87,active?4:2);
-    drawCover(itemIndex,x+14,y+14,142,213);
+    int col=slot%4,row=slot/4,x=50+col*455,y=258+row*354,w=440,h=338;
+    fill(x,y,w,h,active?28:17,active?26:19,active?35:27);
+    outline(x,y,w,h,active?226:52,active?189:49,active?118:58,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
-    text(x+170,y+27,trim(it.category,22),98,224,233,2);
-    text(x+170,y+69,trim(it.name,32),245,242,250,3,x+w-12);
-    text(x+170,y+123,trim(it.description,37),157,166,187,2,x+w-12);
-    if(!std::strcmp(it.category,"Jogos")) text(x+170,y+194,"PLAYSTATION STORE",255,181,96,2);
-    else text(x+170,y+194,"LINK OFICIAL",255,181,96,2);
+    fill(x+10,y+10,w-20,185,22,21,29);
+    int discX=x+288,discY=y+101;
+    circle(discX,discY,78,68,67,73);circle(discX,discY,73,33,33,40);circle(discX,discY,66,56,55,62);
+    circle(discX,discY,46,31,30,37);circle(discX,discY,15,151,144,132);circle(discX,discY,8,18,18,23);
+    drawCover(itemIndex,x+57,y+16,126,174);
+    text(x+20,y+211,trim(it.name,33),244,240,232,3,x+w-15);
+    text(x+20,y+257,trim(it.description,48),170,166,161,2,x+w-15);
+    text(x+20,y+309,trim(it.category,22),226,189,118,2);
+    text(x+w-153,y+309,"X VER DETALHES",169,149,219,2);
 }
 static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int chars=70){
     std::string s=raw?raw:""; int line=0;
     while(!s.empty()&&line<5){size_t n=std::min((size_t)chars,s.size());if(n<s.size()){size_t k=s.rfind(' ',n);if(k!=std::string::npos&&k>0)n=k;}text(x,y+line*36,s.substr(0,n),r,g,b,3);s.erase(0,n);while(!s.empty()&&s[0]==' ')s.erase(0,1);line++;}
 }
 static void draw(){
-    fill(0,0,SW,SH,8,10,17);
-    fill(0,0,SW,150,13,16,27); fill(0,146,SW,4,255,99,69);
-    text(62,42,"HADES STORE",246,241,249,6);
-    text(62,93,"CATALOGO COM NAVEGACAO PELO CONTROLE",142,152,174,2);
+    fill(0,0,SW,SH,8,9,14);
+    fill(0,0,SW,125,17,19,27); fill(0,122,SW,2,52,49,58);
+    text(58,29,"HADES STORE",244,240,232,5);
+    text(58,80,"DESCUBRA   /   BIBLIOTECA",170,166,161,2);
     char stats[100]; std::snprintf(stats,sizeof(stats),"%d JOGOS  %d APLICATIVOS  %d EMULADORES",countCategory("Jogos"),countCategory("Aplicativos"),countCategory("Emuladores"));
-    text(1130,75,stats,98,223,233,2);
-    int fx=60; for(int i=0;i<FILTER_COUNT;i++){int width=210;fill(fx,165,width,39,i==filterIndex?255:26,i==filterIndex?99:31,i==filterIndex?69:47);text(fx+14,177,FILTERS[i],i==filterIndex?12:204,i==filterIndex?13:210,i==filterIndex?18:220,2);fx+=width+10;}
-    if(visible.empty()){text(75,330,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
+    text(1270,68,stats,226,189,118,2);
+    int fx=50; for(int i=0;i<FILTER_COUNT;i++){int width=(i==4?200:190);bool active=i==filterIndex;fill(fx,145,width,45,active?42:24,active?35:25,active?48:34);outline(fx,145,width,45,active?226:52,active?189:49,active?118:58,active?2:1);text(fx+14,162,FILTERS[i],active?226:170,active?189:166,active?118:161,2);fx+=width+12;}
+    text(50,218,"CATALOGO",244,240,232,3);
+    if(visible.empty()){text(75,390,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
     else {int page=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;for(int slot=0;slot<ITEMS_PER_PAGE&&page+slot<(int)visible.size();slot++)drawCard(slot,visible[page+slot],page+slot==selected);}
-    fill(60,1020,1800,2,55,62,78);
-    text(62,1034,"L1 R1 CATEGORIAS   DIRECIONAL NAVEGAR   CROSS DETALHES   CIRCLE INICIO",155,165,184,2);
-    text(1540,1034,"SELECAO",255,172,90,2);
+    fill(50,1015,1820,2,52,49,58);
+    text(52,1032,"L1 R1 CATEGORIAS    DIRECIONAL NAVEGAR    X DETALHES    O INICIO",170,166,161,2);
+    text(1600,1032,"HADES STORE",226,189,118,2);
     if(showDetails&&!visible.empty()){
-        fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,8,12,20);outline(235,145,1450,790,255,103,75,4);
+        fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,17,19,27);outline(235,145,1450,790,226,189,118,3);
         const StoreItem& it=STORE_ITEMS[visible[selected]];
         drawCover(visible[selected],290,275,270,405);
-        text(625,265,"DETALHES DO ITEM",255,166,124,3);text(625,325,trim(it.name,54),248,244,250,5);
-        text(625,395,trim(it.category,30),97,224,232,3);wrapText(625,455,it.description,177,185,201,75);
-        text(625,690,"SQUARE ABRIR LINK NO NAVEGADOR DO PS4",255,178,97,3);
-        text(625,748,trim(it.url,100),151,168,190,2);
-        text(625,930,"CIRCLE VOLTAR AO CATALOGO",151,168,190,2);
+        text(625,265,"DETALHES DO ITEM",226,189,118,3);text(625,325,trim(it.name,54),244,240,232,5);
+        text(625,395,trim(it.category,30),169,149,219,3);wrapText(625,455,it.description,170,166,161,75);
+        text(625,690,"X ABRIR LINK NO NAVEGADOR DO PS4",226,189,118,3);
+        text(625,748,trim(it.url,100),170,166,161,2);
+        text(625,930,"O VOLTAR AO CATALOGO",170,166,161,2);
     }
     SDL_UpdateWindowSurface(windowHandle);
 }
@@ -172,43 +192,39 @@ static void moveHome(int dx,int dy){
     else if(dy<0&&homeAction>=3)homeAction-=3;
 }
 static void enterCatalog(){
-    static const int actionFilters[]={0,2,3,4,1};
+    static const int actionFilters[]={0,1,2,3,4};
     filterIndex=actionFilters[homeAction];selected=0;showDetails=false;homeScreen=false;refresh();
 }
 static void drawHome(){
-    fill(0,0,SW,SH,7,9,17);
-    // Soft colored bands echo the web store's dark, gold and ember palette.
-    for(int i=0;i<16;i++)fill(0,160+i*54,SW,1,17+i,18+i/2,29+i);
-    fill(0,0,SW,112,10,12,21);fill(0,108,SW,3,255,105,75);
-    text(74,35,"HADES STORE",246,241,249,5);
-    text(74,80,"CATALOGO ONLINE",142,152,174,2);
-    text(1425,53,"PS4  /  CENTRAL HOMEBREW",101,219,226,2);
-    fill(105,170,955,676,14,15,25);outline(105,170,955,676,53,44,57,2);
-    text(155,238,"CENTRAL HOMEBREW",255,174,126,3);
-    text(150,310,"SEU UNIVERSO.",249,245,241,8);
-    text(150,395,"SUAS POSSIBILIDADES.",249,245,241,6);
-    text(155,520,"APLICATIVOS, HOMEBREWS, EMULADORES",174,182,199,3);
-    text(155,560,"E JOGOS PARA PS4 EM UM SO LUGAR.",174,182,199,3);
+    fill(0,0,SW,SH,8,9,14);
+    fill(0,0,SW,106,17,19,27);fill(0,104,SW,2,52,49,58);
+    text(58,26,"HADES STORE",244,240,232,5);
+    text(58,73,"CATALOGO PARA PS4",170,166,161,2);
+    text(1470,54,"CENTRAL HOMEBREW",226,189,118,2);
+    text(105,190,"CENTRAL HOMEBREW",226,189,118,3);
+    text(100,274,"SEU UNIVERSO.",244,240,232,8);
+    text(100,368,"SUAS POSSIBILIDADES.",169,149,219,6);
+    text(105,480,"APLICATIVOS, HOMEBREWS, EMULADORES",170,166,161,3);
+    text(105,520,"E JOGOS PARA PS4 EM UM SO LUGAR.",170,166,161,3);
     const char* actions[]={"EXPLORAR CATALOGO","APLICATIVOS","HOMEBREWS","EMULADORES","JOGOS PS4"};
     for(int i=0;i<5;i++){
-        int x=155+(i%3)*280,y=660+(i/3)*72;
+        int x=105+(i%3)*280,y=615+(i/3)*72;
         bool active=i==homeAction;
-        fill(x,y,252,52,active?255:25,active?104:27,active?72:40);
-        outline(x,y,252,52,active?255:180,active?173:120,active?120:132,active?3:1);
-        text(x+15,y+18,actions[i],active?17:206,active?13:213,active?19:223,2);
+        fill(x,y,252,52,active?226:24,active?189:25,active?118:34);
+        outline(x,y,252,52,active?226:52,active?189:49,active?118:58,active?3:1);
+        text(x+15,y+18,actions[i],active?23:170,active?18:166,active?10:161,2);
     }
-    fill(1205,153,600,710,12,14,24);outline(1205,153,600,710,42,37,50,2);
-    if(hadesTexture){SDL_Rect dst{1234,168,540,646};SDL_RenderCopy(renderer,hadesTexture,nullptr,&dst);}
+    if(hadesTexture){SDL_Rect dst{1185,136,640,725};SDL_RenderCopy(renderer,hadesTexture,nullptr,&dst);}
     else {
-        circle(1505,476,190,235,91,70);circle(1505,476,135,23,20,30);
-        text(1378,435,"HADES",252,231,218,8);
+        circle(1505,476,190,226,189,118);circle(1505,476,135,24,25,34);
+        text(1378,435,"HADES",244,240,232,8);
     }
-    text(1262,818,"HADES  /  SEU PORTAL PS4",255,177,126,2);
+    text(105,825,"HADES  /  SEU PORTAL PS4",226,189,118,2);
     char count[64];std::snprintf(count,sizeof(count),"%d ITENS   %d CATEGORIAS",STORE_ITEM_COUNT,4);
-    text(155,900,count,104,222,230,2);
-    fill(70,976,1780,2,48,53,67);
-    text(75,1000,"X SELECIONAR   DIRECIONAL NAVEGAR   O SAIR",163,171,189,2);
-    text(1488,1000,"INTERFACE PARA CONTROLE",255,174,126,2);
+    text(105,905,count,226,189,118,2);
+    fill(55,976,1810,2,52,49,58);
+    text(58,1000,"X SELECIONAR   DIRECIONAL NAVEGAR   O SAIR",170,166,161,2);
+    text(1520,1000,"INTERFACE PARA CONTROLE",169,149,219,2);
     SDL_UpdateWindowSurface(windowHandle);
 }
 static void handleKey(SDL_Keycode key){
@@ -257,14 +273,14 @@ static void handleControllerButton(SDL_GameControllerButton button){
 int main(int argc,char** argv){
     (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK|SDL_INIT_GAMECONTROLLER)!=0)return 1;
-    IMG_Init(IMG_INIT_PNG);SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"2");
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"2");
     windowHandle=SDL_CreateWindow("HADES STORE",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SW,SH,0);
     if(!windowHandle){SDL_Quit();return 2;}
     SDL_Surface* surface=SDL_GetWindowSurface(windowHandle);renderer=surface?SDL_CreateSoftwareRenderer(surface):nullptr;
     if(!renderer){SDL_DestroyWindow(windowHandle);SDL_Quit();return 3;}
     SDL_SetRenderDrawBlendMode(renderer,SDL_BLENDMODE_BLEND);
-    fontTexture=loadTexture("/app0/sce_sys/fonts/atlas.png");
-    hadesTexture=loadTexture("/app0/sce_sys/hades-hero.png");
+    fontTexture=loadTexture("/app0/sce_sys/fonts/atlas.bmp",true);
+    hadesTexture=loadTexture("/app0/sce_sys/hades-hero.bmp");
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
     while(running){SDL_Event e;while(SDL_PollEvent(&e)){
@@ -276,7 +292,7 @@ int main(int argc,char** argv){
     }if(homeScreen)drawHome();else draw();SDL_Delay(16);}
     if(hadesTexture)SDL_DestroyTexture(hadesTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
     if(fontTexture)SDL_DestroyTexture(fontTexture);
-    SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);IMG_Quit();SDL_Quit();return 0;
+    SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
 }
 
 

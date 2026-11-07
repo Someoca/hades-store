@@ -34,11 +34,11 @@ if sce_sys is None:
 for directory in ("covers", "fonts"):
     if sce_sys.find("./dir[@targ_name='%s']" % directory) is None:
         ET.SubElement(sce_sys, "dir", {"targ_name": directory})
-for cover in sorted((pathlib.Path(output).parent / "sce_sys/covers").glob("*.png")):
+for cover in sorted((pathlib.Path(output).parent / "sce_sys/covers").glob("*.bmp")):
     relative = cover.relative_to(pathlib.Path(output).parent / "sce_sys").as_posix()
     ET.SubElement(files, "file", {"targ_path": "sce_sys/" + relative, "orig_path": "sce_sys/" + relative})
-ET.SubElement(files, "file", {"targ_path": "sce_sys/hades-hero.png", "orig_path": "sce_sys/hades-hero.png"})
-ET.SubElement(files, "file", {"targ_path": "sce_sys/fonts/atlas.png", "orig_path": "sce_sys/fonts/atlas.png"})
+ET.SubElement(files, "file", {"targ_path": "sce_sys/hades-hero.bmp", "orig_path": "sce_sys/hades-hero.bmp"})
+ET.SubElement(files, "file", {"targ_path": "sce_sys/fonts/atlas.bmp", "orig_path": "sce_sys/fonts/atlas.bmp"})
 pathlib.Path(output).parent.mkdir(parents=True, exist_ok=True)
 tree.write(output, encoding="utf-8", xml_declaration=True)
 

@@ -1,6 +1,6 @@
 # HADES Store — aplicativo nativo para PS4
 
-Este projeto compila uma interface nativa usando SDL2 e a toolchain comunitária OpenOrbis. Ao iniciar, mostra a página inicial da loja com o mascote Hades, resumo do catálogo e atalhos para as categorias. A tela Biblioteca acompanha o site, com busca visual simplificada por categorias e capas locais em alta definição para os 200 jogos, 14 aplicativos e 2 emuladores. As capas e a ilustração do mascote são empacotadas no PKG e não dependem de conexão de rede.
+Este projeto compila uma interface nativa usando SDL2 e a toolchain comunitária OpenOrbis. Ao iniciar, mostra a página inicial da loja com o mascote Hades, resumo do catálogo e atalhos para as categorias. A tela Biblioteca acompanha a paleta escura, dourada e violeta do site, com capas locais para os 200 jogos, 14 aplicativos e 2 emuladores, apresentadas junto a discos. As imagens e a ilustração do mascote são empacotadas no PKG e não dependem de conexão de rede.
 
 O DualShock 4 navega pela página inicial, filtros e itens. Cross abre detalhes, Square abre o link cadastrado no navegador do PS4, Circle retorna à página anterior e Options encerra o aplicativo.
 
@@ -20,10 +20,9 @@ O pacote será gravado em `ps4-native/dist/`. Ele é um pacote homebrew de teste
 
 - `src/main.cpp`: interface SDL2, navegação pelo controle, detalhes dos itens e abertura dos links externos.
 - `generate_catalog.py`: gera o catálogo nativo a partir de `catalog/catalog.json`.
-- `generate_icon.py`: cria o ícone PNG do PKG usando apenas a biblioteca padrão de Python.
-- `prepare_icon.py`: cria o ícone de início com o mascote HADES.
-- `prepare_covers.py`: gera uma capa PNG otimizada para cada item, usando as imagens cadastradas ou a arte SVG local.
-- `prepare_font.py`: cria a atlas de fonte suavizada para renderizar os textos no PS4.
+- `prepare_icon.py`: cria o ícone PNG do PKG e a arte BMP do mascote para a home nativa.
+- `prepare_covers.py`: prepara uma capa BMP para cada item, usando as imagens cadastradas ou a arte SVG local.
+- `prepare_font.py`: cria a atlas BMP da fonte suavizada usada na interface.
 - O build baixa a release oficial OpenOrbis v0.5.1 e reutiliza o Makefile, GP4, fonte de referência e módulos de suporte; o catálogo, as capas, o mascote e a fonte rasterizada são incluídos no pacote.
 
 O app não contém jogos, BIOS, chaves nem firmware. Os jogos apontam para a PlayStation Store; aplicativos e emuladores usam os destinos cadastrados. Confirme procedência e compatibilidade antes de instalar arquivos externos.
