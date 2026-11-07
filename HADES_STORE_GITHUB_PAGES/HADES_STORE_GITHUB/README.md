@@ -39,3 +39,8 @@ Para gerar o aplicativo instalável é necessário um segundo projeto nativo (po
 Na raiz do repositório, execute `start-local.ps1` com o PC e o PS4 na mesma rede. O site e o catálogo ficam disponíveis no endereço local exibido pelo script, na porta `8000`. Execute `stop-local.ps1` para encerrar. Esse servidor publica somente a interface web, o JSON do catálogo e as capas; o scaffold nativo de `ps4-native/` ainda não se conecta a ele.
 
 
+
+## Emuladores oficiais para PS4
+O catálogo inclui DolphinPS4 para GameCube/Wii e M33 (PPSSPP) para PSP, com capas HADES e links para as releases oficiais. Os instaladores baixados ficam na pasta muladores/ do PC e são ignorados pelo Git por tamanho; nenhum jogo, BIOS ou firmware acompanha os pacotes. Consulte muladores/README.md para requisitos e procedência.
+
+

@@ -26,3 +26,8 @@ A geração do PKG é uma etapa separada: requer código nativo, toolchain PS4, 
 O servidor local publica a versão web e o JSON do catálogo. O scaffold em `ps4-native/` ainda não tem cliente de rede compilável e, portanto, não se conecta a esse servidor como aplicativo nativo. Os links de jogos continuam indo à PlayStation Store; o servidor não hospeda arquivos de jogos, DLCs ou atualizações.
 
 
+
+## Emuladores oficiais para PS4
+O catálogo inclui DolphinPS4 para GameCube/Wii e M33 (PPSSPP) para PSP, com capas HADES e links para as releases oficiais. Os instaladores baixados ficam na pasta muladores/ do PC e são ignorados pelo Git por tamanho; nenhum jogo, BIOS ou firmware acompanha os pacotes. Consulte muladores/README.md para requisitos e procedência.
+
+
