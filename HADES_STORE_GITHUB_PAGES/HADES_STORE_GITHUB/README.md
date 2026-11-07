@@ -35,3 +35,7 @@ Exemplo de item:
 ## Sobre o PKG nativo
 Para gerar o aplicativo instalável é necessário um segundo projeto nativo (por exemplo, C/C++ com OpenOrbis), produzir `eboot.bin`, metadados e pacote com a toolchain, e testar no hardware/firmware de destino. Este repositório não afirma que isso já foi feito. Consulte: https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain
 
+## Servidor local no Windows
+Na raiz do repositório, execute `start-local.ps1` com o PC e o PS4 na mesma rede. O site e o catálogo ficam disponíveis no endereço local exibido pelo script, na porta `8000`. Execute `stop-local.ps1` para encerrar. Esse servidor publica somente a interface web, o JSON do catálogo e as capas; o scaffold nativo de `ps4-native/` ainda não se conecta a ele.
+
+
