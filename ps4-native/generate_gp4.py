@@ -25,6 +25,15 @@ for target, source in [
     ("sce_module/libSceFios2.prx", "sce_module/libSceFios2.prx"),
 ]:
     ET.SubElement(files, "file", {"targ_path": target, "orig_path": source})
+rootdir = root.find("./rootdir")
+if rootdir is None:
+    raise SystemExit("OpenOrbis sample GP4 has no rootdir section")
+sce_sys = rootdir.find("./dir[@targ_name='sce_sys']")
+if sce_sys is None:
+    sce_sys = ET.SubElement(rootdir, "dir", {"targ_name": "sce_sys"})
+for directory in ("covers", "fonts"):
+    if sce_sys.find("./dir[@targ_name='%s']" % directory) is None:
+        ET.SubElement(sce_sys, "dir", {"targ_name": directory})
 for cover in sorted((pathlib.Path(output).parent / "sce_sys/covers").glob("*.png")):
     relative = cover.relative_to(pathlib.Path(output).parent / "sce_sys").as_posix()
     ET.SubElement(files, "file", {"targ_path": "sce_sys/" + relative, "orig_path": "sce_sys/" + relative})
