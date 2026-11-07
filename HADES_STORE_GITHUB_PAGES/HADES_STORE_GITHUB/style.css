@@ -60,3 +60,18 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 .app-card[data-cover="0"] .game-cover{--cover:#a54b39}.app-card[data-cover="1"] .game-cover{--cover:#687e68}.app-card[data-cover="2"] .game-cover{--cover:#596e9b}.app-card[data-cover="3"] .game-cover{--cover:#905451}.app-card[data-cover="4"] .game-cover{--cover:#876c3e}.app-card[data-cover="5"] .game-cover{--cover:#576b79}.app-card[data-cover="6"] .game-cover{--cover:#755b94}.app-card[data-cover="7"] .game-cover{--cover:#3e7c77}
 .app-card:focus-visible .game-cover,.app-card:hover .game-cover{transform:perspective(650px) rotateY(-2deg) translateY(-2px);box-shadow:0 16px 28px #000b,4px 0 0 #f1d69966}
 @media(max-width:560px){.game-physical{height:166px}.game-cover{width:112px;height:150px;margin-left:-29px;padding:9px}.game-disc{width:128px;height:128px;right:calc(50% - 80px)}.cover-brand,.cover-edition{font-size:6px}.game-cover strong{font-size:13px;max-height:57px}.game-cover b{font-size:28px;bottom:22px}}
+
+/* Official PlayStation cover art with the original HADES gamer mascot. */
+.hero-art{right:3%;width:min(43vw,470px);height:min(46vw,480px);opacity:.98;overflow:visible;pointer-events:none}
+.hades-mascot{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 24px 42px #000b) drop-shadow(0 0 26px #8c69c144);animation:hades-float 5.5s ease-in-out infinite}
+@keyframes hades-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.game-cover{display:block;position:relative;width:133px;height:178px;margin-left:-35px;padding:0;overflow:hidden;border:1px solid #f2d99f9c;border-radius:3px;background:#13131a;box-shadow:0 12px 24px #000a,4px 0 0 #e8dfcf24;transform:perspective(650px) rotateY(-5deg)}
+.game-cover::before{display:none}
+.game-cover-art{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
+.cover-fallback{display:none;position:absolute;inset:0;z-index:1;align-items:center;justify-content:center;padding:12px;background:linear-gradient(150deg,var(--cover,#47364e),#11131b 82%);font-weight:800;font-size:15px;line-height:1.1;text-align:center;color:#fff3d8}
+.cover-image-missing .cover-fallback{display:flex}
+.app-card:hover .game-cover,.app-card:focus-visible .game-cover{transform:perspective(650px) rotateY(-2deg) translateY(-2px);box-shadow:0 16px 28px #000b,4px 0 0 #f1d69966}
+.hero-art .orbit,.hero-art .sigil,.hero-art .spark{display:none}
+@media(max-width:900px){.hero-art{width:330px;height:360px;right:-42px;opacity:.3}.hades-mascot{animation:none}}
+@media(max-width:560px){.hero-art{width:255px;height:310px;right:-64px;opacity:.25}.game-cover{width:112px;height:150px;margin-left:-29px}}
+@media(prefers-reduced-motion:reduce){.hades-mascot{animation:none!important}}

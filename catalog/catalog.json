@@ -9,7 +9,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/God%20of%20War"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07408_00-00000000GODOFWAR",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/1021/X3WIAh63yKhRRiMohLoJMeQu.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07408_00-00000000GODOFWAR",
+    "storeTitle": "God of War"
   },
   {
     "id": "ps4-02",
@@ -21,7 +24,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/God%20of%20War%20Ragnar%C3%B6k"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202503/2016/b69c06fb108299866057126b0d3a0530bdf96a39d2ce1cb9.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
+    "storeTitle": "God of War Ragnarök"
   },
   {
     "id": "ps4-03",
@@ -33,7 +39,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/The%20Last%20of%20Us%20Remastered"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/1020/FKgazVvG7BcWouCr39mIiXkW.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
+    "storeTitle": "The Last Of Us™ Remastered "
   },
   {
     "id": "ps4-04",
@@ -45,7 +54,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/The%20Last%20of%20Us%20Part%20II"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07820_00-THELASTOFUSPART2",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202010/2618/w48z6bzefZPrRcJHc7L8SO66.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07820_00-THELASTOFUSPART2",
+    "storeTitle": "The Last of Us Part II"
   },
   {
     "id": "ps4-05",
@@ -57,7 +69,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Uncharted%204%3A%20A%20Thief's%20End"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00341_00-UNCHARTED0000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/1018/SGqMZHd7WWmN4XIcLfYMxJsc.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00341_00-UNCHARTED0000000",
+    "storeTitle": "UNCHARTED 4: A Thief’s End"
   },
   {
     "id": "ps4-06",
@@ -69,7 +84,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Uncharted%3A%20The%20Lost%20Legacy"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202010/2813/h9Xc7ZhCEGUcS05YvpEcNT0D.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
+    "storeTitle": "UNCHARTED: The Lost Legacy"
   },
   {
     "id": "ps4-07",
@@ -81,7 +99,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Horizon%20Zero%20Dawn%20Complete%20Edition"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/1018/9erXiwu0ozgKGPIUVTuy2siN.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
+    "storeTitle": "Horizon Zero Dawn: Complete Edition"
   },
   {
     "id": "ps4-08",
@@ -93,7 +114,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Horizon%20Forbidden%20West"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202107/3100/ki0STHGAkIF06Q4AU8Ow4OkV.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
+    "storeTitle": "Horizon Forbidden West™"
   },
   {
     "id": "ps4-09",
@@ -105,7 +129,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Ghost%20of%20Tsushima"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA11456_00-GHOSTSHIP0000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202108/2719/LnjXN1f1qsOLAn9tiPfAiRuq.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA11456_00-GHOSTSHIP0000001",
+    "storeTitle": "Ghost of Tsushima: Legends"
   },
   {
     "id": "ps4-10",
@@ -117,7 +144,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Marvel's%20Spider-Man"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA02299_00-MARVELSSMGOTY000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/0714/vuF88yWPSnDfmFJVTyNJpVwW.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA02299_00-MARVELSSMGOTY000",
+    "storeTitle": "Marvel's Spider-Man: Game of the Year Edition"
   },
   {
     "id": "ps4-11",
@@ -129,7 +159,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Marvel's%20Spider-Man%3A%20Miles%20Morales"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01411_00-MARVELSSMMDDE000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202008/1423/4TUiZtcn1CIaG9ejhhJexjmj.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01411_00-MARVELSSMMDDE000",
+    "storeTitle": "Marvel's Spider-Man: Miles Morales Ultimate Edition"
   },
   {
     "id": "ps4-12",
@@ -141,7 +174,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Days%20Gone"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08966_00-DAYSGONECOMPLETE",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/1204/wYL4v2r8uMQFvVTJlfuj8ICk.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08966_00-DAYSGONECOMPLETE",
+    "storeTitle": "Days Gone"
   },
   {
     "id": "ps4-13",
@@ -153,7 +189,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Bloodborne"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00900_00-BLOODBORNE000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202011/0713/WSZqsrnejjt85wYmUqeBQvMQ.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00900_00-BLOODBORNE000000",
+    "storeTitle": "Bloodborne™"
   },
   {
     "id": "ps4-14",
@@ -165,7 +204,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Detroit%3A%20Become%20Human"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08344_00-DETROIT000000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202010/2119/wl4DB5QGzlEHAXy1KLUVgOAu.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08344_00-DETROIT000000001",
+    "storeTitle": "Detroit: Become Human"
   },
   {
     "id": "ps4-15",
@@ -177,7 +219,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Ratchet%20%26%20Clank"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA01047_00-RATCHETPS4000000",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP9000/CUSA01047_00/XUMI7tohtY97NG57Aj6UAvrYKxFA9e2C.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA01047_00-RATCHETPS4000000",
+    "storeTitle": "Ratchet & Clank™"
   },
   {
     "id": "ps4-16",
@@ -189,7 +234,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Until%20Dawn"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00359_00-UNTILDAWN0000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202010/2318/2cJRHg2UOwbvp10QxGrbX62S.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00359_00-UNTILDAWN0000001",
+    "storeTitle": "Until Dawn™ 2015"
   },
   {
     "id": "ps4-17",
@@ -201,7 +249,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/The%20Witcher%203%3A%20Wild%20Hunt%20%E2%80%93%20Complete%20Edition"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4497-PPSA03972_00-00000000000GOTY7",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202609/1711/d851895118a16d07706b91e7b69b53ce27531269cad5e968.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4497-PPSA03972_00-00000000000GOTY7",
+    "storeTitle": "The Witcher 3: Wild Hunt — Remastered"
   },
   {
     "id": "ps4-18",
@@ -213,7 +264,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Cyberpunk%202077"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4497-CUSA16596_00-0000000000000004",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202008/0416/6Bo40lnWU0BhgrOUm7Cb6by3.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4497-CUSA16596_00-0000000000000004",
+    "storeTitle": "Cyberpunk 2077"
   },
   {
     "id": "ps4-19",
@@ -225,7 +279,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Red%20Dead%20Redemption%202"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
+    "storeTitle": "Red Dead Redemption 2"
   },
   {
     "id": "ps4-20",
@@ -237,7 +294,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Grand%20Theft%20Auto%20V"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP1004-PPSA03420_00-GTAVCROSSGENBUND",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202203/1409/oltI7Zc96usbdvhVVXcV1EAi.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1004-PPSA03420_00-GTAVCROSSGENBUND",
+    "storeTitle": "Grand Theft Auto V (PS4™ e PS5™)"
   },
   {
     "id": "ps4-21",
@@ -249,7 +309,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%202"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA04288_00-BH2R000000000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202206/0204/uDFoGvnMTTCLVmTwjj0njGWC.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA04288_00-BH2R000000000001",
+    "storeTitle": "RESIDENT EVIL 2"
   },
   {
     "id": "ps4-22",
@@ -261,7 +324,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%203"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA03952_00-BH3ROFF000000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202206/0206/WmriZBRlSeXWEEDLJOWW7MdW.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA03952_00-BH3ROFF000000001",
+    "storeTitle": "RESIDENT EVIL 3"
   },
   {
     "id": "ps4-23",
@@ -273,7 +339,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%204"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA04885_00-BH4HD00000000001",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0102/CUSA04885_00/4kQ8Cjuf9p4tphsJJF1LoL6USKTblw5f.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA04885_00-BH4HD00000000001",
+    "storeTitle": "resident evil 4 (2005)"
   },
   {
     "id": "ps4-24",
@@ -285,7 +354,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%207%3A%20Biohazard"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA04404_00-BH7G000000000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202206/0207/oGHhaQR5Y8ydAMUUBBPvylI7.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA04404_00-BH7G000000000001",
+    "storeTitle": "RESIDENT EVIL 7 biohazard Gold Edition"
   },
   {
     "id": "ps4-25",
@@ -297,7 +369,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20Village"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA01556_00-VILLAGEFULLGAMEX",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA01556_00-VILLAGEFULLGAMEX",
+    "storeTitle": "Resident Evil Village PS4 & PS5"
   },
   {
     "id": "ps4-26",
@@ -309,7 +384,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Assassin's%20Creed%20Origins"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05855_00-ACOSTANDARDBRAZI",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0001/CUSA05855_00/yYiGRi9oya2bnKV9QnZ65ghdgBTVWQfI.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05855_00-ACOSTANDARDBRAZI",
+    "storeTitle": "Assassin’s Creed® Origins "
   },
   {
     "id": "ps4-27",
@@ -321,7 +399,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Assassin's%20Creed%20Odyssey"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA09311_00-GAME000000000000",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0001/CUSA09311_00/2XEenNH5pD4Ro375xwOG8tBwC9xMfEAE.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA09311_00-GAME000000000000",
+    "storeTitle": "Assassin's Creed® Odyssey"
   },
   {
     "id": "ps4-28",
@@ -333,7 +414,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Assassin's%20Creed%20Valhalla"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-PPSA01491_00-GAME000000000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202211/1416/HXBxcRRNOpjREOW3GpBndz3u.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-PPSA01491_00-GAME000000000000",
+    "storeTitle": "Assassin's Creed® Valhalla"
   },
   {
     "id": "ps4-29",
@@ -345,7 +429,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Far%20Cry%205"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05904_00-FARCRY5GAME00000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202608/0521/15618b4627bb9e14016484379865574b6caf9041544946c8.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05904_00-FARCRY5GAME00000",
+    "storeTitle": "Far Cry 5"
   },
   {
     "id": "ps4-30",
@@ -357,7 +444,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Far%20Cry%206"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA15717_00-FARCRY6GAME00000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202208/1121/VuiYLgDujlpvUC0Zm8n4TSRk.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA15717_00-FARCRY6GAME00000",
+    "storeTitle": "Far Cry® 6 FREE Trial"
   },
   {
     "id": "ps4-31",
@@ -369,7 +459,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Mortal%20Kombat%2011"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP1018-PPSA01618_00-00MORTALKOMBAT11",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202009/0123/bF1qmEL5RM6aMfL0oLcxRe8B.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1018-PPSA01618_00-00MORTALKOMBAT11",
+    "storeTitle": "Mortal Kombat 11"
   },
   {
     "id": "ps4-32",
@@ -381,7 +474,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Injustice%202"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP1018-CUSA05488_00-INJUSTICE2000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/cfn/113070iqJ5_6lv6FCFMn0yO46dQBHXeIRL_0c47E-7cGfFU0DdpFd4mpcaGsrn0Jl40xpsUIbrdsPNE8iUvAcd8uZRMJjzPQ.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1018-CUSA05488_00-INJUSTICE2000000",
+    "storeTitle": "Injustice™ 2"
   },
   {
     "id": "ps4-33",
@@ -393,7 +489,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Street%20Fighter%20V"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202012/2308/sZedz0gS6hPucp23xxs1TMHU.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
+    "storeTitle": "Street Fighter™ V: Champion Edition + Season 5 Premium Pass Bundle"
   },
   {
     "id": "ps4-34",
@@ -405,7 +504,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Tekken%207"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0700-CUSA05972_00-000000000TEKKEN7",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0700/CUSA05972_00/4yfeeKKfJdD5WzDQsoiM3xrcqPlpDLm7.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0700-CUSA05972_00-000000000TEKKEN7",
+    "storeTitle": "TEKKEN 7"
   },
   {
     "id": "ps4-35",
@@ -417,7 +519,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Dragon%20Ball%20Z%3A%20Kakarot"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0700-PPSA08084_00-ATREMASTER001PS5",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202301/0921/rsiZucmepcNwIbIvMLradwwu.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0700-PPSA08084_00-ATREMASTER001PS5",
+    "storeTitle": "DRAGON BALL Z: KAKAROT"
   },
   {
     "id": "ps4-36",
@@ -429,7 +534,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Crash%20Bandicoot%20N.%20Sane%20Trilogy"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA07402_00-CRASHNSANETRLOGY",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0002/CUSA07402_00/03ZtrPdjasIxzi8QrzOb2zCIHLMydFbh.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA07402_00-CRASHNSANETRLOGY",
+    "storeTitle": "Crash Bandicoot™ N. Sane Trilogy"
   },
   {
     "id": "ps4-37",
@@ -441,7 +549,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Crash%20Bandicoot%204%3A%20It's%20About%20Time"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0002-PPSA02432_00-CB4THEGAME000001",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202111/1918/psoOkDbYuMdr1RsJo6TpU6bg.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0002-PPSA02432_00-CB4THEGAME000001",
+    "storeTitle": "Crash Bandicoot™ 4: It's About Time"
   },
   {
     "id": "ps4-38",
@@ -453,7 +564,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Spyro%20Reignited%20Trilogy"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA12125_00-SPYROTRILOGY0001",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0002/CUSA12125_00/wQimEr4XlJnBh9zJL6h8vwIoB919zvRy.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA12125_00-SPYROTRILOGY0001",
+    "storeTitle": "Spyro™ Reignited Trilogy"
   },
   {
     "id": "ps4-39",
@@ -465,7 +579,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Sackboy%3A%20A%20Big%20Adventure"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01289_00-SABAGRANTURISMO1",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202302/1617/c93674d6e54ee04d8a5fe223ba9004e21094a3c0eef142cc.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01289_00-SABAGRANTURISMO1",
+    "storeTitle": "Sackboy™: A Big Adventure – Traje de piloto Gran Turismo®"
   },
   {
     "id": "ps4-40",
@@ -477,7 +594,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/It%20Takes%20Two"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202103/1515/CIArS0HysgiS5pbwYtHLU9B0.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
+    "storeTitle": "It Takes Two - Passe de Amigo PS4™"
   },
   {
     "id": "ps4-41",
@@ -489,7 +609,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/A%20Way%20Out"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP0006/CUSA07995_00/n3DB0JqnM3vTpswFEnNUYenmqS5wSln9.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
+    "storeTitle": "A Way Out"
   },
   {
     "id": "ps4-42",
@@ -501,7 +624,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Overcooked!%202"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4064-CUSA10940_00-OVERCOOKED200000",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP4064/CUSA10940_00/r0sQ8zaOheA7nh6k6pxzYMT41CnR42rF.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4064-CUSA10940_00-OVERCOOKED200000",
+    "storeTitle": "Overcooked! 2"
   },
   {
     "id": "ps4-43",
@@ -513,7 +639,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Minecraft"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4433-CUSA00744_00-MINECRAFTPS40001",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202407/0401/670c294ded3baf4fa11068db2ec6758c63f7daeb266a35a1.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4433-CUSA00744_00-MINECRAFTPS40001",
+    "storeTitle": "Minecraft"
   },
   {
     "id": "ps4-44",
@@ -525,7 +654,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/The%20Sims%204"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA09209_00-THESIMS400000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/rnd/202111/3019/oXPtJkwSeNlYon2MqTX9K4sQ.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA09209_00-THESIMS400000000",
+    "storeTitle": "The Sims™ 4"
   },
   {
     "id": "ps4-45",
@@ -537,7 +669,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/No%20Man's%20Sky"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP2034-PPSA02110_00-NOMANSSKYHG00001",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202608/1015/351e97bc1a0a8c44f6a428d70313f9a3a83d8f71300e0314.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2034-PPSA02110_00-NOMANSSKYHG00001",
+    "storeTitle": "No Man's Sky PS4 & PS5"
   },
   {
     "id": "ps4-46",
@@ -549,7 +684,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Hades"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP2125-PPSA03355_00-3466019145463410",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202104/0517/9AcM3vy5t77zPiJyKHwRfnNT.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2125-PPSA03355_00-3466019145463410",
+    "storeTitle": "Hades"
   },
   {
     "id": "ps4-47",
@@ -561,7 +699,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Hollow%20Knight"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/EP1805-PPSA12544_00-HKSILKSONGPS5000",
+    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202508/2503/a560ebf6368c109fb1d883bb2231f5ca2597e9aec435d742.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/EP1805-PPSA12544_00-HKSILKSONGPS5000",
+    "storeTitle": "Hollow Knight: Silksong"
   },
   {
     "id": "ps4-48",
@@ -573,7 +714,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Cuphead"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP8062-CUSA20499_00-CUPHEAD000000000",
+    "imageUrl": "https://vulcan.dl.playstation.net/img/cfn/11307fllh6D-IvbpCa18N0vRggVeRYWA06paTNCj3DENJMScAzW2f3ry4IwFcXBAt9kWXdZGpGoOGjxJ_e9MdordMVAosNhZ.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP8062-CUSA20499_00-CUPHEAD000000000",
+    "storeTitle": "Cuphead"
   },
   {
     "id": "ps4-49",
@@ -585,7 +729,10 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Celeste"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP2120-CUSA11302_00-CELESTEXXCELESTE",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP2120/CUSA11302_00/qHx7zoFGNn6BUHUOk2jSfBck2Zzbjulw.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2120-CUSA11302_00-CELESTEXXCELESTE",
+    "storeTitle": "Celeste"
   },
   {
     "id": "ps4-50",
@@ -597,6 +744,9 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Stardew%20Valley"
+    "downloadUrl": "https://store.playstation.com/pt-br/product/UP2456-CUSA06840_00-STARDEW00000SIEA",
+    "imageUrl": "https://apollo2.dl.playstation.net/cdn/UP2456/CUSA06840_00/0WuZecPtRr7aEsQPv2nJqiPa2ZvDOpYm.png",
+    "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2456-CUSA06840_00-STARDEW00000SIEA",
+    "storeTitle": "Stardew Valley"
   }
 ]

@@ -6,7 +6,7 @@ Loja web comunitária com catálogo JSON remoto, busca, filtros e navegação po
 O workflow em `.github/workflows/pages.yml` publica o conteúdo da raiz no GitHub Pages a cada push na branch `main`.
 
 ## Catálogo
-O catálogo inclui 50 recomendações de jogos PS4 com links de busca para a PlayStation Store brasileira. As cartas mostram capas estilizadas e discos ilustrados pela interface; não são imagens oficiais das capas nem representam arquivos incluídos. A preferência é por versões com português do Brasil, mas texto, áudio, disponibilidade e compatibilidade variam entre edições; confira a página oficial antes de adquirir.
+O catálogo inclui 50 recomendações de jogos PS4 com links de busca para a PlayStation Store brasileira. As cartas carregam as capas oficiais dos produtos a partir do CDN da PlayStation Store e mostram discos ilustrativos. O mascote gamer Hades é uma ilustração SVG original da marca. A preferência é por versões com português do Brasil, mas texto, áudio, disponibilidade e compatibilidade variam entre edições; confira a página oficial antes de adquirir.
 
 Os links dos jogos abrem a PlayStation Store e não apontam para arquivos PKG. Use `downloadUrl` somente para páginas ou arquivos que você tem autorização para distribuir. A interface inclui a categoria Jogos PS4 e exibe informações de idioma e formato no detalhe.
 

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 680" role="img" aria-labelledby="title desc">
+<title id="title">Hades, mascote gamer da HADES Store</title><desc id="desc">Deus do submundo em armadura, usando headset e segurando um controle, com luzes violetas e douradas.</desc>
+<defs>
+ <radialGradient id="halo"><stop stop-color="#815bd4" stop-opacity=".45"/><stop offset=".65" stop-color="#472c70" stop-opacity=".16"/><stop offset="1" stop-color="#100e1a" stop-opacity="0"/></radialGradient>
+ <linearGradient id="cloak" x2="1" y2="1"><stop stop-color="#41304f"/><stop offset=".5" stop-color="#201a2d"/><stop offset="1" stop-color="#11131d"/></linearGradient>
+ <linearGradient id="armor" x2=".8" y2="1"><stop stop-color="#d6b878"/><stop offset=".3" stop-color="#775b42"/><stop offset="1" stop-color="#28222c"/></linearGradient>
+ <linearGradient id="skin" x2=".9" y2="1"><stop stop-color="#f4d4ad"/><stop offset="1" stop-color="#b87e67"/></linearGradient>
+ <linearGradient id="hair" x2="0" y2="1"><stop stop-color="#24202b"/><stop offset="1" stop-color="#090b12"/></linearGradient>
+ <linearGradient id="metal" x2="0" y2="1"><stop stop-color="#f4dfaa"/><stop offset="1" stop-color="#9b6e36"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<ellipse cx="304" cy="346" rx="270" ry="300" fill="url(#halo)"/>
+<ellipse cx="304" cy="348" rx="217" ry="253" fill="none" stroke="#b69bdf" stroke-opacity=".28" stroke-width="2" transform="rotate(-15 304 348)"/>
+<ellipse cx="300" cy="350" rx="241" ry="135" fill="none" stroke="#e2bd76" stroke-opacity=".35" stroke-width="2" transform="rotate(24 300 350)"/>
+<!-- back mantle and shoulders -->
+<path d="M94 650c17-117 68-190 174-209l35 34 39-34c107 18 161 92 177 209H94Z" fill="url(#cloak)" stroke="#9c79cb" stroke-opacity=".62" stroke-width="4"/>
+<path d="M146 650c20-91 63-152 136-183l21 41 22-41c75 31 117 92 136 183" fill="#191723" stroke="#d0ae70" stroke-opacity=".8" stroke-width="3"/>
+<path d="m283 466 21 44 22-44 28 30-23 70h-54l-23-70 29-30Z" fill="url(#armor)" stroke="#e3bf78" stroke-width="3"/>
+<path d="M124 535c-38 21-58 50-75 94l72 20 61-78m294-36c38 21 58 50 75 94l-72 20-61-78" fill="#28212f" stroke="#b28b58" stroke-width="4"/>
+<!-- neck -->
+<path d="M256 402h91l-8 89-38 35-39-35-10-89Z" fill="url(#skin)"/>
+<!-- hair silhouette -->
+<path d="M178 214c-34-59-11-128 39-151 21-45 81-56 119-31 49-18 101 14 106 61 37 26 45 74 20 112l-12 124H191l-13-115Z" fill="url(#hair)" stroke="#6c536c" stroke-width="4"/>
+<!-- side locks -->
+<path d="M190 236c-45 10-45 65-20 94 7 42 28 59 47 46l3-91m192-49c45 10 45 65 20 94-7 42-28 59-47 46l-3-91" fill="#111018" stroke="#9a764c" stroke-width="3"/>
+<!-- headphones -->
+<path d="M167 303V247c0-99 55-166 133-166s133 67 133 166v56" fill="none" stroke="#c6a365" stroke-width="15" stroke-linecap="round"/>
+<path d="M167 289v53c0 16 13 29 29 29h16V278h-16c-16 0-29 5-29 11Zm266 0v53c0 16-13 29-29 29h-16V278h16c16 0 29 5 29 11Z" fill="#2a2035" stroke="#b798df" stroke-width="5"/>
+<path d="M180 310c20-14 33-14 48-6v40c-15 8-28 8-48-7m236-27c-20-14-33-14-48-6v40c15 8 28 8 48-7" fill="none" stroke="#e2bd76" stroke-width="4"/>
+<!-- face -->
+<path d="M218 220c2-61 44-105 84-105s82 44 84 105l-11 109c-5 45-39 84-73 84s-68-39-73-84l-11-109Z" fill="url(#skin)"/>
+<!-- crown -->
+<path d="m219 161-31-52 58 21 17-61 43 55 43-55 17 61 58-21-31 52c-53 23-121 23-174 0Z" fill="url(#metal)" stroke="#f6da95" stroke-width="5" stroke-linejoin="round"/>
+<path d="M220 157c48 20 108 20 158 0" fill="none" stroke="#513b35" stroke-width="7"/>
+<path d="m302 111 12 17-12 15-12-15 12-17Z" fill="#9a7bd2" stroke="#f2d99f" stroke-width="3"/>
+<!-- brow and eyes -->
+<path d="m224 241 46-13 25 10m83 3-46-13-25 10" fill="none" stroke="#34242a" stroke-width="11" stroke-linecap="round"/>
+<path d="m239 256 38 2m51 0 38-2" stroke="#201a20" stroke-width="8" stroke-linecap="round"/>
+<path d="m255 259 14 0m65 0 14 0" stroke="#e1b964" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+<path d="m302 258-10 56 15 8" fill="none" stroke="#986754" stroke-width="7" stroke-linecap="round"/>
+<!-- moustache and beard -->
+<path d="M225 338c16-24 41-27 66-7 12 10 22 10 34 0 25-20 50-17 66 7-7 30-26 44-56 38l-25-14-29 14c-30 6-49-8-56-38Z" fill="#17141b" stroke="#786044" stroke-width="3"/>
+<path d="M229 359c24 11 43 14 73 9 30 5 49 2 73-9-7 66-31 114-73 137-42-23-66-71-73-137Z" fill="url(#hair)" stroke="#9b794d" stroke-width="4"/>
+<path d="m267 388 35 14 35-14m-62 30 27 12 27-12m-43 30 16 9 16-9" fill="none" stroke="#826548" stroke-width="4" stroke-linecap="round"/>
+<!-- headset microphone -->
+<path d="M419 347c25 6 36 24 29 43-7 17-28 22-54 19l-24-7" fill="none" stroke="#e1bd78" stroke-width="6" stroke-linecap="round"/>
+<rect x="357" y="390" width="25" height="14" rx="7" fill="#c4a0eb" stroke="#f4dfa2" stroke-width="3" transform="rotate(12 357 390)"/>
+<!-- controller held in front -->
+<path d="M175 515c8-23 26-34 49-31l48 9h59l48-9c23-3 41 8 49 31l17 49c7 22-13 39-33 28l-46-27H237l-46 27c-20 11-40-6-33-28l17-49Z" fill="#201d2a" stroke="#c7a565" stroke-width="5"/>
+<path d="m230 524 0 34m-17-17h34" stroke="#edd396" stroke-width="8" stroke-linecap="round"/>
+<circle cx="370" cy="524" r="7" fill="#da7a79"/><circle cx="391" cy="544" r="7" fill="#9f83db"/><circle cx="350" cy="544" r="7" fill="#80c9d0"/><circle cx="370" cy="564" r="7" fill="#d8bb77"/>
+<circle cx="306" cy="536" r="9" fill="#a98aff" stroke="#f5dfa1" stroke-width="3"/>
+<path d="M160 600c44-18 83-28 146-28s102 10 146 28" fill="none" stroke="#a98aff" stroke-opacity=".8" stroke-width="3"/>
+<text x="306" y="630" text-anchor="middle" fill="#f2d99f" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="5">HADES STORE</text>
+</svg>

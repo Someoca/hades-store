@@ -19,9 +19,10 @@ function render(){
   items.forEach(item => {
     const card = document.createElement("article");
     card.className = "app-card"; card.tabIndex = 0; card.setAttribute("role","button");
-    const isGame=item.category==="Jogos";card.dataset.cover=String((parseInt(item.icon,10)-1+8)%8);const visual=isGame?`<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><span class="cover-brand">BIBLIOTECA HADES · PS4</span><strong>${escapeHtml(item.name)}</strong><span class="cover-edition">CAPA ILUSTRATIVA · PS4</span><b>${escapeHtml(item.icon||'')}</b></div></div>`:`<div class="app-icon">${escapeHtml(item.icon||'H')}</div>`;card.innerHTML = `${visual}<h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><div class="card-bottom"><span class="tag">${escapeHtml(item.category.toUpperCase())}</span><span class="version">${String(item.version)==="PS4"?"PS4":"v"+escapeHtml(item.version)}</span></div>`;
+    const isGame=item.category==="Jogos";card.dataset.cover=String((parseInt(item.icon,10)-1+8)%8);const visual=isGame?`<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><img class="game-cover-art" src="${escapeHtml(item.imageUrl||'')}" alt="Capa de ${escapeHtml(item.name)}" loading="lazy"><span class="cover-fallback">${escapeHtml(item.name)}</span></div></div>`:`<div class="app-icon">${escapeHtml(item.icon||'H')}</div>`;card.innerHTML = `${visual}<h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.description)}</p><div class="card-bottom"><span class="tag">${escapeHtml(item.category.toUpperCase())}</span><span class="version">${String(item.version)==="PS4"?"PS4":"v"+escapeHtml(item.version)}</span></div>`;
     card.addEventListener("click",()=>showDetails(item));
     card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showDetails(item)}});
+    const coverImage=card.querySelector(".game-cover-art");if(coverImage)coverImage.addEventListener("error",()=>{coverImage.remove();card.querySelector(".game-cover").classList.add("cover-image-missing")});
     grid.appendChild(card);
   });
   empty.hidden = items.length>0;
