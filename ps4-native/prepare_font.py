@@ -12,10 +12,9 @@ atlas = Image.new("RGB", (cell_w * columns, cell_h * 6), (0, 0, 0))
 draw = ImageDraw.Draw(atlas)
 for code in range(32, 127):
     index = code - 32
-    left, top, right, bottom = font.getbbox(chr(code))
-    width, height = right - left, bottom - top
+    width, height = font.getsize(chr(code))
     x = (index % columns) * cell_w + (cell_w - min(width, cell_w)) // 2
-    y = (index // columns) * cell_h + max(0, (cell_h - height) // 2 - top - 3)
+    y = (index // columns) * cell_h + max(0, (cell_h - height) // 2 - 3)
     draw.text((x, y), chr(code), font=font, fill=(255, 255, 255))
 output_path.parent.mkdir(parents=True, exist_ok=True)
 atlas.save(output_path, format="BMP")
