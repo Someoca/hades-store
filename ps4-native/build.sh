@@ -54,4 +54,3 @@ PKGTOOL="$OO_PS4_TOOLCHAIN/bin/linux/PkgTool.Core"
 (cd "$BUILD" && "$PKGTOOL" pkg_build pkg/pkg.gp4 .)
 cp "$BUILD/$CONTENT_ID.pkg" "$OUT/HADES-Store-PS4-v1.0.pkg"
 sha256sum "$OUT/HADES-Store-PS4-v1.0.pkg" | tee "$OUT/SHA256SUMS.txt"
-
