@@ -174,7 +174,8 @@ static void drawCard(int slot,int itemIndex,bool active){
     outline(x,y,w,h,active?112:31,active?216:105,active?255:170,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
     fill(x+10,y+8,w-20,24,7,94,180);
-    text(x+19,y+12,"PS4",255,255,255,2);
+    const char* platform=(std::string(it.category)=="Jogos"&&std::string(it.version)=="PS5")?"PS5":"PS4";
+    text(x+19,y+12,platform,255,255,255,2);
     const int coverW=178,coverH=205,coverX=x+(w-coverW)/2,coverY=y+38;
     drawCover(itemIndex,coverX,coverY,coverW,coverH);
     text(x+12,y+250,trim(it.name,30),244,248,255,2,x+w-12);
