@@ -167,3 +167,15 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#27adff,#0752ba);border-color:#b3eeff;box-shadow:0 0 17px #098fff,inset 0 0 10px #ffffff45;color:#fff}
 .nav-tab:hover:not(.active){background:linear-gradient(180deg,#0d3f7b,#061b3a);border-color:#49aaff;box-shadow:inset 0 0 9px #168fff44;color:#fff}
 @media(max-width:560px){.top-nav{margin-left:0;width:100%;height:auto;min-height:48px;padding:4px;gap:2px;flex-wrap:wrap;border-radius:0}.nav-tab{flex:1 1 30%;height:22px;min-height:22px}}
+
+/* Keep the three sidebar actions readable on narrow screens. */
+@media(max-width:560px){
+  .console-layout{grid-template-columns:clamp(112px,30vw,140px) minmax(0,1fr)}
+  .profile img{width:clamp(60px,19vw,78px);height:clamp(60px,19vw,78px)}
+  .profile strong{font-size:10px;letter-spacing:1.6px}
+  .profile small{font-size:9px}
+  .side-nav{gap:8px;margin-top:8px}
+  .side-link{min-height:35px;justify-content:flex-start;gap:8px;padding:6px 7px;font-size:10px}
+  .side-icon{width:15px;height:15px;flex:0 0 15px}
+  .side-link span{display:inline}
+}
