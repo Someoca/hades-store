@@ -141,3 +141,14 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .console-shell:after{content:"";position:absolute;left:0;right:0;bottom:31px;height:56px;pointer-events:none;z-index:0;background:linear-gradient(180deg,transparent 0,#087dff22 64%,#04132988 100%);border-top:1px solid #249cff77;box-shadow:0 -5px 24px #087fff22}
 @media(min-width:561px) and (max-width:900px){.console-layout{grid-template-columns:clamp(100px,15vw,135px) minmax(0,1fr)}.game-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.game-physical,.software-art{height:clamp(112px,19.6vw,178px)}.masthead{height:clamp(92px,14vw,116px)}}
 @media(max-width:560px){.masthead{height:92px;min-height:92px;background-position:58% 40%;padding:7px}.brand-mark{width:48px;height:48px}.brand strong{font-size:20px}.brand small{font-size:7px;letter-spacing:.8px}.top-nav{min-height:50px;flex-wrap:wrap}.nav-tab{flex:1 1 30%;min-height:25px;font-size:9px}.console-layout{grid-template-columns:58px minmax(0,1fr)}.profile img{width:44px;height:44px}.profile strong,.profile small{font-size:8px}.side-link{justify-content:center;padding:4px;font-size:0}.side-link span{display:none}.main-panel{padding:6px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.game-physical,.software-art{height:clamp(145px,48vw,205px)}.catalog-heading h1{font-size:17px}.controller-bar strong,.controller-bar a{display:none}.controller-bar{justify-content:space-around}}
+
+/* Header and tabs tuned to the supplied HADES Store reference. */
+.masthead{background-image:linear-gradient(90deg,rgba(2,8,22,.86) 0%,rgba(3,10,25,.52) 36%,rgba(3,10,24,.08) 75%,rgba(2,8,20,.18)),url("assets/hades-home-banner.svg");background-size:cover;background-position:center center}
+.top-nav{height:36px;min-height:36px;padding:2px clamp(4px,2vw,24px);gap:1px;align-items:stretch}
+.nav-tab{display:flex;align-items:center;justify-content:center;gap:5px;min-height:30px;height:30px;padding:3px clamp(3px,.75vw,10px);font-size:clamp(9px,1.05vw,13px);clip-path:polygon(7% 0,100% 0,93% 100%,0 100%);color:#edf6ff}
+.nav-tab span{margin:0;line-height:1}
+.nav-icon{display:inline-block;width:15px;height:15px;flex:0 0 15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 2px #73cfff)}
+.nav-icon.solid{fill:currentColor;stroke:none}
+.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#25a8ff,#0754c1);border:1px solid #9ceaff;box-shadow:0 0 16px #098fff, inset 0 0 9px #ffffff40;color:#fff}
+.nav-tab:hover:not(.active){background:linear-gradient(180deg,#0c3972,#061a39);border-color:#318fe3;box-shadow:inset 0 0 8px #168fff30;color:#fff}
+@media(max-width:560px){.top-nav{height:auto;min-height:48px;padding:4px;gap:2px}.nav-tab{height:22px;min-height:22px;gap:3px}.nav-icon{width:12px;height:12px;flex-basis:12px}}
