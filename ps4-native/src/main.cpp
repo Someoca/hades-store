@@ -174,8 +174,6 @@ static void drawCard(int slot,int itemIndex,bool active){
     text(x+19,y+12,"PS4",255,255,255,2);
     const int coverW=178,coverH=238,coverX=x+(w-coverW)/2,coverY=y+38;
     drawCover(itemIndex,coverX,coverY,coverW,coverH);
-    fill(coverX+3,coverY+118,coverW-6,68,0,7,18,205);
-    text(coverX+10,coverY+132,trim(it.name,19),255,255,255,2,coverX+coverW-8);
     text(x+14,y+284,trim(it.name,30),244,248,255,2,x+w-12);
     text(x+14,y+318,trim(it.category,19),105,195,255,2);
     if(active)text(x+w-104,y+318,"X ABRIR",180,220,255,2);
