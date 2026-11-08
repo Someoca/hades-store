@@ -20,6 +20,9 @@ static SDL_GameController* gameController = nullptr;
 static SDL_Texture* fontTexture = nullptr;
 static std::vector<SDL_Texture*> coverTextures;
 static SDL_Texture* hadesTexture = nullptr;
+static SDL_Texture* avatarTexture = nullptr;
+static SDL_Texture* bannerTexture = nullptr;
+static SDL_Texture* sigilTexture = nullptr;
 static SDL_Texture* discTexture = nullptr;
 static std::vector<int> visible;
 static int selected = 0, filterIndex = 0;
@@ -166,17 +169,17 @@ static void drawCover(int itemIndex,int x,int y,int w,int h){
     }
 }
 static void drawCard(int slot,int itemIndex,bool active){
-    int col=slot%5,row=slot/5,x=270+col*318,y=246+row*360,w=296,h=342;
+    int col=slot%5,row=slot/5,x=300+col*318,y=344+row*300,w=296,h=282;
     fill(x,y,w,h,active?8:5,active?40:20,active?80:37);
     outline(x,y,w,h,active?112:31,active?216:105,active?255:170,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
     fill(x+10,y+8,w-20,24,7,94,180);
     text(x+19,y+12,"PS4",255,255,255,2);
-    const int coverW=178,coverH=238,coverX=x+(w-coverW)/2,coverY=y+38;
+    const int coverW=178,coverH=205,coverX=x+(w-coverW)/2,coverY=y+38;
     drawCover(itemIndex,coverX,coverY,coverW,coverH);
-    text(x+14,y+284,trim(it.name,30),244,248,255,2,x+w-12);
-    text(x+14,y+318,trim(it.category,19),105,195,255,2);
-    if(active)text(x+w-104,y+318,"X ABRIR",180,220,255,2);
+    text(x+12,y+250,trim(it.name,30),244,248,255,2,x+w-12);
+    text(x+14,y+272,trim(it.category,19),105,195,255,2);
+    if(active)text(x+w-104,y+272,"X ABRIR",180,220,255,2);
 }
 static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int chars=70){
     std::string s=raw?raw:""; int line=0;
@@ -184,36 +187,41 @@ static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int cha
 }
 static void draw(){
     fill(0,0,SW,SH,2,8,22);
-    if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,42);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
-    fill(0,0,SW,SH,2,9,23,196);
-    fill(0,0,SW,116,2,9,23,232);fill(0,114,SW,3,24,139,235);
-    if(hadesTexture){SDL_Rect mark{26,12,92,96};SDL_RenderCopy(renderer,hadesTexture,nullptr,&mark);}
-    text(132,22,"HADES STORE",245,248,255,5);
-    text(134,78,"JOGOS  /  APLICATIVOS  /  EMULADORES",156,205,255,2);
-    text(1740,43,"PS4",235,245,255,4);
-    int tabX=250;
+    if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,20);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
+    fill(0,0,SW,SH,2,9,23,195);
+    if(bannerTexture){SDL_Rect banner{0,0,SW,220};SDL_RenderCopy(renderer,bannerTexture,nullptr,&banner);}
+    fill(0,0,SW,220,2,8,22,88);
+    fill(0,216,SW,3,24,139,235);
+    if(sigilTexture){SDL_Rect mark{28,22,96,96};SDL_RenderCopy(renderer,sigilTexture,nullptr,&mark);}
+    text(137,30,"HADES STORE",245,248,255,5);
+    text(139,86,"JOGOS  /  APLICATIVOS  /  EMULADORES",176,211,247,2);
+    text(1750,56,"PS4",235,245,255,4);
+
+    int tabX=256;
     for(int i=0;i<FILTER_COUNT;i++){
-        int width=350,x=tabX+i*365;
+        int width=340,x=tabX+i*350;
         bool active=i==filterIndex;
-        fill(x,126,width,56,active?8:4,active?83:20,active?168:38);
-        outline(x,126,width,56,active?91:28,active?208:80,active?255:125,active?3:1);
-        text(x+26,147,FILTERS[i],active?255:205,active?255:220,active?255:239,3);
+        fill(x,226,width,58,active?8:4,active?83:20,active?168:38);
+        outline(x,226,width,58,active?91:28,active?208:80,active?255:125,active?3:1);
+        text(x+24,246,FILTERS[i],active?255:205,active?255:220,active?255:239,3);
     }
-    fill(0,190,238,794,2,10,25,235);fill(237,190,2,794,16,115,210);
-    SDL_Rect avatar{67,211,104,104};
-    if(hadesTexture)SDL_RenderCopy(renderer,hadesTexture,nullptr,&avatar);
-    outline(67,211,104,104,67,190,255,3);
-    text(91,329,"HADES",245,248,255,2);
-    text(82,354,"BEM-VINDO!",174,204,239,1);
-    text(28,414,"CASA",228,239,255,2);
-    text(28,462,"BUSCAR",228,239,255,2);
-    text(28,510,"FAVORITOS",228,239,255,2);
-    text(28,558,"DOWNLOADS",228,239,255,2);
-    text(28,606,"CONFIGURACOES",228,239,255,2);
-    text(280,199,"CATALOGO",246,248,255,4);
+
+    fill(0,292,280,704,2,10,25,235);fill(278,292,2,704,16,115,210);
+    if(avatarTexture){SDL_Rect avatar{66,310,170,170};SDL_RenderCopy(renderer,avatarTexture,nullptr,&avatar);}
+    else if(hadesTexture){SDL_Rect avatar{66,310,170,170};SDL_RenderCopy(renderer,hadesTexture,nullptr,&avatar);}
+    outline(66,310,170,170,67,190,255,3);
+    text(111,491,"HADES",245,248,255,2);
+    text(91,518,"BEM-VINDO!",174,204,239,1);
+    text(30,566,"CASA",228,239,255,2);
+    text(30,616,"BUSCAR",228,239,255,2);
+    text(30,666,"FAVORITOS",228,239,255,2);
+    text(30,716,"DOWNLOADS",228,239,255,2);
+    text(30,766,"CONFIGURACOES",228,239,255,2);
+    text(30,816,"SAIR",228,239,255,2);
+    text(280,307,"CATALOGO",246,248,255,4);
     char page[48];std::snprintf(page,sizeof(page),"%d / %d",visible.empty()?0:selected+1,(int)visible.size());
-    text(1695,205,page,194,221,249,2);
-    if(visible.empty()){text(315,430,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
+    text(1695,312,page,194,221,249,2);
+    if(visible.empty()){text(315,530,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
     else {
         int first=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;
         for(int slot=0;slot<ITEMS_PER_PAGE&&first+slot<(int)visible.size();slot++)
@@ -341,6 +349,9 @@ int main(int argc,char** argv){
     SDL_SetRenderDrawBlendMode(renderer,SDL_BLENDMODE_BLEND);
     fontTexture=loadTexture("/app0/sce_sys/fonts/atlas.bmp",true);
     hadesTexture=loadTexture("/app0/sce_sys/hades-hero.bmp");
+    avatarTexture=loadTexture("/app0/sce_sys/hades-avatar.bmp");
+    bannerTexture=loadTexture("/app0/sce_sys/hades-banner.bmp");
+    sigilTexture=loadTexture("/app0/sce_sys/hades-sigil.bmp");
     discTexture=createDiscTexture();
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
@@ -352,7 +363,7 @@ int main(int argc,char** argv){
         else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);frameDirty=true;}
         else if(e.type==SDL_WINDOWEVENT)frameDirty=true;
     }while(SDL_PollEvent(&e));if(frameDirty){if(homeScreen)drawHome();else draw();frameDirty=false;}}
-    if(hadesTexture)SDL_DestroyTexture(hadesTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
+    if(hadesTexture)SDL_DestroyTexture(hadesTexture);if(avatarTexture)SDL_DestroyTexture(avatarTexture);if(bannerTexture)SDL_DestroyTexture(bannerTexture);if(sigilTexture)SDL_DestroyTexture(sigilTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
     if(discTexture)SDL_DestroyTexture(discTexture);
     if(fontTexture)SDL_DestroyTexture(fontTexture);
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
