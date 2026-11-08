@@ -86,7 +86,7 @@ function createCard(item) {
 
   let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
   if (item.imageUrl && item.category === 'Jogos') {
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><div class="ps4-band">PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.imageUrl) {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>' + safe(item.category === 'Emuladores' ? 'EMULADOR' : 'APLICATIVO') + '</span></div>';
   }
@@ -219,6 +219,11 @@ function focusables() {
 }
 
 document.addEventListener('keydown', (event) => {
+  if (event.key.toLowerCase() === 'h' && !dialog.open && event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+    event.preventDefault();
+    location.hash = 'home';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   if (event.key === 'F1') {
     event.preventDefault();
     search.focus();
