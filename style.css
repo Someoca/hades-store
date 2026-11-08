@@ -160,3 +160,10 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .side-link.selected,.side-link[aria-pressed="true"],.side-link:hover,.side-link:focus-visible{background:linear-gradient(90deg,#1597ff,#0750b4);border-color:#71d9ff;box-shadow:0 0 15px #087fff99,inset 0 0 10px #ffffff22;color:#fff;outline:none}
 .side-link:not(.selected):not([aria-pressed="true"]):hover{background:#0a3771;border-color:#348ddb;box-shadow:0 0 9px #087fff55}
 @media(max-width:560px){.side-link{min-height:32px;gap:0;padding:6px;justify-content:center}.side-icon{width:16px;height:16px;flex-basis:16px}.side-link span{display:none}}
+
+/* Align the PS4 tab bar with the catalog column, as in the reference. */
+.top-nav{position:relative;z-index:2;margin-left:clamp(100px,15vw,190px);width:calc(100% - clamp(100px,15vw,190px));height:39px;min-height:39px;padding:3px clamp(5px,1.1vw,14px);gap:2px;justify-content:space-around;align-items:stretch;overflow:visible;border:1px solid #168fff;border-bottom:2px solid #36b6ff;border-radius:0 0 7px 7px;background:linear-gradient(180deg,#0c2b55,#020a1a);box-shadow:0 0 18px #087fff66,inset 0 0 12px #138bff22}
+.nav-tab{height:30px;min-height:30px;flex:1 1 0;max-width:210px;padding:3px clamp(3px,.8vw,12px);gap:5px;border:1px solid #1674c5;background:linear-gradient(180deg,#0a1a33,#030a18);clip-path:polygon(8% 0,100% 0,92% 100%,0 100%);font-size:clamp(9px,1.05vw,13px);text-shadow:0 1px 3px #000}
+.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#27adff,#0752ba);border-color:#b3eeff;box-shadow:0 0 17px #098fff,inset 0 0 10px #ffffff45;color:#fff}
+.nav-tab:hover:not(.active){background:linear-gradient(180deg,#0d3f7b,#061b3a);border-color:#49aaff;box-shadow:inset 0 0 9px #168fff44;color:#fff}
+@media(max-width:560px){.top-nav{margin-left:0;width:100%;height:auto;min-height:48px;padding:4px;gap:2px;flex-wrap:wrap;border-radius:0}.nav-tab{flex:1 1 30%;height:22px;min-height:22px}}
