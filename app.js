@@ -199,6 +199,29 @@ function coverSource(item) {
   return item.imageUrl || '';
 }
 
+function installArtworkFallback(image, item, onExhausted) {
+  let fallbackStage = 0;
+  const generatedArtwork = themedFallbackCover(item);
+  const localArtwork = item.category === 'Jogos' && /^ps4-extra-\d{3}$/.test(item.id)
+    ? 'assets/covers/' + item.id + '.svg'
+    : '';
+
+  image.addEventListener('error', () => {
+    const currentSource = image.getAttribute('src') || '';
+    if (fallbackStage === 0 && localArtwork && currentSource !== localArtwork) {
+      fallbackStage = 1;
+      image.src = localArtwork;
+      return;
+    }
+    if (fallbackStage < 2 && currentSource !== generatedArtwork) {
+      fallbackStage = 2;
+      image.src = generatedArtwork;
+      return;
+    }
+    onExhausted();
+  });
+}
+
 function createCard(item) {
   const card = document.createElement('article');
   card.className = 'app-card';
@@ -214,6 +237,8 @@ function createCard(item) {
     visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">' + safe(item.version === 'PS5' ? 'PS5' : 'PS4') + '</div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Emuladores') {
     visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4 · HOMEBREW</div><img class="game-cover-art" src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+  } else if (item.category === 'Aplicativos' || item.category === 'Homebrews') {
+    visual = '<div class="software-art"><img src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span>' + safe(String(item.category).toUpperCase()) + '</span></div>';
   } else if (item.imageUrl) {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>APLICATIVO</span></div>';
   }
@@ -237,25 +262,22 @@ function createCard(item) {
   });
 
   const coverImage = card.querySelector('.game-cover-art');
-  if (coverImage) coverImage.addEventListener('error', () => {
-    if (!coverImage.dataset.fallbackAttempted) {
-      coverImage.dataset.fallbackAttempted = 'true';
-      const localArtwork = item.category === 'Jogos' && /^ps4-extra-\d{3}$/.test(item.id)
-        ? 'assets/covers/' + item.id + '.svg'
-        : '';
-      coverImage.src = localArtwork && coverImage.getAttribute('src') !== localArtwork
-        ? localArtwork
-        : themedFallbackCover(item);
-      return;
-    }
-    coverImage.remove();
-    card.querySelector('.game-cover').classList.add('cover-image-missing');
-  });
+  const gameCover = card.querySelector('.game-cover');
+  if (coverImage && gameCover) {
+    installArtworkFallback(coverImage, item, () => {
+      coverImage.remove();
+      gameCover.classList.add('cover-image-missing');
+    });
+  }
   const softwareImage = card.querySelector('.software-art img');
-  if (softwareImage) softwareImage.addEventListener('error', () => {
-    softwareImage.remove();
-    card.querySelector('.software-art').classList.add('art-image-missing');
-  });
+  if (softwareImage) {
+    const softwareArt = card.querySelector('.software-art');
+    softwareArt.dataset.fallbackName = item.name;
+    installArtworkFallback(softwareImage, item, () => {
+      softwareImage.remove();
+      softwareArt.classList.add('art-image-missing');
+    });
+  }
   return card;
 }
 
@@ -418,12 +440,21 @@ function showDetails(item) {
   playUiSound('confirm');
   state.activeItem = item;
   const image = $('#detail-image');
-  const detailImageUrl = coverSource(item);
+  const originalDetailImage = coverSource(item);
+  const detailImageUrl = originalDetailImage || themedFallbackCover(item);
   image.hidden = !detailImageUrl;
   image.alt = detailImageUrl ? 'Imagem de ' + item.name : '';
   if (detailImageUrl) {
+    image.dataset.fallbackAttempted = originalDetailImage ? '' : item.id;
     image.src = detailImageUrl;
-    image.onerror = () => { image.hidden = true; };
+    image.onerror = () => {
+      if (image.dataset.fallbackAttempted !== item.id) {
+        image.dataset.fallbackAttempted = item.id;
+        image.src = themedFallbackCover(item);
+        return;
+      }
+      image.hidden = true;
+    };
   } else {
     image.removeAttribute('src');
   }
