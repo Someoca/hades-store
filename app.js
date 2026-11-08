@@ -20,6 +20,14 @@ let pendingBackdropId = '';
 let backdropUpdateTimer = 0;
 const gamepadShoulders = new Map();
 let gamepadPolling = false;
+const SOUND_PREFERENCE_KEY = 'hades-store:ui-sounds:v1';
+let audioEnabled = false;
+let uiAudioContext = null;
+try {
+  audioEnabled = localStorage.getItem(SOUND_PREFERENCE_KEY) === 'true';
+} catch (error) {
+  audioEnabled = false;
+}
 
 function safe(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -63,6 +71,50 @@ function updateStats() {
   if (categories) categories.textContent = String(new Set(state.catalog.map((item) => item.category)).size).padStart(2, '0');
   if (favorites) favorites.textContent = String(state.favorites.size).padStart(2, '0');
 }
+
+function updateSoundToggle() {
+  const button = $('#sound-toggle');
+  const label = $('#sound-label');
+  if (!button || !label) return;
+  button.setAttribute('aria-pressed', String(audioEnabled));
+  button.setAttribute('aria-label', audioEnabled ? 'Desativar sons da interface' : 'Ativar sons da interface');
+  button.classList.toggle('is-enabled', audioEnabled);
+  label.textContent = audioEnabled ? 'SOM ON' : 'SOM OFF';
+}
+
+function playUiSound(kind = 'move') {
+  if (!audioEnabled) return;
+  const AudioContextType = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextType) return;
+
+  try {
+    if (!uiAudioContext || uiAudioContext.state === 'closed') uiAudioContext = new AudioContextType();
+    const context = uiAudioContext;
+    const playTone = () => {
+      if (!audioEnabled) return;
+      const frequency = { move: 560, confirm: 760, back: 430 }[kind] || 560;
+      const oscillator = context.createOscillator();
+      const volume = context.createGain();
+      const start = context.currentTime;
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(frequency, start);
+      oscillator.frequency.exponentialRampToValueAtTime(frequency * 0.78, start + 0.11);
+      volume.gain.setValueAtTime(0.0001, start);
+      volume.gain.exponentialRampToValueAtTime(0.035, start + 0.012);
+      volume.gain.exponentialRampToValueAtTime(0.0001, start + 0.13);
+      oscillator.connect(volume);
+      volume.connect(context.destination);
+      oscillator.start(start);
+      oscillator.stop(start + 0.14);
+    };
+    if (context.state === 'suspended') context.resume().then(playTone).catch(() => {});
+    else playTone();
+  } catch (error) {
+    // Optional audio must not interrupt catalog navigation.
+  }
+}
+
+updateSoundToggle();
 
 function filteredItems() {
   const query = normalize(search.value);
@@ -304,6 +356,7 @@ function goToCarouselPage(direction) {
   const targetPage = Math.min(pages - 1, Math.max(0, currentPage + direction));
   if (targetPage === currentPage) return;
   grid.scrollTo({ left: targetPage * pageStep, behavior: 'smooth' });
+  playUiSound('move');
 }
 
 function toggleFavorite(id) {
@@ -322,6 +375,7 @@ function updateDetailFavorite(item) {
 }
 
 function showDetails(item) {
+  playUiSound('confirm');
   state.activeItem = item;
   const image = $('#detail-image');
   const detailImageUrl = coverSource(item);
@@ -374,9 +428,20 @@ function showDetails(item) {
 
 document.querySelectorAll('[data-category]').forEach((button) => {
   button.addEventListener('click', () => {
+    playUiSound('move');
     state.category = button.dataset.category;
     render();
   });
+});
+$('#sound-toggle').addEventListener('click', () => {
+  audioEnabled = !audioEnabled;
+  try {
+    localStorage.setItem(SOUND_PREFERENCE_KEY, String(audioEnabled));
+  } catch (error) {
+    // Keep the preference for the current session when storage is unavailable.
+  }
+  updateSoundToggle();
+  if (audioEnabled) playUiSound('confirm');
 });
 $('#search-shortcut').addEventListener('click', () => $('#search').focus());
 search.addEventListener('input', render);

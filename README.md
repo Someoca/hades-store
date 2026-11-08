@@ -8,6 +8,7 @@ Loja comunitária para PS4 com catálogo web e aplicativo nativo. A versão web 
 - Busca sem distinção de acentos, filtros por categoria e ordenação alfabética.
 - Favoritos salvos no navegador do usuário (localStorage); não são enviados a um servidor.
 - Interface responsiva para desktop, tablet e celular, com suporte a teclado e navegação por controle.
+- Efeitos sonoros sintetizados para a navegação, ativados manualmente e com preferência salva no navegador.
 - Validação automática de campos, IDs únicos, categorias e URLs HTTPS.
 - Deploy do site pelo GitHub Actions após validação.
 - Build do aplicativo nativo PS4 com OpenOrbis e SDL2.
