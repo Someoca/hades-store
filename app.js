@@ -43,14 +43,18 @@ function saveFavorites() {
 }
 
 function setStatus(message, kind = 'online') {
+  if (!status) return;
   status.className = 'status ' + kind;
   status.innerHTML = '<i></i> ' + safe(message);
 }
 
 function updateStats() {
-  $('#count-apps').textContent = String(state.catalog.length).padStart(2, '0');
-  $('#count-categories').textContent = String(new Set(state.catalog.map((item) => item.category)).size).padStart(2, '0');
-  $('#count-favorites').textContent = String(state.favorites.size).padStart(2, '0');
+  const apps = $('#count-apps');
+  const categories = $('#count-categories');
+  const favorites = $('#count-favorites');
+  if (apps) apps.textContent = String(state.catalog.length).padStart(2, '0');
+  if (categories) categories.textContent = String(new Set(state.catalog.map((item) => item.category)).size).padStart(2, '0');
+  if (favorites) favorites.textContent = String(state.favorites.size).padStart(2, '0');
 }
 
 function filteredItems() {
@@ -127,6 +131,7 @@ function render() {
   grid.replaceChildren(...items.map(createCard));
   empty.hidden = items.length > 0;
   $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
+  $('#page-count').textContent = items.length ? '1 / ' + items.length : '0 / 0';
   document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
@@ -259,7 +264,8 @@ document.addEventListener('keydown', (event) => {
 });
 
 function updateClock() {
-  $('#clock').textContent = new Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit' }).format(new Date());
+  const clock = $('#clock');
+  if (clock) clock.textContent = new Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit' }).format(new Date());
 }
 updateClock();
 window.setInterval(updateClock, 30000);
