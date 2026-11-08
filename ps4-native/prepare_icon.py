@@ -62,6 +62,6 @@ def render_extra_svg(source_path, target_path, width, height):
 if len(sys.argv) > 5:
     render_extra_svg(sys.argv[4], sys.argv[5], 512, 512)
 if len(sys.argv) > 7:
-    render_extra_svg(sys.argv[6], sys.argv[7], 1920, 420)
+    render_extra_svg(sys.argv[6], sys.argv[7], 1000, 220)
 if len(sys.argv) > 9:
     render_extra_svg(sys.argv[8], sys.argv[9], 192, 192)
