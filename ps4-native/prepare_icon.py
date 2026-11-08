@@ -43,3 +43,25 @@ canvas.paste(hero, (0, 0), hero)
 hero_target.parent.mkdir(parents=True, exist_ok=True)
 canvas.save(hero_target, format="BMP")
 
+
+
+# Optional PS4 catalog UI artwork (BMP because the SDL runtime uses SDL_LoadBMP).
+def render_extra_svg(source_path, target_path, width, height):
+    source_path = pathlib.Path(source_path)
+    target_path = pathlib.Path(target_path)
+    rendered = subprocess.run(
+        ["rsvg-convert", "-w", str(width), "-h", str(height), str(source_path)],
+        check=True, stdout=subprocess.PIPE,
+    ).stdout
+    artwork = Image.open(io.BytesIO(rendered)).convert("RGBA")
+    canvas = Image.new("RGBA", (width, height), (4, 10, 24, 255))
+    canvas.alpha_composite(artwork, ((width - artwork.width) // 2, (height - artwork.height) // 2))
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    canvas.convert("RGB").save(target_path, format="BMP")
+
+if len(sys.argv) > 5:
+    render_extra_svg(sys.argv[4], sys.argv[5], 512, 512)
+if len(sys.argv) > 7:
+    render_extra_svg(sys.argv[6], sys.argv[7], 1920, 420)
+if len(sys.argv) > 9:
+    render_extra_svg(sys.argv[8], sys.argv[9], 192, 192)
