@@ -12,8 +12,8 @@
 extern "C" int sceSystemServiceLaunchWebBrowser(const char* uri, void* reserved);
 
 static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 8;
-static const char* FILTERS[] = {"TODOS", "APLICATIVOS", "HOMEBREWS", "EMULADORES", "JOGOS PS4"};
-static const int FILTER_COUNT = 5;
+static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "EMULADORES"};
+static const int FILTER_COUNT = 4;
 static SDL_Window* windowHandle = nullptr;
 static SDL_Renderer* renderer = nullptr;
 static SDL_GameController* gameController = nullptr;
@@ -82,10 +82,9 @@ static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int sc
 static std::string trim(const char* s,int max){ std::string v=s?s:""; if((int)v.size()>max){v=v.substr(0,max-3)+"...";} return v; }
 static bool matches(const char* category){
     if(filterIndex==0) return true;
-    if(filterIndex==1) return !std::strcmp(category,"Aplicativos");
-    if(filterIndex==2) return !std::strcmp(category,"Homebrews");
-    if(filterIndex==3) return !std::strcmp(category,"Emuladores");
-    return !std::strcmp(category,"Jogos");
+    if(filterIndex==1) return !std::strcmp(category,"Jogos");
+    if(filterIndex==2) return !std::strcmp(category,"Aplicativos");
+    return !std::strcmp(category,"Emuladores");
 }
 static void refresh(){
     visible.clear();
@@ -168,29 +167,29 @@ static void drawCover(int itemIndex,int x,int y,int w,int h){
 }
 static void drawCard(int slot,int itemIndex,bool active){
     int col=slot%4,row=slot/4,x=50+col*455,y=258+row*354,w=440,h=338;
-    fill(x,y,w,h,active?28:17,active?26:19,active?35:27);
-    outline(x,y,w,h,active?226:52,active?189:49,active?118:58,active?4:2);
+    fill(x,y,w,h,active?9:5,active?43:20,active?91:38);
+    outline(x,y,w,h,active?96:30,active?205:104,active?255:168,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
     fill(x+10,y+10,w-20,185,22,21,29);
     if(discTexture){SDL_Rect discDst{x+208,y+21,160,160};SDL_RenderCopy(renderer,discTexture,nullptr,&discDst);}
     drawCover(itemIndex,x+57,y+16,126,174);
     text(x+20,y+211,trim(it.name,33),244,240,232,3,x+w-15);
     text(x+20,y+257,trim(it.description,48),170,166,161,2,x+w-15);
-    text(x+20,y+309,trim(it.category,22),226,189,118,2);
-    text(x+w-153,y+309,"X VER DETALHES",169,149,219,2);
+    text(x+20,y+309,trim(it.category,22),105,195,255,2);
+    text(x+w-153,y+309,"X VER DETALHES",180,220,255,2);
 }
 static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int chars=70){
     std::string s=raw?raw:""; int line=0;
     while(!s.empty()&&line<5){size_t n=std::min((size_t)chars,s.size());if(n<s.size()){size_t k=s.rfind(' ',n);if(k!=std::string::npos&&k>0)n=k;}text(x,y+line*36,s.substr(0,n),r,g,b,3);s.erase(0,n);while(!s.empty()&&s[0]==' ')s.erase(0,1);line++;}
 }
 static void draw(){
-    fill(0,0,SW,SH,8,9,14);
-    fill(0,0,SW,125,17,19,27); fill(0,122,SW,2,52,49,58);
-    text(58,29,"HADES STORE",244,240,232,5);
-    text(58,80,"DESCUBRA   /   BIBLIOTECA",170,166,161,2);
+    fill(0,0,SW,SH,3,10,25);
+    fill(0,0,SW,125,4,16,38); fill(0,122,SW,2,24,139,235);
+    text(58,29,"HADES STORE",244,248,255,5);
+    text(58,80,"JOGOS   /   APLICATIVOS   /   EMULADORES",142,203,255,2);
     char stats[100]; std::snprintf(stats,sizeof(stats),"%d JOGOS  %d APLICATIVOS  %d EMULADORES",countCategory("Jogos"),countCategory("Aplicativos"),countCategory("Emuladores"));
-    text(1270,68,stats,226,189,118,2);
-    int fx=50; for(int i=0;i<FILTER_COUNT;i++){int width=(i==4?200:190);bool active=i==filterIndex;fill(fx,145,width,45,active?42:24,active?35:25,active?48:34);outline(fx,145,width,45,active?226:52,active?189:49,active?118:58,active?2:1);text(fx+14,162,FILTERS[i],active?226:170,active?189:166,active?118:161,2);fx+=width+12;}
+    text(1270,68,stats,105,195,255,2);
+    int fx=50; for(int i=0;i<FILTER_COUNT;i++){int width=(i==4?200:190);bool active=i==filterIndex;fill(fx,145,width,45,active?8:5,active?91:22,active?190:39);outline(fx,145,width,45,active?76:27,active?196:76,active?255:116,active?2:1);text(fx+14,162,FILTERS[i],active?255:190,active?255:215,active?255:242,2);fx+=width+12;}
     text(50,218,"CATALOGO",244,240,232,3);
     if(visible.empty()){text(75,390,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
     else {int page=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;for(int slot=0;slot<ITEMS_PER_PAGE&&page+slot<(int)visible.size();slot++)drawCard(slot,visible[page+slot],page+slot==selected);}
@@ -202,8 +201,9 @@ static void draw(){
         const StoreItem& it=STORE_ITEMS[visible[selected]];
         drawCover(visible[selected],290,275,270,405);
         text(625,265,"DETALHES DO ITEM",226,189,118,3);text(625,325,trim(it.name,54),244,240,232,5);
-        text(625,395,trim(it.category,30),169,149,219,3);wrapText(625,455,it.description,170,166,161,75);
-        text(625,690,"X ABRIR LINK NO NAVEGADOR DO PS4",226,189,118,3);
+        text(625,395,trim(it.category,30),169,149,219,3);wrapText(625,455,it.description,170,205,235,75);
+        if(it.recommendedGames && it.recommendedGames[0]){text(625,650,"JOGOS RECOMENDADOS",105,195,255,2);wrapText(625,690,it.recommendedGames,210,225,245,92);}
+        text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
         text(625,748,trim(it.url,100),170,166,161,2);
         text(625,930,"O VOLTAR AO CATALOGO",170,166,161,2);
     }
@@ -222,34 +222,34 @@ static void moveHome(int dx,int dy){
     else if(dy<0&&homeAction>=3)homeAction-=3;
 }
 static void enterCatalog(){
-    static const int actionFilters[]={0,1,2,3,4};
+    static const int actionFilters[]={0,1,2,3};
     filterIndex=actionFilters[homeAction];selected=0;showDetails=false;homeScreen=false;refresh();
 }
 static void drawHome(){
-    fill(0,0,SW,SH,8,9,14);
-    fill(0,0,SW,106,17,19,27);fill(0,104,SW,2,52,49,58);
+    fill(0,0,SW,SH,3,10,25);
+    fill(0,0,SW,106,4,16,38);fill(0,104,SW,2,24,139,235);
     text(58,26,"HADES STORE",244,240,232,5);
     text(58,73,"CATALOGO PARA PS4",170,166,161,2);
     text(1470,54,"CENTRAL HOMEBREW",226,189,118,2);
     text(105,190,"CENTRAL HOMEBREW",226,189,118,3);
     text(100,274,"SEU UNIVERSO.",244,240,232,8);
     text(100,368,"SUAS POSSIBILIDADES.",169,149,219,6);
-    text(105,480,"APLICATIVOS, HOMEBREWS, EMULADORES",170,166,161,3);
-    text(105,520,"E JOGOS PARA PS4 EM UM SO LUGAR.",170,166,161,3);
-    const char* actions[]={"EXPLORAR CATALOGO","APLICATIVOS","HOMEBREWS","EMULADORES","JOGOS PS4"};
-    for(int i=0;i<5;i++){
+    text(105,480,"JOGOS, APLICATIVOS E EMULADORES",142,203,255,3);
+    text(105,520,"TUDO PARA SEU PS4 EM UM SO LUGAR.",170,205,242,3);
+    const char* actions[]={"EXPLORAR CATALOGO","JOGOS","APLICATIVOS","EMULADORES"};
+    for(int i=0;i<4;i++){
         int x=105+(i%3)*280,y=615+(i/3)*72;
         bool active=i==homeAction;
-        fill(x,y,252,52,active?226:24,active?189:25,active?118:34);
-        outline(x,y,252,52,active?226:52,active?189:49,active?118:58,active?3:1);
-        text(x+15,y+18,actions[i],active?23:170,active?18:166,active?10:161,2);
+        fill(x,y,252,52,active?8:5,active?91:22,active?190:39);
+        outline(x,y,252,52,active?76:27,active?196:76,active?255:116,active?3:1);
+        text(x+15,y+18,actions[i],255,255,255,2);
     }
     if(hadesTexture){SDL_Rect dst{1185,136,640,725};SDL_RenderCopy(renderer,hadesTexture,nullptr,&dst);}
     else {
         circle(1505,476,190,226,189,118);circle(1505,476,135,24,25,34);
         text(1378,435,"HADES",244,240,232,8);
     }
-    text(105,825,"HADES  /  SEU PORTAL PS4",226,189,118,2);
+    text(105,825,"HADES  /  SEU PORTAL PS4",105,195,255,2);
     char count[64];std::snprintf(count,sizeof(count),"%d ITENS   %d CATEGORIAS",STORE_ITEM_COUNT,4);
     text(105,905,count,226,189,118,2);
     fill(55,976,1810,2,52,49,58);

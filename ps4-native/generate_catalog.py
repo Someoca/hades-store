@@ -23,14 +23,15 @@ for index, item in enumerate(items):
     else:
         url = item.get("downloadUrl", "")
     image_path = "/app0/sce_sys/covers/%s.bmp" % ascii_text(item.get("id") or "item-%03d" % index)
-    rows.append("    {%s, %s, %s, %s, %s}," % (
-        cpp(item.get("name")), cpp(category), cpp(item.get("description")), cpp(url), cpp(image_path)
+    games = " | ".join(game.get("name", "") for game in item.get("recommendedGames", []))
+    rows.append("    {%s, %s, %s, %s, %s, %s}," % (
+        cpp(item.get("name")), cpp(category), cpp(item.get("description")), cpp(url), cpp(image_path), cpp(games)
     ))
 
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(
     "// Generated from catalog/catalog.json. Do not edit by hand.\n"
-    "struct StoreItem { const char* name; const char* category; const char* description; const char* url; const char* imagePath; };\n"
+    "struct StoreItem { const char* name; const char* category; const char* description; const char* url; const char* imagePath; const char* recommendedGames; };\n"
     "static const StoreItem STORE_ITEMS[] = {\n" + "\n".join(rows) + "\n};\n"
     "static const int STORE_ITEM_COUNT = sizeof(STORE_ITEMS) / sizeof(STORE_ITEMS[0]);\n",
     encoding="utf-8",
