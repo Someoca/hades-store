@@ -79,6 +79,35 @@ function favoriteButton(item, compact = false) {
     + ' favoritos" aria-pressed="' + String(active) + '">' + (active ? '★' : '☆') + '</button>';
 }
 
+function generatedCover(item) {
+  const title = String(item.name || 'PLAYSTATION 4')
+    .replace(/[&<>"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[char]);
+  const seedText = String(item.id || item.name || 'PS4');
+  let seed = 0;
+  for (const char of seedText) seed = (seed * 31 + char.charCodeAt(0)) >>> 0;
+  const hue = seed % 360;
+  const hue2 = (hue + 48 + (seed % 80)) % 360;
+  const titleLines = [];
+  let line = '';
+  for (const word of String(item.name || 'PLAYSTATION 4').split(/\\s+/)) {
+    if ((line + ' ' + word).trim().length > 22 && line) {
+      titleLines.push(line);
+      line = word;
+    } else line = (line + ' ' + word).trim();
+  }
+  if (line) titleLines.push(line);
+  const titleSvg = titleLines.slice(0, 4).map((value, index) =>
+    '<text x="256" y="' + (603 + index * 33) + '" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="27" font-weight="900" letter-spacing="1">' + value.replace(/[&<>"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[char]) + '</text>'
+  ).join('');
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 768"><defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="hsl(' + hue + ',58%,26%)"/><stop offset=".56" stop-color="#071327"/><stop offset="1" stop-color="hsl(' + hue2 + ',78%,22%)"/></linearGradient><radialGradient id="light"><stop stop-color="hsl(' + hue2 + ',100%,72%)" stop-opacity=".9"/><stop offset="1" stop-color="hsl(' + hue2 + ',100%,45%)" stop-opacity="0"/></radialGradient><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V32" stroke="#c7eaff" stroke-opacity=".08" stroke-width="2"/></pattern></defs><rect width="512" height="768" fill="url(#bg)"/><rect width="512" height="768" fill="url(#grid)"/><ellipse cx="' + (185 + seed % 150) + '" cy="300" rx="270" ry="310" fill="url(#light)" opacity=".68"/><path d="M0 478L119 286l91 122 95-202 207 310v252H0Z" fill="#020817" fill-opacity=".72"/><path d="M30 504L153 338l81 109 90-143 165 211" fill="none" stroke="hsl(' + hue2 + ',94%,72%)" stroke-opacity=".78" stroke-width="5"/><circle cx="' + (170 + seed % 172) + '" cy="250" r="' + (70 + seed % 44) + '" fill="hsl(' + hue + ',88%,72%)" fill-opacity=".13"/><path d="M0 549Q128 474 251 547T512 526V768H0Z" fill="#020817" fill-opacity=".86"/><rect x="22" y="565" width="468" height="170" rx="8" fill="#020817" fill-opacity=".54" stroke="#d8efff" stroke-opacity=".32"/><text x="42" y="592" fill="hsl(' + hue2 + ',100%,78%)" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="3">HADES STORE  •  PS4</text>' + titleSvg + '<path d="M34 62h120M34 78h76" stroke="#fff" stroke-opacity=".7" stroke-width="4"/><circle cx="458" cy="65" r="18" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/></svg>';
+  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+}
+
+function coverSource(item) {
+  if (item.category === 'Jogos' && (!item.imageUrl || item.imageUrl.endsWith('game-cover.svg'))) return generatedCover(item);
+  return item.imageUrl || '';
+}
+
 function createCard(item) {
   const card = document.createElement('article');
   card.className = 'app-card';
@@ -89,11 +118,12 @@ function createCard(item) {
   card.dataset.cover = String(Number.isFinite(seed) ? (seed - 1 + 8) % 8 : state.catalog.indexOf(item) % 8);
 
   let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
-  if (item.imageUrl && item.category === 'Jogos') {
-    const titleOverlay = item.imageUrl.endsWith('game-cover.svg') ? '<strong class="cover-title-overlay">' + safe(item.name) + '</strong>' : '';
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy">' + titleOverlay + '<span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+  if (item.category === 'Jogos') {
+    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4</div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+  } else if (item.category === 'Emuladores') {
+    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4 · HOMEBREW</div><img class="game-cover-art" src="' + safe(item.imageUrl || generatedCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.imageUrl) {
-    visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>' + safe(item.category === 'Emuladores' ? 'EMULADOR' : 'APLICATIVO') + '</span></div>';
+    visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>APLICATIVO</span></div>';
   }
 
   card.innerHTML = favoriteButton(item, true) + visual
@@ -159,10 +189,11 @@ function updateDetailFavorite(item) {
 function showDetails(item) {
   state.activeItem = item;
   const image = $('#detail-image');
-  image.hidden = !item.imageUrl;
-  image.alt = item.imageUrl ? 'Imagem de ' + item.name : '';
-  if (item.imageUrl) {
-    image.src = item.imageUrl;
+  const detailImageUrl = coverSource(item);
+  image.hidden = !detailImageUrl;
+  image.alt = detailImageUrl ? 'Imagem de ' + item.name : '';
+  if (detailImageUrl) {
+    image.src = detailImageUrl;
     image.onerror = () => { image.hidden = true; };
   } else {
     image.removeAttribute('src');
