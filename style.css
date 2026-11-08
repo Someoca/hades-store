@@ -67,3 +67,67 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 .detail-icon img{display:block;width:100%;height:100%;object-fit:contain}
 .detail-icon img[hidden]{display:none}
 @media(max-width:560px){.software-art{height:166px}.software-art img{width:94px;height:94px}.detail-icon{width:96px;height:96px}}
+
+
+/* HADES Store evolution: catalog controls, favorites and responsive polish. */
+.brand{text-decoration:none;color:inherit}
+.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:-7px 0 18px}
+.results-count{margin:0;color:var(--muted);font-size:13px}
+.sort-control{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.sort-control select{min-width:150px;padding:9px 12px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit;border-radius:3px}
+.favorites-filter{margin-left:auto;color:#e6c47f}
+.favorite-toggle{position:absolute;z-index:3;top:12px;right:12px;width:38px;height:38px;border:1px solid #d6b87388;border-radius:50%;background:#090b12dd;color:#f1d38b;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:transform .18s ease,background .18s ease}
+.favorite-toggle:hover,.favorite-toggle[aria-pressed="true"]{background:#d6b87322;transform:scale(1.08)}
+.favorite-toggle.compact{top:10px;right:10px}
+.app-card{position:relative}
+.app-card h3{padding-right:25px}
+.detail-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+.secondary-btn{background:transparent;cursor:pointer;font-family:inherit}
+#detail-favorite[aria-pressed="true"]{background:#d6b87318;color:#f1d38b}
+.status.warning i{background:#f0c36d}
+.status.error i{background:#ff7777}
+.download[hidden]{display:none}
+@media(max-width:900px){
+  .topbar{height:auto;min-height:76px;gap:15px;padding:15px 0}
+  .top-actions{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  .controller-hint{display:none}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .quick-stats{gap:25px;justify-content:space-between}
+}
+@media(max-width:650px){
+  body{font-size:16px}
+  .app-shell{padding:0 18px}
+  .topbar{align-items:flex-start;flex-direction:column}
+  .top-actions{width:100%;justify-content:space-between;font-size:12px}
+  .brand-mark{padding:7px;margin-right:8px}
+  .hero{min-height:360px}
+  .hero-copy{padding:48px 0}
+  .hero-sub{max-width:75%;font-size:17px;line-height:1.45}
+  .quick-stats{gap:12px;padding:20px 0}
+  .quick-stats div{align-items:flex-start;flex-direction:column;gap:5px}
+  .quick-stats strong{font-size:19px}
+  .quick-stats span{font-size:9px;line-height:1.3}
+  .catalog-section{padding:35px 0 48px}
+  .section-heading{align-items:stretch;flex-direction:column;gap:16px}
+  .section-heading h2{font-size:28px}
+  .search{width:100%}
+  .filters{overflow-x:auto;padding:0 0 8px;margin:20px 0;scrollbar-width:thin}
+  .filter{white-space:nowrap;padding:9px 13px;font-size:13px}
+  .favorites-filter{margin-left:0}
+  .catalog-toolbar{align-items:flex-start;flex-direction:column;margin-top:0}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .app-card{padding:13px;min-height:220px}
+  .app-card h3{font-size:14px}
+  .app-card p{font-size:12px}
+  footer{flex-direction:column;font-size:11px}
+  dialog{padding:24px 18px}
+  .detail-actions{align-items:stretch;flex-direction:column}
+  .detail-actions>*{justify-content:center}
+}
+@media(max-width:380px){
+  .grid{grid-template-columns:1fr}
+  .app-card{min-height:190px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
