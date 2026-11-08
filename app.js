@@ -79,7 +79,7 @@ function createCard(item) {
   const card = document.createElement('article');
   card.className = 'app-card';
   card.tabIndex = 0;
-  card.setAttribute('role', 'button');
+  card.setAttribute('role', 'group');
   card.setAttribute('aria-label', 'Ver detalhes de ' + item.name);
   const seed = Number.parseInt(item.icon, 10);
   card.dataset.cover = String(Number.isFinite(seed) ? (seed - 1 + 8) % 8 : state.catalog.indexOf(item) % 8);
