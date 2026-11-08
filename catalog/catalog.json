@@ -190,7 +190,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA07737_00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/local/game-cover.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
     "storeTitle": "UNCHARTED: The Lost Legacy"
   },
@@ -535,7 +535,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA01200_00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/local/game-cover.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
     "storeTitle": "Street Fighter™ V: Champion Edition + Season 5 Premium Pass Bundle"
   },
