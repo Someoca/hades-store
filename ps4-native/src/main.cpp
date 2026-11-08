@@ -299,7 +299,7 @@ static void handleKey(SDL_Keycode key){
         else if(key==SDLK_RETURN)enterCatalog();
         return;
     }
-    if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else homeScreen=true;}
+    if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else running=false;}
     else if(key==SDLK_LEFT)handleDirection(-1,0);else if(key==SDLK_RIGHT)handleDirection(1,0);
     else if(key==SDLK_UP)handleDirection(0,-1);else if(key==SDLK_DOWN)handleDirection(0,1);
     else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
