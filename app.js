@@ -80,8 +80,6 @@ function favoriteButton(item, compact = false) {
 }
 
 function generatedCover(item) {
-  const title = String(item.name || 'PLAYSTATION 4')
-    .replace(/[&<>"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[char]);
   const seedText = String(item.id || item.name || 'PS4');
   let seed = 0;
   for (const char of seedText) seed = (seed * 31 + char.charCodeAt(0)) >>> 0;
@@ -89,7 +87,7 @@ function generatedCover(item) {
   const hue2 = (hue + 48 + (seed % 80)) % 360;
   const titleLines = [];
   let line = '';
-  for (const word of String(item.name || 'PLAYSTATION 4').split(/\\s+/)) {
+  for (const word of String(item.name || 'PLAYSTATION 4').split(/\s+/)) {
     if ((line + ' ' + word).trim().length > 22 && line) {
       titleLines.push(line);
       line = word;
