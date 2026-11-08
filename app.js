@@ -243,7 +243,6 @@ document.querySelectorAll('[data-category]').forEach((button) => {
   });
 });
 $('#search-shortcut').addEventListener('click', () => $('#search').focus());
-$('#settings-shortcut').addEventListener('click', () => $('#settings-tab').focus());
 $('#settings-tab').addEventListener('click', () => { state.category = 'Todos'; render(); $('#search').focus(); });
 search.addEventListener('input', render);
 $('#sort').addEventListener('change', (event) => {

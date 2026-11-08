@@ -152,3 +152,11 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#25a8ff,#0754c1);border:1px solid #9ceaff;box-shadow:0 0 16px #098fff, inset 0 0 9px #ffffff40;color:#fff}
 .nav-tab:hover:not(.active){background:linear-gradient(180deg,#0c3972,#061a39);border-color:#318fe3;box-shadow:inset 0 0 8px #168fff30;color:#fff}
 @media(max-width:560px){.top-nav{height:auto;min-height:48px;padding:4px;gap:2px}.nav-tab{height:22px;min-height:22px;gap:3px}.nav-icon{width:12px;height:12px;flex-basis:12px}}
+
+/* Sidebar simplified to the three primary actions. */
+.side-nav{gap:7px;margin-top:4px}
+.side-link{display:flex;align-items:center;gap:11px;min-height:38px;padding:7px 10px;border:1px solid transparent;border-radius:5px;background:transparent;color:#f6fbff;font-size:clamp(11px,1.1vw,14px);font-weight:700;letter-spacing:.15px;text-decoration:none;text-shadow:0 1px 3px #001126;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease}
+.side-icon{display:block;width:17px;height:17px;flex:0 0 17px;fill:none;stroke:#f7fbff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px #54bdff)}
+.side-link.selected,.side-link[aria-pressed="true"],.side-link:hover,.side-link:focus-visible{background:linear-gradient(90deg,#1597ff,#0750b4);border-color:#71d9ff;box-shadow:0 0 15px #087fff99,inset 0 0 10px #ffffff22;color:#fff;outline:none}
+.side-link:not(.selected):not([aria-pressed="true"]):hover{background:#0a3771;border-color:#348ddb;box-shadow:0 0 9px #087fff55}
+@media(max-width:560px){.side-link{min-height:32px;gap:0;padding:6px;justify-content:center}.side-icon{width:16px;height:16px;flex-basis:16px}.side-link span{display:none}}
