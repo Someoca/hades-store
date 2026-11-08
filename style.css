@@ -179,3 +179,8 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
   .side-icon{width:15px;height:15px;flex:0 0 15px}
   .side-link span{display:inline}
 }
+
+/* Use the supplied warrior and castle artwork in the HADES masthead. */
+.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,22,.94) 0%,rgba(2,8,22,.72) 27%,rgba(3,10,25,.24) 42%,rgba(3,10,24,0) 61%),url("assets/hades-home-banner.svg");background-repeat:no-repeat;background-size:cover,auto 100%;background-position:center,right center}
+@media(max-width:900px){.masthead{height:clamp(96px,13.2vw,120px);min-height:96px}}
+@media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover,auto 100%;background-position:center,right center}}

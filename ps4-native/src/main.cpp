@@ -189,13 +189,11 @@ static void draw(){
     fill(0,0,SW,SH,2,8,22);
     if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,20);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
     fill(0,0,SW,SH,2,9,23,195);
-    if(bannerTexture){SDL_Rect banner{0,0,SW,220};SDL_RenderCopy(renderer,bannerTexture,nullptr,&banner);}
-    fill(0,0,SW,220,2,8,22,88);
+    if(bannerTexture){SDL_Rect banner{920,0,1000,220};SDL_RenderCopy(renderer,bannerTexture,nullptr,&banner);}
     fill(0,216,SW,3,24,139,235);
     if(sigilTexture){SDL_Rect mark{28,22,96,96};SDL_RenderCopy(renderer,sigilTexture,nullptr,&mark);}
     text(137,30,"HADES STORE",245,248,255,5);
     text(139,86,"JOGOS  /  APLICATIVOS  /  EMULADORES",176,211,247,2);
-    text(1750,56,"PS4",235,245,255,4);
 
     int tabX=256;
     for(int i=0;i<FILTER_COUNT;i++){
