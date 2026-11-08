@@ -1,8 +1,88 @@
 <!doctype html>
 <html lang="pt-BR">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090b12"><title>HADES Store</title><link rel="stylesheet" href="style.css"></head>
-<body><div class="app-shell"><header class="topbar"><div class="brand"><span class="brand-mark">H</span><span>HADES <b>STORE</b></span></div><div class="top-actions"><span id="clock">--:--</span><span class="status"><i></i> CATÁLOGO ONLINE</span><span class="controller-hint">✕ Selecionar · ○ Voltar · F1 Buscar</span></div></header>
-<main><section class="hero"><div class="hero-copy"><p class="eyebrow">CENTRAL HOMEBREW</p><h1>Seu universo.<br><em>Suas possibilidades.</em></h1><p class="hero-sub">Aplicativos, homebrews, emuladores e jogos para PS4 em um só lugar.</p><a class="primary-btn" href="#catalogo">EXPLORAR CATÁLOGO <span>›</span></a></div><div class="hero-art"><img class="hades-mascot" src="assets/hades-gamer.svg" alt="Hades, mascote gamer da HADES Store, com headset e controle"></div></section>
-<section class="quick-stats"><div><strong id="count-apps">00</strong><span>ITENS NO CATÁLOGO</span></div><div><strong>04</strong><span>CATEGORIAS</span></div><div><strong>PS4</strong><span>INTERFACE ADAPTADA</span></div></section>
-<section class="catalog-section" id="catalogo"><div class="section-heading"><div><p class="eyebrow">DESCUBRA</p><h2>Biblioteca</h2></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar conteúdo..." autocomplete="off"></label></div><nav class="filters"><button class="filter active" data-category="Todos">Todos</button><button class="filter" data-category="Aplicativos">Aplicativos</button><button class="filter" data-category="Homebrews">Homebrews</button><button class="filter" data-category="Emuladores">Emuladores</button><button class="filter" data-category="Jogos">Jogos PS4</button></nav><div id="grid" class="grid" aria-live="polite"></div><p id="empty" class="empty" hidden>Nenhum item encontrado.</p><p class="pad-help">Use o direcional para navegar · ✕ abrir · ○ voltar · F1 buscar</p></section></main><footer><span>HADES STORE</span><span>Projeto comunitário independente. Distribua apenas conteúdo autorizado.</span></footer></div>
-<dialog id="details"><button class="close" aria-label="Fechar">×</button><div class="detail-icon" id="detail-icon"><img id="detail-image" alt="" hidden></div><p class="eyebrow" id="detail-category">CATEGORIA</p><h2 id="detail-title">Título</h2><p id="detail-description"></p><div class="detail-meta" id="detail-meta"></div><a id="detail-download" class="primary-btn download" href="#" target="_blank" rel="noopener">VER NA PLAYSTATION STORE ↗</a><div class="game-support-links" id="game-support-links" hidden><a id="detail-dlc" class="secondary-btn" href="#" target="_blank" rel="noopener">PROCURAR DLC OFICIAL ↗</a><a class="secondary-btn" href="https://www.playstation.com/pt-br/support/hardware/playstation-system-software-application-version/" target="_blank" rel="noopener">COMO ATUALIZAR NO PS4 ↗</a><p>Atualizações de jogos são verificadas no console: selecione o jogo, pressione OPTIONS e escolha “Procurar atualização”.</p></div><p class="dialog-note">O link abre a PlayStation Store. Idioma, edição e compatibilidade podem variar por região; confira os detalhes oficiais antes de adquirir.</p></dialog><script src="app.js"></script></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b12">
+  <meta name="description" content="HADES Store: catálogo comunitário de jogos, aplicativos, homebrews e emuladores para PS4.">
+  <title>HADES Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell" id="home">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="HADES Store - início"><img class="brand-avatar" src="assets/hades-avatar.svg" alt="" aria-hidden="true"><span>HADES <b>STORE</b></span></a>
+    <div class="top-actions">
+      <span id="clock" aria-label="Horário local">--:--</span>
+      <span class="status" id="catalog-status" role="status"><i></i> CARREGANDO CATÁLOGO</span>
+      <span class="controller-hint">✕ Selecionar · ○ Voltar · F1 Buscar</span><a class="home-shortcut" href="#home" aria-label="Voltar para a tela inicial" title="Voltar para o início (H)">⌂ <span>INÍCIO</span></a>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CENTRAL HOMEBREW</p>
+        <h1>Seu universo.<br><em>Suas possibilidades.</em></h1>
+        <p class="hero-sub">Aplicativos, homebrews, emuladores e jogos para PS4 em um só lugar.</p>
+        <a class="primary-btn" href="#catalogo">EXPLORAR CATÁLOGO <span>›</span></a>
+      </div>
+      <div class="hero-art"><img class="hades-mascot" src="assets/hades-avatar.svg" alt="Avatar Hades da HADES Store"></div>
+    </section>
+    <section class="quick-stats" aria-label="Resumo do catálogo">
+      <div><strong id="count-apps">—</strong><span>ITENS NO CATÁLOGO</span></div>
+      <div><strong id="count-categories">—</strong><span>CATEGORIAS</span></div>
+      <div><strong id="count-favorites">0</strong><span>FAVORITOS SALVOS</span></div>
+    </section>
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><p class="eyebrow">DESCUBRA</p><h2>Biblioteca</h2></div>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar conteúdo..." autocomplete="off" aria-label="Buscar no catálogo"></label>
+      </div>
+      <nav class="filters" aria-label="Filtrar por categoria">
+        <button class="filter active" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter" data-category="Aplicativos" aria-pressed="false">Aplicativos</button>
+        <button class="filter" data-category="Homebrews" aria-pressed="false">Homebrews</button>
+        <button class="filter" data-category="Emuladores" aria-pressed="false">Emuladores</button>
+        <button class="filter" data-category="Jogos" aria-pressed="false">Jogos PS4</button>
+        <button class="filter favorites-filter" data-category="Favoritos" aria-pressed="false">★ Favoritos</button>
+      </nav>
+      <div class="catalog-toolbar">
+        <p id="results-count" class="results-count" role="status" aria-live="polite">Carregando itens...</p>
+        <label class="sort-control">Ordenar por
+          <select id="sort">
+            <option value="featured">Destaques</option>
+            <option value="name-asc">Nome: A–Z</option>
+            <option value="name-desc">Nome: Z–A</option>
+            <option value="category">Categoria</option>
+          </select>
+        </label>
+      </div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+      <p id="empty" class="empty" hidden>Nenhum item encontrado. Experimente mudar a busca ou o filtro.</p>
+      <p class="pad-help">Use o direcional para navegar · ✕ abrir · ○ voltar · F1 buscar</p>
+    </section>
+  </main>
+  <footer><span>HADES STORE</span><span>Projeto comunitário independente. Distribua apenas conteúdo autorizado.</span></footer>
+</div>
+<dialog id="details" aria-labelledby="detail-title">
+  <button class="close" type="button" aria-label="Fechar detalhes">×</button>
+  <div class="detail-icon" id="detail-icon"><img id="detail-image" alt="" hidden></div>
+  <p class="eyebrow" id="detail-category">CATEGORIA</p>
+  <h2 id="detail-title">Título</h2>
+  <p id="detail-description"></p>
+  <div class="detail-meta" id="detail-meta"></div>
+  <div class="detail-actions">
+    <a id="detail-download" class="primary-btn download" href="#" target="_blank" rel="noopener noreferrer">ABRIR LINK OFICIAL ↗</a>
+    <button id="detail-favorite" class="secondary-btn" type="button" aria-pressed="false">☆ Salvar favorito</button>
+  </div>
+  <div class="game-support-links" id="game-support-links" hidden>
+    <a id="detail-dlc" class="secondary-btn" href="#" target="_blank" rel="noopener noreferrer">PROCURAR DLC OFICIAL ↗</a>
+    <a class="secondary-btn" href="https://www.playstation.com/pt-br/support/hardware/playstation-system-software-application-version/" target="_blank" rel="noopener noreferrer">COMO ATUALIZAR NO PS4 ↗</a>
+    <p>Atualizações de jogos são verificadas no console: selecione o jogo, pressione OPTIONS e escolha “Procurar atualização”.</p>
+  </div>
+  <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
+</dialog>
+<script src="app.js"></script>
+</body>
+</html>

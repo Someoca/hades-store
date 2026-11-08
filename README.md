@@ -1,12 +1,32 @@
 # HADES Store
 
-Loja web comunitária com busca, filtros e navegação por teclado/controle. O site tem 200 jogos, 14 aplicativos e 2 emuladores. Todos os jogos e aplicativos têm imagens de capa; os itens novos usam arte HADES original e os 50 títulos iniciais apontam para imagens do CDN da PlayStation Store.
+Loja comunitária para PS4 com catálogo web e aplicativo nativo. A versão web oferece busca por texto, filtros por categoria, ordenação e favoritos locais. O catálogo atual contém jogos, aplicativos e emuladores; os links devem apontar para páginas oficiais ou fontes autorizadas.
 
-A página pública é publicada automaticamente pelo GitHub Actions. Os jogos levam à PlayStation Store brasileira. Aplicativos e emuladores apontam para releases oficiais quando disponíveis. O servidor local no Windows usa `start-local.ps1` e `stop-local.ps1`; ele expõe somente a interface, o catálogo e as capas na rede local.
+## Recursos
 
-Os instaladores do DolphinPS4 e do M33 ficam na pasta local `emuladores/` e são ignorados pelo Git por tamanho. Nenhum jogo, BIOS ou firmware acompanha esses downloads.
+- Catálogo central em `catalog/catalog.json`, compartilhado com o gerador do aplicativo nativo.
+- Busca sem distinção de acentos, filtros por categoria e ordenação alfabética.
+- Favoritos salvos no navegador do usuário (localStorage); não são enviados a um servidor.
+- Interface responsiva para desktop, tablet e celular, com suporte a teclado e navegação por controle.
+- Validação automática de campos, IDs únicos, categorias e URLs HTTPS.
+- Deploy do site pelo GitHub Actions após validação.
+- Build do aplicativo nativo PS4 com OpenOrbis e SDL2.
+
+## Executar localmente
+
+No Windows, use `start-local.ps1` para iniciar o servidor local e `stop-local.ps1` para encerrá-lo. O site é estático: não exige banco de dados nem envia favoritos para a rede.
+
+Para validar o catálogo e a sintaxe JavaScript com Node.js 20 ou superior:
+
+```sh
+node tools/validate-catalog.mjs
+node --check app.js
+```
 
 ## Aplicativo nativo PS4
 
-O código nativo SDL2 e o build automatizado estão em `ps4-native/`. Mudanças no código ou catálogo geram um artefato PKG pela workflow `Build HADES Store native PS4 PKG`. O pacote exige um PS4 preparado para executar homebrew. Ainda requer teste de instalação e execução no console-alvo antes de ser considerado validado.
+O código SDL2 e o processo de build estão em `ps4-native/`. Consulte [ps4-native/README.md](ps4-native/README.md) para gerar o PKG. O pacote é homebrew de teste e exige um console preparado para executar homebrew. A aprovação do build automatizado não substitui testes de instalação, inicialização, controles e abertura de links no console-alvo.
 
+## Segurança e procedência
+
+A HADES Store é um catálogo/launcher comunitário. Não distribui jogos comerciais, BIOS, chaves ou firmware. Verifique sempre a procedência e a licença dos arquivos externos antes de baixar ou instalar.

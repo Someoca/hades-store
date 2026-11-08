@@ -58,13 +58,118 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 
 
 /* Cards de aplicativos e emuladores: arte própria em destaque, sem disco decorativo. */
-.software-art{height:194px;display:flex;align-items:flex-end;justify-content:flex-start;margin:-5px 0 17px;overflow:hidden;border:1px solid #d6b87345;border-radius:9px;background:linear-gradient(145deg,#22202b,#11121a);position:relative;isolation:isolate}
-.software-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,filter .35s ease;z-index:-1}
-.software-art span{margin:0 0 12px 14px;padding:7px 10px;border:1px solid #e2bd7640;border-radius:4px;background:#0b0d14c9;backdrop-filter:blur(8px);font-size:9px;letter-spacing:2px;font-weight:800;color:#e2bd76}
+.software-art{height:194px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;margin:-5px 0 17px;overflow:hidden;border:1px solid #d6b87345;border-radius:5px;background:radial-gradient(ellipse at 50% 45%,#d6b87320,transparent 66%),linear-gradient(145deg,#22202b,#11121a);position:relative}
+.software-art img{width:118px;height:118px;object-fit:contain;filter:drop-shadow(0 9px 16px #000b);transition:transform .2s ease}
+.software-art span{font-size:9px;letter-spacing:2px;font-weight:800;color:#e2bd76}
 .software-art.art-image-missing:before{content:"HADES";font-size:26px;font-weight:900;letter-spacing:4px;color:#e2bd76}
-.app-card:hover .software-art img,.app-card:focus-visible .software-art img{transform:scale(1.045);filter:saturate(1.14) brightness(1.08)}
+.app-card:hover .software-art img,.app-card:focus-visible .software-art img{transform:scale(1.06)}
 .detail-icon{width:112px;height:112px;padding:9px;overflow:hidden}
 .detail-icon img{display:block;width:100%;height:100%;object-fit:contain}
 .detail-icon img[hidden]{display:none}
 @media(max-width:560px){.software-art{height:166px}.software-art img{width:94px;height:94px}.detail-icon{width:96px;height:96px}}
 
+
+/* HADES Store evolution: catalog controls, favorites and responsive polish. */
+.brand{text-decoration:none;color:inherit}
+.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:-7px 0 18px}
+.results-count{margin:0;color:var(--muted);font-size:13px}
+.sort-control{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}
+.sort-control select{min-width:150px;padding:9px 12px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit;border-radius:3px}
+.favorites-filter{margin-left:auto;color:#e6c47f}
+.favorite-toggle{position:absolute;z-index:3;top:12px;right:12px;width:38px;height:38px;border:1px solid #d6b87388;border-radius:50%;background:#090b12dd;color:#f1d38b;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:transform .18s ease,background .18s ease}
+.favorite-toggle:hover,.favorite-toggle[aria-pressed="true"]{background:#d6b87322;transform:scale(1.08)}
+.favorite-toggle.compact{top:10px;right:10px}
+.app-card{position:relative}
+.app-card h3{padding-right:25px}
+.detail-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}
+.secondary-btn{background:transparent;cursor:pointer;font-family:inherit}
+#detail-favorite[aria-pressed="true"]{background:#d6b87318;color:#f1d38b}
+.status.warning i{background:#f0c36d}
+.status.error i{background:#ff7777}
+.download[hidden]{display:none}
+@media(max-width:900px){
+  .topbar{height:auto;min-height:76px;gap:15px;padding:15px 0}
+  .top-actions{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+  .controller-hint{display:none}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .quick-stats{gap:25px;justify-content:space-between}
+}
+@media(max-width:650px){
+  body{font-size:16px}
+  .app-shell{padding:0 18px}
+  .topbar{align-items:flex-start;flex-direction:column}
+  .top-actions{width:100%;justify-content:space-between;font-size:12px}
+  .brand-mark{padding:7px;margin-right:8px}
+  .hero{min-height:360px}
+  .hero-copy{padding:48px 0}
+  .hero-sub{max-width:75%;font-size:17px;line-height:1.45}
+  .quick-stats{gap:12px;padding:20px 0}
+  .quick-stats div{align-items:flex-start;flex-direction:column;gap:5px}
+  .quick-stats strong{font-size:19px}
+  .quick-stats span{font-size:9px;line-height:1.3}
+  .catalog-section{padding:35px 0 48px}
+  .section-heading{align-items:stretch;flex-direction:column;gap:16px}
+  .section-heading h2{font-size:28px}
+  .search{width:100%}
+  .filters{overflow-x:auto;padding:0 0 8px;margin:20px 0;scrollbar-width:thin}
+  .filter{white-space:nowrap;padding:9px 13px;font-size:13px}
+  .favorites-filter{margin-left:0}
+  .catalog-toolbar{align-items:flex-start;flex-direction:column;margin-top:0}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .app-card{padding:13px;min-height:220px}
+  .app-card h3{font-size:14px}
+  .app-card p{font-size:12px}
+  footer{flex-direction:column;font-size:11px}
+  dialog{padding:24px 18px}
+  .detail-actions{align-items:stretch;flex-direction:column}
+  .detail-actions>*{justify-content:center}
+}
+@media(max-width:380px){
+  .grid{grid-template-columns:1fr}
+  .app-card{min-height:190px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* Leitura a distância em TV e navegação por controle. */
+body{font-size:22px}
+.topbar{min-height:100px}
+.brand{font-size:22px;gap:14px}
+.brand-avatar{width:58px;height:58px;object-fit:cover;border-radius:50%;border:2px solid #d6b873;box-shadow:0 0 18px #a995db66;transform-style:preserve-3d;animation:avatar-orbit 7s ease-in-out infinite}
+@keyframes avatar-orbit{0%,100%{transform:perspective(600px) rotateY(-7deg) translateY(0)}50%{transform:perspective(600px) rotateY(9deg) translateY(-4px)}}
+.home-shortcut{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border:1px solid #e2bd76a6;border-radius:4px;color:#f2d99f;text-decoration:none;font-size:13px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.home-shortcut:hover,.home-shortcut:focus-visible{background:#e2bd7620;outline:2px solid #e2bd76}
+.app-card{min-height:285px;padding:24px}
+.app-card h3{font-size:21px;line-height:1.25}
+.app-card p{font-size:18px;line-height:1.45}
+.card-bottom .tag,.card-bottom .version{font-size:15px}
+.results-count,.sort-control{font-size:16px}
+.filter{font-size:18px;padding:12px 22px}
+.game-physical{height:220px}
+.game-cover{width:148px;height:198px}
+.ps4-band{position:absolute;z-index:4;top:0;left:0;right:0;height:24px;display:flex;align-items:center;padding:0 9px;background:linear-gradient(90deg,#0877df,#0a4ea8);border-bottom:1px solid #bfe5ff;color:#fff;font-size:15px;font-weight:900;letter-spacing:2px;text-shadow:0 1px 2px #001b49}
+.game-cover-art{inset:24px 0 0;height:calc(100% - 24px);object-fit:cover}
+.cover-fallback{top:24px}
+.game-disc{width:168px;height:168px}
+.pad-help{font-size:16px}
+@media(max-width:900px){body{font-size:18px}.app-card h3{font-size:18px}.app-card p{font-size:16px}.home-shortcut{padding:8px 10px}}
+@media(max-width:650px){.brand-avatar{width:44px;height:44px}.home-shortcut{font-size:11px}.game-physical{height:166px}.game-cover{width:112px;height:150px}.ps4-band{height:19px;font-size:12px}.game-cover-art{top:19px;height:calc(100% - 19px)}.app-card{min-height:230px}.app-card h3{font-size:15px}.app-card p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.brand-avatar{animation:none}}
+
+/* Refinamento de capas PS4 e leitura em televisores. */
+.game-cover{border:2px solid #d8e5f5a8;border-left:5px solid #d8e5f5;background:#101522;box-shadow:0 14px 26px #000c,5px 0 0 #d7e4f333;transform:perspective(700px) rotateY(-7deg);transform-origin:left center}
+.game-cover::after{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(112deg,#ffffff28 0%,transparent 24%,transparent 70%,#ffffff12 100%);border-left:1px solid #ffffff70}
+.ps4-band{left:0;right:0;top:0;height:25px;padding-left:12px;background:linear-gradient(90deg,#0878dc,#0751a8 72%,#063a7d);box-shadow:0 2px 5px #001c4c99}
+.game-cover-art{top:25px;left:0;right:0;bottom:0;width:100%;height:calc(100% - 25px);object-fit:cover;object-position:center}
+.cover-fallback{top:25px;inset-inline:0;bottom:0}
+.app-card{min-height:305px}
+.app-card h3{font-size:23px;line-height:1.3}
+.app-card p{font-size:19px;line-height:1.5}
+.card-bottom .tag,.card-bottom .version{font-size:15px;letter-spacing:.6px}
+.hero-art .hades-mascot{transform-style:preserve-3d;filter:drop-shadow(0 18px 30px #000b);animation:hades-float 6s ease-in-out infinite}
+@keyframes hades-float{0%,100%{transform:perspective(900px) rotateY(-5deg) rotateX(1deg) translateY(0)}50%{transform:perspective(900px) rotateY(6deg) rotateX(-2deg) translateY(-9px)}}
+.app-card:focus-visible{outline:3px solid #e6c47f;outline-offset:4px}
+@media(max-width:900px){.app-card h3{font-size:19px}.app-card p{font-size:16px}.game-cover{transform:perspective(700px) rotateY(-5deg)}}
+@media(max-width:650px){.app-card{min-height:235px}.app-card h3{font-size:16px}.app-card p{font-size:14px}.ps4-band{height:19px;font-size:12px}.game-cover-art{top:19px;height:calc(100% - 19px)}.cover-fallback{top:19px}}
+@media(prefers-reduced-motion:reduce){.hero-art .hades-mascot{animation:none}}

@@ -8,6 +8,14 @@ on:
       - 'assets/covers/**'
       - 'catalog/catalog.json'
       - '.github/workflows/build-ps4-native.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ps4-native/**'
+      - 'assets/hades-gamer.svg'
+      - 'assets/covers/**'
+      - 'catalog/catalog.json'
+      - '.github/workflows/build-ps4-native.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -33,7 +41,3 @@ jobs:
             ps4-native/dist/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
-
-
-
-

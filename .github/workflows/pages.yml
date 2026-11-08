@@ -2,6 +2,8 @@ name: Deploy HADES Store to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -11,7 +13,22 @@ concurrency:
   group: pages
   cancel-in-progress: true
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate catalog
+        run: node tools/validate-catalog.mjs
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Validate static site files
+        run: test -s index.html && test -s style.css && test -s app.js
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: validate
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -19,8 +36,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Validate static site
-        run: test -s index.html && test -s style.css && test -s app.js
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
