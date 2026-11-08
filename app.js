@@ -130,7 +130,6 @@ function render() {
   document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
-    button.classList.toggle('selected', active);
     button.setAttribute('aria-pressed', String(active));
   });
   updateStats();
@@ -188,12 +187,15 @@ function showDetails(item) {
   if (!dialog.open) dialog.showModal();
 }
 
-document.querySelectorAll('.filter').forEach((button) => {
+document.querySelectorAll('[data-category]').forEach((button) => {
   button.addEventListener('click', () => {
     state.category = button.dataset.category;
     render();
   });
 });
+$('#search-shortcut').addEventListener('click', () => $('#search').focus());
+$('#settings-shortcut').addEventListener('click', () => $('#settings-tab').focus());
+$('#settings-tab').addEventListener('click', () => { state.category = 'Todos'; render(); $('#search').focus(); });
 search.addEventListener('input', render);
 $('#sort').addEventListener('change', (event) => {
   state.sort = event.target.value;
