@@ -86,7 +86,7 @@ function createCard(item) {
 
   let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
   if (item.imageUrl && item.category === 'Jogos') {
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-disc"><span></span></div><div class="game-cover"><div class="ps4-band">PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">◈ PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.imageUrl) {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>' + safe(item.category === 'Emuladores' ? 'EMULADOR' : 'APLICATIVO') + '</span></div>';
   }
@@ -127,9 +127,10 @@ function render() {
   grid.replaceChildren(...items.map(createCard));
   empty.hidden = items.length > 0;
   $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
-  document.querySelectorAll('.filter').forEach((button) => {
+  document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
+    button.classList.toggle('selected', active);
     button.setAttribute('aria-pressed', String(active));
   });
   updateStats();
@@ -187,7 +188,7 @@ function showDetails(item) {
   if (!dialog.open) dialog.showModal();
 }
 
-document.querySelectorAll('.filter').forEach((button) => {
+document.querySelectorAll('[data-category]').forEach((button) => {
   button.addEventListener('click', () => {
     state.category = button.dataset.category;
     render();
