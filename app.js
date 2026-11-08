@@ -179,6 +179,20 @@ function showDetails(item) {
   }
 
   $('#game-support-links').hidden = item.category !== 'Jogos';
+  const gamesSection = $('#emulator-games');
+  const gamesList = $('#emulator-games-list');
+  gamesList.replaceChildren();
+  const recommendedGames = Array.isArray(item.recommendedGames) ? item.recommendedGames : [];
+  gamesSection.hidden = recommendedGames.length === 0;
+  for (const game of recommendedGames) {
+    const row = document.createElement('li');
+    const title = document.createElement('strong');
+    title.textContent = game.name;
+    const details = document.createElement('span');
+    details.textContent = [game.platform, game.genre].filter(Boolean).join(' · ');
+    row.append(title, details);
+    gamesList.append(row);
+  }
   if (item.category === 'Jogos') $('#detail-dlc').href = 'https://store.playstation.com/pt-br/search/' + encodeURIComponent(item.name + ' DLC');
   $('.dialog-note').textContent = item.linkLabel
     ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'

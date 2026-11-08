@@ -77,3 +77,12 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 @media(max-width:760px){.console-layout{grid-template-columns:86px minmax(0,1fr)}.sidebar{padding:12px 5px}.side-link{justify-content:center;padding:8px 3px}.side-link span{display:none}.profile img{width:60px;height:60px}.ps-symbol{font-size:30px}.top-nav{overflow-x:auto;justify-content:flex-start}.nav-tab{flex:0 0 auto}.catalog-heading{align-items:flex-start;flex-direction:column}.catalog-tools{width:100%}.search{flex:1}.search input{width:100%}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.game-physical{height:clamp(120px,27vw,190px)}.controller-bar{gap:10px;font-size:10px}.controller-bar strong{display:none}}
 @media(max-width:460px){.masthead{height:78px}.brand strong{font-size:22px}.brand small{font-size:7px;letter-spacing:.6px}.brand-mark{width:52px;height:52px}.console-layout{grid-template-columns:60px minmax(0,1fr)}.sidebar{padding:8px 3px}.profile img{width:46px;height:46px}.profile strong{font-size:9px}.profile small{font-size:8px}.side-link{font-size:15px;min-height:29px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical{height:clamp(145px,45vw,210px)}.catalog-heading h1{font-size:19px}.catalog-tools{flex-wrap:wrap}.sort-control select{max-width:110px}.controller-bar{justify-content:space-between;gap:4px;padding:6px;font-size:9px}.controller-bar span:nth-child(3){display:none}.controller-bar strong{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.emulator-games{margin-top:22px;padding:16px;border:1px solid #248df0;border-radius:6px;background:linear-gradient(145deg,#071d3b,#040d1d);box-shadow:inset 0 0 18px #087fff16}
+.emulator-games h3{margin:0 0 6px;color:#76dfff;font-size:14px;letter-spacing:2px}
+.emulator-games-note{margin:0 0 12px;color:#b8cce7;font-size:12px;line-height:1.5}
+.emulator-games ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.emulator-games li{display:flex;flex-direction:column;gap:4px;padding:9px;border:1px solid #1d5d9c;background:#06162d;border-radius:4px;min-width:0}
+.emulator-games li strong{font-size:12px;color:#fff;line-height:1.3}
+.emulator-games li span{font-size:10px;color:#79caff}
+@media(max-width:480px){.emulator-games ul{grid-template-columns:1fr}}

@@ -3207,7 +3207,54 @@
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/DolphinPS4/releases/download/v04.19/DolphinPS4-v04.19.pkg",
     "imageUrl": "assets/covers/emulator-dolphin.svg",
-    "linkLabel": "BAIXAR PKG OFICIAL ↗"
+    "linkLabel": "BAIXAR PKG OFICIAL ↗",
+    "recommendedGames": [
+      {
+        "name": "Super Mario Sunshine",
+        "platform": "GameCube",
+        "genre": "Plataforma e aventura"
+      },
+      {
+        "name": "The Legend of Zelda: The Wind Waker",
+        "platform": "GameCube",
+        "genre": "Aventura e exploração"
+      },
+      {
+        "name": "Mario Kart: Double Dash!!",
+        "platform": "GameCube",
+        "genre": "Corrida"
+      },
+      {
+        "name": "Super Smash Bros. Melee",
+        "platform": "GameCube",
+        "genre": "Luta"
+      },
+      {
+        "name": "Metroid Prime",
+        "platform": "GameCube",
+        "genre": "Ação e exploração"
+      },
+      {
+        "name": "Super Mario Galaxy",
+        "platform": "Wii",
+        "genre": "Plataforma e aventura"
+      },
+      {
+        "name": "Mario Kart Wii",
+        "platform": "Wii",
+        "genre": "Corrida"
+      },
+      {
+        "name": "New Super Mario Bros. Wii",
+        "platform": "Wii",
+        "genre": "Plataforma"
+      },
+      {
+        "name": "The Legend of Zelda: Twilight Princess",
+        "platform": "Wii",
+        "genre": "Aventura"
+      }
+    ]
   },
   {
     "id": "emulator-m33-ps4",
@@ -3221,6 +3268,53 @@
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/M33/releases/download/1.19/M33-v1.19.pkg",
     "imageUrl": "assets/covers/emulator-m33.svg",
-    "linkLabel": "BAIXAR PKG OFICIAL ↗"
+    "linkLabel": "BAIXAR PKG OFICIAL ↗",
+    "recommendedGames": [
+      {
+        "name": "God of War: Chains of Olympus",
+        "platform": "PSP",
+        "genre": "Ação"
+      },
+      {
+        "name": "God of War: Ghost of Sparta",
+        "platform": "PSP",
+        "genre": "Ação"
+      },
+      {
+        "name": "Tekken 6",
+        "platform": "PSP",
+        "genre": "Luta"
+      },
+      {
+        "name": "Grand Theft Auto: Vice City Stories",
+        "platform": "PSP",
+        "genre": "Mundo aberto"
+      },
+      {
+        "name": "Dragon Ball Z: Shin Budokai 2",
+        "platform": "PSP",
+        "genre": "Luta"
+      },
+      {
+        "name": "Gran Turismo",
+        "platform": "PSP",
+        "genre": "Corrida"
+      },
+      {
+        "name": "Metal Gear Solid: Peace Walker",
+        "platform": "PSP",
+        "genre": "Ação e estratégia"
+      },
+      {
+        "name": "Daxter",
+        "platform": "PSP",
+        "genre": "Plataforma"
+      },
+      {
+        "name": "Patapon 2",
+        "platform": "PSP",
+        "genre": "Ritmo e estratégia"
+      }
+    ]
   }
 ]
