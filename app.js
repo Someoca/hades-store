@@ -23,6 +23,8 @@ let gamepadPolling = false;
 const SOUND_PREFERENCE_KEY = 'hades-store:ui-sounds:v1';
 let audioEnabled = false;
 let uiAudioContext = null;
+let requestedCarouselPage = null;
+let carouselTargetTimer = 0;
 try {
   audioEnabled = localStorage.getItem(SOUND_PREFERENCE_KEY) === 'true';
 } catch (error) {
@@ -104,6 +106,11 @@ function playUiSound(kind = 'move') {
       volume.gain.exponentialRampToValueAtTime(0.0001, start + 0.13);
       oscillator.connect(volume);
       volume.connect(context.destination);
+      oscillator.onended = () => {
+        oscillator.disconnect();
+        volume.disconnect();
+        oscillator.onended = null;
+      };
       oscillator.start(start);
       oscillator.stop(start + 0.14);
     };
@@ -254,6 +261,7 @@ function createCard(item) {
 
 function render() {
   const items = filteredItems();
+  clearCarouselTarget();
   grid.replaceChildren(...items.map(createCard));
   grid.scrollLeft = 0;
   empty.hidden = items.length > 0;
@@ -319,9 +327,8 @@ function updateCarouselControls() {
   if (!pageCount || !previous || !next) return;
   const metrics = carouselMetrics();
   const pages = metrics.pages;
-  const currentPage = pages
-    ? Math.min(pages, Math.max(1, Math.round(grid.scrollLeft / metrics.pageStep) + 1))
-    : 0;
+  const currentPageIndex = requestedCarouselPage ?? currentCarouselPageIndex(metrics);
+  const currentPage = pages ? currentPageIndex + 1 : 0;
   pageCount.textContent = currentPage + ' / ' + pages;
   previous.disabled = currentPage <= 1;
   next.disabled = currentPage === 0 || currentPage >= pages;
@@ -340,7 +347,7 @@ function carouselMetrics() {
   const paddingRight = Number.parseFloat(styles.paddingRight) || 0;
   const usableWidth = Math.max(1, grid.clientWidth - paddingLeft - paddingRight);
   const cardWidth = cards[0].getBoundingClientRect().width;
-  const step = cardWidth + gap;
+  const step = Math.max(1, cardWidth + gap);
   const perPage = Math.max(1, Math.floor((usableWidth + gap + 0.5) / step));
   const pages = Math.ceil(cards.length / perPage);
   const lastPageCount = cards.length - (pages - 1) * perPage;
@@ -349,13 +356,46 @@ function carouselMetrics() {
   return { cards, perPage, pages, pageStep: step * perPage };
 }
 
+function carouselPageOffset(pageIndex, metrics) {
+  const firstCard = metrics.cards[pageIndex * metrics.perPage];
+  if (!firstCard) return 0;
+  const gridBounds = grid.getBoundingClientRect();
+  const paddingLeft = Number.parseFloat(window.getComputedStyle(grid).paddingLeft) || 0;
+  const offset = grid.scrollLeft + firstCard.getBoundingClientRect().left - gridBounds.left - paddingLeft;
+  const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth);
+  return Math.min(maxScroll, Math.max(0, offset));
+}
+
+function currentCarouselPageIndex(metrics) {
+  if (!metrics.pages) return 0;
+  return Math.min(metrics.pages - 1, Math.max(0, Math.round(grid.scrollLeft / metrics.pageStep)));
+}
+
+function clearCarouselTarget() {
+  requestedCarouselPage = null;
+  window.clearTimeout(carouselTargetTimer);
+}
+
+function scheduleCarouselTargetReset() {
+  if (requestedCarouselPage === null) return;
+  window.clearTimeout(carouselTargetTimer);
+  carouselTargetTimer = window.setTimeout(() => {
+    clearCarouselTarget();
+    updateCarouselControls();
+  }, 140);
+}
+
 function goToCarouselPage(direction) {
-  const { pages, pageStep } = carouselMetrics();
+  const metrics = carouselMetrics();
+  const { pages } = metrics;
   if (!pages) return;
-  const currentPage = Math.min(pages - 1, Math.max(0, Math.round(grid.scrollLeft / pageStep)));
+  const currentPage = requestedCarouselPage ?? currentCarouselPageIndex(metrics);
   const targetPage = Math.min(pages - 1, Math.max(0, currentPage + direction));
   if (targetPage === currentPage) return;
-  grid.scrollTo({ left: targetPage * pageStep, behavior: 'smooth' });
+  requestedCarouselPage = targetPage;
+  window.clearTimeout(carouselTargetTimer);
+  grid.scrollTo({ left: carouselPageOffset(targetPage, metrics), behavior: 'smooth' });
+  updateCarouselControls();
   playUiSound('move');
 }
 
@@ -442,6 +482,11 @@ $('#sound-toggle').addEventListener('click', () => {
   }
   updateSoundToggle();
   if (audioEnabled) playUiSound('confirm');
+  else if (uiAudioContext) {
+    const context = uiAudioContext;
+    uiAudioContext = null;
+    context.close().catch(() => {});
+  }
 });
 $('#search-shortcut').addEventListener('click', () => $('#search').focus());
 search.addEventListener('input', render);
@@ -459,9 +504,18 @@ grid.addEventListener('click', (event) => {
 $('#carousel-previous').addEventListener('click', () => goToCarouselPage(-1));
 $('#carousel-next').addEventListener('click', () => goToCarouselPage(1));
 grid.addEventListener('scroll', updateCarouselControls, { passive: true });
+grid.addEventListener('scroll', scheduleCarouselTargetReset, { passive: true });
+grid.addEventListener('scrollend', () => {
+  clearCarouselTarget();
+  updateCarouselControls();
+});
+grid.addEventListener('pointerdown', clearCarouselTarget);
 grid.addEventListener('scroll', scheduleCatalogBackdropUpdate, { passive: true });
 grid.addEventListener('focusin', scheduleCatalogBackdropUpdate);
-window.addEventListener('resize', updateCarouselControls);
+window.addEventListener('resize', () => {
+  clearCarouselTarget();
+  updateCarouselControls();
+});
 
 function pollGamepadShoulders() {
   gamepadPolling = false;
