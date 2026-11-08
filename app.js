@@ -12,7 +12,12 @@ const search = $('#search');
 const empty = $('#empty');
 const dialog = $('#details');
 const status = $('#catalog-status');
+const backdropLayers = [...document.querySelectorAll('.catalog-backdrop-layer')];
 const FAVORITES_KEY = 'hades-store:favorites:v1';
+let visibleBackdropIndex = 0;
+let displayedBackdropId = '';
+let pendingBackdropId = '';
+let backdropUpdateTimer = 0;
 
 function safe(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -136,6 +141,7 @@ function coverSource(item) {
 function createCard(item) {
   const card = document.createElement('article');
   card.className = 'app-card';
+  card.dataset.itemId = item.id;
   card.tabIndex = 0;
   card.setAttribute('role', 'group');
   card.setAttribute('aria-label', 'Ver detalhes de ' + item.name);
@@ -199,12 +205,57 @@ function render() {
   empty.hidden = items.length > 0;
   $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
   updateCarouselControls();
+  scheduleCatalogBackdropUpdate();
   document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
   updateStats();
+}
+
+function scheduleCatalogBackdropUpdate() {
+  if (backdropLayers.length < 2) return;
+  window.clearTimeout(backdropUpdateTimer);
+  backdropUpdateTimer = window.setTimeout(updateCatalogBackdrop, 100);
+}
+
+function updateCatalogBackdrop() {
+  const viewport = grid.getBoundingClientRect();
+  const center = viewport.left + viewport.width / 2;
+  let selectedCard = null;
+  let selectedDistance = Infinity;
+
+  for (const card of grid.querySelectorAll('.app-card')) {
+    const bounds = card.getBoundingClientRect();
+    if (bounds.right <= viewport.left || bounds.left >= viewport.right) continue;
+    const distance = Math.abs((bounds.left + bounds.right) / 2 - center);
+    if (distance < selectedDistance) {
+      selectedCard = card;
+      selectedDistance = distance;
+    }
+  }
+
+  if (!selectedCard) return;
+  const itemId = selectedCard.dataset.itemId;
+  if (!itemId || itemId === displayedBackdropId || itemId === pendingBackdropId) return;
+  const artwork = selectedCard.querySelector('.game-cover-art, .software-art img');
+  const imageUrl = artwork?.currentSrc || artwork?.src;
+  if (!imageUrl) return;
+
+  pendingBackdropId = itemId;
+  const nextIndex = 1 - visibleBackdropIndex;
+  const nextLayer = backdropLayers[nextIndex];
+  nextLayer.style.backgroundImage = 'linear-gradient(180deg,rgba(4,8,20,.54),rgba(5,9,22,.72) 48%,rgba(5,8,17,.84)),url(' + JSON.stringify(imageUrl) + ')';
+  nextLayer.dataset.itemId = itemId;
+  window.requestAnimationFrame(() => {
+    if (pendingBackdropId !== itemId) return;
+    nextLayer.classList.add('is-visible');
+    backdropLayers[visibleBackdropIndex].classList.remove('is-visible');
+    visibleBackdropIndex = nextIndex;
+    displayedBackdropId = itemId;
+    pendingBackdropId = '';
+  });
 }
 
 function updateCarouselControls() {
@@ -308,6 +359,8 @@ grid.addEventListener('click', (event) => {
 $('#carousel-previous').addEventListener('click', () => grid.scrollBy({ left: -grid.clientWidth, behavior: 'smooth' }));
 $('#carousel-next').addEventListener('click', () => grid.scrollBy({ left: grid.clientWidth, behavior: 'smooth' }));
 grid.addEventListener('scroll', updateCarouselControls, { passive: true });
+grid.addEventListener('scroll', scheduleCatalogBackdropUpdate, { passive: true });
+grid.addEventListener('focusin', scheduleCatalogBackdropUpdate);
 window.addEventListener('resize', updateCarouselControls);
 $('#detail-favorite').addEventListener('click', () => {
   if (state.activeItem) toggleFavorite(state.activeItem.id);

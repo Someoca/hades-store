@@ -198,7 +198,12 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 @media(prefers-reduced-motion:reduce){.game-grid{scroll-behavior:auto}}
 
 /* Submundo HADES como cenário suave do painel principal. */
-.main-panel{background-color:#0b0d18;background-image:linear-gradient(180deg,rgba(4,10,25,.58),rgba(5,10,22,.58) 48%,rgba(5,8,17,.78)),url("assets/hades-underworld-bg.svg");background-repeat:no-repeat;background-position:center;background-size:cover}
+.main-panel{position:relative;isolation:isolate;background-color:#0b0d18;background-image:linear-gradient(180deg,rgba(4,10,25,.58),rgba(5,10,22,.72) 48%,rgba(5,8,17,.82)),url("assets/hades-underworld-bg.svg");background-repeat:no-repeat;background-position:center;background-size:cover}
+.catalog-backdrop{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
+.catalog-backdrop-layer{position:absolute;inset:-3%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.78);opacity:0;transform:scale(1.025);transition:opacity .8s ease,transform 1.4s ease}
+.catalog-backdrop-layer.is-visible{opacity:.78;transform:scale(1)}
+.catalog-section{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.catalog-backdrop-layer{transition:none}}
 
 /* Capas ampliadas e menos itens por tela no carrossel. */
 .game-grid>.app-card{flex-basis:calc((100% - 24px)/4)}
