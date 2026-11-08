@@ -23,6 +23,16 @@ node tools/validate-catalog.mjs
 node --check app.js
 ```
 
+## Baixar as capas para a Área de Trabalho
+
+Com Node.js 20 ou superior, execute na pasta do projeto:
+
+```sh
+node tools/download-covers-to-desktop.mjs
+```
+
+O script copia as capas locais do catálogo e baixa as capas HTTPS para `HADES Store Capinhas` na Área de Trabalho. Para escolher outra pasta, use `node tools/download-covers-to-desktop.mjs --output "C:\Capinhas"`.
+
 ## Aplicativo nativo PS4
 
 O código SDL2 e o processo de build estão em `ps4-native/`. Consulte [ps4-native/README.md](ps4-native/README.md) para gerar o PKG. O pacote é homebrew de teste e exige um console preparado para executar homebrew. A aprovação do build automatizado não substitui testes de instalação, inicialização, controles e abertura de links no console-alvo.
