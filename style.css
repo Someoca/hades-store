@@ -188,9 +188,15 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 }
 
 /* Use the supplied warrior and castle artwork in the HADES masthead. */
-.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,22,.94) 0%,rgba(2,8,22,.72) 27%,rgba(3,10,25,.24) 42%,rgba(3,10,24,0) 61%),url("assets/hades-home-banner.svg");background-repeat:no-repeat;background-size:cover,auto 100%;background-position:center,right center}
+.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;position:relative;isolation:isolate;overflow:hidden;background-color:#020817;background-image:linear-gradient(180deg,#07142b,#020817);background-repeat:no-repeat;background-size:cover;background-position:center;border-bottom:1px solid #42b7ff;animation:banner-neon-pulse 3.8s ease-in-out infinite}
+.masthead::before{content:"";position:absolute;z-index:-2;inset:-8px;pointer-events:none;background-image:url("assets/hades-home-banner-art.jpg");background-repeat:no-repeat;background-size:auto 128%;background-position:right center;transform-origin:78% 50%;animation:banner-focus 12s ease-in-out infinite alternate}
+.masthead::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(2,8,22,.96) 0%,rgba(2,8,22,.84) 22%,rgba(3,10,25,.28) 42%,rgba(3,10,24,.08) 67%,rgba(2,8,20,.32) 100%),linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%);opacity:.94;animation:banner-sheen 4.2s ease-in-out infinite}
+@keyframes banner-focus{0%{transform:scale(1.02);filter:brightness(.92) saturate(.96)}100%{transform:scale(1.085) translateX(-7px);filter:brightness(1.08) saturate(1.08)}}
+@keyframes banner-neon-pulse{0%,100%{border-bottom-color:#42b7ff;box-shadow:0 4px 22px #007bff35,0 0 8px #0bbdff22}50%{border-bottom-color:#a6f2ff;box-shadow:0 4px 34px #078dff88,0 0 25px #22dfff70}}
+@keyframes banner-sheen{0%,100%{opacity:.78}50%{opacity:1}}
 @media(max-width:900px){.masthead{height:clamp(96px,13.2vw,120px);min-height:96px}}
-@media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover,auto 100%;background-position:center,right center}}
+@media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover;background-position:center}.masthead::before{background-size:auto 124%;background-position:right center}}
+@media(prefers-reduced-motion:reduce){.masthead,.masthead::before,.masthead::after{animation:none!important}.masthead::before{transform:none;filter:none}}
 
 /* Horizontal cover carousel with page-sized navigation. */
 .catalog-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
