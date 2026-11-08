@@ -49,7 +49,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 .game-cover{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,#0b5bb1,#06142a)}
 .ps4-band{height:19px;position:absolute;z-index:2;left:0;right:0;top:0;display:flex;align-items:center;padding:0 6px;background:linear-gradient(90deg,#087be8,#073f91);border-bottom:1px solid #b8eaff;color:#fff;font-size:11px;font-weight:900;letter-spacing:1.5px}
 .game-cover-art{position:absolute;inset:19px 0 0;width:100%;height:calc(100% - 19px);object-fit:cover;object-position:center}
-.cover-fallback{display:none;position:absolute;inset:19px 0 0;display:grid;place-items:center;padding:8px;text-align:center;color:#fff;font-size:15px;font-weight:900;background:linear-gradient(145deg,#174e88,#081329)}
+.cover-fallback{display:none;position:absolute;inset:19px 0 0;place-items:center;padding:8px;text-align:center;color:#fff;font-size:15px;font-weight:900;background:linear-gradient(145deg,#174e88,#081329)}
 .game-cover-art:not([src]){display:none}
 .app-card h3{margin:0;padding:2px 2px 0;color:#fff;font-size:clamp(10px,1.1vw,14px);line-height:1.15;text-align:center;text-shadow:0 1px 4px #000;overflow-wrap:anywhere}
 .app-card p{display:none}
@@ -96,5 +96,25 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .software-art img{width:100%;height:100%;object-fit:cover;display:block}
 .software-art span{position:absolute;left:8px;bottom:8px;padding:5px 9px;background:#030b19d9;border:1px solid #61caff;color:#fff;font-size:10px;font-weight:900;letter-spacing:1.5px}
 .software-art.art-image-missing:after{content:"CAPA INDISPONÍVEL";display:grid;place-items:center;height:100%;color:#bdeaff}
-.masthead{background-image:linear-gradient(90deg,#020817eF 0%,#061b3bd9 58%,#020817ee 100%),url("assets/hades-avatar.svg");background-repeat:no-repeat;background-position:center,right 8%;background-size:cover,auto 120%;min-height:112px}
+.masthead{position:relative;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,23,.18),rgba(2,8,23,.05)),url("assets/hades-gamer.svg");background-repeat:no-repeat;background-position:center,right 8%;background-size:cover,auto 108%;min-height:144px}
 @media(max-width:760px){.masthead{background-size:cover,auto 100%}}
+
+/* Referência HADES: faixa superior, navegação e cartões */
+.masthead{min-height:190px;padding:20px clamp(20px,5vw,70px);align-items:center;border-bottom:1px solid #168fff;background-position:center;background-size:cover}
+.brand strong{font-size:clamp(30px,4vw,48px);font-style:italic;text-shadow:0 0 18px #087fff}
+.brand-mark{width:84px;height:84px}
+.top-nav{min-height:68px;padding:0 clamp(18px,6vw,90px);justify-content:space-around;background:linear-gradient(180deg,#071b3a,#020817);border-bottom:1px solid #168fff}
+.nav-tab{min-width:clamp(120px,14vw,190px);min-height:54px;font-size:14px;font-weight:900}
+.nav-tab.active{background:linear-gradient(180deg,#159fff,#0754b7);border:1px solid #8eeaff;box-shadow:0 0 18px #078dff}
+.console-layout{grid-template-columns:190px minmax(0,1fr)}
+.sidebar{background:linear-gradient(180deg,#020b1d,#031a38);border-right:1px solid #126fc2}
+.profile img{width:116px;height:116px;object-fit:cover;border:2px solid #39baff;border-radius:50%;box-shadow:0 0 18px #078dff}
+.main-panel{background-color:#03112a}
+.catalog-section{padding:26px clamp(18px,3vw,42px)}
+.game-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.game-physical{height:clamp(190px,22vw,280px);background:#061b3a}
+.game-cover-art{object-fit:cover}
+.cover-image-missing .cover-fallback{display:grid}
+.software-art{height:clamp(190px,22vw,280px)}
+@media(max-width:900px){.console-layout{grid-template-columns:100px minmax(0,1fr)}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.masthead{min-height:130px}}
+@media(max-width:560px){.masthead{min-height:100px;padding:10px}.brand-mark{width:52px;height:52px}.brand strong{font-size:22px}.top-nav{min-height:54px;padding:0 8px}.nav-tab{min-width:105px;min-height:42px;font-size:11px}.console-layout{grid-template-columns:62px minmax(0,1fr)}.profile img{width:48px;height:48px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical,.software-art{height:170px}}

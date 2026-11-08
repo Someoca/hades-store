@@ -3206,7 +3206,7 @@
     "language": "Projeto em inglês",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/DolphinPS4/releases/download/v04.19/DolphinPS4-v04.19.pkg",
-    "imageUrl": "assets/covers/local/dolphin.svg",
+    "imageUrl": "assets/covers/dolphin-emulator.jpg",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {
@@ -3267,7 +3267,7 @@
     "language": "Português disponível",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/M33/releases/download/1.19/M33-v1.19.pkg",
-    "imageUrl": "assets/covers/local/ppsspp.svg",
+    "imageUrl": "assets/covers/ppsspp-emulator.jpg",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {
