@@ -18,6 +18,8 @@ let visibleBackdropIndex = 0;
 let displayedBackdropId = '';
 let pendingBackdropId = '';
 let backdropUpdateTimer = 0;
+const gamepadShoulders = new Map();
+let gamepadPolling = false;
 
 function safe(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -263,12 +265,45 @@ function updateCarouselControls() {
   const previous = $('#carousel-previous');
   const next = $('#carousel-next');
   if (!pageCount || !previous || !next) return;
-  const pageSize = Math.max(1, grid.clientWidth);
-  const pages = grid.scrollWidth ? Math.max(1, Math.ceil(grid.scrollWidth / pageSize)) : 0;
-  const currentPage = pages ? Math.min(pages, Math.floor((grid.scrollLeft + 2) / pageSize) + 1) : 0;
+  const metrics = carouselMetrics();
+  const pages = metrics.pages;
+  const currentPage = pages
+    ? Math.min(pages, Math.max(1, Math.round(grid.scrollLeft / metrics.pageStep) + 1))
+    : 0;
   pageCount.textContent = currentPage + ' / ' + pages;
   previous.disabled = currentPage <= 1;
   next.disabled = currentPage === 0 || currentPage >= pages;
+}
+
+function carouselMetrics() {
+  const cards = [...grid.querySelectorAll('.app-card')];
+  if (!cards.length) {
+    grid.style.setProperty('--carousel-trailing-space', '0px');
+    return { cards, perPage: 1, pages: 0, pageStep: Math.max(1, grid.clientWidth) };
+  }
+
+  const styles = window.getComputedStyle(grid);
+  const gap = Number.parseFloat(styles.columnGap) || 0;
+  const paddingLeft = Number.parseFloat(styles.paddingLeft) || 0;
+  const paddingRight = Number.parseFloat(styles.paddingRight) || 0;
+  const usableWidth = Math.max(1, grid.clientWidth - paddingLeft - paddingRight);
+  const cardWidth = cards[0].getBoundingClientRect().width;
+  const step = cardWidth + gap;
+  const perPage = Math.max(1, Math.floor((usableWidth + gap + 0.5) / step));
+  const pages = Math.ceil(cards.length / perPage);
+  const lastPageCount = cards.length - (pages - 1) * perPage;
+  const trailingSpace = Math.max(0, usableWidth - lastPageCount * step);
+  grid.style.setProperty('--carousel-trailing-space', trailingSpace + 'px');
+  return { cards, perPage, pages, pageStep: step * perPage };
+}
+
+function goToCarouselPage(direction) {
+  const { pages, pageStep } = carouselMetrics();
+  if (!pages) return;
+  const currentPage = Math.min(pages - 1, Math.max(0, Math.round(grid.scrollLeft / pageStep)));
+  const targetPage = Math.min(pages - 1, Math.max(0, currentPage + direction));
+  if (targetPage === currentPage) return;
+  grid.scrollTo({ left: targetPage * pageStep, behavior: 'smooth' });
 }
 
 function toggleFavorite(id) {
@@ -356,12 +391,42 @@ grid.addEventListener('click', (event) => {
     toggleFavorite(button.dataset.favorite);
   }
 });
-$('#carousel-previous').addEventListener('click', () => grid.scrollBy({ left: -grid.clientWidth, behavior: 'smooth' }));
-$('#carousel-next').addEventListener('click', () => grid.scrollBy({ left: grid.clientWidth, behavior: 'smooth' }));
+$('#carousel-previous').addEventListener('click', () => goToCarouselPage(-1));
+$('#carousel-next').addEventListener('click', () => goToCarouselPage(1));
 grid.addEventListener('scroll', updateCarouselControls, { passive: true });
 grid.addEventListener('scroll', scheduleCatalogBackdropUpdate, { passive: true });
 grid.addEventListener('focusin', scheduleCatalogBackdropUpdate);
 window.addEventListener('resize', updateCarouselControls);
+
+function pollGamepadShoulders() {
+  gamepadPolling = false;
+  if (!navigator.getGamepads) return;
+  let connected = false;
+  for (const gamepad of navigator.getGamepads()) {
+    if (!gamepad) continue;
+    connected = true;
+    const previous = gamepadShoulders.get(gamepad.index) || { left: false, right: false };
+    const left = Boolean(gamepad.buttons[4]?.pressed);
+    const right = Boolean(gamepad.buttons[5]?.pressed);
+    if (!dialog.open && left && !previous.left) goToCarouselPage(-1);
+    if (!dialog.open && right && !previous.right) goToCarouselPage(1);
+    gamepadShoulders.set(gamepad.index, { left, right });
+  }
+  if (connected) {
+    gamepadPolling = true;
+    window.requestAnimationFrame(pollGamepadShoulders);
+  }
+}
+
+function startGamepadPolling() {
+  if (gamepadPolling) return;
+  gamepadPolling = true;
+  window.requestAnimationFrame(pollGamepadShoulders);
+}
+
+window.addEventListener('gamepadconnected', startGamepadPolling);
+window.addEventListener('gamepaddisconnected', (event) => gamepadShoulders.delete(event.gamepad.index));
+if (navigator.getGamepads?.().some(Boolean)) startGamepadPolling();
 $('#detail-favorite').addEventListener('click', () => {
   if (state.activeItem) toggleFavorite(state.activeItem.id);
 });
@@ -384,6 +449,14 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'F1') {
     event.preventDefault();
     search.focus();
+  }
+  if (!dialog.open && event.key === 'PageUp') {
+    event.preventDefault();
+    goToCarouselPage(-1);
+  }
+  if (!dialog.open && event.key === 'PageDown') {
+    event.preventDefault();
+    goToCarouselPage(1);
   }
   if (event.key === 'Escape' && !dialog.open) search.blur();
   if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)
