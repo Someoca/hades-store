@@ -101,8 +101,35 @@ function generatedCover(item) {
   return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
 }
 
+function themedFallbackCover(item) {
+  const key = normalize(item.name);
+  let seed = 0;
+  for (const char of String(item.id || item.name || 'PS4')) seed = (seed * 31 + char.charCodeAt(0)) >>> 0;
+  const hue = seed % 360;
+  const accent = (hue + 52 + seed % 54) % 360;
+  let scene;
+  if (/resident evil|zombie|horror|outlast|dead island|plague tale/.test(key)) {
+    scene = '<circle cx="293" cy="175" r="75" fill="#d7b9aa" opacity=".45"/><path d="M0 365 55 302l46 29 57-94 59 84 58-116 74 94 52-53 99 94v178H0Z" fill="#19131c"/><path d="M0 438 89 355l76 50 70-74 64 81 72-95 67 68 74-42v160H0Z" fill="#090b12"/><path d="m100 432 14-48 15 48m157 5 18-65 19 65" fill="none" stroke="#bd5153" stroke-width="5" opacity=".78"/>';
+  } else if (/grand theft|mafia|crime|detroit|noire|judgment|yakuza/.test(key)) {
+    scene = '<circle cx="291" cy="172" r="74" fill="hsl(' + accent + ',75%,74%)" opacity=".4"/><path d="M0 350h45v-65h38v47h42V236h49v114h39V211h52v139h35v-79h42v79h53v-55h42v55h75v180H0Z" fill="#11151f"/><path d="M0 478 172 401l77 34 104-87 159 93v129H0Z" fill="#090c14"/><path d="M231 590q32-83 94-128 53-39 98-48-39 53-40 95 0 40 49 81Z" fill="#202630" stroke="hsl(' + accent + ',88%,72%)" stroke-opacity=".65" stroke-width="4"/>';
+  } else if (/assassin|creed|witcher|bloodborne|souls|nioh|hades|dragon|kingdom/.test(key)) {
+    scene = '<circle cx="294" cy="176" r="82" fill="hsl(' + accent + ',82%,74%)" opacity=".44"/><path d="M0 376 70 294l54 43 73-131 79 112 49-71 74 91 54-55 59 77v176H0Z" fill="#171521"/><path d="M0 454 88 373l69 52 69-73 79 91 65-84 79 78 63-50v154H0Z" fill="#090b13"/><path d="M201 285q17-72 78-74 58 2 74 74l-17 114H218z" fill="#070910"/><path d="m186 293 93-73 92 73-33-5-59-43-60 43z" fill="hsl(' + accent + ',80%,68%)"/><path d="M216 390 278 319l66 72v84H216z" fill="#080a11"/>';
+  } else if (/call of duty|battlefield|war|far cry|division|rage|payday/.test(key)) {
+    scene = '<circle cx="291" cy="179" r="80" fill="#d9a875" opacity=".4"/><path d="M0 366 71 315l64 30 49-64 73 80 55-96 81 79 48-48 71 77v156H0Z" fill="#201d20"/><path d="M0 452 96 395l77 27 62-42 75 53 61-45 74 49 67-30v144H0Z" fill="#090b12"/><path d="M74 326h90m-63-15v30m36-29v28m173-52q39-27 80 0m-40-20v22m-31-11h63" fill="none" stroke="#c6aa81" stroke-width="5" opacity=".7"/>';
+  } else if (/fifa|ea sports|football|soccer|nba|gran turismo|f1 |formula|racing|project cars/.test(key)) {
+    scene = '<circle cx="292" cy="173" r="79" fill="hsl(' + accent + ',84%,75%)" opacity=".42"/><path d="M0 337q132-134 256 0t256 0v226H0Z" fill="#151a28"/><path d="M0 372q132-134 256 0t256 0m-512 42q132-134 256 0t256 0" fill="none" stroke="#d8e9f5" stroke-opacity=".52" stroke-width="5"/><path d="M0 500q128-70 256 0t256 0v100H0Z" fill="#090d15"/><path d="M72 599 210 506l44 8 42-8 145 93" fill="none" stroke="hsl(' + accent + ',90%,72%)" stroke-opacity=".66" stroke-width="4"/>';
+  } else if (/horizon|space|mass effect|ghostrunner|bioshock|control|no man's sky/.test(key)) {
+    scene = '<circle cx="288" cy="169" r="91" fill="hsl(' + accent + ',90%,72%)" opacity=".46"/><circle cx="288" cy="169" r="62" fill="none" stroke="#eaf3ff" stroke-opacity=".58" stroke-width="3"/><path d="M0 368 64 314l61 35 59-97 61 82 58-72 68 83 59-49 82 75v184H0Z" fill="#131722"/><path d="M0 444 91 370l72 54 76-77 69 81 75-59 70 66 59-41v135H0Z" fill="#080b13"/><path d="m175 302 43-35 42 35-42 17zm149 29 28-24 30 24-30 15z" fill="hsl(' + accent + ',91%,75%)" opacity=".82"/>';
+  } else {
+    scene = '<circle cx="288" cy="174" r="84" fill="hsl(' + accent + ',84%,74%)" opacity=".4"/><path d="M0 374 73 291l59 48 71-136 80 120 49-72 77 92 52-54 51 62v177H0Z" fill="#151522"/><path d="M0 454 91 374l67 51 79-73 68 88 70-83 70 72 67-49v148H0Z" fill="#080b13"/><path d="M194 391V311q0-72 62-72t62 72v80m-105 0v-75q0-49 43-49t43 49v75" fill="none" stroke="hsl(' + accent + ',86%,73%)" stroke-width="7"/><path d="M0 541q91-42 180 0t160 0q84-42 172 0v67H0Z" fill="#070a12"/>';
+  }
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 768"><defs><linearGradient id="bg" x2=".9" y2="1"><stop stop-color="hsl(' + hue + ',44%,23%)"/><stop offset=".56" stop-color="#101321"/><stop offset="1" stop-color="#080b13"/></linearGradient><radialGradient id="glow"><stop stop-color="hsl(' + accent + ',95%,68%)" stop-opacity=".8"/><stop offset="1" stop-color="hsl(' + accent + ',95%,42%)" stop-opacity="0"/></radialGradient><linearGradient id="fade" x2="0" y2="1"><stop stop-color="#070a12" stop-opacity="0"/><stop offset="1" stop-color="#070a12" stop-opacity=".92"/></linearGradient></defs><rect width="512" height="768" fill="url(#bg)"/><ellipse cx="' + (175 + seed % 170) + '" cy="260" rx="270" ry="295" fill="url(#glow)" opacity=".68"/>' + scene + '<rect y="390" width="512" height="378" fill="url(#fade)"/><path d="M0 662q120-34 256 0t256 0v106H0Z" fill="#070a12" fill-opacity=".72"/><path d="M30 706h452" stroke="hsl(' + accent + ',90%,74%)" stroke-opacity=".55" stroke-width="2"/><text x="34" y="744" fill="#e7edf6" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="3">HADES STORE  •  ARTE ORIGINAL</text><path d="M30 48h110m-110 16h67" stroke="#edf4ff" stroke-opacity=".55" stroke-width="4"/><circle cx="466" cy="55" r="15" fill="none" stroke="hsl(' + accent + ',90%,76%)" stroke-width="3"/></svg>';
+  return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+}
+
 function coverSource(item) {
-  if (item.category === 'Jogos' && (!item.imageUrl || item.imageUrl.endsWith('game-cover.svg'))) return generatedCover(item);
+  if (item.category === 'Jogos' && (!item.imageUrl || item.imageUrl.endsWith('game-cover.svg'))) return themedFallbackCover(item);
+  if (item.category === 'Emuladores' && !item.imageUrl) return themedFallbackCover(item);
   return item.imageUrl || '';
 }
 
@@ -119,7 +146,7 @@ function createCard(item) {
   if (item.category === 'Jogos') {
     visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">' + safe(item.version === 'PS5' ? 'PS5' : 'PS4') + '</div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Emuladores') {
-    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4 · HOMEBREW</div><img class="game-cover-art" src="' + safe(item.imageUrl || generatedCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4 · HOMEBREW</div><img class="game-cover-art" src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.imageUrl) {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>APLICATIVO</span></div>';
   }
@@ -144,6 +171,16 @@ function createCard(item) {
 
   const coverImage = card.querySelector('.game-cover-art');
   if (coverImage) coverImage.addEventListener('error', () => {
+    if (!coverImage.dataset.fallbackAttempted) {
+      coverImage.dataset.fallbackAttempted = 'true';
+      const localArtwork = item.category === 'Jogos' && /^ps4-extra-\d{3}$/.test(item.id)
+        ? 'assets/covers/' + item.id + '.svg'
+        : '';
+      coverImage.src = localArtwork && coverImage.getAttribute('src') !== localArtwork
+        ? localArtwork
+        : themedFallbackCover(item);
+      return;
+    }
     coverImage.remove();
     card.querySelector('.game-cover').classList.add('cover-image-missing');
   });
@@ -158,15 +195,29 @@ function createCard(item) {
 function render() {
   const items = filteredItems();
   grid.replaceChildren(...items.map(createCard));
+  grid.scrollLeft = 0;
   empty.hidden = items.length > 0;
   $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
-  $('#page-count').textContent = items.length ? '1 / ' + items.length : '0 / 0';
+  updateCarouselControls();
   document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
   updateStats();
+}
+
+function updateCarouselControls() {
+  const pageCount = $('#page-count');
+  const previous = $('#carousel-previous');
+  const next = $('#carousel-next');
+  if (!pageCount || !previous || !next) return;
+  const pageSize = Math.max(1, grid.clientWidth);
+  const pages = grid.scrollWidth ? Math.max(1, Math.ceil(grid.scrollWidth / pageSize)) : 0;
+  const currentPage = pages ? Math.min(pages, Math.floor((grid.scrollLeft + 2) / pageSize) + 1) : 0;
+  pageCount.textContent = currentPage + ' / ' + pages;
+  previous.disabled = currentPage <= 1;
+  next.disabled = currentPage === 0 || currentPage >= pages;
 }
 
 function toggleFavorite(id) {
@@ -203,6 +254,7 @@ function showDetails(item) {
   $('#detail-meta').textContent = 'Versão ' + (item.version || '—') + ' · ' + (item.size || 'Tamanho não informado')
     + (item.language ? ' · ' + item.language : '') + (item.format ? ' · Formato: ' + item.format : '');
 
+  $('#detail-actions').hidden = item.category === 'Jogos';
   const link = $('#detail-download');
   if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)) {
     link.href = item.downloadUrl;
@@ -213,7 +265,6 @@ function showDetails(item) {
     link.hidden = true;
   }
 
-  $('#game-support-links').hidden = item.category !== 'Jogos';
   const gamesSection = $('#emulator-games');
   const gamesList = $('#emulator-games-list');
   gamesList.replaceChildren();
@@ -228,7 +279,6 @@ function showDetails(item) {
     row.append(title, details);
     gamesList.append(row);
   }
-  if (item.category === 'Jogos') $('#detail-dlc').href = 'https://store.playstation.com/pt-br/search/' + encodeURIComponent(item.name + ' DLC');
   $('.dialog-note').textContent = item.linkLabel
     ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
     : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
@@ -255,6 +305,10 @@ grid.addEventListener('click', (event) => {
     toggleFavorite(button.dataset.favorite);
   }
 });
+$('#carousel-previous').addEventListener('click', () => grid.scrollBy({ left: -grid.clientWidth, behavior: 'smooth' }));
+$('#carousel-next').addEventListener('click', () => grid.scrollBy({ left: grid.clientWidth, behavior: 'smooth' }));
+grid.addEventListener('scroll', updateCarouselControls, { passive: true });
+window.addEventListener('resize', updateCarouselControls);
 $('#detail-favorite').addEventListener('click', () => {
   if (state.activeItem) toggleFavorite(state.activeItem.id);
 });

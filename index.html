@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#06142d">
   <meta name="description" content="HADES Store — catálogo de jogos, aplicativos e emuladores para PS4.">
   <title>HADES STORE | PS4</title>
-  <link rel="stylesheet" href="style.css?v=hades-art-13">
+  <link rel="stylesheet" href="style.css?v=hades-art-14">
 </head>
 <body>
 <div class="console-shell" id="home">
@@ -46,9 +46,9 @@
             <label class="sort-control"><span class="sr-only">Ordenar</span><select id="sort"><option value="featured">Destaques</option><option value="name-asc">Nome A–Z</option><option value="name-desc">Nome Z–A</option></select></label>
           </div>
         </div>
-        <div class="catalog-meta"><p id="results-count" role="status" aria-live="polite">Carregando catálogo...</p><span id="page-count">1 / 216</span></div>
+        <div class="catalog-meta"><p id="results-count" role="status" aria-live="polite">Carregando catálogo...</p><div class="carousel-controls" aria-label="Controles do carrossel"><button id="carousel-previous" type="button" aria-label="Capas anteriores">‹</button><span id="page-count" aria-live="polite">1 / 1</span><button id="carousel-next" type="button" aria-label="Próximas capas">›</button></div></div>
         <div id="catalog-status" class="status online" role="status"><i></i> INICIANDO CATÁLOGO</div>
-        <div id="grid" class="game-grid" aria-live="polite"></div>
+        <div id="grid" class="game-grid" role="region" aria-label="Carrossel do catálogo" aria-live="polite"></div>
         <p id="empty" class="empty" hidden>Nenhum item encontrado. Altere a busca ou categoria.</p>
       </section>
     </main>
@@ -62,10 +62,9 @@
   <div class="detail-icon" id="detail-icon"><img id="detail-image" alt="" hidden></div>
   <p class="eyebrow" id="detail-category">CATEGORIA</p><h2 id="detail-title">Título</h2>
   <p id="detail-description"></p><div class="detail-meta" id="detail-meta"></div>
-  <div class="detail-actions"><a id="detail-download" class="primary-btn download" href="#" target="_blank" rel="noopener noreferrer">ABRIR LINK OFICIAL ↗</a><button id="detail-favorite" class="secondary-btn" type="button" aria-pressed="false">☆ Salvar favorito</button></div>
-  <div class="game-support-links" id="game-support-links" hidden><a id="detail-dlc" class="secondary-btn" href="#" target="_blank" rel="noopener noreferrer">PROCURAR DLC OFICIAL ↗</a><a class="secondary-btn" href="https://www.playstation.com/pt-br/support/hardware/playstation-system-software-application-version/" target="_blank" rel="noopener noreferrer">COMO ATUALIZAR NO PS4 ↗</a><p>Atualizações de jogos são verificadas no console: selecione o jogo, pressione OPTIONS e escolha “Procurar atualização”.</p></div>
+  <div class="detail-actions" id="detail-actions"><a id="detail-download" class="primary-btn download" href="#" target="_blank" rel="noopener noreferrer">ABRIR LINK OFICIAL ↗</a><button id="detail-favorite" class="secondary-btn" type="button" aria-pressed="false">☆ Salvar favorito</button></div>
   <section id="emulator-games" class="emulator-games" hidden><h3>JOGOS RECOMENDADOS</h3><p class="emulator-games-note">Use somente jogos obtidos legalmente e compatíveis com o emulador.</p><ul id="emulator-games-list"></ul></section>
   <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
 </dialog>
-<script src="app.js?v=nav-12"></script>
+<script src="app.js?v=nav-13"></script>
 </body></html>

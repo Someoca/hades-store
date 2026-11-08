@@ -20,6 +20,10 @@ const staticFiles = new Map([
   ["/style.css", ["style.css", "text/css; charset=utf-8"]],
   ["/catalog/catalog.json", ["catalog/catalog.json", "application/json; charset=utf-8"]],
   ["/assets/hades-gamer.svg", ["assets/hades-gamer.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-sigil.svg", ["assets/hades-sigil.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-fire-avatar.svg", ["assets/hades-fire-avatar.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-home-banner.svg", ["assets/hades-home-banner.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-underworld-bg.svg", ["assets/hades-underworld-bg.svg", "image/svg+xml; charset=utf-8"]],
 ]);
 
 const server = http.createServer((request, response) => {
@@ -39,8 +43,12 @@ const server = http.createServer((request, response) => {
   }
 
   let entry = staticFiles.get(route);
-  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|emulator-(dolphin|m33)\.svg|apps\/app-[a-z0-9-]+\.svg)$/.exec(route);
-  if (!entry && cover) entry = [`assets/covers/${cover[1]}`, "image/svg+xml; charset=utf-8"];
+  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|fallback\/ps4-\d{2}\.svg|official\/ps4-\d{2}\.(?:jpg|webp|avif)|emulator-(dolphin|m33)\.svg|dolphin-emulator\.svg|ppsspp-emulator\.svg|dolphin-emulator-user\.png|ppsspp-emulator-user\.png|local\/ghostrunner-2-ps5\.jpg|apps\/app-[a-z0-9-]+\.svg)$/.exec(route);
+  if (!entry && cover) {
+    const extension = path.extname(cover[1]);
+    const contentType = ({ ".jpg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif", ".png": "image/png", ".svg": "image/svg+xml; charset=utf-8" })[extension];
+    entry = [`assets/covers/${cover[1]}`, contentType];
+  }
   if (!entry) {
     response.writeHead(404);
     response.end("Not found");

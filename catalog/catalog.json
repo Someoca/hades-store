@@ -10,7 +10,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
-    "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202503/2016/1f4bf1ee42276b3841e71ebb812510493ce78bfc307d3296.jpg?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-02.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
     "storeTitle": "God of War Ragnarök"
   },
@@ -25,7 +25,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
-    "imageUrl": "https://image.api.playstation.com/vulcan/img/rnd/202010/2716/wYq1UsVEyQp6dT6cS1omgKiJ.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-03.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
     "storeTitle": "The Last Of Us™ Remastered "
   },
@@ -40,7 +40,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
-    "imageUrl": "https://image.api.playstation.com/vulcan/img/rnd/202009/2923/LyLrdlIfqiVzvynWJGtNfbU8.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-07.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
     "storeTitle": "Horizon Zero Dawn: Complete Edition"
   },
@@ -55,7 +55,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00341_00-UNCHARTED0000000",
-    "imageUrl": "https://image.api.playstation.com/vulcan/img/rnd/202010/2620/IE1JWLbJBd5kCxTzxKvaCYBw.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-05.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00341_00-UNCHARTED0000000",
     "storeTitle": "UNCHARTED 4: A Thief’s End"
   },
@@ -70,7 +70,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01411_00-MARVELSSMMDDE000",
-    "imageUrl": "https://image.api.playstation.com/vulcan/img/rnd/202010/2417/tnCutdREPv6Pa7atqb8MTxGW.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-11.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01411_00-MARVELSSMMDDE000",
     "storeTitle": "Marvel's Spider-Man: Miles Morales Ultimate Edition"
   },
@@ -85,7 +85,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
-    "imageUrl": "https://image.api.playstation.com/vulcan/img/rnd/202011/1215/WyHa1BM3ISDVqYSEUMB9VZJs.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-19.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
     "storeTitle": "Red Dead Redemption 2"
   },
@@ -145,7 +145,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA01556_00-VILLAGEFULLGAMEX",
-    "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/QDaRpXJyMxLjNvrNbpTgXf41.png?thumb=true&w=800",
+    "imageUrl": "assets/covers/official/ps4-25.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA01556_00-VILLAGEFULLGAMEX",
     "storeTitle": "Resident Evil Village PS4 & PS5"
   },
@@ -205,7 +205,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
-    "imageUrl": "https://vulcan.dl.playstation.net/ap/rnd/202107/3100/HO8vkO9pfXhwbHi5WHECQJdN.png",
+    "imageUrl": "assets/covers/official/ps4-08.png",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
     "storeTitle": "Horizon Forbidden West™"
   },
@@ -355,7 +355,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP1004-PPSA03420_00-GTAVCROSSGENBUND",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1004-CUSA00419_00-GTAVDIGITALDOWNL/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-20.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1004-PPSA03420_00-GTAVCROSSGENBUND",
     "storeTitle": "Grand Theft Auto V (PS4™ e PS5™)"
   },
@@ -385,7 +385,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA03952_00-BH3ROFF000000001",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA14168_00-BH3ROFF000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-22.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-PPSA03952_00-BH3ROFF000000001",
     "storeTitle": "RESIDENT EVIL 3"
   },
@@ -460,7 +460,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-PPSA01491_00-GAME000000000000",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0001-CUSA18522_00-GAME000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-28.webp",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-PPSA01491_00-GAME000000000000",
     "storeTitle": "Assassin's Creed® Valhalla"
   },
@@ -535,7 +535,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA01200_00-SF5FULLGAME00000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-33.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA01200_00-SFVCES5PPBUND000",
     "storeTitle": "Street Fighter™ V: Champion Edition + Season 5 Premium Pass Bundle"
   },
@@ -595,7 +595,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0002-PPSA02432_00-CB4THEGAME000001",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA19035_00-CB4THEGAME000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-37.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0002-PPSA02432_00-CB4THEGAME000001",
     "storeTitle": "Crash Bandicoot™ 4: It's About Time"
   },
@@ -610,7 +610,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA12125_00-SPYROTRILOGY0001",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA12125_00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-38.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0002-CUSA12125_00-SPYROTRILOGY0001",
     "storeTitle": "Spyro™ Reignited Trilogy"
   },
@@ -625,7 +625,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01289_00-SABAGRANTURISMO1",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA18886_00-SACKBOYADVENTURE/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-39.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-PPSA01289_00-SABAGRANTURISMO1",
     "storeTitle": "Sackboy™: A Big Adventure – Traje de piloto Gran Turismo®"
   },
@@ -640,7 +640,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA16742_00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-40.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
     "storeTitle": "It Takes Two - Passe de Amigo PS4™"
   },
@@ -655,7 +655,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA07995_00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-41.png",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
     "storeTitle": "A Way Out"
   },
@@ -715,7 +715,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP2034-PPSA02110_00-NOMANSSKYHG00001",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2034-CUSA04841_00-NOMANSSKYHG00001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-45.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2034-PPSA02110_00-NOMANSSKYHG00001",
     "storeTitle": "No Man's Sky PS4 & PS5"
   },
@@ -730,7 +730,7 @@
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP2125-PPSA03355_00-3466019145463410",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2125-CUSA27387_00-HADESGAME0038047/image?w=800&h=1200",
+    "imageUrl": "assets/covers/official/ps4-46.webp",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2125-PPSA03355_00-3466019145463410",
     "storeTitle": "Hades"
   },
@@ -1121,7 +1121,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Assassin%27s%20Creed%20Unity",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0001-CUSA00663_00-AC5GAMEPS4000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-009.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Assassin%27s%20Creed%20Unity",
     "storeTitle": "Assassin's Creed Unity"
   },
@@ -1286,7 +1286,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/BioShock%3A%20The%20Collection",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA03979_00-BIOSHOCKCOMPLETE/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-020.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/BioShock%3A%20The%20Collection",
     "storeTitle": "BioShock: The Collection"
   },
@@ -1346,7 +1346,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%20III",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA02290_00-BLACKOPS3GAME000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-024.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%20III",
     "storeTitle": "Call of Duty: Black Ops III"
   },
@@ -1361,7 +1361,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%204",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA11100_00-CODBO4THEGAME001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-025.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%204",
     "storeTitle": "Call of Duty: Black Ops 4"
   },
@@ -1376,7 +1376,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20WWII",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA05969_00-CODWWIITHEGAME01/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-026.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20WWII",
     "storeTitle": "Call of Duty: WWII"
   },
@@ -1421,7 +1421,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Vanguard",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA24041_00-CODVTHEGAME00001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-030.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Vanguard",
     "storeTitle": "Call of Duty: Vanguard"
   },
@@ -1436,7 +1436,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%20Cold%20War",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA15010_00-CODCWTHEGAME0001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-031.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%20Cold%20War",
     "storeTitle": "Call of Duty: Black Ops Cold War"
   },
@@ -1451,7 +1451,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%206",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0002-CUSA58477_00-BO6GAME000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-032.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Call%20of%20Duty%3A%20Black%20Ops%206",
     "storeTitle": "Call of Duty: Black Ops 6"
   },
@@ -1616,7 +1616,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Dead%20Island%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2047-CUSA01014_00-DEADISLAND2GAME1/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-043.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Dead%20Island%202",
     "storeTitle": "Dead Island 2"
   },
@@ -1811,7 +1811,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA11230_00-CREATEGAME000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-056.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders%202",
     "storeTitle": "Dragon Quest Builders 2"
   },
@@ -1826,7 +1826,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Dying%20Light%3A%20The%20Following%20Enhanced%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA03946_00-DLEEGAME00000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-057.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Dying%20Light%3A%20The%20Following%20Enhanced%20Edition",
     "storeTitle": "Dying Light: The Following Enhanced Edition"
   },
@@ -1991,7 +1991,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/F1%2024",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA44373_00-F12024PS4GAME000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-068.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/F1%2024",
     "storeTitle": "F1 24"
   },
@@ -2006,7 +2006,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2024",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA40328_00-EASPORTSFC2024BG/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-069.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2024",
     "storeTitle": "EA SPORTS FC 24"
   },
@@ -2021,7 +2021,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2025",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA46398_00-EASPORTSFC2025BG/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-070.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2025",
     "storeTitle": "EA SPORTS FC 25"
   },
@@ -2036,7 +2036,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2026",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA52342_00-EASPORTSFC2026BG/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-071.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/EA%20SPORTS%20FC%2026",
     "storeTitle": "EA SPORTS FC 26"
   },
@@ -2081,7 +2081,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20IX",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA08877_00-FF9FORPS42017000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-075.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20IX",
     "storeTitle": "Final Fantasy IX"
   },
@@ -2126,7 +2126,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20XV%20Royal%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA01633_00-FINALFANTASYXV00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-078.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20XV%20Royal%20Edition",
     "storeTitle": "Final Fantasy XV Royal Edition"
   },
@@ -2156,7 +2156,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20XIV%20Online",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA00288_00-FFXIVARRPS400000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-080.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Final%20Fantasy%20XIV%20Online",
     "storeTitle": "Final Fantasy XIV Online"
   },
@@ -2186,7 +2186,7 @@
     "language": "Inglês e português de Portugal; confirme os idiomas da tela na página oficial.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/product/UP4040-PPSA09911_00-GHOSTRUNNER2US00",
-    "imageUrl": "assets/covers/local/ghostrunner-2-ps5.jpg",
+    "imageUrl": "assets/covers/ps4-extra-082.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4040-PPSA09911_00-GHOSTRUNNER2US00",
     "storeTitle": "Ghostrunner 2"
   },
@@ -2201,7 +2201,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Gran%20Turismo%207",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA24769_00-GRANTURISMO70000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-084.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Gran%20Turismo%207",
     "storeTitle": "Gran Turismo 7"
   },
@@ -2231,7 +2231,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/HITMAN%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP4572-CUSA12401_00-HITMANCOMPLETE02/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-086.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/HITMAN%202",
     "storeTitle": "HITMAN 2"
   },
@@ -2246,7 +2246,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/HITMAN%203",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP4572-CUSA18201_00-HITMANGAME000003/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-087.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/HITMAN%203",
     "storeTitle": "HITMAN 3"
   },
@@ -2351,7 +2351,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Just%20Cause%204",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA09254_00-JC40000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-094.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Just%20Cause%204",
     "storeTitle": "Just Cause 4"
   },
@@ -2366,7 +2366,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Killing%20Floor%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0115-CUSA02134_00-KFGAME0000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-095.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Killing%20Floor%202",
     "storeTitle": "Killing Floor 2"
   },
@@ -2381,7 +2381,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Come%3A%20Deliverance",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2047-CUSA07238_00-KCDGAME010000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-096.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Come%3A%20Deliverance",
     "storeTitle": "Kingdom Come: Deliverance"
   },
@@ -2396,7 +2396,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20III",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA12031_00-KINGDOMHEARTSX30/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-097.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20III",
     "storeTitle": "Kingdom Hearts III"
   },
@@ -2411,7 +2411,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20HD%201.5%20%2B%202.5%20ReMIX",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA05933_00-KINGDOMHEART1525/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-098.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20HD%201.5%20%2B%202.5%20ReMIX",
     "storeTitle": "Kingdom Hearts HD 1.5 + 2.5 ReMIX"
   },
@@ -2426,7 +2426,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20HD%202.8%20Final%20Chapter%20Prologue",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA05795_00-KINGDOMHEARTSX28/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-099.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Kingdom%20Hearts%20HD%202.8%20Final%20Chapter%20Prologue",
     "storeTitle": "Kingdom Hearts HD 2.8 Final Chapter Prologue"
   },
@@ -2441,7 +2441,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/L.A.%20Noire",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1004-CUSA09084_00-LANOIRE000000PS4/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-100.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/L.A.%20Noire",
     "storeTitle": "L.A. Noire"
   },
@@ -2456,7 +2456,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20Batman%203%3A%20Beyond%20Gotham",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA00580_00-LEGOBATMANTHREE0/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-101.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20Batman%203%3A%20Beyond%20Gotham",
     "storeTitle": "LEGO Batman 3: Beyond Gotham"
   },
@@ -2471,7 +2471,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20DC%20Super-Villains",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA11542_00-LEGODCVILLAINS00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-102.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20DC%20Super-Villains",
     "storeTitle": "LEGO DC Super-Villains"
   },
@@ -2486,7 +2486,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20Harry%20Potter%20Collection",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA05954_00-HARRYPOTTER17000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-103.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20Harry%20Potter%20Collection",
     "storeTitle": "LEGO Harry Potter Collection"
   },
@@ -2501,7 +2501,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20Marvel%20Super%20Heroes%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA08469_00-LEGOMARVELSH2001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-104.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20Marvel%20Super%20Heroes%202",
     "storeTitle": "LEGO Marvel Super Heroes 2"
   },
@@ -2516,7 +2516,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20Star%20Wars%3A%20The%20Skywalker%20Saga",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA13794_00-LEGOSWTSS0000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-105.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20Star%20Wars%3A%20The%20Skywalker%20Saga",
     "storeTitle": "LEGO Star Wars: The Skywalker Saga"
   },
@@ -2531,7 +2531,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%3A%20Before%20the%20Storm",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA08479_00-DAWN000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-106.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%3A%20Before%20the%20Storm",
     "storeTitle": "Life is Strange: Before the Storm"
   },
@@ -2546,7 +2546,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA08283_00-PROMBASEGAME0001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-107.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%202",
     "storeTitle": "Life is Strange 2"
   },
@@ -2561,7 +2561,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%3A%20True%20Colors",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA17941_00-BASESIEA00000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-108.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Life%20is%20Strange%3A%20True%20Colors",
     "storeTitle": "Life is Strange: True Colors"
   },
@@ -2576,7 +2576,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Little%20Nightmares",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA05929_00-LITTLENIGHTMARES/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-109.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Little%20Nightmares",
     "storeTitle": "Little Nightmares"
   },
@@ -2591,7 +2591,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Little%20Nightmares%20II",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA13055_00-LITTLENIGHTS2000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-110.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Little%20Nightmares%20II",
     "storeTitle": "Little Nightmares II"
   },
@@ -2606,7 +2606,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Mafia%3A%20Definitive%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA18097_00-MAFIAONEREMASTER/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-111.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Mafia%3A%20Definitive%20Edition",
     "storeTitle": "Mafia: Definitive Edition"
   },
@@ -2621,7 +2621,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Mafia%20II%3A%20Definitive%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA16990_00-MAFIATWOREMASTER/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-112.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Mafia%20II%3A%20Definitive%20Edition",
     "storeTitle": "Mafia II: Definitive Edition"
   },
@@ -2636,7 +2636,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Mafia%20III%3A%20Definitive%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA03652_00-MAFIA30000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-113.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Mafia%20III%3A%20Definitive%20Edition",
     "storeTitle": "Mafia III: Definitive Edition"
   },
@@ -2651,7 +2651,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Mass%20Effect%20Legendary%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA19500_00-METR000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-114.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Mass%20Effect%20Legendary%20Edition",
     "storeTitle": "Mass Effect Legendary Edition"
   },
@@ -2666,7 +2666,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Solid%20V%3A%20Ground%20Zeroes",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0101-CUSA00218_00-MAINGAME00000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-115.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Solid%20V%3A%20Ground%20Zeroes",
     "storeTitle": "Metal Gear Solid V: Ground Zeroes"
   },
@@ -2681,7 +2681,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Solid%20V%3A%20The%20Phantom%20Pain",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0101-CUSA01140_00-MAINGAME00000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-116.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Solid%20V%3A%20The%20Phantom%20Pain",
     "storeTitle": "Metal Gear Solid V: The Phantom Pain"
   },
@@ -2696,7 +2696,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Survive",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0101-CUSA07150_00-MAINGAME00000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-117.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Metal%20Gear%20Survive",
     "storeTitle": "Metal Gear Survive"
   },
@@ -2711,7 +2711,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Metro%20Redux",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2047-CUSA00683_00-MCOMPLREDUXDISC1/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-118.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Metro%20Redux",
     "storeTitle": "Metro Redux"
   },
@@ -2726,7 +2726,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Metro%20Exodus",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2047-CUSA11408_00-METROEXODUS00000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-119.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Metro%20Exodus",
     "storeTitle": "Metro Exodus"
   },
@@ -2741,7 +2741,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Monster%20Hunter%3A%20World",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA07713_00-0000000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-120.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Monster%20Hunter%3A%20World",
     "storeTitle": "Monster Hunter: World"
   },
@@ -2756,7 +2756,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Monster%20Hunter%20Rise",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA34118_00-FULLGAME00000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-121.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Monster%20Hunter%20Rise",
     "storeTitle": "Monster Hunter Rise"
   },
@@ -2771,7 +2771,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Naruto%20Shippuden%3A%20Ultimate%20Ninja%20Storm%204",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA02412_00-NARUTOUNS4000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-122.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Naruto%20Shippuden%3A%20Ultimate%20Ninja%20Storm%204",
     "storeTitle": "Naruto Shippuden: Ultimate Ninja Storm 4"
   },
@@ -2786,7 +2786,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/NBA%202K23",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA33074_00-NBA2K23000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-123.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/NBA%202K23",
     "storeTitle": "NBA 2K23"
   },
@@ -2801,7 +2801,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/NBA%202K24",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA42311_00-NBA2K24000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-124.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/NBA%202K24",
     "storeTitle": "NBA 2K24"
   },
@@ -2816,7 +2816,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/NBA%202K25",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1001-CUSA48138_00-NBA2K25000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-125.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/NBA%202K25",
     "storeTitle": "NBA 2K25"
   },
@@ -2831,7 +2831,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/NieR%20Replicant%20ver.1.22474487139",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA18774_00-0000000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-126.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/NieR%20Replicant%20ver.1.22474487139",
     "storeTitle": "NieR Replicant ver.1.22474487139"
   },
@@ -2846,7 +2846,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Nioh",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA07113_00-NIOH000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-127.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Nioh",
     "storeTitle": "Nioh"
   },
@@ -2861,7 +2861,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Nioh%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA15532_00-NIOH2NA000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-128.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Nioh%202",
     "storeTitle": "Nioh 2"
   },
@@ -2876,7 +2876,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/One%20Piece%3A%20Pirate%20Warriors%204",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA17196_00-OPPW4NAHDDGAME00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-129.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/One%20Piece%3A%20Pirate%20Warriors%204",
     "storeTitle": "One Piece: Pirate Warriors 4"
   },
@@ -2891,7 +2891,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/One%20Piece%3A%20World%20Seeker",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA11205_00-OPWSK00APPLI0000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-130.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/One%20Piece%3A%20World%20Seeker",
     "storeTitle": "One Piece: World Seeker"
   },
@@ -2906,7 +2906,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Outlast%20Trinity",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1018-CUSA07712_00-OUTLASTDISK00000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-131.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Outlast%20Trinity",
     "storeTitle": "Outlast Trinity"
   },
@@ -2921,7 +2921,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Paladins",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0334-CUSA04414_00-PALADINSXXXXXXXX/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-132.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Paladins",
     "storeTitle": "Paladins"
   },
@@ -2936,7 +2936,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/PAYDAY%202%3A%20Crimewave%20Edition",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP4040-CUSA01770_00-PAYDAY2CRIMEWAVE/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-133.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/PAYDAY%202%3A%20Crimewave%20Edition",
     "storeTitle": "PAYDAY 2: Crimewave Edition"
   },
@@ -2951,7 +2951,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Persona%205%20Royal",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0177-CUSA17416_00-PERSONA5R0000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-134.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Persona%205%20Royal",
     "storeTitle": "Persona 5 Royal"
   },
@@ -2966,7 +2966,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Persona%205%20Strikers",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0177-CUSA19640_00-0000000000000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-135.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Persona%205%20Strikers",
     "storeTitle": "Persona 5 Strikers"
   },
@@ -2981,7 +2981,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Persona%203%3A%20Dancing%20in%20Moonlight",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP2611-CUSA12636_00-PERSONA3DUS00000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-136.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Persona%203%3A%20Dancing%20in%20Moonlight",
     "storeTitle": "Persona 3: Dancing in Moonlight"
   },
@@ -2996,7 +2996,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Persona%204%20Arena%20Ultimax",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0177-CUSA27209_00-P4U2PS4US0000100/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-137.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Persona%204%20Arena%20Ultimax",
     "storeTitle": "Persona 4 Arena Ultimax"
   },
@@ -3011,7 +3011,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Plants%20vs.%20Zombies%3A%20Garden%20Warfare",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA00453_00-PVZGWPS400000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-138.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Plants%20vs.%20Zombies%3A%20Garden%20Warfare",
     "storeTitle": "Plants vs. Zombies: Garden Warfare"
   },
@@ -3026,7 +3026,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Plants%20vs.%20Zombies%20Garden%20Warfare%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0006-CUSA01975_00-PVZGW2BASEGAME00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-139.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Plants%20vs.%20Zombies%20Garden%20Warfare%202",
     "storeTitle": "Plants vs. Zombies Garden Warfare 2"
   },
@@ -3041,7 +3041,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Power%20Rangers%3A%20Battle%20for%20the%20Grid",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP4827-CUSA15145_00-BATTLEFORTHEGRID/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-140.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Power%20Rangers%3A%20Battle%20for%20the%20Grid",
     "storeTitle": "Power Rangers: Battle for the Grid"
   },
@@ -3056,7 +3056,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Project%20CARS%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0700-CUSA06569_00-PROJECTCARS20000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-141.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Project%20CARS%202",
     "storeTitle": "Project CARS 2"
   },
@@ -3071,7 +3071,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/RAGE%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1003-CUSA10339_00-RAGE02FULLGAME00/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-142.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/RAGE%202",
     "storeTitle": "RAGE 2"
   },
@@ -3086,7 +3086,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Red%20Dead%20Redemption",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP1004-CUSA36842_00-REDEMPTION000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-143.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Red%20Dead%20Redemption",
     "storeTitle": "Red Dead Redemption"
   },
@@ -3101,7 +3101,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%200",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA02337_00-BH0HD00000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-144.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%200",
     "storeTitle": "Resident Evil 0"
   },
@@ -3116,7 +3116,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20HD%20Remaster",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA01068_00-BHRHDPS400000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-145.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20HD%20Remaster",
     "storeTitle": "Resident Evil HD Remaster"
   },
@@ -3131,7 +3131,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%205",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA04437_00-RE5HDPS400000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-146.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%205",
     "storeTitle": "Resident Evil 5"
   },
@@ -3146,7 +3146,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%206",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA03856_00-BH6HDPS400000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-147.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%206",
     "storeTitle": "Resident Evil 6"
   },
@@ -3161,7 +3161,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20Revelations",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA06314_00-RERHDPS400000000/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-148.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20Revelations",
     "storeTitle": "Resident Evil Revelations"
   },
@@ -3176,7 +3176,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20Revelations%202",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA00924_00-BHR2HGTRIALPS401/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-149.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%20Revelations%202",
     "storeTitle": "Resident Evil Revelations 2"
   },
@@ -3191,7 +3191,7 @@
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
     "downloadUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%204%20%282023%29",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0102-CUSA04885_00-BH4HD00000000001/image?w=800&h=1200",
+    "imageUrl": "assets/covers/ps4-extra-150.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Resident%20Evil%204%20%282023%29",
     "storeTitle": "Resident Evil 4 (2023)"
   },
@@ -3206,7 +3206,7 @@
     "language": "Projeto em inglês",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/DolphinPS4/releases/download/v04.19/DolphinPS4-v04.19.pkg",
-    "imageUrl": "assets/covers/dolphin-emulator.svg",
+    "imageUrl": "assets/covers/dolphin-emulator-user.png",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {
@@ -3267,7 +3267,7 @@
     "language": "Português disponível",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/M33/releases/download/1.19/M33-v1.19.pkg",
-    "imageUrl": "assets/covers/ppsspp-emulator.svg",
+    "imageUrl": "assets/covers/ppsspp-emulator-user.png",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {

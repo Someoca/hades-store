@@ -71,9 +71,9 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .detail-icon{width:90px;height:90px;margin-bottom:12px}.detail-icon img{width:100%;height:100%;object-fit:contain}.eyebrow{color:#68dfff;letter-spacing:2px;font-size:11px}
 .detail-meta,.dialog-note{color:#b8cce7;font-size:13px;line-height:1.5}
 .detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.detail-actions[hidden]{display:none!important}
 .primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border:1px solid #4bc8ff;background:linear-gradient(180deg,#168df3,#064b9e);color:white;text-decoration:none;font-weight:900;font-size:12px;cursor:pointer}
 .secondary-btn{background:#071a36}
-.game-support-links{margin-top:15px}.game-support-links p{font-size:12px;color:#b8cce7}
 @media(min-width:1200px){.game-grid{gap:16px}.game-physical{height:clamp(190px,20vw,260px)}}
 @media(max-width:760px){.console-layout{grid-template-columns:86px minmax(0,1fr)}.sidebar{padding:12px 5px}.side-link{justify-content:center;padding:8px 3px}.side-link span{display:none}.profile img{width:60px;height:60px}.ps-symbol{font-size:30px}.top-nav{overflow-x:auto;justify-content:flex-start}.nav-tab{flex:0 0 auto}.catalog-heading{align-items:flex-start;flex-direction:column}.catalog-tools{width:100%}.search{flex:1}.search input{width:100%}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.game-physical{height:clamp(120px,27vw,190px)}.controller-bar{gap:10px;font-size:10px}.controller-bar strong{display:none}}
 @media(max-width:460px){.masthead{height:78px}.brand strong{font-size:22px}.brand small{font-size:7px;letter-spacing:.6px}.brand-mark{width:52px;height:52px}.console-layout{grid-template-columns:60px minmax(0,1fr)}.sidebar{padding:8px 3px}.profile img{width:46px;height:46px}.profile strong{font-size:9px}.profile small{font-size:8px}.side-link{font-size:15px;min-height:29px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical{height:clamp(145px,45vw,210px)}.catalog-heading h1{font-size:19px}.catalog-tools{flex-wrap:wrap}.sort-control select{max-width:110px}.controller-bar{justify-content:space-between;gap:4px;padding:6px;font-size:9px}.controller-bar span:nth-child(3){display:none}.controller-bar strong{display:none}}
@@ -184,3 +184,34 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .masthead{height:clamp(96px,13.2vw,142px);min-height:96px;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,22,.94) 0%,rgba(2,8,22,.72) 27%,rgba(3,10,25,.24) 42%,rgba(3,10,24,0) 61%),url("assets/hades-home-banner.svg");background-repeat:no-repeat;background-size:cover,auto 100%;background-position:center,right center}
 @media(max-width:900px){.masthead{height:clamp(96px,13.2vw,120px);min-height:96px}}
 @media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover,auto 100%;background-position:center,right center}}
+
+/* Horizontal cover carousel with page-sized navigation. */
+.catalog-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.carousel-controls{display:flex;align-items:center;gap:9px;color:#d8efff;font-size:11px;font-weight:900;letter-spacing:1px}
+.carousel-controls button{width:27px;height:25px;border:1px solid #249cff;border-radius:4px;background:linear-gradient(180deg,#0b3971,#04142b);color:#fff;font-size:22px;line-height:18px;cursor:pointer}
+.carousel-controls button:hover:not(:disabled),.carousel-controls button:focus-visible{background:linear-gradient(180deg,#159fff,#0754b7);border-color:#b3eeff;box-shadow:0 0 10px #098fff}
+.carousel-controls button:disabled{opacity:.35;cursor:default}
+.game-grid{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#168fff #06142a;padding:4px 3px 10px;scroll-behavior:smooth}
+.game-grid>.app-card{flex:0 0 calc((100% - 32px)/5);min-width:0;scroll-snap-align:start}
+@media(max-width:900px){.game-grid>.app-card{flex-basis:calc((100% - 16px)/3)}}
+@media(max-width:560px){.game-grid>.app-card{flex-basis:calc((100% - 8px)/2)}.carousel-controls{gap:6px}.carousel-controls button{width:25px;height:24px}}
+@media(prefers-reduced-motion:reduce){.game-grid{scroll-behavior:auto}}
+
+/* Submundo HADES como cenário suave do painel principal. */
+.main-panel{background-color:#0b0d18;background-image:linear-gradient(180deg,rgba(4,10,25,.58),rgba(5,10,22,.58) 48%,rgba(5,8,17,.78)),url("assets/hades-underworld-bg.svg");background-repeat:no-repeat;background-position:center;background-size:cover}
+
+/* Capas ampliadas e menos itens por tela no carrossel. */
+.game-grid>.app-card{flex-basis:calc((100% - 24px)/4)}
+.game-physical,.software-art{height:clamp(250px,27vw,360px)}
+@media(max-width:900px){.game-grid>.app-card{flex-basis:calc((100% - 8px)/2)}.game-physical,.software-art{height:clamp(260px,40vw,360px)}}
+@media(max-width:560px){.game-grid>.app-card{flex-basis:82%}.game-physical,.software-art{height:clamp(250px,70vw,360px)}}
+
+/* Faixa PS4 e nomes dos jogos maiores e mais legíveis. */
+.ps4-band{height:29px;font-size:16px;letter-spacing:1.8px;padding:0 9px}
+.game-cover-art{top:29px;height:calc(100% - 29px)}
+.cover-fallback{top:29px}
+.app-card h3{font-size:clamp(14px,1.45vw,19px);line-height:1.18;padding:5px 4px 2px}
+@media(max-width:560px){.ps4-band{height:30px;font-size:16px}.game-cover-art{top:30px;height:calc(100% - 30px)}.cover-fallback{top:30px}.app-card h3{font-size:18px;line-height:1.2}}
+.app-card h3{font-size:clamp(16px,1.6vw,21px)}
+@media(max-width:560px){.app-card h3{font-size:18px}}
+.emulator-physical .game-cover-art{object-fit:contain;background:#050505}
