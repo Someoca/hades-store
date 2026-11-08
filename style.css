@@ -131,3 +131,28 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Leitura a distância em TV e navegação por controle. */
+body{font-size:22px}
+.topbar{min-height:100px}
+.brand{font-size:22px;gap:14px}
+.brand-avatar{width:58px;height:58px;object-fit:cover;border-radius:50%;border:2px solid #d6b873;box-shadow:0 0 18px #a995db66;transform-style:preserve-3d;animation:avatar-orbit 7s ease-in-out infinite}
+@keyframes avatar-orbit{0%,100%{transform:perspective(600px) rotateY(-7deg) translateY(0)}50%{transform:perspective(600px) rotateY(9deg) translateY(-4px)}}
+.home-shortcut{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border:1px solid #e2bd76a6;border-radius:4px;color:#f2d99f;text-decoration:none;font-size:13px;font-weight:900;letter-spacing:1px;white-space:nowrap}
+.home-shortcut:hover,.home-shortcut:focus-visible{background:#e2bd7620;outline:2px solid #e2bd76}
+.app-card{min-height:285px;padding:24px}
+.app-card h3{font-size:21px;line-height:1.25}
+.app-card p{font-size:18px;line-height:1.45}
+.card-bottom .tag,.card-bottom .version{font-size:15px}
+.results-count,.sort-control{font-size:16px}
+.filter{font-size:18px;padding:12px 22px}
+.game-physical{height:220px}
+.game-cover{width:148px;height:198px}
+.ps4-band{position:absolute;z-index:4;top:0;left:0;right:0;height:24px;display:flex;align-items:center;padding:0 9px;background:linear-gradient(90deg,#0877df,#0a4ea8);border-bottom:1px solid #bfe5ff;color:#fff;font-size:15px;font-weight:900;letter-spacing:2px;text-shadow:0 1px 2px #001b49}
+.game-cover-art{inset:24px 0 0;height:calc(100% - 24px);object-fit:cover}
+.cover-fallback{top:24px}
+.game-disc{width:168px;height:168px}
+.pad-help{font-size:16px}
+@media(max-width:900px){body{font-size:18px}.app-card h3{font-size:18px}.app-card p{font-size:16px}.home-shortcut{padding:8px 10px}}
+@media(max-width:650px){.brand-avatar{width:44px;height:44px}.home-shortcut{font-size:11px}.game-physical{height:166px}.game-cover{width:112px;height:150px}.ps4-band{height:19px;font-size:12px}.game-cover-art{top:19px;height:calc(100% - 19px)}.app-card{min-height:230px}.app-card h3{font-size:15px}.app-card p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.brand-avatar{animation:none}}
