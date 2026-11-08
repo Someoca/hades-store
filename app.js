@@ -86,7 +86,7 @@ function createCard(item) {
 
   let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
   if (item.imageUrl && item.category === 'Jogos') {
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">◈ PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band">PS4</div><img class="game-cover-art" src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.imageUrl) {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"><span>' + safe(item.category === 'Emuladores' ? 'EMULADOR' : 'APLICATIVO') + '</span></div>';
   }
