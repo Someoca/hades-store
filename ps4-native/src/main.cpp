@@ -11,7 +11,7 @@
 
 extern "C" int sceSystemServiceLaunchWebBrowser(const char* uri, void* reserved);
 
-static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 8;
+static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 10;
 static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "EMULADORES"};
 static const int FILTER_COUNT = 4;
 static SDL_Window* windowHandle = nullptr;
@@ -24,7 +24,7 @@ static SDL_Texture* discTexture = nullptr;
 static std::vector<int> visible;
 static int selected = 0, filterIndex = 0;
 static int homeAction = 0;
-static bool homeScreen = true, showDetails = false, running = true;
+static bool homeScreen = false, showDetails = false, running = true;
 static bool frameDirty = true;
 
 struct Glyph { char key; unsigned char rows[7]; };
@@ -166,46 +166,78 @@ static void drawCover(int itemIndex,int x,int y,int w,int h){
     }
 }
 static void drawCard(int slot,int itemIndex,bool active){
-    int col=slot%4,row=slot/4,x=50+col*455,y=258+row*354,w=440,h=338;
-    fill(x,y,w,h,active?9:5,active?43:20,active?91:38);
-    outline(x,y,w,h,active?96:30,active?205:104,active?255:168,active?4:2);
+    int col=slot%5,row=slot/5,x=270+col*318,y=246+row*360,w=296,h=342;
+    fill(x,y,w,h,active?8:5,active?40:20,active?80:37);
+    outline(x,y,w,h,active?112:31,active?216:105,active?255:170,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
-    fill(x+10,y+10,w-20,185,22,21,29);
-    if(discTexture){SDL_Rect discDst{x+208,y+21,160,160};SDL_RenderCopy(renderer,discTexture,nullptr,&discDst);}
-    drawCover(itemIndex,x+57,y+16,126,174);
-    text(x+20,y+211,trim(it.name,33),244,240,232,3,x+w-15);
-    text(x+20,y+257,trim(it.description,48),170,166,161,2,x+w-15);
-    text(x+20,y+309,trim(it.category,22),105,195,255,2);
-    text(x+w-153,y+309,"X VER DETALHES",180,220,255,2);
+    fill(x+10,y+8,w-20,24,7,94,180);
+    text(x+19,y+12,"PS4",255,255,255,2);
+    const int coverW=178,coverH=238,coverX=x+(w-coverW)/2,coverY=y+38;
+    drawCover(itemIndex,coverX,coverY,coverW,coverH);
+    fill(coverX+3,coverY+118,coverW-6,68,0,7,18,205);
+    text(coverX+10,coverY+132,trim(it.name,19),255,255,255,2,coverX+coverW-8);
+    text(x+14,y+284,trim(it.name,30),244,248,255,2,x+w-12);
+    text(x+14,y+318,trim(it.category,19),105,195,255,2);
+    if(active)text(x+w-104,y+318,"X ABRIR",180,220,255,2);
 }
 static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int chars=70){
     std::string s=raw?raw:""; int line=0;
     while(!s.empty()&&line<5){size_t n=std::min((size_t)chars,s.size());if(n<s.size()){size_t k=s.rfind(' ',n);if(k!=std::string::npos&&k>0)n=k;}text(x,y+line*36,s.substr(0,n),r,g,b,3);s.erase(0,n);while(!s.empty()&&s[0]==' ')s.erase(0,1);line++;}
 }
 static void draw(){
-    fill(0,0,SW,SH,3,10,25);
-    fill(0,0,SW,125,4,16,38); fill(0,122,SW,2,24,139,235);
-    text(58,29,"HADES STORE",244,248,255,5);
-    text(58,80,"JOGOS   /   APLICATIVOS   /   EMULADORES",142,203,255,2);
-    char stats[100]; std::snprintf(stats,sizeof(stats),"%d JOGOS  %d APLICATIVOS  %d EMULADORES",countCategory("Jogos"),countCategory("Aplicativos"),countCategory("Emuladores"));
-    text(1270,68,stats,105,195,255,2);
-    int fx=50; for(int i=0;i<FILTER_COUNT;i++){int width=(i==4?200:190);bool active=i==filterIndex;fill(fx,145,width,45,active?8:5,active?91:22,active?190:39);outline(fx,145,width,45,active?76:27,active?196:76,active?255:116,active?2:1);text(fx+14,162,FILTERS[i],active?255:190,active?255:215,active?255:242,2);fx+=width+12;}
-    text(50,218,"CATALOGO",244,240,232,3);
-    if(visible.empty()){text(75,390,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
-    else {int page=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;for(int slot=0;slot<ITEMS_PER_PAGE&&page+slot<(int)visible.size();slot++)drawCard(slot,visible[page+slot],page+slot==selected);}
-    fill(50,1015,1820,2,52,49,58);
-    text(52,1032,"L1 R1 CATEGORIAS    DIRECIONAL NAVEGAR    X DETALHES    O INICIO",170,166,161,2);
-    text(1600,1032,"HADES STORE",226,189,118,2);
+    fill(0,0,SW,SH,2,8,22);
+    if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,42);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
+    fill(0,0,SW,SH,2,9,23,196);
+    fill(0,0,SW,116,2,9,23,232);fill(0,114,SW,3,24,139,235);
+    if(hadesTexture){SDL_Rect mark{26,12,92,96};SDL_RenderCopy(renderer,hadesTexture,nullptr,&mark);}
+    text(132,22,"HADES STORE",245,248,255,5);
+    text(134,78,"JOGOS  /  APLICATIVOS  /  EMULADORES",156,205,255,2);
+    text(1740,43,"PS4",235,245,255,4);
+    int tabX=250;
+    for(int i=0;i<FILTER_COUNT;i++){
+        int width=350,x=tabX+i*365;
+        bool active=i==filterIndex;
+        fill(x,126,width,56,active?8:4,active?83:20,active?168:38);
+        outline(x,126,width,56,active?91:28,active?208:80,active?255:125,active?3:1);
+        text(x+26,147,FILTERS[i],active?255:205,active?255:220,active?255:239,3);
+    }
+    fill(0,190,238,794,2,10,25,235);fill(237,190,2,794,16,115,210);
+    SDL_Rect avatar{67,211,104,104};
+    if(hadesTexture)SDL_RenderCopy(renderer,hadesTexture,nullptr,&avatar);
+    outline(67,211,104,104,67,190,255,3);
+    text(91,329,"HADES",245,248,255,2);
+    text(82,354,"BEM-VINDO!",174,204,239,1);
+    text(28,414,"CASA",228,239,255,2);
+    text(28,462,"BUSCAR",228,239,255,2);
+    text(28,510,"FAVORITOS",228,239,255,2);
+    text(28,558,"DOWNLOADS",228,239,255,2);
+    text(28,606,"CONFIGURACOES",228,239,255,2);
+    text(280,199,"CATALOGO",246,248,255,4);
+    char page[48];std::snprintf(page,sizeof(page),"%d / %d",visible.empty()?0:selected+1,(int)visible.size());
+    text(1695,205,page,194,221,249,2);
+    if(visible.empty()){text(315,430,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
+    else {
+        int first=(selected/ITEMS_PER_PAGE)*ITEMS_PER_PAGE;
+        for(int slot=0;slot<ITEMS_PER_PAGE&&first+slot<(int)visible.size();slot++)
+            drawCard(slot,visible[first+slot],first+slot==selected);
+    }
+    fill(0,998,SW,3,33,139,227);
+    fill(0,1001,SW,79,3,12,29,239);
+    text(28,1025,"X SELECIONAR",79,208,255,2);
+    text(270,1025,"O VOLTAR",255,82,137,2);
+    text(495,1025,"L1 / R1 CATEGORIAS",70,229,176,2);
+    text(890,1025,"DIRECIONAL NAVEGAR",204,225,242,2);
+    text(1510,1025,"SUA LOJA DE GAMES NO PS4",126,191,255,2);
     if(showDetails&&!visible.empty()){
-        fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,17,19,27);outline(235,145,1450,790,226,189,118,3);
+        fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,12,24,47);outline(235,145,1450,790,76,190,255,3);
         const StoreItem& it=STORE_ITEMS[visible[selected]];
         drawCover(visible[selected],290,275,270,405);
-        text(625,265,"DETALHES DO ITEM",226,189,118,3);text(625,325,trim(it.name,54),244,240,232,5);
-        text(625,395,trim(it.category,30),169,149,219,3);wrapText(625,455,it.description,170,205,235,75);
+        text(625,265,"DETALHES DO ITEM",105,211,255,3);text(625,325,trim(it.name,54),244,248,255,5);
+        text(625,395,trim(it.category,30),169,214,255,3);wrapText(625,455,it.description,203,222,244,75);
         if(it.recommendedGames && it.recommendedGames[0]){text(625,650,"JOGOS RECOMENDADOS",105,195,255,2);wrapText(625,690,it.recommendedGames,210,225,245,92);}
         text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
-        text(625,748,trim(it.url,100),170,166,161,2);
-        text(625,930,"O VOLTAR AO CATALOGO",170,166,161,2);
+        text(625,748,trim(it.url,100),170,198,224,2);
+        text(625,930,"O VOLTAR AO CATALOGO",170,205,235,2);
     }
     SDL_UpdateWindowSurface(windowHandle);
 }
@@ -213,7 +245,7 @@ static void openSelected(){if(visible.empty())return;const char* url=STORE_ITEMS
 static void handleDirection(int dx,int dy){
     if(showDetails)return;
     if(visible.empty())return;
-    int next=selected+dx+dy*4; if(next<0)next=0;if(next>=(int)visible.size())next=(int)visible.size()-1;selected=next;
+    int next=selected+dx+dy*5; if(next<0)next=0;if(next>=(int)visible.size())next=(int)visible.size()-1;selected=next;
 }
 static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;refresh();}
 static void moveHome(int dx,int dy){
@@ -267,7 +299,7 @@ static void handleKey(SDL_Keycode key){
         else if(key==SDLK_RETURN)enterCatalog();
         return;
     }
-    if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else homeScreen=true;}
+    if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else running=false;}
     else if(key==SDLK_LEFT)handleDirection(-1,0);else if(key==SDLK_RIGHT)handleDirection(1,0);
     else if(key==SDLK_UP)handleDirection(0,-1);else if(key==SDLK_DOWN)handleDirection(0,1);
     else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
@@ -292,7 +324,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
     if(button==SDL_CONTROLLER_BUTTON_LEFTSHOULDER)changeFilter(-1);
     else if(button==SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)changeFilter(1);
     else if(button==SDL_CONTROLLER_BUTTON_A){if(showDetails)openSelected();else showDetails=true;}
-    else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else homeScreen=true;}
+    else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else running=false;}
     else if(button==SDL_CONTROLLER_BUTTON_X)openSelected();
     else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_UP)handleDirection(0,-1);
@@ -327,5 +359,4 @@ int main(int argc,char** argv){
     if(fontTexture)SDL_DestroyTexture(fontTexture);
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
 }
-
 

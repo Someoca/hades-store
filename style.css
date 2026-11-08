@@ -118,3 +118,5 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .software-art{height:clamp(190px,22vw,280px)}
 @media(max-width:900px){.console-layout{grid-template-columns:100px minmax(0,1fr)}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.masthead{min-height:130px}}
 @media(max-width:560px){.masthead{min-height:100px;padding:10px}.brand-mark{width:52px;height:52px}.brand strong{font-size:22px}.top-nav{min-height:54px;padding:0 8px}.nav-tab{min-width:105px;min-height:42px;font-size:11px}.console-layout{grid-template-columns:62px minmax(0,1fr)}.profile img{width:48px;height:48px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical,.software-art{height:170px}}
+
+.cover-title-overlay{position:absolute;z-index:1;inset:40% 5px auto;display:grid;place-items:center;min-height:25%;padding:8px 5px;background:linear-gradient(90deg,#020918d9,#041a35e8,#020918d9);border-top:1px solid #85dfff;border-bottom:1px solid #85dfff;color:#fff;text-align:center;text-transform:uppercase;font-size:clamp(11px,1.4vw,18px);line-height:1.12;font-weight:1000;letter-spacing:.4px;text-shadow:0 2px 5px #000,0 0 10px #087fff}
