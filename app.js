@@ -188,7 +188,7 @@ function showDetails(item) {
   if (!dialog.open) dialog.showModal();
 }
 
-document.querySelectorAll('[data-category]').forEach((button) => {
+document.querySelectorAll('.filter').forEach((button) => {
   button.addEventListener('click', () => {
     state.category = button.dataset.category;
     render();
