@@ -20,6 +20,7 @@ W, H = 256, 384
 def fallback(item):
     """Create an individual PS4-style catalog cover when official art is unavailable."""
     name = item.get("name", "HADES STORE")
+    platform = item.get("version", "PS4")
     seed = sum((i + 1) * ord(char) for i, char in enumerate(item.get("id", "") + name))
     palettes = [
         ((8, 28, 57), (31, 154, 255)),
@@ -55,7 +56,7 @@ def fallback(item):
     font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
     title_font = ImageFont.truetype(font_path, 19) if pathlib.Path(font_path).exists() else ImageFont.load_default()
     small_font = ImageFont.truetype(font_path, 11) if pathlib.Path(font_path).exists() else ImageFont.load_default()
-    draw.text((22, 267), "HADES STORE  /  PS4", font=small_font, fill=accent)
+    draw.text((22, 267), "HADES STORE  /  " + platform, font=small_font, fill=accent)
     words, lines, current = name.split(), [], ""
     for word in words:
         candidate = (current + " " + word).strip()
@@ -71,7 +72,7 @@ def fallback(item):
         draw.text((22, y), line, font=title_font, fill=(248, 250, 255), stroke_width=0)
         y += 25
     draw.rectangle((22, H - 38, 62, H - 14), fill=accent)
-    draw.text((28, H - 36), "PS4", font=small_font, fill=(5, 10, 20))
+    draw.text((28, H - 36), platform, font=small_font, fill=(5, 10, 20))
     return image
 
 
