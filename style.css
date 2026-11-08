@@ -56,3 +56,14 @@ dialog{border-color:#d6b873;border-radius:9px;background:linear-gradient(145deg,
 
 .game-support-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.game-support-links[hidden]{display:none}.secondary-btn{display:inline-flex;align-items:center;padding:12px 16px;border:1px solid var(--cyan);color:var(--cyan);text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.6px}.game-support-links p{flex-basis:100%;margin:2px 0;color:var(--muted);font-size:13px;line-height:1.45}
 
+
+/* Cards de aplicativos e emuladores: arte própria em destaque, sem disco decorativo. */
+.software-art{height:194px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;margin:-5px 0 17px;overflow:hidden;border:1px solid #d6b87345;border-radius:5px;background:radial-gradient(ellipse at 50% 45%,#d6b87320,transparent 66%),linear-gradient(145deg,#22202b,#11121a);position:relative}
+.software-art img{width:118px;height:118px;object-fit:contain;filter:drop-shadow(0 9px 16px #000b);transition:transform .2s ease}
+.software-art span{font-size:9px;letter-spacing:2px;font-weight:800;color:#e2bd76}
+.software-art.art-image-missing:before{content:"HADES";font-size:26px;font-weight:900;letter-spacing:4px;color:#e2bd76}
+.app-card:hover .software-art img,.app-card:focus-visible .software-art img{transform:scale(1.06)}
+.detail-icon{width:112px;height:112px;padding:9px;overflow:hidden}
+.detail-icon img{display:block;width:100%;height:100%;object-fit:contain}
+.detail-icon img[hidden]{display:none}
+@media(max-width:560px){.software-art{height:166px}.software-art img{width:94px;height:94px}.detail-icon{width:96px;height:96px}}
