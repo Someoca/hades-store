@@ -24,6 +24,7 @@ const staticFiles = new Map([
   ["/assets/hades-fire-avatar.svg", ["assets/hades-fire-avatar.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-home-banner.svg", ["assets/hades-home-banner.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-underworld-bg.svg", ["assets/hades-underworld-bg.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/covers/game-cover.svg", ["assets/covers/game-cover.svg", "image/svg+xml; charset=utf-8"]],
 ]);
 
 const server = http.createServer((request, response) => {
