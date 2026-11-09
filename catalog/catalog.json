@@ -9,10 +9,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
+    "downloadUrl": "https://espfile.com/go/?id=fbb9a7",
     "imageUrl": "assets/covers/official/ps4-02.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA34384_00-GOWRAGNAROK00000",
-    "storeTitle": "God of War Ragnarök"
+    "storeTitle": "God of War Ragnarök",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=fbb9a7"
+      },
+      {
+        "label": "UPDATE V6.05",
+        "url": "https://espfile.com/go/?id=c3ee63"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=01223a"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-03",
@@ -24,10 +39,29 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
+    "downloadUrl": "https://espfile.com/go/?id=3309ae",
     "imageUrl": "assets/covers/official/ps4-03.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00552_00-THELASTOFUS00000",
-    "storeTitle": "The Last Of Us™ Remastered "
+    "storeTitle": "The Last Of Us™ Remastered ",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=3309ae"
+      },
+      {
+        "label": "UPDATE V1.11 MOD MENU",
+        "url": "https://espfile.com/go/?id=6c4257"
+      },
+      {
+        "label": "UPDATE V1.11 NORMAL",
+        "url": "https://espfile.com/go/?id=786dde"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=ff108f"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-07",
@@ -39,10 +73,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
+    "downloadUrl": "https://espfile.com/go/?id=56c6dd",
     "imageUrl": "assets/covers/official/ps4-07.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA10237_00-HRZCE00000000000",
-    "storeTitle": "Horizon Zero Dawn: Complete Edition"
+    "storeTitle": "Horizon Zero Dawn: Complete Edition",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=56c6dd"
+      },
+      {
+        "label": "UPDATE V1.54",
+        "url": "https://espfile.com/go/?id=397b08"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-05",
@@ -84,10 +129,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
+    "downloadUrl": "https://espfile.com/go/?id=933354",
     "imageUrl": "assets/covers/official/ps4-19.avif",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP1004-CUSA03041_00-REDEMPTIONFULL02",
-    "storeTitle": "Red Dead Redemption 2"
+    "storeTitle": "Red Dead Redemption 2",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=933354"
+      },
+      {
+        "label": "UPDATE V1.32",
+        "url": "https://espfile.com/go/?id=5a7119"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=ed91c9"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-extra-083",
@@ -159,10 +219,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07408_00-00000000GODOFWAR",
+    "downloadUrl": "https://espfile.com/go/?id=19433d",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA07408_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07408_00-00000000GODOFWAR",
-    "storeTitle": "God of War"
+    "storeTitle": "God of War",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=19433d"
+      },
+      {
+        "label": "UPDATE V1.35",
+        "url": "https://espfile.com/go/?id=dd16bb"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=af0d6c"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-04",
@@ -174,10 +249,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07820_00-THELASTOFUSPART2",
+    "downloadUrl": "https://espfile.com/go/?id=0d64e5",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA07820_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07820_00-THELASTOFUSPART2",
-    "storeTitle": "The Last of Us Part II"
+    "storeTitle": "The Last of Us Part II",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=0d64e5"
+      },
+      {
+        "label": "UPDATE V1.09",
+        "url": "https://espfile.com/go/?id=20b8a4"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=542804"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-06",
@@ -189,10 +279,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
+    "downloadUrl": "https://espfile.com/go/?id=2eaa77",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA07737_00-UNCHD4LOSTLEGACY",
-    "storeTitle": "UNCHARTED: The Lost Legacy"
+    "storeTitle": "UNCHARTED: The Lost Legacy",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=2eaa77"
+      },
+      {
+        "label": "UPDATE V1.09",
+        "url": "https://espfile.com/go/?id=306afa"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-08",
@@ -204,10 +305,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
+    "downloadUrl": "https://espfile.com/go/?id=33804b",
     "imageUrl": "assets/covers/official/ps4-08.png",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA28561_00-FORBIDDENWESTPS4",
-    "storeTitle": "Horizon Forbidden West™"
+    "storeTitle": "Horizon Forbidden West™",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=33804b"
+      },
+      {
+        "label": "UPDATE V1.18",
+        "url": "https://espfile.com/go/?id=d8ef4e"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=1b507f"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-09",
@@ -219,10 +335,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA11456_00-GHOSTSHIP0000001",
+    "downloadUrl": "https://espfile.com/go/?id=23ad47",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA11456_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA11456_00-GHOSTSHIP0000001",
-    "storeTitle": "Ghost of Tsushima: Legends"
+    "storeTitle": "Ghost of Tsushima: Legends",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=23ad47"
+      },
+      {
+        "label": "UPDATE V2.24",
+        "url": "https://espfile.com/go/?id=53f21b"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=f458e1"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-10",
@@ -234,10 +365,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA02299_00-MARVELSSMGOTY000",
+    "downloadUrl": "https://espfile.com/go/?id=caed54",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA02299_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA02299_00-MARVELSSMGOTY000",
-    "storeTitle": "Marvel's Spider-Man: Game of the Year Edition"
+    "storeTitle": "Marvel's Spider-Man: Game of the Year Edition",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=caed54"
+      },
+      {
+        "label": "UPDATE V1.19",
+        "url": "https://espfile.com/go/?id=7b07aa"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=895fcb"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-12",
@@ -264,10 +410,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00900_00-BLOODBORNE000000",
+    "downloadUrl": "https://espfile.com/go/?id=5a714f",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA00900_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00900_00-BLOODBORNE000000",
-    "storeTitle": "Bloodborne™"
+    "storeTitle": "Bloodborne™",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=5a714f"
+      },
+      {
+        "label": "UPDATE V1.53",
+        "url": "https://espfile.com/go/?id=3fb5d1"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=082bac"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-14",
@@ -279,10 +440,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08344_00-DETROIT000000001",
+    "downloadUrl": "https://espfile.com/go/?id=746981",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA08344_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA08344_00-DETROIT000000001",
-    "storeTitle": "Detroit: Become Human"
+    "storeTitle": "Detroit: Become Human",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=746981"
+      },
+      {
+        "label": "UPDATE V1.09",
+        "url": "https://espfile.com/go/?id=1741c6"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-15",
@@ -294,10 +466,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA01047_00-RATCHETPS4000000",
+    "downloadUrl": "https://espfile.com/go/?id=0da275",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA01047_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA01047_00-RATCHETPS4000000",
-    "storeTitle": "Ratchet & Clank™"
+    "storeTitle": "Ratchet & Clank™",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=0da275"
+      },
+      {
+        "label": "UPDATE V1.09",
+        "url": "https://espfile.com/go/?id=832020"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=d36676"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-16",
@@ -309,10 +496,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00359_00-UNTILDAWN0000001",
+    "downloadUrl": "https://espfile.com/go/?id=14dead",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA00359_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP9000-CUSA00359_00-UNTILDAWN0000001",
-    "storeTitle": "Until Dawn™ 2015"
+    "storeTitle": "Until Dawn™ 2015",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=14dead"
+      },
+      {
+        "label": "UPDATE V1.04",
+        "url": "https://espfile.com/go/?id=3484aa"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-17",
@@ -339,10 +537,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4497-CUSA16596_00-0000000000000004",
+    "downloadUrl": "https://espfile.com/go/?id=15aae5",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA16596_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4497-CUSA16596_00-0000000000000004",
-    "storeTitle": "Cyberpunk 2077"
+    "storeTitle": "Cyberpunk 2077",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=15aae5"
+      },
+      {
+        "label": "UPDATE V1.61",
+        "url": "https://espfile.com/go/?id=eae9c1"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-20",
@@ -399,10 +608,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA04885_00-BH4HD00000000001",
+    "downloadUrl": "https://espfile.com/go/?id=4f3280",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA04885_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0102-CUSA04885_00-BH4HD00000000001",
-    "storeTitle": "resident evil 4 (2005)"
+    "storeTitle": "resident evil 4 (2005)",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=4f3280"
+      },
+      {
+        "label": "UPDATE V1.02",
+        "url": "https://espfile.com/go/?id=a0010a"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-24",
@@ -444,10 +664,29 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA09311_00-GAME000000000000",
+    "downloadUrl": "https://espfile.com/go/?id=89016b",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA09311_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA09311_00-GAME000000000000",
-    "storeTitle": "Assassin's Creed® Odyssey"
+    "storeTitle": "Assassin's Creed® Odyssey",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=89016b"
+      },
+      {
+        "label": "UPDATE V1.56",
+        "url": "https://espfile.com/go/?id=35bbb0"
+      },
+      {
+        "label": "DUBLAGEM PT-BR",
+        "url": "https://espfile.com/go/?id=0057b1"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=e4a4ae"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-28",
@@ -474,10 +713,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05904_00-FARCRY5GAME00000",
+    "downloadUrl": "https://espfile.com/go/?id=c0e531",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA05904_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA05904_00-FARCRY5GAME00000",
-    "storeTitle": "Far Cry 5"
+    "storeTitle": "Far Cry 5",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=c0e531"
+      },
+      {
+        "label": "UPDATE V1.19",
+        "url": "https://espfile.com/go/?id=d0afc8"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=c78456"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-30",
@@ -489,10 +743,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA15717_00-FARCRY6GAME00000",
+    "downloadUrl": "https://espfile.com/go/?id=e772c6",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA15717_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0001-CUSA15717_00-FARCRY6GAME00000",
-    "storeTitle": "Far Cry® 6 FREE Trial"
+    "storeTitle": "Far Cry® 6 FREE Trial",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=e772c6"
+      },
+      {
+        "label": "UPDATE V1.06",
+        "url": "https://espfile.com/go/?id=90e013"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=c1deb4"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-31",
@@ -549,10 +818,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0700-CUSA05972_00-000000000TEKKEN7",
+    "downloadUrl": "https://espfile.com/go/?id=46ef09",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA05972_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0700-CUSA05972_00-000000000TEKKEN7",
-    "storeTitle": "TEKKEN 7"
+    "storeTitle": "TEKKEN 7",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=46ef09"
+      },
+      {
+        "label": "UPDATE V5.10",
+        "url": "https://espfile.com/go/?id=399d53"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=1cfc35"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-35",
@@ -639,10 +923,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
+    "downloadUrl": "https://espfile.com/go/?id=37583d",
     "imageUrl": "assets/covers/official/ps4-40.jpg",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA16742_00-HAZELIGHTNUTS000",
-    "storeTitle": "It Takes Two - Passe de Amigo PS4™"
+    "storeTitle": "It Takes Two - Passe de Amigo PS4™",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=37583d"
+      },
+      {
+        "label": "UPDATE V1.03",
+        "url": "https://espfile.com/go/?id=68728b"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-41",
@@ -654,10 +949,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
+    "downloadUrl": "https://espfile.com/go/?id=df648d",
     "imageUrl": "assets/covers/official/ps4-41.png",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA07995_00-HAZELIGHTAWAYOUT",
-    "storeTitle": "A Way Out"
+    "storeTitle": "A Way Out",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=df648d"
+      },
+      {
+        "label": "UPDATE V1.01",
+        "url": "https://espfile.com/go/?id=2e86a1"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-42",
@@ -669,10 +975,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP4064-CUSA10940_00-OVERCOOKED200000",
+    "downloadUrl": "https://espfile.com/go/?id=0527bd",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA10940_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP4064-CUSA10940_00-OVERCOOKED200000",
-    "storeTitle": "Overcooked! 2"
+    "storeTitle": "Overcooked! 2",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=0527bd"
+      },
+      {
+        "label": "UPDATE V1.13",
+        "url": "https://espfile.com/go/?id=6beff2"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=df3c6b"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-43",
@@ -699,10 +1020,29 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA09209_00-THESIMS400000000",
+    "downloadUrl": "https://espfile.com/go/?id=1a6002",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA09209_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP0006-CUSA09209_00-THESIMS400000000",
-    "storeTitle": "The Sims™ 4"
+    "storeTitle": "The Sims™ 4",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=1a6002"
+      },
+      {
+        "label": "UPDATE V1.95",
+        "url": "https://espfile.com/go/?id=dc3099"
+      },
+      {
+        "label": "EXPANSÃO",
+        "url": "https://espfile.com/go/?id=22673f"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=d3a3c1"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-45",
@@ -759,10 +1099,25 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP8062-CUSA20499_00-CUPHEAD000000000",
+    "downloadUrl": "https://espfile.com/go/?id=f65ac6",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA20499_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP8062-CUSA20499_00-CUPHEAD000000000",
-    "storeTitle": "Cuphead"
+    "storeTitle": "Cuphead",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=f65ac6"
+      },
+      {
+        "label": "UPDATE V1.05",
+        "url": "https://espfile.com/go/?id=91206a"
+      },
+      {
+        "label": "DLC",
+        "url": "https://espfile.com/go/?id=1d5a33"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-49",
@@ -789,10 +1144,21 @@
     "size": "Consulte a página oficial",
     "language": "Português do Brasil: confirme disponibilidade de texto e áudio nesta edição e região.",
     "format": "PKG somente se disponível por fonte autorizada",
-    "downloadUrl": "https://store.playstation.com/pt-br/product/UP2456-CUSA06840_00-STARDEW00000SIEA",
+    "downloadUrl": "https://espfile.com/go/?id=a4afda",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA06840_00/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/product/UP2456-CUSA06840_00-STARDEW00000SIEA",
-    "storeTitle": "Stardew Valley"
+    "storeTitle": "Stardew Valley",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=a4afda"
+      },
+      {
+        "label": "UPDATE V1.63",
+        "url": "https://espfile.com/go/?id=4972d2"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "app-remote-pkg-installer",
