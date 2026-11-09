@@ -1875,7 +1875,7 @@
         "url": "https://espfile.com/go/?id=479294"
       },
       {
-        "label": "UPDATE V1.02 (688 GB)",
+        "label": "UPDATE V1.02 (688 MB)",
         "url": "https://espfile.com/go/?id=bb2e9b"
       }
     ],
@@ -3732,7 +3732,7 @@
         "url": "https://espfile.com/go/?id=0b4e60"
       },
       {
-        "label": "UPDATE V1.88 (716 GB)",
+        "label": "UPDATE V1.88 (716 MB)",
         "url": "https://espfile.com/go/?id=857c8b"
       }
     ],
@@ -4009,7 +4009,7 @@
         "url": "https://espfile.com/go/?id=e42cbd"
       },
       {
-        "label": "UPDATE V1.03 (267 GB)",
+        "label": "UPDATE V1.03 (267 MB)",
         "url": "https://espfile.com/go/?id=d9def3"
       },
       {
@@ -5780,7 +5780,7 @@
     "size": "36.7 GB",
     "language": "Português do Brasil (dublado, conforme indicação da lista)",
     "format": "PKG",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA31345_00/image?w=800&h=1200",
+    "imageUrl": "https://playstation.com",
     "packageLinks": [
       {
         "label": "JOGO (36.7 GB)",
@@ -5798,7 +5798,7 @@
     "downloadUrl": "https://espfile.com/go/?id=244a7d",
     "linkLabel": "BAIXAR JOGO",
     "packageCodes": [
-      "CUSA31345"
+      "CUSA01623"
     ]
   },
   {
@@ -6220,7 +6220,7 @@
   },
   {
     "id": "pkg-127-bioshock-infinite",
-    "name": "BioShock Infinite",
+    "name": "BioShock Infinite (Edição Alternativa)",
     "category": "Jogos",
     "version": "PS4",
     "icon": "PKG",
@@ -10242,33 +10242,6 @@
     "linkLabel": "BAIXAR JOGO",
     "packageCodes": [
       "CUSA05999"
-    ]
-  },
-  {
-    "id": "pkg-303-sonic-racing-crossworlds",
-    "name": "Sonic Racing CrossWorlds",
-    "category": "Jogos",
-    "version": "PS4",
-    "icon": "PKG",
-    "description": "Jogo para PS4. Confira edição, região, idioma e compatibilidade do pacote antes de instalar.",
-    "size": "12.75 GB",
-    "language": "Português do Brasil (conforme indicação da lista)",
-    "format": "PKG",
-    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA35016_00/image?w=800&h=1200",
-    "packageLinks": [
-      {
-        "label": "JOGO (12.75 GB)",
-        "url": "https://espfile.com/go/?id=0064d7"
-      },
-      {
-        "label": "UPDATE V1.22 (11.73 GB)",
-        "url": "https://espfile.com/go/?id=676c0e"
-      }
-    ],
-    "downloadUrl": "https://espfile.com/go/?id=0064d7",
-    "linkLabel": "BAIXAR JOGO",
-    "packageCodes": [
-      "CUSA35016"
     ]
   },
   {

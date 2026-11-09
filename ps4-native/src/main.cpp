@@ -23,7 +23,6 @@ static SDL_Texture* hadesTexture = nullptr;
 static SDL_Texture* avatarTexture = nullptr;
 static SDL_Texture* bannerTexture = nullptr;
 static SDL_Texture* sigilTexture = nullptr;
-static SDL_Texture* discTexture = nullptr;
 static std::vector<int> visible;
 static int selected = 0, filterIndex = 0;
 static int homeAction = 0;
@@ -94,7 +93,6 @@ static void refresh(){
     for(int i=0;i<STORE_ITEM_COUNT;i++) if(matches(STORE_ITEMS[i].category)) visible.push_back(i);
     if(visible.empty()) selected=0; else selected=std::min(selected,(int)visible.size()-1);
 }
-static int countCategory(const char* category){int n=0;for(int i=0;i<STORE_ITEM_COUNT;i++)if(!std::strcmp(STORE_ITEMS[i].category,category))n++;return n;}
 static void circle(int cx,int cy,int radius,Uint8 r,Uint8 g,Uint8 b){
     color(r,g,b); for(int y=-radius;y<=radius;y++){int xx=(int)(radius*radius-y*y);int x=0;while((x+1)*(x+1)<=xx)x++;SDL_RenderDrawLine(renderer,cx-x,cy+y,cx+x,cy+y);}
 }
@@ -121,35 +119,6 @@ static SDL_Texture* loadTexture(const char* path, bool alphaMask=false){
     SDL_Texture* texture=SDL_CreateTextureFromSurface(renderer,prepared);
     if(alphaMask)SDL_FreeSurface(prepared);
     SDL_FreeSurface(source);
-    if(texture)SDL_SetTextureBlendMode(texture,SDL_BLENDMODE_BLEND);
-    return texture;
-}
-static SDL_Texture* createDiscTexture(){
-    const int size=256,center=size/2,radius=124;
-    SDL_Surface* surface=SDL_CreateRGBSurfaceWithFormat(0,size,size,32,SDL_PIXELFORMAT_RGBA32);
-    if(!surface)return nullptr;
-    if(SDL_MUSTLOCK(surface))SDL_LockSurface(surface);
-    for(int y=0;y<size;y++)for(int x=0;x<size;x++){
-        int dx=x-center,dy=y-center,d2=dx*dx+dy*dy;
-        Uint8 r=0,g=0,b=0,a=0;
-        if(d2<=radius*radius){
-            int radial=(int)std::sqrt((double)d2),groove=radial%14;
-            int sheen=(dx-dy+size)/12;
-            int base=groove<2?198:151;
-            if(d2<45*45)base=126;
-            int silver=std::max(85,std::min(238,base+sheen));
-            r=(Uint8)std::min(245,silver+3);g=(Uint8)silver;b=(Uint8)std::min(250,silver+9);a=255;
-            if(groove==0){r=(Uint8)std::min(250,(int)r+12);g=(Uint8)std::min(250,(int)g+12);b=(Uint8)std::min(255,(int)b+12);}
-            if(d2<31*31){r=139;g=139;b=151;}
-            if(d2<18*18){r=207;g=202;b=187;}
-            if(d2<11*11){r=0;g=0;b=0;a=0;}
-        }
-        Uint32 pixel=SDL_MapRGBA(surface->format,r,g,b,a);
-        std::memcpy((Uint8*)surface->pixels+y*surface->pitch+x*surface->format->BytesPerPixel,&pixel,surface->format->BytesPerPixel);
-    }
-    if(SDL_MUSTLOCK(surface))SDL_UnlockSurface(surface);
-    SDL_Texture* texture=SDL_CreateTextureFromSurface(renderer,surface);
-    SDL_FreeSurface(surface);
     if(texture)SDL_SetTextureBlendMode(texture,SDL_BLENDMODE_BLEND);
     return texture;
 }
@@ -231,7 +200,7 @@ static void draw(){
     text(28,1025,"X SELECIONAR",79,208,255,2);
     text(270,1025,"O VOLTAR",255,82,137,2);
     text(495,1025,"L1 / R1 CATEGORIAS",70,229,176,2);
-    text(890,1025,"DIRECIONAL NAVEGAR",204,225,242,2);
+    text(790,1025,"TRIANGULO INICIO   DIRECIONAL NAVEGAR",204,225,242,2);
     text(1510,1025,"SUA LOJA DE GAMES NO PS4",126,191,255,2);
     if(showDetails&&!visible.empty()){
         fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,12,24,47);outline(235,145,1450,790,76,190,255,3);
@@ -331,7 +300,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_A){if(showDetails)openSelected();else showDetails=true;}
     else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else running=false;}
     else if(button==SDL_CONTROLLER_BUTTON_X)openSelected();
-    else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
+    else if(button==SDL_CONTROLLER_BUTTON_Y){homeScreen=true;showDetails=false;}else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_UP)handleDirection(0,-1);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_DOWN)handleDirection(0,1);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)handleDirection(-1,0);
@@ -351,19 +320,26 @@ int main(int argc,char** argv){
     avatarTexture=loadTexture("/app0/sce_sys/hades-avatar.bmp");
     bannerTexture=loadTexture("/app0/sce_sys/hades-banner.bmp");
     sigilTexture=loadTexture("/app0/sce_sys/hades-sigil.bmp");
-    discTexture=createDiscTexture();
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
     while(running){SDL_Event e;if(SDL_WaitEventTimeout(&e,16))do{
         if(e.type==SDL_QUIT)running=false;
         else if(e.type==SDL_KEYDOWN){handleKey(e.key.keysym.sym);frameDirty=true;}
         else if(e.type==SDL_CONTROLLERBUTTONDOWN){handleControllerButton((SDL_GameControllerButton)e.cbutton.button);frameDirty=true;}
+        else if(e.type==SDL_CONTROLLERAXISMOTION){
+            static Uint32 lastAxisMove=0;
+            Uint32 now=SDL_GetTicks();
+            if(now-lastAxisMove>160 && (e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTX || e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTY)){
+                int dx=(e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTX)?(e.caxis.value>16000?1:(e.caxis.value<-16000?-1:0)):0;
+                int dy=(e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTY)?(e.caxis.value>16000?1:(e.caxis.value<-16000?-1:0)):0;
+                if(dx||dy){if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);lastAxisMove=now;frameDirty=true;}
+            }
+        }
         else if(e.type==SDL_JOYBUTTONDOWN&&!gameController){handleButton(e.jbutton.button);frameDirty=true;}
         else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);frameDirty=true;}
         else if(e.type==SDL_WINDOWEVENT)frameDirty=true;
     }while(SDL_PollEvent(&e));if(frameDirty){if(homeScreen)drawHome();else draw();frameDirty=false;}}
     if(hadesTexture)SDL_DestroyTexture(hadesTexture);if(avatarTexture)SDL_DestroyTexture(avatarTexture);if(bannerTexture)SDL_DestroyTexture(bannerTexture);if(sigilTexture)SDL_DestroyTexture(sigilTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
-    if(discTexture)SDL_DestroyTexture(discTexture);
     if(fontTexture)SDL_DestroyTexture(fontTexture);
     SDL_DestroyRenderer(renderer);SDL_DestroyWindow(windowHandle);SDL_Quit();return 0;
 }

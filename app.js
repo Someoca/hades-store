@@ -574,6 +574,7 @@ window.addEventListener('resize', () => {
   updateCarouselControls();
 });
 
+/* HADES-GAMEPAD-FULL */
 function pollGamepadShoulders() {
   gamepadPolling = false;
   if (!navigator.getGamepads) return;
@@ -581,12 +582,46 @@ function pollGamepadShoulders() {
   for (const gamepad of navigator.getGamepads()) {
     if (!gamepad) continue;
     connected = true;
-    const previous = gamepadShoulders.get(gamepad.index) || { left: false, right: false };
-    const left = Boolean(gamepad.buttons[4]?.pressed);
-    const right = Boolean(gamepad.buttons[5]?.pressed);
-    if (!dialog.open && left && !previous.left) goToCarouselPage(-1);
-    if (!dialog.open && right && !previous.right) goToCarouselPage(1);
-    gamepadShoulders.set(gamepad.index, { left, right });
+    const previous = gamepadShoulders.get(gamepad.index) || {};
+    const axes = gamepad.axes || [];
+    const pressed = (index) => Boolean(gamepad.buttons[index]?.pressed);
+    const current = {
+      leftShoulder: pressed(4),
+      rightShoulder: pressed(5),
+      cross: pressed(0),
+      circle: pressed(1),
+      up: pressed(12) || (axes[1] ?? 0) < -0.6,
+      down: pressed(13) || (axes[1] ?? 0) > 0.6,
+      left: pressed(14) || (axes[0] ?? 0) < -0.6,
+      right: pressed(15) || (axes[0] ?? 0) > 0.6,
+    };
+
+    if (!dialog.open && current.leftShoulder && !previous.leftShoulder) goToCarouselPage(-1);
+    if (!dialog.open && current.rightShoulder && !previous.rightShoulder) goToCarouselPage(1);
+
+    if (dialog.open && current.circle && !previous.circle) {
+      playUiSound('back');
+      dialog.close();
+    } else if ((current.right && !previous.right) || (current.down && !previous.down)
+        || (current.left && !previous.left) || (current.up && !previous.up)) {
+      const modalControls = [...dialog.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled])')]
+        .filter((element) => element.getClientRects().length);
+      const elements = dialog.open ? modalControls : focusables();
+      const index = elements.indexOf(document.activeElement);
+      const forward = (current.right && !previous.right) || (current.down && !previous.down);
+      const offset = forward ? 1 : -1;
+      const next = elements.length
+        ? elements[(Math.max(0, index) + offset + elements.length) % elements.length]
+        : null;
+      if (next) {
+        next.focus();
+        playUiSound('move');
+      }
+    } else if (current.cross && !previous.cross) {
+      const active = document.activeElement;
+      if (active?.matches('a[href],button,.app-card')) active.click();
+    }
+    gamepadShoulders.set(gamepad.index, current);
   }
   if (connected) {
     gamepadPolling = true;
