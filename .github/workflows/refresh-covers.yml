@@ -13,19 +13,14 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: real-covers-pages
   cancel-in-progress: true
 
 jobs:
-  refresh-and-deploy:
+  refresh-covers:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
@@ -56,14 +51,3 @@ jobs:
           git pull --rebase origin main
           git push || { git pull --rebase origin main; git push; }
 
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Preparar arquivos do site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Publicar atualização
-        id: deployment
-        uses: actions/deploy-pages@v4
