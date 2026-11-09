@@ -236,3 +236,9 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .emulator-physical .game-cover-art{object-fit:contain;background:#050505}
 
 .card-details{margin-left:auto;padding:5px 8px;border:1px solid #3b9ee8;border-radius:3px;background:#071a36;color:#a9e8ff;font-size:9px;font-weight:900;letter-spacing:.6px;cursor:pointer}.package-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.package-links[hidden]{display:none!important}.download-password{margin:12px 0 0;padding:10px 12px;border:1px solid #2c83c9;border-radius:5px;background:#071a36;color:#dcecff;font-size:13px}.download-password code{margin-left:6px;color:#8de5ff;font-size:15px;font-weight:900}
+
+/* HADES-AUDIT-FIX */
+.catalog-heading{flex-wrap:wrap;gap:10px;margin-bottom:6px}
+.catalog-tools{display:flex!important;align-items:center;gap:8px}
+.catalog-meta p{display:block!important;font-size:11px;color:#9fc7f5}
+@media(max-width:560px){.catalog-tools{width:100%}.catalog-tools .search{flex:1}}
