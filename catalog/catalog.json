@@ -2161,10 +2161,17 @@
     "size": "Consulte a página oficial",
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders",
+    "downloadUrl": "https://espfile.com/go/?id=a5d173",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0082-CUSA05235_00-BUILDERS00000000/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders",
-    "storeTitle": "Dragon Quest Builders"
+    "storeTitle": "Dragon Quest Builders",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=a5d173"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-extra-056",
@@ -2176,10 +2183,25 @@
     "size": "Consulte a página oficial",
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders%202",
+    "downloadUrl": "https://espfile.com/go/?id=4ee532",
     "imageUrl": "assets/covers/ps4-extra-056.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Dragon%20Quest%20Builders%202",
-    "storeTitle": "Dragon Quest Builders 2"
+    "storeTitle": "Dragon Quest Builders 2",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=4ee532"
+      },
+      {
+        "label": "UPDATE V1.04",
+        "url": "https://espfile.com/go/?id=fb2965"
+      },
+      {
+        "label": "DLCS",
+        "url": "https://espfile.com/go/?id=194292"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-extra-057",
@@ -2581,10 +2603,25 @@
     "size": "Consulte a página oficial",
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/Guilty%20Gear%20-Strive-",
+    "downloadUrl": "https://espfile.com/go/?id=1e16a1",
     "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/container/US/en/999/UP0036-CUSA19210_00-000000000GG4GAME/image?w=800&h=1200",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/Guilty%20Gear%20-Strive-",
-    "storeTitle": "Guilty Gear -Strive-"
+    "storeTitle": "Guilty Gear -Strive-",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=1e16a1"
+      },
+      {
+        "label": "UPDATE V1.51",
+        "url": "https://espfile.com/go/?id=a9253b"
+      },
+      {
+        "label": "DLCS V3",
+        "url": "https://espfile.com/go/?id=4318f2"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-extra-086",
@@ -2851,10 +2888,17 @@
     "size": "Consulte a página oficial",
     "language": "Verifique os idiomas na edição selecionada.",
     "format": "Compra digital pela PlayStation Store; esta página não fornece PKG.",
-    "downloadUrl": "https://store.playstation.com/pt-br/search/LEGO%20Harry%20Potter%20Collection",
+    "downloadUrl": "https://espfile.com/go/?id=9dbeb8",
     "imageUrl": "assets/covers/ps4-extra-103.svg",
     "storeProductUrl": "https://store.playstation.com/pt-br/search/LEGO%20Harry%20Potter%20Collection",
-    "storeTitle": "LEGO Harry Potter Collection"
+    "storeTitle": "LEGO Harry Potter Collection",
+    "packageLinks": [
+      {
+        "label": "JOGO",
+        "url": "https://espfile.com/go/?id=9dbeb8"
+      }
+    ],
+    "linkLabel": "BAIXAR PKG"
   },
   {
     "id": "ps4-extra-104",
