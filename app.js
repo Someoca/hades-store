@@ -655,7 +655,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=library-441-2')
+fetch('catalog/catalog.json?v=library-441-3')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
