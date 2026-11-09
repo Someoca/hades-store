@@ -18,7 +18,7 @@ permissions:
 
 concurrency:
   group: real-covers-pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh-and-deploy:
