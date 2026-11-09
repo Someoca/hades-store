@@ -247,21 +247,12 @@ function createCard(item) {
     + '<h3>' + safe(item.name) + '</h3><p>' + safe(item.description) + '</p>'
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
     + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
-    + (item.category === 'Jogos' && Array.isArray(item.packageLinks) && item.packageLinks.length ? '<button class="card-details" type="button" data-details>DETALHES</button>' : '') + '</div>';
+    + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.url === 'string' && entry.url.startsWith('https://')).length : 0) + ')</button>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
-    if (event && event.target.closest('[data-details]')) {
-      showDetails(item);
-      return;
-    }
-    const primaryPackage = Array.isArray(item.packageLinks)
-      ? item.packageLinks.find((entry) => entry && String(entry.label || '').toUpperCase().startsWith('JOGO') && typeof entry.url === 'string' && entry.url.startsWith('https://'))
-      : null;
-    if (primaryPackage) {
-      window.open(primaryPackage.url, '_blank', 'noopener,noreferrer');
-      return;
-    }
+    // Abrir primeiro os detalhes: assim o usuário vê JOGO, UPDATE e DLC
+    // antes de escolher qual link externo deseja acessar.
     showDetails(item);
   };
   card.addEventListener('click', open);
@@ -482,6 +473,12 @@ function showDetails(item) {
   const packageLinksSection = $('#package-links');
   packageLinksSection.replaceChildren();
   packageLinksSection.hidden = packageLinks.length === 0;
+  if (packageLinks.length) {
+    const heading = document.createElement('h3');
+    heading.className = 'package-links-heading';
+    heading.textContent = 'ARQUIVOS DISPONÍVEIS — ESCOLHA O QUE DESEJA ABRIR';
+    packageLinksSection.append(heading);
+  }
   const passwordNote = $('#download-password');
   if (passwordNote) passwordNote.hidden = packageLinks.length === 0;
   for (const entry of packageLinks) {
