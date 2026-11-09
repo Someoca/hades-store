@@ -124,6 +124,32 @@ for (const item of catalog) {
   }
 }
 
+
+const fallbackRoot = path.join(root, 'assets/covers/fallback');
+const referencedFallbacks = new Set(
+  catalog
+    .map((item) => item.imageUrl)
+    .filter((imageUrl) => typeof imageUrl === 'string' && imageUrl.startsWith('assets/covers/fallback/'))
+    .map((imageUrl) => path.resolve(root, imageUrl))
+);
+let removedUnusedFallbacks = 0;
+
+function removeUnusedFallbacks(directory) {
+  if (!fs.existsSync(directory)) return;
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      removeUnusedFallbacks(entryPath);
+      if (fs.readdirSync(entryPath).length === 0) fs.rmdirSync(entryPath);
+    } else if (entry.isFile() && /\\.svg$/i.test(entry.name) && !referencedFallbacks.has(path.resolve(entryPath))) {
+      fs.unlinkSync(entryPath);
+      removedUnusedFallbacks += 1;
+    }
+  }
+}
+
+removeUnusedFallbacks(fallbackRoot);
+
 fs.writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
-console.log(`Capas oficiais mantidas: ${preservedOfficial} | Capas padronizadas: ${standardizedCount}`);
+console.log(`Capas oficiais mantidas: ${preservedOfficial} | Capas padronizadas: ${standardizedCount} | Fallbacks sem uso removidos: ${removedUnusedFallbacks}`);
 
