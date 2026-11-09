@@ -60,8 +60,12 @@ def fallback(item):
     words, lines, current = name.split(), [], ""
     for word in words:
         candidate = (current + " " + word).strip()
-        bbox = draw.textbbox((0, 0), candidate, font=title_font)
-        if (bbox[2] - bbox[0]) > W - 44 and current:
+        if hasattr(draw, "textbbox"):
+            bbox = draw.textbbox((0, 0), candidate, font=title_font)
+            text_width = bbox[2] - bbox[0]
+        else:
+            text_width = draw.textsize(candidate, font=title_font)[0]
+        if text_width > W - 44 and current:
             lines.append(current)
             current = word
         else:
