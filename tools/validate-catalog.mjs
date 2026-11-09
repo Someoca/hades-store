@@ -30,9 +30,14 @@ for (const [index, item] of catalog.entries()) {
     errors.push(label + ': downloadUrl, quando informado, precisa ser uma URL HTTPS.');
   }
   if (item.category === 'Jogos' && Array.isArray(item.packageLinks)) {
+    const seenUrls = new Set();
     for (const [linkIndex, link] of item.packageLinks.entries()) {
       if (!link || typeof link.label !== 'string' || !link.label.trim() || typeof link.url !== 'string' || !/^https:\/\//i.test(link.url)) {
         errors.push(label + ': packageLinks[' + linkIndex + '] precisa conter label e URL HTTPS.');
+      } else if (seenUrls.has(link.url)) {
+        errors.push(label + ': packageLinks[' + linkIndex + '] possui URL duplicada (' + link.url + ').');
+      } else {
+        seenUrls.add(link.url);
       }
     }
   }
@@ -61,3 +66,4 @@ if (errors.length) {
   console.log('Catálogo válido: ' + catalog.length + ' itens; ' + ids.size + ' IDs únicos.');
   console.log(counts);
 }
+
