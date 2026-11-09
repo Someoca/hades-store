@@ -44,7 +44,7 @@ for (const [index, item] of catalog.entries()) {
   } else {
     const imagePath = resolve(root, item.imageUrl);
     const relativePath = relative(root, imagePath);
-    if (item.imageUrl !== 'assets/covers/game-cover.svg' && (!item.imageUrl.startsWith('assets/') || relativePath.startsWith('..' + sep) || relativePath === '..' || !existsSync(imagePath))) {
+    if (!item.imageUrl.startsWith('assets/') || relativePath.startsWith('..' + sep) || relativePath === '..' || !existsSync(imagePath)) {
       errors.push(label + ': imageUrl precisa ser HTTPS ou apontar para um arquivo local existente em assets/.');
     }
   }
