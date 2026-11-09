@@ -256,7 +256,7 @@ function createCard(item) {
       return;
     }
     const primaryPackage = Array.isArray(item.packageLinks)
-      ? item.packageLinks.find((entry) => entry && /^JOGO\\b/i.test(entry.label || '') && /^https:\\/\\//i.test(entry.url || ''))
+      ? item.packageLinks.find((entry) => entry && String(entry.label || '').toUpperCase().startsWith('JOGO') && typeof entry.url === 'string' && entry.url.startsWith('https://'))
       : null;
     if (primaryPackage) {
       window.open(primaryPackage.url, '_blank', 'noopener,noreferrer');
