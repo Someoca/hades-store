@@ -8,6 +8,7 @@ on:
       - 'tools/cover-sources.json'
       - 'tools/download-real-covers.mjs'
       - 'tools/standardize-covers.mjs'
+      - 'tools/generate-app-covers.mjs'
   workflow_dispatch:
 
 permissions:
