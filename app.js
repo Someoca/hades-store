@@ -636,7 +636,10 @@ function pollGamepadShoulders() {
     if (!dialog.open && current.leftShoulder && !previous.leftShoulder) goToCarouselPage(-1);
     if (!dialog.open && current.rightShoulder && !previous.rightShoulder) goToCarouselPage(1);
 
-    if (dialog.open && current.circle && !previous.circle) {
+    if (!dialog.open && current.triangle && !previous.triangle) {
+      playUiSound('move');
+      search.focus();
+    } else if (dialog.open && current.circle && !previous.circle) {
       playUiSound('back');
       dialog.close();
     } else if ((current.right && !previous.right) || (current.down && !previous.down)
@@ -707,14 +710,19 @@ document.addEventListener('keydown', (event) => {
     goToCarouselPage(1);
   }
   if (event.key === 'Escape' && !dialog.open) search.blur();
+  const isEditable = event.target instanceof HTMLElement
+    && (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName));
   if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)
-      && !dialog.open && document.activeElement !== search) {
+      && !dialog.open && !isEditable) {
     const elements = focusables();
     const index = elements.indexOf(document.activeElement);
     const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-    if (elements.length && index >= 0) {
+    if (elements.length) {
       event.preventDefault();
-      elements[(index + direction + elements.length) % elements.length].focus();
+      const nextIndex = index < 0
+        ? 0
+        : (index + direction + elements.length) % elements.length;
+      elements[nextIndex].focus();
     }
   }
 });
@@ -727,7 +735,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=hades-app-covers-5')
+fetch('catalog/catalog.json?v=hades-covers-avatar-3')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
@@ -748,3 +756,4 @@ fetch('catalog/catalog.json?v=hades-app-covers-5')
     $('#results-count').textContent = 'Não foi possível carregar os itens.';
     console.error('[HADES Store]', error);
   });
+
