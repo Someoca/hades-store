@@ -234,3 +234,5 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .app-card h3{font-size:clamp(16px,1.6vw,21px)}
 @media(max-width:560px){.app-card h3{font-size:18px}}
 .emulator-physical .game-cover-art{object-fit:contain;background:#050505}
+
+.package-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.package-links[hidden]{display:none!important}
