@@ -5,9 +5,9 @@ body{margin:0;min-height:100vh;background:#020713;color:var(--text);font:16px Ar
 button,input,select{font:inherit}
 button,a{ -webkit-tap-highlight-color:transparent}
 .console-shell{max-width:1800px;min-height:100vh;margin:auto;position:relative;overflow:hidden;background:linear-gradient(180deg,#020b1bdf,#03132ce8 78%,#020918)}
-.console-shell:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.24;background:radial-gradient(ellipse at 80% 8%,#9acfff 0,transparent 22%),repeating-linear-gradient(115deg,transparent 0 70px,#278eff0a 71px 73px)}
+.console-shell:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;opacity:.24;background:radial-gradient(ellipse at 80% 8%,#9acfff 0,transparent 22%),repeating-linear-gradient(115deg,transparent 0 70px,#278eff0a 71px 73px)}
 .masthead{height:clamp(86px,13vw,142px);padding:10px clamp(18px,4vw,54px);display:flex;align-items:center;justify-content:space-between;position:relative;isolation:isolate;background:linear-gradient(90deg,#020918eF,#071a38b8 55%,#030b1cdd);border-bottom:1px solid #319dff88;box-shadow:0 5px 30px #007bff25}
-.masthead:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%)}
+.masthead:after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%)}
 .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-width:0}
 .brand-mark{width:clamp(58px,8vw,104px);height:clamp(58px,8vw,104px);object-fit:contain;filter:drop-shadow(0 0 12px #168aff)}
 .brand strong{display:block;font-size:clamp(23px,4.1vw,48px);font-style:italic;font-weight:1000;letter-spacing:-1.4px;text-shadow:0 3px 8px #000,0 0 15px #2c94ff}
@@ -41,15 +41,15 @@ button,a{ -webkit-tap-highlight-color:transparent}
 #page-count{font-weight:900;letter-spacing:1px}
 .game-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
 .app-card{position:relative;min-width:0;min-height:0;padding:5px 5px 7px;border:1px solid #248df0;border-radius:4px;background:linear-gradient(180deg,#0c3e79,#06162d 74%);box-shadow:0 4px 14px #000a,0 0 9px #007bff42;cursor:pointer;display:flex;flex-direction:column;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;overflow:hidden}
-.app-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#b5f2ff,#168fff,#b5f2ff);z-index:2}
+.app-card:before{content:"";position:absolute;top:0;right:0;bottom:auto;left:0;height:3px;background:linear-gradient(90deg,#b5f2ff,#168fff,#b5f2ff);z-index:2}
 .app-card:hover,.app-card:focus-visible,.app-card.selected{transform:translateY(-3px) scale(1.015);border-color:#8eeaff;box-shadow:0 0 0 2px #42c9ff,0 0 22px #098dff,0 8px 20px #000b;outline:none}
 .favorite-toggle{position:absolute;z-index:5;top:7px;right:7px;width:25px;height:25px;border:1px solid #b7dcff99;border-radius:50%;background:#00142ddd;color:#ffe58a;font-size:15px;cursor:pointer;display:grid;place-items:center}
 .favorite-toggle[aria-pressed=true]{background:#124d8c;color:#fff}
 .game-physical{height:clamp(130px,20vw,225px);width:100%;margin:0 0 6px;position:relative;overflow:hidden;background:#071a34;border:1px solid #7fcaff66}
-.game-cover{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,#0b5bb1,#06142a)}
+.game-cover{position:absolute;top:0;right:0;bottom:0;left:0;display:block;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,#0b5bb1,#06142a)}
 .ps4-band{height:19px;position:absolute;z-index:2;left:0;right:0;top:0;display:flex;align-items:center;padding:0 6px;background:linear-gradient(90deg,#087be8,#073f91);border-bottom:1px solid #b8eaff;color:#fff;font-size:11px;font-weight:900;letter-spacing:1.5px}
-.game-cover-art{position:absolute;inset:19px 0 0;width:100%;height:calc(100% - 19px);object-fit:cover;object-position:center}
-.cover-fallback{display:none;position:absolute;inset:19px 0 0;place-items:center;padding:8px;text-align:center;color:#fff;font-size:15px;font-weight:900;background:linear-gradient(145deg,#174e88,#081329)}
+.game-cover-art{position:absolute;top:19px;right:0;bottom:0;left:0;width:100%;height:calc(100% - 19px);object-fit:cover;object-position:center}
+.cover-fallback{display:none;position:absolute;top:19px;right:0;bottom:0;left:0;place-items:center;padding:8px;text-align:center;color:#fff;font-size:15px;font-weight:900;background:linear-gradient(145deg,#174e88,#081329)}
 .game-cover-art:not([src]){display:none}
 .app-card h3{margin:0;padding:2px 2px 0;color:#fff;font-size:clamp(10px,1.1vw,14px);line-height:1.15;text-align:center;text-shadow:0 1px 4px #000;overflow-wrap:anywhere}
 .app-card p{display:none}
@@ -73,7 +73,8 @@ button,a{ -webkit-tap-highlight-color:transparent}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :focus-visible{outline:2px solid #8deaff;outline-offset:3px}
 dialog{width:min(560px,92vw);background:linear-gradient(145deg,#0b2b53,#061226);color:#f5f8ff;border:1px solid #4bc8ff;border-radius:8px;padding:26px;box-shadow:0 0 35px #087fff66}
-dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
+dialog::backdrop{background:#010714d9}
+dialog{max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .close{float:right;background:transparent;border:0;color:#fff;font-size:28px;cursor:pointer}
 .detail-icon{width:90px;height:90px;margin-bottom:12px}.detail-icon img{width:100%;height:100%;object-fit:contain}.eyebrow{color:#68dfff;letter-spacing:2px;font-size:11px}
 .detail-meta,.dialog-note{color:#b8cce7;font-size:13px;line-height:1.5}
@@ -102,7 +103,7 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .software-art{height:clamp(150px,19vw,220px);display:block;position:relative;overflow:hidden;border:1px solid #65caff;background:#071d3c}
 .software-art img{width:100%;height:100%;object-fit:cover;display:block}
 .software-art span{position:absolute;left:8px;bottom:8px;padding:5px 9px;background:#030b19d9;border:1px solid #61caff;color:#fff;font-size:10px;font-weight:900;letter-spacing:1.5px}
-.software-art.art-image-missing:after{content:attr(data-fallback-name);position:absolute;inset:0;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#174e88,#081329);color:#fff;text-align:center;font-size:clamp(15px,2vw,24px);font-weight:900;text-shadow:0 2px 6px #000}
+.software-art.art-image-missing:after{content:attr(data-fallback-name);position:absolute;top:0;right:0;bottom:0;left:0;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#174e88,#081329);color:#fff;text-align:center;font-size:clamp(15px,2vw,24px);font-weight:900;text-shadow:0 2px 6px #000}
 .masthead{position:relative;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,23,.18),rgba(2,8,23,.05)),url("assets/hades-gamer.svg");background-repeat:no-repeat;background-position:center,right 8%;background-size:cover,auto 108%;min-height:144px}
 @media(max-width:760px){.masthead{background-size:cover,auto 100%}}
 
@@ -126,7 +127,7 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 @media(max-width:900px){.console-layout{grid-template-columns:100px minmax(0,1fr)}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.masthead{min-height:130px}}
 @media(max-width:560px){.masthead{min-height:100px;padding:10px}.brand-mark{width:52px;height:52px}.brand strong{font-size:22px}.top-nav{min-height:54px;padding:0 8px}.nav-tab{min-width:105px;min-height:42px;font-size:11px}.console-layout{grid-template-columns:62px minmax(0,1fr)}.profile img{width:48px;height:48px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical,.software-art{height:170px}}
 
-.cover-title-overlay{position:absolute;z-index:1;inset:40% 5px auto;display:grid;place-items:center;min-height:25%;padding:8px 5px;background:linear-gradient(90deg,#020918d9,#041a35e8,#020918d9);border-top:1px solid #85dfff;border-bottom:1px solid #85dfff;color:#fff;text-align:center;text-transform:uppercase;font-size:clamp(11px,1.4vw,18px);line-height:1.12;font-weight:1000;letter-spacing:.4px;text-shadow:0 2px 5px #000,0 0 10px #087fff}
+.cover-title-overlay{position:absolute;z-index:1;top:40%;right:5px;bottom:auto;left:5px;display:grid;place-items:center;min-height:25%;padding:8px 5px;background:linear-gradient(90deg,#020918d9,#041a35e8,#020918d9);border-top:1px solid #85dfff;border-bottom:1px solid #85dfff;color:#fff;text-align:center;text-transform:uppercase;font-size:clamp(11px,1.4vw,18px);line-height:1.12;font-weight:1000;letter-spacing:.4px;text-shadow:0 2px 5px #000,0 0 10px #087fff}
 /* Reference home: compact PS4 catalog framed by the HADES night scene. */
 .masthead{height:clamp(94px,14vw,142px);min-height:0;padding:8px clamp(12px,3vw,42px);background-color:#030918;background-image:linear-gradient(90deg,rgba(2,8,22,.88) 0%,rgba(3,12,30,.38) 38%,rgba(3,10,24,.08) 72%,rgba(2,8,20,.24)),url("assets/hades-home-banner.svg");background-repeat:no-repeat;background-size:cover;background-position:center 42%;border-bottom:1px solid #42b7ff;box-shadow:0 4px 24px #007bff3a}
 .brand{gap:8px}.brand-mark{width:clamp(54px,8vw,84px);height:clamp(54px,8vw,84px);filter:drop-shadow(0 0 10px #168aff)}
@@ -143,7 +144,7 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .catalog-section{padding:4px 0 18px}.catalog-heading{margin-bottom:0;min-height:31px}.catalog-heading h1{font-size:clamp(18px,2.2vw,27px);letter-spacing:2px}.catalog-heading h1 i{height:22px;width:5px}.catalog-tools{display:none}
 .catalog-meta{margin:2px 0 7px;font-size:10px}.catalog-meta p{display:none}#page-count{font-size:11px}.status{display:none}
 .game-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.app-card{padding:3px;border-radius:3px}.game-physical,.software-art{height:clamp(126px,19.6vw,228px);margin-bottom:3px}
-.game-cover-art{object-fit:cover}.ps4-band{height:17px;font-size:10px;padding:0 5px}.game-cover-art{inset:17px 0 0;height:calc(100% - 17px)}.cover-fallback{inset:17px 0 0}.app-card h3{font-size:clamp(9px,1vw,12px);line-height:1.12}
+.game-cover-art{object-fit:cover}.ps4-band{height:17px;font-size:10px;padding:0 5px}.game-cover-art{top:17px;right:0;bottom:0;left:0;height:calc(100% - 17px)}.cover-fallback{top:17px;right:0;bottom:0}.app-card;left:h3{font-size:clamp(9px,1vw,12px);line-height:1.12}
 .controller-bar{min-height:34px;padding:5px clamp(8px,2vw,24px);font-size:10px;background:linear-gradient(180deg,#073066,#020817);border-top:2px solid #188eff}
 .console-shell:after{content:"";position:absolute;left:0;right:0;bottom:31px;height:56px;pointer-events:none;z-index:0;background:linear-gradient(180deg,transparent 0,#087dff22 64%,#04132988 100%);border-top:1px solid #249cff77;box-shadow:0 -5px 24px #087fff22}
 @media(min-width:561px) and (max-width:900px){.console-layout{grid-template-columns:clamp(100px,15vw,135px) minmax(0,1fr)}.game-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.game-physical,.software-art{height:clamp(112px,19.6vw,178px)}.masthead{height:clamp(92px,14vw,116px)}}
@@ -188,12 +189,9 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 }
 
 /* Use the supplied warrior and castle artwork in the HADES masthead. */
-.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;position:relative;isolation:isolate;overflow:hidden;background-color:#020817;background-image:linear-gradient(180deg,#07142b,#020817);background-repeat:no-repeat;background-size:cover;background-position:center;border-bottom:1px solid #42b7ff;animation:banner-neon-pulse 3.8s ease-in-out infinite}
-.masthead::before{content:"";position:absolute;z-index:-2;inset:-8px;pointer-events:none;background-image:url("assets/hades-home-banner-art.jpg");background-repeat:no-repeat;background-size:auto 128%;background-position:right center;transform-origin:78% 50%;animation:banner-focus 12s ease-in-out infinite alternate}
-.masthead::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(2,8,22,.96) 0%,rgba(2,8,22,.84) 22%,rgba(3,10,25,.28) 42%,rgba(3,10,24,.08) 67%,rgba(2,8,20,.32) 100%),linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%);opacity:.94;animation:banner-sheen 4.2s ease-in-out infinite}
-@keyframes banner-focus{0%{transform:scale(1.02);filter:brightness(.92) saturate(.96)}100%{transform:scale(1.085) translateX(-7px);filter:brightness(1.08) saturate(1.08)}}
-@keyframes banner-neon-pulse{0%,100%{border-bottom-color:#42b7ff;box-shadow:0 4px 22px #007bff35,0 0 8px #0bbdff22}50%{border-bottom-color:#a6f2ff;box-shadow:0 4px 34px #078dff88,0 0 25px #22dfff70}}
-@keyframes banner-sheen{0%,100%{opacity:.78}50%{opacity:1}}
+.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;position:relative;isolation:isolate;overflow:hidden;background-color:#020817;background-image:linear-gradient(180deg,#07142b,#020817);background-repeat:no-repeat;background-size:cover;background-position:center;border-bottom:1px solid #42b7ff}
+.masthead::before{content:"";position:absolute;z-index:-2;top:-8px;right:-8px;bottom:-8px;left:-8px;pointer-events:none;background-image:url("assets/hades-home-banner-art.jpg");background-repeat:no-repeat;background-size:auto 128%;background-position:right center;transform:none}
+.masthead::after{content:"";position:absolute;z-index:-1;top:0;right:0;bottom:0;left:0;pointer-events:none;background:linear-gradient(90deg,rgba(2,8,22,.96) 0%,rgba(2,8,22,.84) 22%,rgba(3,10,25,.28) 42%,rgba(3,10,24,.08) 67%,rgba(2,8,20,.32) 100%),linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%);opacity:.94}
 @media(max-width:900px){.masthead{height:clamp(96px,13.2vw,120px);min-height:96px}}
 @media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover;background-position:center}.masthead::before{background-size:auto 124%;background-position:right center}}
 @media(prefers-reduced-motion:reduce){.masthead,.masthead::before,.masthead::after{animation:none!important}.masthead::before{transform:none;filter:none}}
@@ -213,8 +211,8 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 
 /* Submundo HADES como cenário suave do painel principal. */
 .main-panel{position:relative;isolation:isolate;background-color:#0b0d18;background-image:linear-gradient(180deg,rgba(4,10,25,.58),rgba(5,10,22,.72) 48%,rgba(5,8,17,.82)),url("assets/hades-underworld-bg.svg");background-repeat:no-repeat;background-position:center;background-size:cover}
-.catalog-backdrop{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-.catalog-backdrop-layer{position:absolute;inset:-3%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.78);opacity:0;transform:scale(1.025);transition:opacity .8s ease,transform 1.4s ease}
+.catalog-backdrop{position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;overflow:hidden;pointer-events:none}
+.catalog-backdrop-layer{position:absolute;top:-3%;right:-3%;bottom:-3%;left:-3%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.78);opacity:0;transform:scale(1.025);transition:opacity .8s ease,transform 1.4s ease}
 .catalog-backdrop-layer.is-visible{opacity:.78;transform:scale(1)}
 .catalog-section{position:relative;z-index:1}
 @media(prefers-reduced-motion:reduce){.catalog-backdrop-layer{transition:none}}
@@ -268,3 +266,37 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 /* Capas de aplicativos inteiras, sem cortes nas bordas. */
 .software-art{background:linear-gradient(145deg,#08182e,#050913)}
 .software-art img{object-fit:contain;background:transparent}
+
+/* Legacy WebKit fallback for flex layouts without gap support. */
+@supports not (gap: 1px) {
+  .brand > * + *,.masthead-actions > * + *{margin-left:8px}
+  .top-nav > * + *{margin-left:2px}
+  .nav-tab > * + *{margin-left:5px}
+  .profile > * + *{margin-top:3px}
+  .side-nav{display:block}
+  .side-nav > * + *{margin-top:7px}
+  .side-link > * + *{margin-left:11px}
+  .catalog-heading > * + *{margin-left:10px}
+  .catalog-heading h1 > * + *{margin-left:10px}
+  .catalog-tools > * + *{margin-left:8px}
+  .search > * + *{margin-left:7px}
+  .catalog-meta > * + *{margin-left:10px}
+  .carousel-controls > * + *{margin-left:9px}
+  .game-grid{gap:0}
+  .game-grid > .app-card{flex-basis:calc((100% - 32px) / 4);margin-right:8px}
+  .card-language-badges > * + *,.detail-language-badges > * + *{margin-left:6px;margin-top:6px}
+  .detail-meta > * + *{margin-left:9px;margin-top:9px}
+  .detail-fact > * + *{margin-top:3px}
+  .detail-actions > *,.package-links > *{margin-right:10px;margin-bottom:10px}
+  .emulator-games li > * + *{margin-top:4px}
+  .controller-bar > * + *{margin-left:clamp(12px,2.5vw,35px)}
+  @media (max-width:900px){.game-grid > .app-card{flex-basis:calc((100% - 16px) / 2)}}
+  @media (max-width:760px){.controller-bar > * + *{margin-left:10px}}
+  @media (max-width:560px){
+    .top-nav > * + *{margin-bottom:2px}
+    .game-grid > .app-card{flex-basis:82%;margin-right:8px}
+    .card-language-badges > * + *{margin-left:4px;margin-top:4px}
+    .detail-meta > * + *{margin-left:6px;margin-top:6px}
+    .controller-bar > * + *{margin-left:4px}
+  }
+}
