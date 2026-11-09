@@ -465,9 +465,22 @@ function showDetails(item) {
   $('#detail-meta').textContent = 'Versão ' + (item.version || '—') + ' · ' + (item.size || 'Tamanho não informado')
     + (item.language ? ' · ' + item.language : '') + (item.format ? ' · Formato: ' + item.format : '');
 
-  $('#detail-actions').hidden = item.category === 'Jogos';
+  const packageLinks = Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')) : [];
+  $('#detail-actions').hidden = item.category === 'Jogos' ? packageLinks.length === 0 : false;
+  const packageLinksSection = $('#package-links');
+  packageLinksSection.replaceChildren();
+  packageLinksSection.hidden = packageLinks.length === 0;
+  for (const entry of packageLinks) {
+    const anchor = document.createElement('a');
+    anchor.className = 'primary-btn download';
+    anchor.href = entry.url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.textContent = entry.label + ' ↗';
+    packageLinksSection.append(anchor);
+  }
   const link = $('#detail-download');
-  if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)) {
+  if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl) && packageLinks.length === 0) {
     link.href = item.downloadUrl;
     link.textContent = item.linkLabel || (item.category === 'Jogos' ? 'VER NA PLAYSTATION STORE ↗' : 'ABRIR LINK CADASTRADO ↗');
     link.hidden = false;
