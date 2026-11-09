@@ -4,10 +4,16 @@ const catalog = JSON.parse(await readFile(new URL('../catalog/catalog.json', imp
 const grouped = new Map();
 
 for (const item of catalog) {
-  const value = item?.downloadUrl;
-  if (typeof value !== 'string' || !value.trim()) continue;
-  if (!grouped.has(value)) grouped.set(value, []);
-  grouped.get(value).push(item);
+  const candidates = [
+    ...(typeof item?.downloadUrl === 'string' ? [{ label: item.linkLabel || 'DOWNLOAD', url: item.downloadUrl }] : []),
+    ...(Array.isArray(item?.packageLinks) ? item.packageLinks : []),
+  ];
+  for (const candidate of candidates) {
+    const value = candidate?.url;
+    if (typeof value !== 'string' || !/^https:\/\//i.test(value)) continue;
+    if (!grouped.has(value)) grouped.set(value, []);
+    grouped.get(value).push({ item, label: candidate.label || 'LINK' });
+  }
 }
 
 const entries = [...grouped.entries()];
@@ -76,7 +82,7 @@ await Promise.all(Array.from({ length: Math.min(concurrency, entries.length) }, 
 const counts = { OK: 0, BROKEN: 0, BLOCKED: 0, INCONCLUSIVE: 0 };
 for (const result of results) {
   counts[result.status] += 1;
-  const labels = result.items.map((item) => item.id + ' — ' + item.name).join('; ');
+  const labels = result.items.map(({ item, label }) => item.id + ' — ' + item.name + ' [' + label + ']').join('; ');
   const detail = result.code ? 'HTTP ' + result.code : result.error || '';
   console.log('[' + result.status + '] ' + labels + ' | ' + detail + ' | ' + result.url);
 }
@@ -89,7 +95,7 @@ const summary = [
   '# HADES Store — auditoria de links',
   '',
   '- Itens no catálogo: ' + catalog.length,
-  '- URLs únicas verificadas: ' + entries.length,
+  '- Links únicos verificados (downloadUrl + JOGO/UPDATE/DLC): ' + entries.length,
   '- Acessíveis: ' + counts.OK,
   '- Quebrados (404/410): ' + counts.BROKEN,
   '- Bloqueados pelo servidor (401/403/429): ' + counts.BLOCKED,
@@ -98,7 +104,7 @@ const summary = [
   'Bloqueio ou resposta inconclusiva não é classificado como link quebrado.',
   '',
   ...results.filter((item) => item.status !== 'OK').map((item) =>
-    '- **' + item.status + '** — ' + item.items.map((entry) => entry.id + ' (' + entry.name + ')').join(', ') +
+    '- **' + item.status + '** — ' + item.items.map(({ item: entry, label }) => entry.id + ' (' + entry.name + ' — ' + label + ')').join(', ') +
     ' — ' + (item.code ? 'HTTP ' + item.code : item.error || '') + ' — ' + item.url
   ),
 ].join('\n');
