@@ -22,6 +22,7 @@ const staticFiles = new Map([
   ["/assets/hades-gamer.svg", ["assets/hades-gamer.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-sigil.svg", ["assets/hades-sigil.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-fire-avatar.svg", ["assets/hades-fire-avatar.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-avatar-premium.png", ["assets/hades-avatar-premium.png", "image/png"]],
   ["/assets/hades-avatar-premium.jpg", ["assets/hades-avatar-premium.jpg", "image/jpeg"]],
   ["/assets/covers/apps/app-avatar-changer.svg", ["assets/covers/apps/app-avatar-changer.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/covers/apps/app-avatar-changer.png", ["assets/covers/apps/app-avatar-changer.png", "image/png"]],

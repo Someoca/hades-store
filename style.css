@@ -1,302 +1,1343 @@
-:root{color-scheme:dark;--blue:#087eff;--cyan:#39d8ff;--deep:#020817;--panel:#071a36;--line:#1677d9;--text:#f5f8ff;--muted:#b7c9e5}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;background:#020713;color:var(--text);font:16px Arial,Helvetica,sans-serif;background-image:radial-gradient(ellipse at 52% 0%,#163b71 0,transparent 48%),linear-gradient(180deg,#020817,#071b3b 70%,#020817)}
-button,input,select{font:inherit}
-button,a{ -webkit-tap-highlight-color:transparent}
-.console-shell{max-width:1800px;min-height:100vh;margin:auto;position:relative;overflow:hidden;background:linear-gradient(180deg,#020b1bdf,#03132ce8 78%,#020918)}
-.console-shell:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;opacity:.24;background:radial-gradient(ellipse at 80% 8%,#9acfff 0,transparent 22%),repeating-linear-gradient(115deg,transparent 0 70px,#278eff0a 71px 73px)}
-.masthead{height:clamp(86px,13vw,142px);padding:10px clamp(18px,4vw,54px);display:flex;align-items:center;justify-content:space-between;position:relative;isolation:isolate;background:linear-gradient(90deg,#020918eF,#071a38b8 55%,#030b1cdd);border-bottom:1px solid #319dff88;box-shadow:0 5px 30px #007bff25}
-.masthead:after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%)}
-.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-width:0}
-.brand-mark{width:clamp(58px,8vw,104px);height:clamp(58px,8vw,104px);object-fit:contain;filter:drop-shadow(0 0 12px #168aff)}
-.brand strong{display:block;font-size:clamp(23px,4.1vw,48px);font-style:italic;font-weight:1000;letter-spacing:-1.4px;text-shadow:0 3px 8px #000,0 0 15px #2c94ff}
-.brand small{display:block;margin-top:2px;font-size:clamp(8px,1.1vw,12px);letter-spacing:1.4px;color:#c6dcf8}
-.platform-mark{font-weight:900;font-style:italic;font-size:clamp(15px,2vw,24px);color:#dcecff;text-shadow:0 0 12px #2c91ff}
-.top-nav{display:flex;justify-content:center;gap:4px;padding:7px clamp(8px,3vw,40px);background:linear-gradient(180deg,#071d3d,#020a1b);border-bottom:1px solid #218eff;box-shadow:0 0 24px #0786ff44;position:relative;z-index:2}
-.nav-tab{flex:1;max-width:210px;min-height:40px;padding:8px 12px;border:1px solid transparent;background:transparent;color:#d7e8ff;font-size:clamp(11px,1.2vw,15px);font-weight:900;cursor:pointer;white-space:nowrap;text-shadow:0 1px 3px #000}
-.nav-tab span{margin-left:5px}
-.nav-tab.active,.nav-tab:hover,.nav-tab:focus-visible{color:#fff;background:linear-gradient(180deg,#159cff,#064ab9);border:1px solid #64dfff;box-shadow:0 0 16px #168eff, inset 0 0 10px #ffffff35;transform:skewX(-5deg);outline:none}
-.console-layout{display:grid;grid-template-columns:clamp(105px,14vw,190px) minmax(0,1fr);min-height:calc(100vh - 220px);position:relative;z-index:1}
-.sidebar{padding:18px 10px 24px;background:linear-gradient(90deg,#020817f2,#061a38e8);border-right:1px solid #178bff66;display:flex;flex-direction:column;align-items:stretch}
-.profile{display:flex;align-items:center;flex-direction:column;gap:4px;padding:4px 0 18px;text-align:center}
-.profile img{width:clamp(72px,10vw,148px);height:clamp(72px,10vw,148px);border-radius:50%;object-fit:cover;border:2px solid #31aaff;box-shadow:0 0 18px #087fff, inset 0 0 12px #fff}
-.profile strong{font-size:12px;letter-spacing:2px}.profile small{font-size:11px;color:#b7c9e5}
-.side-nav{display:grid;gap:6px}
-.side-link{display:flex;align-items:center;gap:10px;min-height:32px;padding:7px 9px;border:1px solid transparent;border-radius:3px;background:transparent;color:#d8e7fb;text-decoration:none;font-size:clamp(11px,1.1vw,14px);cursor:pointer;text-align:left;white-space:nowrap}
-.side-link:first-letter{font-size:17px}
-.side-link.selected,.side-link:hover,.side-link:focus-visible{background:linear-gradient(90deg,#087dff,#0649a8);border-color:#5edaff;box-shadow:0 0 13px #078cff;outline:none;color:white}
-.ps-symbol{margin:auto auto 0;font-size:43px;font-weight:900;font-style:italic;color:#168eff;text-shadow:0 0 14px #078cff}
-.ps-symbol span{font-size:27px}
-.main-panel{min-width:0;padding:clamp(14px,2vw,28px) clamp(12px,2.5vw,36px) 24px}
-.catalog-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:8px}
-.catalog-heading h1{margin:0;display:flex;align-items:center;gap:10px;font-size:clamp(20px,2.5vw,31px);font-style:italic;letter-spacing:3px;text-shadow:0 2px 8px #000}
-.catalog-heading h1 i{display:block;width:6px;height:26px;background:#139cff;transform:skew(-18deg);box-shadow:0 0 12px #159bff}
-.catalog-tools{display:flex;align-items:center;gap:8px}
-.search{display:flex;align-items:center;gap:7px;padding:7px 10px;background:#03122be8;border:1px solid #167ee4;border-radius:4px;color:#64dfff;box-shadow:inset 0 0 12px #007bff18}
-.search span{font-size:20px}.search input{width:clamp(120px,19vw,250px);border:0;outline:0;background:transparent;color:#fff;font-size:13px}
-.sort-control select{max-width:130px;padding:8px 5px;border:1px solid #167ee4;background:#061832;color:#eaf4ff;border-radius:4px;font-size:12px}
-.catalog-meta{display:flex;align-items:center;justify-content:space-between;color:#bcd6f6;font-size:12px;margin:8px 0 9px}
-.catalog-meta p{margin:0}
-#page-count{font-weight:900;letter-spacing:1px}
-.game-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.app-card{position:relative;min-width:0;min-height:0;padding:5px 5px 7px;border:1px solid #248df0;border-radius:4px;background:linear-gradient(180deg,#0c3e79,#06162d 74%);box-shadow:0 4px 14px #000a,0 0 9px #007bff42;cursor:pointer;display:flex;flex-direction:column;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;overflow:hidden}
-.app-card:before{content:"";position:absolute;top:0;right:0;bottom:auto;left:0;height:3px;background:linear-gradient(90deg,#b5f2ff,#168fff,#b5f2ff);z-index:2}
-.app-card:hover,.app-card:focus-visible,.app-card.selected{transform:translateY(-3px) scale(1.015);border-color:#8eeaff;box-shadow:0 0 0 2px #42c9ff,0 0 22px #098dff,0 8px 20px #000b;outline:none}
-.favorite-toggle{position:absolute;z-index:5;top:7px;right:7px;width:25px;height:25px;border:1px solid #b7dcff99;border-radius:50%;background:#00142ddd;color:#ffe58a;font-size:15px;cursor:pointer;display:grid;place-items:center}
-.favorite-toggle[aria-pressed=true]{background:#124d8c;color:#fff}
-.game-physical{height:clamp(130px,20vw,225px);width:100%;margin:0 0 6px;position:relative;overflow:hidden;background:#071a34;border:1px solid #7fcaff66}
-.game-cover{position:absolute;top:0;right:0;bottom:0;left:0;display:block;width:100%;height:100%;overflow:hidden;background:linear-gradient(145deg,#0b5bb1,#06142a)}
-.ps4-band{height:19px;position:absolute;z-index:2;left:0;right:0;top:0;display:flex;align-items:center;padding:0 6px;background:linear-gradient(90deg,#087be8,#073f91);border-bottom:1px solid #b8eaff;color:#fff;font-size:11px;font-weight:900;letter-spacing:1.5px}
-.game-cover-art{position:absolute;top:19px;right:0;bottom:0;left:0;width:100%;height:calc(100% - 19px);object-fit:cover;object-position:center}
-.cover-fallback{display:none;position:absolute;top:19px;right:0;bottom:0;left:0;place-items:center;padding:8px;text-align:center;color:#fff;font-size:15px;font-weight:900;background:linear-gradient(145deg,#174e88,#081329)}
-.game-cover-art:not([src]){display:none}
-.app-card h3{margin:0;padding:2px 2px 0;color:#fff;font-size:clamp(10px,1.1vw,14px);line-height:1.15;text-align:center;text-shadow:0 1px 4px #000;overflow-wrap:anywhere}
-.app-card p{display:none}
-.card-bottom{display:none}
-.app-card:not([data-cover]) .game-physical{display:none}
-.app-icon{height:110px;display:grid;place-items:center;color:#73dfff;font-size:42px}
-.software-art{height:clamp(130px,20vw,225px);display:grid;place-items:center;background:linear-gradient(145deg,#0b5bb1,#06142a)}
-.software-art img{width:75%;height:75%;object-fit:contain}
-.tag,.version{display:none}
-.cover-image-missing .cover-fallback{display:grid}
-.empty{padding:30px;color:#d6e8ff}
-.controller-bar{position:sticky;bottom:0;z-index:5;display:flex;align-items:center;gap:clamp(12px,2.5vw,35px);min-height:42px;padding:7px clamp(12px,3vw,34px);background:linear-gradient(180deg,#061b3c,#020817);border-top:1px solid #218eff;box-shadow:0 -5px 22px #087fff35;color:#e0efff;font-size:12px}
-.controller-bar .shoulder-hint b{font-size:10px;letter-spacing:.5px}
-.masthead-actions{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(8px,1.5vw,18px)}
-.sound-toggle{display:flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid #59baff;border-radius:4px;background:linear-gradient(180deg,#0b2c53dd,#020a18e8);color:#d9ecff;font-size:10px;font-weight:900;letter-spacing:.7px;cursor:pointer;box-shadow:0 0 10px #087fff33}
-.sound-toggle>span:first-child{font-size:18px;line-height:12px;color:#72d9ff}
-.sound-toggle:hover,.sound-toggle:focus-visible{border-color:#c3f4ff;box-shadow:0 0 13px #168fff;outline:none}
-.sound-toggle.is-enabled{background:linear-gradient(180deg,#087d9c,#073f79);color:#fff;border-color:#91efff}
-@media(max-width:560px){.masthead-actions{gap:6px}.sound-toggle{gap:4px;padding:6px 7px;font-size:9px}.sound-toggle>span:first-child{font-size:16px}.platform-mark{font-size:13px}}
-.controller-bar span,.controller-bar a{white-space:nowrap}.controller-bar b{font-size:17px;margin-right:4px}.cross{color:#27baff}.circle{color:#ff477b}.triangle{color:#00e6a4}.controller-bar a{color:#fff;text-decoration:none}.controller-bar strong{margin-left:auto;color:#9ccaff;font-size:10px;letter-spacing:2px;white-space:nowrap}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-:focus-visible{outline:2px solid #8deaff;outline-offset:3px}
-dialog{width:min(560px,92vw);background:linear-gradient(145deg,#0b2b53,#061226);color:#f5f8ff;border:1px solid #4bc8ff;border-radius:8px;padding:26px;box-shadow:0 0 35px #087fff66}
-dialog::backdrop{background:#010714d9}
-dialog{max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.close{float:right;background:transparent;border:0;color:#fff;font-size:28px;cursor:pointer}
-.detail-icon{width:90px;height:90px;margin-bottom:12px}.detail-icon img{width:100%;height:100%;object-fit:contain}.eyebrow{color:#68dfff;letter-spacing:2px;font-size:11px}
-.detail-meta,.dialog-note{color:#b8cce7;font-size:13px;line-height:1.5}
-.detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.detail-actions[hidden]{display:none!important}
-.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border:1px solid #4bc8ff;background:linear-gradient(180deg,#168df3,#064b9e);color:white;text-decoration:none;font-weight:900;font-size:12px;cursor:pointer}
-.secondary-btn{background:#071a36}
-@media(min-width:1200px){.game-grid{gap:16px}.game-physical{height:clamp(190px,20vw,260px)}}
-@media(max-width:760px){.console-layout{grid-template-columns:86px minmax(0,1fr)}.sidebar{padding:12px 5px}.side-link{justify-content:center;padding:8px 3px}.side-link span{display:none}.profile img{width:60px;height:60px}.ps-symbol{font-size:30px}.top-nav{overflow-x:auto;justify-content:flex-start}.nav-tab{flex:0 0 auto}.catalog-heading{align-items:flex-start;flex-direction:column}.catalog-tools{width:100%}.search{flex:1}.search input{width:100%}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.game-physical{height:clamp(120px,27vw,190px)}.controller-bar{gap:10px;font-size:10px}.controller-bar strong{display:none}}
-@media(max-width:460px){.masthead{height:78px}.brand strong{font-size:22px}.brand small{font-size:7px;letter-spacing:.6px}.brand-mark{width:52px;height:52px}.console-layout{grid-template-columns:60px minmax(0,1fr)}.sidebar{padding:8px 3px}.profile img{width:46px;height:46px}.profile strong{font-size:9px}.profile small{font-size:8px}.side-link{font-size:15px;min-height:29px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical{height:clamp(145px,45vw,210px)}.catalog-heading h1{font-size:19px}.catalog-tools{flex-wrap:wrap}.sort-control select{max-width:110px}.controller-bar{justify-content:space-between;gap:4px;padding:6px;font-size:9px}.controller-bar span:nth-child(3){display:none}.controller-bar strong{display:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-
-.emulator-games{margin-top:22px;padding:16px;border:1px solid #248df0;border-radius:6px;background:linear-gradient(145deg,#071d3b,#040d1d);box-shadow:inset 0 0 18px #087fff16}
-.emulator-games h3{margin:0 0 6px;color:#76dfff;font-size:14px;letter-spacing:2px}
-.emulator-games-note{margin:0 0 12px;color:#b8cce7;font-size:12px;line-height:1.5}
-.emulator-games ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.emulator-games li{display:flex;flex-direction:column;gap:4px;padding:9px;border:1px solid #1d5d9c;background:#06162d;border-radius:4px;min-width:0}
-.emulator-games li strong{font-size:12px;color:#fff;line-height:1.3}
-.emulator-games li span{font-size:10px;color:#79caff}
-@media(max-width:480px){.emulator-games ul{grid-template-columns:1fr}}
-
-/* Correções de inicialização e acabamento do catálogo */
-.status{display:inline-flex;align-items:center;gap:7px;margin:2px 0 14px;color:#8ecbff;font-size:10px;letter-spacing:1.4px}
-.status i{width:7px;height:7px;border-radius:50%;background:#27e5a2;box-shadow:0 0 9px #27e5a2}
-.status.error{color:#ff9cae}.status.error i{background:#ff5577;box-shadow:0 0 9px #ff5577}
-.software-art{height:clamp(150px,19vw,220px);display:block;position:relative;overflow:hidden;border:1px solid #65caff;background:#071d3c}
-.software-art img{width:100%;height:100%;object-fit:cover;display:block}
-.software-art span{position:absolute;left:8px;bottom:8px;padding:5px 9px;background:#030b19d9;border:1px solid #61caff;color:#fff;font-size:10px;font-weight:900;letter-spacing:1.5px}
-.software-art.art-image-missing:after{content:attr(data-fallback-name);position:absolute;top:0;right:0;bottom:0;left:0;display:grid;place-items:center;padding:18px;background:linear-gradient(145deg,#174e88,#081329);color:#fff;text-align:center;font-size:clamp(15px,2vw,24px);font-weight:900;text-shadow:0 2px 6px #000}
-.masthead{position:relative;background-color:#020817;background-image:linear-gradient(90deg,rgba(2,8,23,.18),rgba(2,8,23,.05)),url("assets/hades-gamer.svg");background-repeat:no-repeat;background-position:center,right 8%;background-size:cover,auto 108%;min-height:144px}
-@media(max-width:760px){.masthead{background-size:cover,auto 100%}}
-
-/* Referência HADES: faixa superior, navegação e cartões */
-.masthead{min-height:190px;padding:20px clamp(20px,5vw,70px);align-items:center;border-bottom:1px solid #168fff;background-position:center;background-size:cover}
-.brand strong{font-size:clamp(30px,4vw,48px);font-style:italic;text-shadow:0 0 18px #087fff}
-.brand-mark{width:84px;height:84px}
-.top-nav{min-height:68px;padding:0 clamp(18px,6vw,90px);justify-content:space-around;background:linear-gradient(180deg,#071b3a,#020817);border-bottom:1px solid #168fff}
-.nav-tab{min-width:clamp(120px,14vw,190px);min-height:54px;font-size:14px;font-weight:900}
-.nav-tab.active{background:linear-gradient(180deg,#159fff,#0754b7);border:1px solid #8eeaff;box-shadow:0 0 18px #078dff}
-.console-layout{grid-template-columns:190px minmax(0,1fr)}
-.sidebar{background:linear-gradient(180deg,#020b1d,#031a38);border-right:1px solid #126fc2}
-.profile img{width:116px;height:116px;object-fit:cover;border:2px solid #39baff;border-radius:50%;box-shadow:0 0 18px #078dff}
-.main-panel{background-color:#03112a}
-.catalog-section{padding:26px clamp(18px,3vw,42px)}
-.game-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
-.game-physical{height:clamp(190px,22vw,280px);background:#061b3a}
-.game-cover-art{object-fit:cover}
-.cover-image-missing .cover-fallback{display:grid}
-.software-art{height:clamp(190px,22vw,280px)}
-@media(max-width:900px){.console-layout{grid-template-columns:100px minmax(0,1fr)}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.masthead{min-height:130px}}
-@media(max-width:560px){.masthead{min-height:100px;padding:10px}.brand-mark{width:52px;height:52px}.brand strong{font-size:22px}.top-nav{min-height:54px;padding:0 8px}.nav-tab{min-width:105px;min-height:42px;font-size:11px}.console-layout{grid-template-columns:62px minmax(0,1fr)}.profile img{width:48px;height:48px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-physical,.software-art{height:170px}}
-
-.cover-title-overlay{position:absolute;z-index:1;top:40%;right:5px;bottom:auto;left:5px;display:grid;place-items:center;min-height:25%;padding:8px 5px;background:linear-gradient(90deg,#020918d9,#041a35e8,#020918d9);border-top:1px solid #85dfff;border-bottom:1px solid #85dfff;color:#fff;text-align:center;text-transform:uppercase;font-size:clamp(11px,1.4vw,18px);line-height:1.12;font-weight:1000;letter-spacing:.4px;text-shadow:0 2px 5px #000,0 0 10px #087fff}
-/* Reference home: compact PS4 catalog framed by the HADES night scene. */
-.masthead{height:clamp(94px,14vw,142px);min-height:0;padding:8px clamp(12px,3vw,42px);background-color:#030918;background-image:linear-gradient(90deg,rgba(2,8,22,.88) 0%,rgba(3,12,30,.38) 38%,rgba(3,10,24,.08) 72%,rgba(2,8,20,.24)),url("assets/hades-home-banner.svg");background-repeat:no-repeat;background-size:cover;background-position:center 42%;border-bottom:1px solid #42b7ff;box-shadow:0 4px 24px #007bff3a}
-.brand{gap:8px}.brand-mark{width:clamp(54px,8vw,84px);height:clamp(54px,8vw,84px);filter:drop-shadow(0 0 10px #168aff)}
-.brand strong{font-size:clamp(24px,3.8vw,46px);letter-spacing:-1.1px}
-.platform-mark{padding-right:4px}
-.top-nav{min-height:38px;height:auto;padding:2px clamp(4px,2vw,24px);gap:1px;justify-content:center;background:linear-gradient(180deg,#09264c,#020918);border-bottom:2px solid #198eff;box-shadow:0 0 18px #0786ff66}
-.nav-tab{position:relative;flex:1;max-width:210px;min-width:0;min-height:34px;padding:5px;border:1px solid #1b6eb7;background:linear-gradient(180deg,#07182f,#030b1b);font-size:clamp(9px,1.12vw,13px);clip-path:polygon(7% 0,100% 0,93% 100%,0 100%);text-align:center}
-.nav-tab span{margin-left:3px}.nav-tab.active,.nav-tab:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#159fff,#0754b7);border-color:#8eeaff;box-shadow:0 0 18px #078dff;transform:none}
-.console-layout{grid-template-columns:clamp(100px,15vw,190px) minmax(0,1fr);min-height:calc(100vh - 184px)}
-.sidebar{padding:9px 8px 14px;background:linear-gradient(90deg,#020817f4,#061a38df);border-right:1px solid #178bff88}
-.profile{padding:0 0 12px;gap:3px}.profile img{width:clamp(64px,10vw,104px);height:clamp(64px,10vw,104px);border:2px solid #42bfff;box-shadow:0 0 20px #087fff,inset 0 0 12px #fff}
-.profile strong{font-size:11px}.profile small{font-size:10px}.side-nav{gap:3px}.side-link{min-height:28px;padding:5px 7px;gap:8px;font-size:clamp(10px,1vw,13px)}.ps-symbol{font-size:39px}
-.main-panel{padding:8px clamp(8px,1.7vw,22px) 12px;background:linear-gradient(90deg,#03112aee,#04152fe8)}
-.catalog-section{padding:4px 0 18px}.catalog-heading{margin-bottom:0;min-height:31px}.catalog-heading h1{font-size:clamp(18px,2.2vw,27px);letter-spacing:2px}.catalog-heading h1 i{height:22px;width:5px}.catalog-tools{display:none}
-.catalog-meta{margin:2px 0 7px;font-size:10px}.catalog-meta p{display:none}#page-count{font-size:11px}.status{display:none}
-.game-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.app-card{padding:3px;border-radius:3px}.game-physical,.software-art{height:clamp(126px,19.6vw,228px);margin-bottom:3px}
-.game-cover-art{object-fit:cover}.ps4-band{height:17px;font-size:10px;padding:0 5px}.game-cover-art{top:17px;right:0;bottom:0;left:0;height:calc(100% - 17px)}.cover-fallback{top:17px;right:0;bottom:0}.app-card;left:h3{font-size:clamp(9px,1vw,12px);line-height:1.12}
-.controller-bar{min-height:34px;padding:5px clamp(8px,2vw,24px);font-size:10px;background:linear-gradient(180deg,#073066,#020817);border-top:2px solid #188eff}
-.console-shell:after{content:"";position:absolute;left:0;right:0;bottom:31px;height:56px;pointer-events:none;z-index:0;background:linear-gradient(180deg,transparent 0,#087dff22 64%,#04132988 100%);border-top:1px solid #249cff77;box-shadow:0 -5px 24px #087fff22}
-@media(min-width:561px) and (max-width:900px){.console-layout{grid-template-columns:clamp(100px,15vw,135px) minmax(0,1fr)}.game-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.game-physical,.software-art{height:clamp(112px,19.6vw,178px)}.masthead{height:clamp(92px,14vw,116px)}}
-@media(max-width:560px){.masthead{height:92px;min-height:92px;background-position:58% 40%;padding:7px}.brand-mark{width:48px;height:48px}.brand strong{font-size:20px}.brand small{font-size:7px;letter-spacing:.8px}.top-nav{min-height:50px;flex-wrap:wrap}.nav-tab{flex:1 1 30%;min-height:25px;font-size:9px}.console-layout{grid-template-columns:58px minmax(0,1fr)}.profile img{width:44px;height:44px}.profile strong,.profile small{font-size:8px}.side-link{justify-content:center;padding:4px;font-size:0}.side-link span{display:none}.main-panel{padding:6px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.game-physical,.software-art{height:clamp(145px,48vw,205px)}.catalog-heading h1{font-size:17px}.controller-bar strong,.controller-bar a{display:none}.controller-bar{justify-content:space-around}}
-
-/* Header and tabs tuned to the supplied HADES Store reference. */
-.masthead{background-image:linear-gradient(90deg,rgba(2,8,22,.86) 0%,rgba(3,10,25,.52) 36%,rgba(3,10,24,.08) 75%,rgba(2,8,20,.18)),url("assets/hades-home-banner.svg");background-size:cover;background-position:center center}
-.top-nav{height:36px;min-height:36px;padding:2px clamp(4px,2vw,24px);gap:1px;align-items:stretch}
-.nav-tab{display:flex;align-items:center;justify-content:center;gap:5px;min-height:30px;height:30px;padding:3px clamp(3px,.75vw,10px);font-size:clamp(9px,1.05vw,13px);clip-path:polygon(7% 0,100% 0,93% 100%,0 100%);color:#edf6ff}
-.nav-tab span{margin:0;line-height:1}
-.nav-icon{display:inline-block;width:15px;height:15px;flex:0 0 15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 2px #73cfff)}
-.nav-icon.solid{fill:currentColor;stroke:none}
-.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#25a8ff,#0754c1);border:1px solid #9ceaff;box-shadow:0 0 16px #098fff, inset 0 0 9px #ffffff40;color:#fff}
-.nav-tab:hover:not(.active){background:linear-gradient(180deg,#0c3972,#061a39);border-color:#318fe3;box-shadow:inset 0 0 8px #168fff30;color:#fff}
-@media(max-width:560px){.top-nav{height:auto;min-height:48px;padding:4px;gap:2px}.nav-tab{height:22px;min-height:22px;gap:3px}.nav-icon{width:12px;height:12px;flex-basis:12px}}
-
-/* Sidebar simplified to the three primary actions. */
-.side-nav{gap:7px;margin-top:4px}
-.side-link{display:flex;align-items:center;gap:11px;min-height:38px;padding:7px 10px;border:1px solid transparent;border-radius:5px;background:transparent;color:#f6fbff;font-size:clamp(11px,1.1vw,14px);font-weight:700;letter-spacing:.15px;text-decoration:none;text-shadow:0 1px 3px #001126;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease}
-.side-icon{display:block;width:17px;height:17px;flex:0 0 17px;fill:none;stroke:#f7fbff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px #54bdff)}
-.side-link.selected,.side-link[aria-pressed="true"],.side-link:hover,.side-link:focus-visible{background:linear-gradient(90deg,#1597ff,#0750b4);border-color:#71d9ff;box-shadow:0 0 15px #087fff99,inset 0 0 10px #ffffff22;color:#fff;outline:none}
-.side-link:not(.selected):not([aria-pressed="true"]):hover{background:#0a3771;border-color:#348ddb;box-shadow:0 0 9px #087fff55}
-@media(max-width:560px){.side-link{min-height:32px;gap:0;padding:6px;justify-content:center}.side-icon{width:16px;height:16px;flex-basis:16px}.side-link span{display:none}}
-
-/* Align the PS4 tab bar with the catalog column, as in the reference. */
-.top-nav{position:relative;z-index:2;margin-left:clamp(100px,15vw,190px);width:calc(100% - clamp(100px,15vw,190px));height:39px;min-height:39px;padding:3px clamp(5px,1.1vw,14px);gap:2px;justify-content:space-around;align-items:stretch;overflow:visible;border:1px solid #168fff;border-bottom:2px solid #36b6ff;border-radius:0 0 7px 7px;background:linear-gradient(180deg,#0c2b55,#020a1a);box-shadow:0 0 18px #087fff66,inset 0 0 12px #138bff22}
-.nav-tab{height:30px;min-height:30px;flex:1 1 0;max-width:210px;padding:3px clamp(3px,.8vw,12px);gap:5px;border:1px solid #1674c5;background:linear-gradient(180deg,#0a1a33,#030a18);clip-path:polygon(8% 0,100% 0,92% 100%,0 100%);font-size:clamp(9px,1.05vw,13px);text-shadow:0 1px 3px #000}
-.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible{background:linear-gradient(180deg,#27adff,#0752ba);border-color:#b3eeff;box-shadow:0 0 17px #098fff,inset 0 0 10px #ffffff45;color:#fff}
-.nav-tab:hover:not(.active){background:linear-gradient(180deg,#0d3f7b,#061b3a);border-color:#49aaff;box-shadow:inset 0 0 9px #168fff44;color:#fff}
-@media(max-width:560px){.top-nav{margin-left:0;width:100%;height:auto;min-height:48px;padding:4px;gap:2px;flex-wrap:wrap;border-radius:0}.nav-tab{flex:1 1 30%;height:22px;min-height:22px}}
-
-/* Keep the three sidebar actions readable on narrow screens. */
-@media(max-width:560px){
-  .console-layout{grid-template-columns:clamp(112px,30vw,140px) minmax(0,1fr)}
-  .profile img{width:clamp(60px,19vw,78px);height:clamp(60px,19vw,78px)}
-  .profile strong{font-size:10px;letter-spacing:1.6px}
-  .profile small{font-size:9px}
-  .side-nav{gap:8px;margin-top:8px}
-  .side-link{min-height:35px;justify-content:flex-start;gap:8px;padding:6px 7px;font-size:10px}
-  .side-icon{width:15px;height:15px;flex:0 0 15px}
-  .side-link span{display:inline}
+:root {
+  color-scheme: dark;
+  --blue: #087eff;
+  --cyan: #39d8ff;
+  --deep: #020817;
+  --panel: #071a36;
+  --line: #1677d9;
+  --text: #f5f8ff;
+  --muted: #b7c9e5;
 }
 
-/* Use the supplied warrior and castle artwork in the HADES masthead. */
-.masthead{height:clamp(96px,13.2vw,142px);min-height:96px;position:relative;isolation:isolate;overflow:hidden;background-color:#020817;background-image:linear-gradient(180deg,#07142b,#020817);background-repeat:no-repeat;background-size:cover;background-position:center;border-bottom:1px solid #42b7ff}
-.masthead::before{content:"";position:absolute;z-index:-2;top:-8px;right:-8px;bottom:-8px;left:-8px;pointer-events:none;background-image:url("assets/hades-home-banner-art.jpg");background-repeat:no-repeat;background-size:auto 128%;background-position:right center;transform:none}
-.masthead::after{content:"";position:absolute;z-index:-1;top:0;right:0;bottom:0;left:0;pointer-events:none;background:linear-gradient(90deg,rgba(2,8,22,.96) 0%,rgba(2,8,22,.84) 22%,rgba(3,10,25,.28) 42%,rgba(3,10,24,.08) 67%,rgba(2,8,20,.32) 100%),linear-gradient(105deg,transparent 35%,#247fff18 55%,transparent 75%);opacity:.94}
-@media(max-width:900px){.masthead{height:clamp(96px,13.2vw,120px);min-height:96px}}
-@media(max-width:560px){.masthead{height:94px;min-height:94px;background-size:cover;background-position:center}.masthead::before{background-size:auto 124%;background-position:right center}}
-@media(prefers-reduced-motion:reduce){.masthead,.masthead::before,.masthead::after{animation:none!important}.masthead::before{transform:none;filter:none}}
+* {
+  box-sizing: border-box;
+}
 
-/* Horizontal cover carousel with page-sized navigation. */
-.catalog-meta{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.carousel-controls{display:flex;align-items:center;gap:9px;color:#d8efff;font-size:11px;font-weight:900;letter-spacing:1px}
-.carousel-controls button{width:27px;height:25px;border:1px solid #249cff;border-radius:4px;background:linear-gradient(180deg,#0b3971,#04142b);color:#fff;font-size:22px;line-height:18px;cursor:pointer}
-.carousel-controls button:hover:not(:disabled),.carousel-controls button:focus-visible{background:linear-gradient(180deg,#159fff,#0754b7);border-color:#b3eeff;box-shadow:0 0 10px #098fff}
-.carousel-controls button:disabled{opacity:.35;cursor:default}
-.game-grid{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#168fff #06142a;padding:4px 3px 10px;scroll-behavior:smooth}
-.game-grid::after{content:"";flex:0 0 var(--carousel-trailing-space,0px);pointer-events:none}
-.game-grid>.app-card{flex:0 0 calc((100% - 32px)/5);min-width:0;scroll-snap-align:start}
-@media(max-width:900px){.game-grid>.app-card{flex-basis:calc((100% - 16px)/3)}}
-@media(max-width:560px){.game-grid>.app-card{flex-basis:calc((100% - 8px)/2)}.carousel-controls{gap:6px}.carousel-controls button{width:25px;height:24px}}
-@media(prefers-reduced-motion:reduce){.game-grid{scroll-behavior:auto}}
+html {
+  scroll-behavior: smooth;
+}
 
-/* Submundo HADES como cenário suave do painel principal. */
-.main-panel{position:relative;isolation:isolate;background-color:#0b0d18;background-image:linear-gradient(180deg,rgba(4,10,25,.58),rgba(5,10,22,.72) 48%,rgba(5,8,17,.82)),url("assets/hades-underworld-bg.svg");background-repeat:no-repeat;background-position:center;background-size:cover}
-.catalog-backdrop{position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;overflow:hidden;pointer-events:none}
-.catalog-backdrop-layer{position:absolute;top:-3%;right:-3%;bottom:-3%;left:-3%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.78);opacity:0;transform:scale(1.025);transition:opacity .8s ease,transform 1.4s ease}
-.catalog-backdrop-layer.is-visible{opacity:.78;transform:scale(1)}
-.catalog-section{position:relative;z-index:1}
-@media(prefers-reduced-motion:reduce){.catalog-backdrop-layer{transition:none}}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #020713;
+  color: var(--text);
+  font: 16px Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(ellipse at 52% 0%, #163b71 0, transparent 48%), linear-gradient(180deg, #020817, #071b3b 70%, #020817);
+}
 
-/* Capas ampliadas e menos itens por tela no carrossel. */
-.game-grid>.app-card{flex-basis:calc((100% - 24px)/4)}
-.game-physical,.software-art{height:clamp(250px,27vw,360px)}
-@media(max-width:900px){.game-grid>.app-card{flex-basis:calc((100% - 8px)/2)}.game-physical,.software-art{height:clamp(260px,40vw,360px)}}
-@media(max-width:560px){.game-grid>.app-card{flex-basis:82%}.game-physical,.software-art{height:clamp(250px,70vw,360px)}}
+button,
+input,
+select {
+  font: inherit;
+}
 
-/* Faixa PS4 e nomes dos jogos maiores e mais legíveis. */
-.ps4-band{height:29px;font-size:16px;letter-spacing:1.8px;padding:0 9px}
-.game-cover-art{top:29px;height:calc(100% - 29px)}
-.cover-fallback{top:29px}
-.app-card h3{font-size:clamp(14px,1.45vw,19px);line-height:1.18;padding:5px 4px 2px}
-@media(max-width:560px){.ps4-band{height:30px;font-size:16px}.game-cover-art{top:30px;height:calc(100% - 30px)}.cover-fallback{top:30px}.app-card h3{font-size:18px;line-height:1.2}}
-.app-card h3{font-size:clamp(16px,1.6vw,21px)}
-@media(max-width:560px){.app-card h3{font-size:18px}}
-.emulator-physical .game-cover-art{object-fit:contain;background:#050505}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
-.card-details{margin-left:auto;padding:5px 8px;border:1px solid #3b9ee8;border-radius:3px;background:#071a36;color:#a9e8ff;font-size:9px;font-weight:900;letter-spacing:.6px;cursor:pointer}.package-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.package-links[hidden]{display:none!important}.download-password{margin:12px 0 0;padding:10px 12px;border:1px solid #2c83c9;border-radius:5px;background:#071a36;color:#dcecff;font-size:13px}.download-password code{margin-left:6px;color:#8de5ff;font-size:15px;font-weight:900}
+.console-shell {
+  max-width: 1800px;
+  min-height: 100vh;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #020b1bdf, #03132ce8 78%, #020918);
+}
 
-/* HADES-AUDIT-FIX */
-.catalog-heading{flex-wrap:wrap;gap:10px;margin-bottom:6px}
-.catalog-tools{display:flex!important;align-items:center;gap:8px}
-.catalog-meta p{display:block!important;font-size:11px;color:#9fc7f5}
-@media(max-width:560px){.catalog-tools{width:100%}.catalog-tools .search{flex:1}}
+.console-shell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: .24;
+  background: radial-gradient(ellipse at 80% 8%, #9acfff 0, transparent 22%), repeating-linear-gradient(115deg, transparent 0 70px, #278eff0a 71px 73px);
+}
 
+.console-shell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 31px;
+  height: 56px;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0, #087dff22 64%, #04132988 100%);
+  border-top: 1px solid #249cff77;
+  box-shadow: 0 -5px 24px #087fff22;
+}
 
-/* HADES-PREMIUM-AVATAR */
-.profile img{display:block;width:clamp(84px,11vw,132px);height:clamp(84px,11vw,132px);max-width:none;object-fit:cover;border:0;border-radius:50%;box-shadow:0 0 22px #087fff}
-@media(max-width:560px){.profile img{width:92px;height:92px}}
+/* Masthead / Banner Superior */
+.masthead {
+  height: clamp(96px, 13.2vw, 142px);
+  min-height: 96px;
+  padding: 8px clamp(12px, 3vw, 42px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #020817;
+  background-image: linear-gradient(180deg, #07142b, #020817);
+  border-bottom: 1px solid #42b7ff;
+  box-shadow: 0 4px 24px #007bff3a;
+  animation: banner-neon-pulse 3.8s ease-in-out infinite;
+}
 
-/* Mostra a arte completa da capa e do avatar. */
-.game-cover-art{object-fit:contain;background:#05070d}
-.profile img{object-fit:contain;background:#020817}
+.masthead::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  pointer-events: none;
+  background-image: url("assets/hades-home-banner-art.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 128%;
+  background-position: right center;
+  transform-origin: 78% 50%;
+  animation: banner-focus 12s ease-in-out infinite alternate;
+}
 
-/* Idioma e dados principais ficam visíveis no cartão e nos detalhes. */
-.card-language-badges,.detail-language-badges{display:flex;flex-wrap:wrap;gap:6px}
-.card-language-badges{justify-content:center;padding:2px 4px 5px}
-.language-badge{display:inline-flex;align-items:center;justify-content:center;max-width:100%;padding:5px 8px;border:1px solid #4ad9ff;border-radius:999px;background:linear-gradient(135deg,#073457,#075f7a);color:#d8fbff;font-size:clamp(9px,.78vw,11px);font-weight:900;line-height:1.2;letter-spacing:.35px;text-align:center;box-shadow:0 0 12px #11bfff30}
-.audio-badge{border-color:#49ecb2;background:linear-gradient(135deg,#064631,#087b60);color:#d8fff0;box-shadow:0 0 12px #18d99a30}
-.detail-meta{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
-.detail-fact{display:grid;gap:3px;min-width:92px;padding:9px 11px;border:1px solid #277fba;border-radius:5px;background:#061a34;color:#f0f7ff}
-.detail-fact strong{color:#71d9ff;font-size:9px;letter-spacing:1px}
-.detail-fact>span{font-size:14px;font-weight:800}
-.detail-meta .detail-language-badges{flex-basis:100%;gap:8px}
-.detail-meta .language-badge{padding:8px 12px;font-size:12px}
-@media(max-width:560px){.card-language-badges{gap:4px}.language-badge{font-size:9px;padding:5px 7px}.detail-meta{gap:6px}.detail-fact{min-width:calc(50% - 6px);flex:1}.detail-meta .language-badge{font-size:11px}}
+.masthead::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(2, 8, 22, .96) 0%, rgba(2, 8, 22, .84) 22%, rgba(3, 10, 25, .28) 42%, rgba(3, 10, 24, .08) 67%, rgba(2, 8, 20, .32) 100%), linear-gradient(105deg, transparent 35%, #247fff18 55%, transparent 75%);
+  opacity: .94;
+  animation: banner-sheen 4.2s ease-in-out infinite;
+}
 
-/* Capas de aplicativos inteiras, sem cortes nas bordas. */
-.software-art{background:linear-gradient(145deg,#08182e,#050913)}
-.software-art img{object-fit:contain;background:transparent}
-
-/* Legacy WebKit fallback for flex layouts without gap support. */
-@supports not (gap: 1px) {
-  .brand > * + *,.masthead-actions > * + *{margin-left:8px}
-  .top-nav > * + *{margin-left:2px}
-  .nav-tab > * + *{margin-left:5px}
-  .profile > * + *{margin-top:3px}
-  .side-nav{display:block}
-  .side-nav > * + *{margin-top:7px}
-  .side-link > * + *{margin-left:11px}
-  .catalog-heading > * + *{margin-left:10px}
-  .catalog-heading h1 > * + *{margin-left:10px}
-  .catalog-tools > * + *{margin-left:8px}
-  .search > * + *{margin-left:7px}
-  .catalog-meta > * + *{margin-left:10px}
-  .carousel-controls > * + *{margin-left:9px}
-  .game-grid{gap:0}
-  .game-grid > .app-card{flex-basis:calc((100% - 32px) / 4);margin-right:8px}
-  .card-language-badges > * + *,.detail-language-badges > * + *{margin-left:6px;margin-top:6px}
-  .detail-meta > * + *{margin-left:9px;margin-top:9px}
-  .detail-fact > * + *{margin-top:3px}
-  .detail-actions > *,.package-links > *{margin-right:10px;margin-bottom:10px}
-  .emulator-games li > * + *{margin-top:4px}
-  .controller-bar > * + *{margin-left:clamp(12px,2.5vw,35px)}
-  @media (max-width:900px){.game-grid > .app-card{flex-basis:calc((100% - 16px) / 2)}}
-  @media (max-width:760px){.controller-bar > * + *{margin-left:10px}}
-  @media (max-width:560px){
-    .top-nav > * + *{margin-bottom:2px}
-    .game-grid > .app-card{flex-basis:82%;margin-right:8px}
-    .card-language-badges > * + *{margin-left:4px;margin-top:4px}
-    .detail-meta > * + *{margin-left:6px;margin-top:6px}
-    .controller-bar > * + *{margin-left:4px}
+@keyframes banner-focus {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.07) translateX(-6px);
   }
 }
+
+@keyframes banner-neon-pulse {
+  0%, 100% {
+    border-bottom-color: #42b7ff;
+    box-shadow: 0 4px 22px #007bff35, 0 0 8px #0bbdff22;
+  }
+  50% {
+    border-bottom-color: #a6f2ff;
+    box-shadow: 0 4px 34px #078dff88, 0 0 25px #22dfff70;
+  }
+}
+
+@keyframes banner-sheen {
+  0%, 100% {
+    opacity: .78;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: clamp(54px, 8vw, 84px);
+  height: clamp(54px, 8vw, 84px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px #168aff);
+}
+
+.brand strong {
+  display: block;
+  font-size: clamp(24px, 3.8vw, 46px);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -1.1px;
+  text-shadow: 0 3px 8px #000, 0 0 18px #087fff;
+}
+
+.brand small {
+  display: block;
+  margin-top: 2px;
+  font-size: clamp(8px, 1.1vw, 12px);
+  letter-spacing: 1.4px;
+  color: #c6dcf8;
+}
+
+.masthead-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 18px);
+}
+
+.platform-mark {
+  padding-right: 4px;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 24px);
+  color: #dcecff;
+  text-shadow: 0 0 12px #2c91ff;
+}
+
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid #59baff;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #0b2c53dd, #020a18e8);
+  color: #d9ecff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .7px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #087fff33;
+}
+
+.sound-toggle > span:first-child {
+  font-size: 18px;
+  line-height: 12px;
+  color: #72d9ff;
+}
+
+.sound-toggle:hover,
+.sound-toggle:focus-visible {
+  border-color: #c3f4ff;
+  box-shadow: 0 0 13px #168fff;
+  outline: none;
+}
+
+.sound-toggle.is-enabled {
+  background: linear-gradient(180deg, #087d9c, #073f79);
+  color: #fff;
+  border-color: #91efff;
+}
+
+/* Abas de Categorias */
+.top-nav {
+  position: relative;
+  z-index: 2;
+  margin-left: clamp(100px, 15vw, 190px);
+  width: calc(100% - clamp(100px, 15vw, 190px));
+  height: 39px;
+  min-height: 39px;
+  padding: 3px clamp(5px, 1.1vw, 14px);
+  display: flex;
+  gap: 2px;
+  justify-content: space-around;
+  align-items: stretch;
+  overflow: visible;
+  border: 1px solid #168fff;
+  border-bottom: 2px solid #36b6ff;
+  border-radius: 0 0 7px 7px;
+  background: linear-gradient(180deg, #0c2b55, #020a1a);
+  box-shadow: 0 0 18px #087fff66, inset 0 0 12px #138bff22;
+}
+
+.nav-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 30px;
+  min-height: 30px;
+  flex: 1 1 0;
+  max-width: 210px;
+  min-width: 0;
+  padding: 3px clamp(3px, .8vw, 12px);
+  border: 1px solid #1674c5;
+  background: linear-gradient(180deg, #0a1a33, #030a18);
+  color: #edf6ff;
+  font-size: clamp(9px, 1.05vw, 13px);
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  text-shadow: 0 1px 3px #000;
+}
+
+.nav-tab span {
+  margin: 0;
+  line-height: 1;
+}
+
+.nav-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-icon.solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+.nav-tab.active,
+.nav-tab.active:hover,
+.nav-tab:focus-visible {
+  background: linear-gradient(180deg, #27adff, #0752ba);
+  border-color: #b3eeff;
+  box-shadow: 0 0 17px #098fff, inset 0 0 10px #ffffff45;
+  color: #fff;
+  outline: none;
+}
+
+.nav-tab:hover:not(.active) {
+  background: linear-gradient(180deg, #0d3f7b, #061b3a);
+  border-color: #49aaff;
+  box-shadow: inset 0 0 9px #168fff44;
+  color: #fff;
+}
+
+/* Layout Principal e Barra Lateral */
+.console-layout {
+  display: grid;
+  grid-template-columns: clamp(100px, 15vw, 190px) minmax(0, 1fr);
+  min-height: calc(100vh - 184px);
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  padding: 9px 8px 14px;
+  background: linear-gradient(90deg, #020817f4, #061a38df);
+  border-right: 1px solid #178bff88;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 0 12px;
+  text-align: center;
+}
+
+.profile img {
+  display: block;
+  width: clamp(84px, 11vw, 132px);
+  height: clamp(84px, 11vw, 132px);
+  border-radius: 50%;
+  object-fit: contain;
+  background: #020817;
+  box-shadow: 0 0 22px #087fff;
+}
+
+.profile strong {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.profile small {
+  font-size: 10px;
+  color: #b7c9e5;
+}
+
+.side-nav {
+  display: grid;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: #f6fbff;
+  font-size: clamp(11px, 1.1vw, 14px);
+  font-weight: 700;
+  letter-spacing: .15px;
+  text-decoration: none;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 0 1px 3px #001126;
+  transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.side-icon {
+  display: block;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  fill: none;
+  stroke: #f7fbff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.side-link.selected,
+.side-link[aria-pressed="true"],
+.side-link:hover,
+.side-link:focus-visible {
+  background: linear-gradient(90deg, #1597ff, #0750b4);
+  border-color: #71d9ff;
+  box-shadow: 0 0 15px #087fff99, inset 0 0 10px #ffffff22;
+  color: #fff;
+  outline: none;
+}
+
+.side-link:not(.selected):not([aria-pressed="true"]):hover {
+  background: #0a3771;
+  border-color: #348ddb;
+  box-shadow: 0 0 9px #087fff55;
+}
+
+.ps-symbol {
+  margin: auto auto 0;
+  font-size: 39px;
+  font-weight: 900;
+  font-style: italic;
+  color: #168eff;
+  text-shadow: 0 0 14px #078cff;
+}
+
+.ps-symbol span {
+  font-size: 27px;
+}
+
+/* Painel Principal e Cenário */
+.main-panel {
+  min-width: 0;
+  padding: 8px clamp(8px, 1.7vw, 22px) 12px;
+  position: relative;
+  isolation: isolate;
+  background-color: #0b0d18;
+  background-image: linear-gradient(180deg, rgba(4, 10, 25, .58), rgba(5, 10, 22, .72) 48%, rgba(5, 8, 17, .82)), url("assets/hades-underworld-bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.catalog-backdrop {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.catalog-backdrop-layer {
+  position: absolute;
+  top: -3%;
+  right: -3%;
+  bottom: -3%;
+  left: -3%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: saturate(.78);
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity .8s ease, transform 1.4s ease;
+}
+
+.catalog-backdrop-layer.is-visible {
+  opacity: .78;
+  transform: scale(1);
+}
+
+.catalog-section {
+  position: relative;
+  z-index: 1;
+  padding: 4px 0 18px;
+}
+
+.catalog-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+justify-content: space-between;
+gap: 10px;
+margin-bottom: 6px;
+min-height: 31px;
+}
+.catalog-heading h1 {
+margin: 0;
+display: flex;
+align-items: center;
+gap: 10px;
+font-size: clamp(18px, 2.2vw, 27px);
+font-style: italic;
+letter-spacing: 2px;
+text-shadow: 0 2px 8px #000;
+}
+.catalog-heading h1 i {
+display: block;
+width: 5px;
+height: 22px;
+background: #139cff;
+transform: skew(-18deg);
+box-shadow: 0 0 12px #159bff;
+}
+.catalog-tools {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.search {
+display: flex;
+align-items: center;
+gap: 7px;
+padding: 7px 10px;
+background: #03122be8;
+border: 1px solid #167ee4;
+border-radius: 4px;
+color: #64dfff;
+box-shadow: inset 0 0 12px #007bff18;
+}
+.search span {
+font-size: 20px;
+}
+.search input {
+width: clamp(120px, 19vw, 250px);
+border: 0;
+outline: 0;
+background: transparent;
+color: #fff;
+font-size: 13px;
+}
+.sort-control select {
+max-width: 130px;
+padding: 8px 5px;
+border: 1px solid #167ee4;
+background: #061832;
+color: #eaf4ff;
+border-radius: 4px;
+font-size: 12px;
+}
+.catalog-meta {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+color: #bcd6f6;
+font-size: 10px;
+margin: 2px 0 7px;
+}
+.catalog-meta p {
+margin: 0;
+display: block;
+font-size: 11px;
+color: #9fc7f5;
+}
+.status {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+margin: 2px 0 10px;
+color: #8ecbff;
+font-size: 10px;
+letter-spacing: 1.4px;
+}
+.status i {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: #27e5a2;
+box-shadow: 0 0 9px #27e5a2;
+}
+.status.error {
+color: #ff9cae;
+}
+.status.error i {
+background: #ff5577;
+box-shadow: 0 0 9px #ff5577;
+}
+/* Controles e Carrossel Horizontal */
+.carousel-controls {
+display: flex;
+align-items: center;
+gap: 9px;
+color: #d8efff;
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+#page-count {
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+.carousel-controls button {
+width: 27px;
+height: 25px;
+border: 1px solid #249cff;
+border-radius: 4px;
+background: linear-gradient(180deg, #0b3971, #04142b);
+color: #fff;
+font-size: 22px;
+line-height: 18px;
+cursor: pointer;
+}
+.carousel-controls button:hover:not(:disabled),
+.carousel-controls button:focus-visible {
+background: linear-gradient(180deg, #159fff, #0754b7);
+border-color: #b3eeff;
+box-shadow: 0 0 10px #098fff;
+}
+.carousel-controls button:disabled {
+opacity: .35;
+cursor: default;
+}
+.game-grid {
+display: flex;
+overflow-x: auto;
+overscroll-behavior-inline: contain;
+scroll-snap-type: x mandatory;
+scrollbar-width: thin;
+scrollbar-color: #168fff #06142a;
+padding: 4px 3px 10px;
+scroll-behavior: smooth;
+}
+.game-grid::after {
+content: "";
+flex: 0 0 var(--carousel-trailing-space, 0px);
+pointer-events: none;
+}
+.game-grid > .app-card {
+flex: 0 0 calc((100% - 32px) / 4);
+margin-right: 8px;
+min-width: 0;
+scroll-snap-align: start;
+}
+/* Cartões do Catálogo */
+.app-card {
+position: relative;
+min-height: 0;
+padding: 3px;
+border: 1px solid #248df0;
+border-radius: 3px;
+background: linear-gradient(180deg, #0c3e79, #06162d 74%);
+box-shadow: 0 4px 14px #000a, 0 0 9px #007bff42;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+overflow: hidden;
+}
+.app-card::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 3px;
+background: linear-gradient(90deg, #b5f2ff, #168fff, #b5f2ff);
+z-index: 2;
+}
+.app-card:hover,
+.app-card:focus-visible,
+.app-card.selected {
+transform: translateY(-3px) scale(1.015);
+border-color: #8eeaff;
+box-shadow: 0 0 0 2px #42c9ff, 0 0 22px #098dff, 0 8px 20px #000b;
+outline: none;
+}
+.favorite-toggle {
+position: absolute;
+z-index: 5;
+top: 7px;
+right: 7px;
+width: 25px;
+height: 25px;
+border: 1px solid #b7dcff99;
+border-radius: 50%;
+background: #00142ddd;
+color: #ffe58a;
+font-size: 15px;
+cursor: pointer;
+display: grid;
+place-items: center;
+}
+.favorite-toggle[aria-pressed="true"] {
+background: #124d8c;
+color: #fff;
+}
+.game-physical,
+.software-art {
+height: clamp(250px, 27vw, 360px);
+width: 100%;
+margin: 0 0 3px;
+position: relative;
+overflow: hidden;
+background: #061b3a;
+border: 1px solid #7fcaff66;
+}
+.game-cover {
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+overflow: hidden;
+background: linear-gradient(145deg, #0b5bb1, #06142a);
+}
+.ps4-band {
+height: 29px;
+position: absolute;
+z-index: 2;
+left: 0;
+right: 0;
+top: 0;
+display: flex;
+align-items: center;
+padding: 0 9px;
+background: linear-gradient(90deg, #087be8, #073f91);
+border-bottom: 1px solid #b8eaff;
+color: #fff;
+font-size: 16px;
+font-weight: 900;
+letter-spacing: 1.8px;
+}
+.game-cover-art {
+position: absolute;
+top: 29px;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+height: calc(100% - 29px);
+object-fit: contain;
+object-position: center;
+background: #05070d;
+}
+.game-cover-art:not([src]) {
+display: none;
+}
+.cover-fallback {
+display: none;
+position: absolute;
+top: 29px;
+left: 0;
+right: 0;
+bottom: 0;
+place-items: center;
+padding: 8px;
+text-align: center;
+color: #fff;
+font-size: 15px;
+font-weight: 900;
+background: linear-gradient(145deg, #174e88, #081329);
+}
+.cover-image-missing .cover-fallback {
+display: grid;
+}
+.software-art {
+display: block;
+border-color: #65caff;
+background: linear-gradient(145deg, #08182e, #050913);
+}
+.software-art img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+display: block;
+background: transparent;
+}
+.software-art span {
+position: absolute;
+left: 8px;
+bottom: 8px;
+padding: 5px 9px;
+background: #030b19d9;
+border: 1px solid #61caff;
+color: #fff;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.5px;
+}
+.software-art.art-image-missing::after {
+content: attr(data-fallback-name);
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+display: grid;
+place-items: center;
+padding: 18px;
+background: linear-gradient(145deg, #174e88, #081329);
+color: #fff;
+text-align: center;
+font-size: clamp(15px, 2vw, 24px);
+font-weight: 900;
+text-shadow: 0 2px 6px #000;
+}
+.app-card h3 {
+margin: 0;
+padding: 5px 4px 2px;
+color: #fff;
+font-size: clamp(16px, 1.6vw, 21px);
+line-height: 1.18;
+text-align: center;
+text-shadow: 0 1px 4px #000;
+overflow-wrap: anywhere;
+}
+.app-card p,
+.card-bottom,
+.tag,
+.version {
+display: none;
+}
+.app-card:not([data-cover]) .game-physical {
+display: none;
+}
+.app-icon {
+height: 110px;
+display: grid;
+place-items: center;
+color: #73dfff;
+font-size: 42px;
+}
+/* Badges de Idioma */
+.card-language-badges,
+.detail-language-badges {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+}
+.card-language-badges {
+justify-content: center;
+padding: 2px 4px 5px;
+}
+.language-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+max-width: 100%;
+padding: 5px 8px;
+border: 1px solid #4ad9ff;
+border-radius: 999px;
+background: linear-gradient(135deg, #073457, #075f7a);
+color: #d8fbff;
+font-size: clamp(9px, .78vw, 11px);
+font-weight: 900;
+line-height: 1.2;
+letter-spacing: .35px;
+text-align: center;
+box-shadow: 0 0 12px #11bfff30;
+}
+.audio-badge {
+border-color: #49ecb2;
+background: linear-gradient(135deg, #064631, #087b60);
+color: #d8fff0;
+box-shadow: 0 0 12px #18d99a30;
+}
+.empty {
+padding: 30px;
+color: #d6e8ff;
+}
+/* Barra Inferior do Controle */
+.controller-bar {
+position: sticky;
+bottom: 0;
+z-index: 5;
+display: flex;
+align-items: center;
+gap: clamp(12px, 2.5vw, 35px);
+min-height: 34px;
+padding: 5px clamp(8px, 2vw, 24px);
+background: linear-gradient(180deg, #073066, #020817);
+border-top: 2px solid #188eff;
+box-shadow: 0 -5px 22px #087fff35;
+color: #e0efff;
+font-size: 10px;
+}
+.controller-bar .shoulder-hint b {
+font-size: 10px;
+letter-spacing: .5px;
+}
+.controller-bar span,
+.controller-bar a {
+white-space: nowrap;
+}
+.controller-bar b {
+font-size: 17px;
+margin-right: 4px;
+}
+.cross {
+color: #27baff;
+}
+.circle {
+color: #ff477b;
+}
+.triangle {
+color: #00e6a4;
+}
+.controller-bar a {
+color: #fff;
+text-decoration: none;
+}
+.controller-bar strong {
+margin-left: auto;
+color: #9ccaff;
+font-size: 10px;
+letter-spacing: 2px;
+white-space: nowrap;
+}
+.sr-only {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+white-space: nowrap;
+border: 0;
+}
+:focus-visible {
+outline: 2px solid #8deaff;
+outline-offset: 3px;
+}
+/* Modal de Detalhes e Links */
+dialog {
+width: min(560px, 92vw);
+max-height: 88vh;
+overflow-y: auto;
+background: linear-gradient(145deg, #0b2b53, #061226);
+color: #f5f8ff;
+border: 1px solid #4bc8ff;
+border-radius: 8px;
+padding: 26px;
+box-shadow: 0 0 35px #087fff66;
+}
+dialog::backdrop {
+background: rgba(1, 7, 20, .86);
+}
+.close {
+float: right;
+background: transparent;
+border: 0;
+color: #fff;
+font-size: 28px;
+cursor: pointer;
+}
+.detail-icon {
+width: 90px;
+height: 90px;
+margin-bottom: 12px;
+}
+.detail-icon img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+.eyebrow {
+color: #68dfff;
+letter-spacing: 2px;
+font-size: 11px;
+}
+.detail-meta {
+display: flex;
+flex-wrap: wrap;
+gap: 9px;
+margin: 14px 0;
+color: #b8cce7;
+font-size: 13px;
+line-height: 1.5;
+}
+.detail-fact {
+display: grid;
+gap: 3px;
+min-width: 92px;
+padding: 9px 11px;
+border: 1px solid #277fba;
+border-radius: 5px;
+background: #061a34;
+color: #f0f7ff;
+}
+.detail-fact strong {
+color: #71d9ff;
+font-size: 9px;
+letter-spacing: 1px;
+}
+.detail-fact > span {
+font-size: 14px;
+font-weight: 800;
+}
+.detail-meta .detail-language-badges {
+flex-basis: 100%;
+gap: 8px;
+}
+.detail-meta .language-badge {
+padding: 8px 12px;
+font-size: 12px;
+}
+.dialog-note {
+color: #b8cce7;
+font-size: 13px;
+line-height: 1.5;
+}
+.detail-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 18px;
+}
+.detail-actions[hidden] {
+display: none !important;
+}
+.package-links {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 12px;
+}
+.package-links[hidden] {
+display: none !important;
+}
+.package-links-heading {
+flex-basis: 100%;
+margin: 0 0 4px;
+font-size: 11px;
+letter-spacing: 1.2px;
+color: #76dfff;
+}
+.download-password {
+margin: 12px 0 0;
+padding: 10px 12px;
+border: 1px solid #2c83c9;
+border-radius: 5px;
+background: #071a36;
+color: #dcecff;
+font-size: 13px;
+}
+.download-password code {
+margin-left: 6px;
+color: #8de5ff;
+font-size: 15px;
+font-weight: 900;
+}
+.primary-btn,
+.secondary-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 11px 15px;
+border: 1px solid #4bc8ff;
+background: linear-gradient(180deg, #168df3, #064b9e);
+color: white;
+text-decoration: none;
+font-weight: 900;
+font-size: 12px;
+cursor: pointer;
+}
+.secondary-btn {
+background: #071a36;
+}
+.emulator-games {
+margin-top: 22px;
+padding: 16px;
+border: 1px solid #248df0;
+border-radius: 6px;
+background: linear-gradient(145deg, #071d3b, #040d1d);
+box-shadow: inset 0 0 18px #087fff16;
+}
+.emulator-games h3 {
+margin: 0 0 6px;
+color: #76dfff;
+font-size: 14px;
+letter-spacing: 2px;
+}
+.emulator-games-note {
+margin: 0 0 12px;
+color: #b8cce7;
+font-size: 12px;
+line-height: 1.5;
+}
+.emulator-games ul {
+list-style: none;
+padding: 0;
+margin: 0;
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 8px;
+}
+.emulator-games li {
+display: flex;
+flex-direction: column;
+gap: 4px;
+padding: 9px;
+border: 1px solid #1d5d9c;
+background: #06162d;
+border-radius: 4px;
+min-width: 0;
+}
+.emulator-games li strong {
+font-size: 12px;
+color: #fff;
+line-height: 1.3;
+}
+.emulator-games li span {
+font-size: 10px;
+color: #79caff;
+}
+/* Responsividade (Tablets e Celulares) */
+@media (max-width: 900px) {
+.masthead {
+height: clamp(96px, 13.2vw, 120px);
+min-height: 96px;
+}
+.console-layout {
+grid-template-columns: clamp(100px, 15vw, 135px) minmax(0, 1fr);
+}
+.game-grid > .app-card {
+flex-basis: calc((100% - 16px) / 2);
+}
+.game-physical,
+.software-art {
+height: clamp(260px, 40vw, 360px);
+}
+}
+@media (max-width: 560px) {
+.masthead {
+height: 94px;
+min-height: 94px;
+padding: 7px;
+}
+.masthead::before {
+background-size: auto 124%;
+background-position: right center;
+}
+.brand-mark {
+width: 48px;
+height: 48px;
+}
+.brand strong {
+font-size: 20px;
+}
+.brand small {
+font-size: 7px;
+letter-spacing: .8px;
+}
+.masthead-actions {
+gap: 6px;
+}
+.sound-toggle {
+gap: 4px;
+padding: 6px 7px;
+font-size: 9px;
+}
+.sound-toggle > span:first-child {
+font-size: 16px;
+}
+.platform-mark {
+font-size: 13px;
+}
+.top-nav {
+margin-left: 0;
+width: 100%;
+height: auto;
+min-height: 48px;
+padding: 4px;
+gap: 2px;
+flex-wrap: wrap;
+border-radius: 0;
+}
+.nav-tab {
+flex: 1 1 30%;
+height: 22px;
+min-height: 22px;
+gap: 3px;
+}
+.nav-icon {
+width: 12px;
+height: 12px;
+flex-basis: 12px;
+}
+.console-layout {
+grid-template-columns: clamp(112px, 30vw, 140px) minmax(0, 1fr);
+}
+.profile img {
+width: 92px;
+height: 92px;
+}
+.profile strong {
+font-size: 10px;
+letter-spacing: 1.6px;
+}
+.profile small {
+font-size: 9px;
+}
+.side-nav {
+gap: 8px;
+margin-top: 8px;
+}
+.side-link {
+min-height: 35px;
+justify-content: flex-start;
+gap: 8px;
+padding: 6px 7px;
+font-size: 10px;
+}
+.side-icon {
+width: 15px;
+height: 15px;
+flex: 0 0 15px;
+}
+.side-link span {
+display: inline;
+}
+.main-panel {
+padding: 6px;
+}
+.catalog-heading h1 {
+font-size: 17px;
+}
+.catalog-tools {
+width: 100%;
+}
+.catalog-tools .search {
+flex: 1;
+}
+.game-grid > .app-card {
+flex-basis: 82%;
+}
+.game-physical,
+.software-art {
+height: clamp(250px, 70vw, 360px);
+}
+.ps4-band {
+height: 30px;
+font-size: 16px;
+}
+.game-cover-art {
+top: 30px;
+height: calc(100% - 30px);
+}
+.cover-fallback {
+top: 30px;
+}
+.app-card h3 {
+font-size: 18px;
+line-height: 1.2;
+}
+.card-language-badges {
+gap: 4px;
+}
+.language-badge {
+font-size: 9px;
+padding: 5px 7px;
+}
+.detail-meta {
+gap: 6px;
+}
+.detail-fact {
+min-width: calc(50% - 6px);
+flex: 1;
+}
+.detail-meta .language-badge {
+font-size: 11px;
+}
+.controller-bar strong,
+.controller-bar a {
+display: none;
+}
+.controller-bar {
+justify-content: space-around;
+}
+.emulator-games ul {
+grid-template-columns: 1fr;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation: none !important;
+transition: none !important;
+scroll-behavior: auto !important;
+}
+.masthead::before {
+transform: none;
+}
+.game-grid {
+scroll-behavior: auto;
+}
+}
+
+/* Margens mantêm o espaçamento em navegadores sem gap para Flexbox. */
+@supports not (gap: 1px) {
+  .brand > * + *,
+  .masthead-actions > * + * { margin-left: 8px; }
+  .top-nav > * + * { margin-left: 2px; }
+  .nav-tab > * + * { margin-left: 5px; }
+  .profile > * + * { margin-top: 3px; }
+  .side-nav { display: block; }
+  .side-nav > * + * { margin-top: 7px; }
+  .side-link > * + * { margin-left: 11px; }
+  .catalog-heading > * + * { margin-left: 10px; }
+  .catalog-heading h1 > * + * { margin-left: 10px; }
+  .catalog-tools > * + * { margin-left: 8px; }
+  .search > * + * { margin-left: 7px; }
+  .catalog-meta > * + * { margin-left: 10px; }
+  .carousel-controls > * + * { margin-left: 9px; }
+  .detail-meta > * + * { margin: 9px 0 0 9px; }
+  .detail-fact > * + * { margin-top: 3px; }
+  .detail-actions > *,
+  .package-links > * { margin: 0 10px 10px 0; }
+  .card-language-badges > * + *,
+  .detail-language-badges > * + * { margin: 6px 0 0 6px; }
+  .emulator-games li > * + * { margin-top: 4px; }
+  .controller-bar > * + * { margin-left: 20px; }
+  @media (max-width: 900px) {
+    .game-grid > .app-card { flex-basis: calc((100% - 16px) / 2); }
+  }
+  @media (max-width: 760px) {
+    .controller-bar > * + * { margin-left: 10px; }
+  }
+  @media (max-width: 560px) {
+    .top-nav > * + * { margin-bottom: 2px; }
+    .game-grid > .app-card { flex-basis: 82%; margin-right: 8px; }
+    .card-language-badges > * + * { margin: 4px 0 0 4px; }
+    .detail-meta > * + * { margin: 6px 0 0 6px; }
+    .controller-bar > * + * { margin-left: 4px; }
+  }
+}
+

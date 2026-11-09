@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-label="Ilustração estilizada HADES Store"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#211d30"/><stop offset=".52" stop-color="#11131d"/><stop offset="1" stop-color="#090b12"/></linearGradient><radialGradient id="glow"><stop stop-color="#f0bd62" stop-opacity=".32"/><stop offset="1" stop-color="#f0bd62" stop-opacity="0"/></radialGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".1"/><stop offset="1" stop-color="#fff" stop-opacity=".015"/></linearGradient><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" fill="none" stroke="#d9d5ec" stroke-opacity=".055" stroke-width="1"/></pattern><filter id="soft"><feGaussianBlur stdDeviation="24"/></filter></defs><rect width="720" height="420" fill="url(#bg)"/><rect width="720" height="420" fill="url(#grid)"/><ellipse cx="360" cy="210" rx="205" ry="175" fill="url(#glow)" filter="url(#soft)"/><circle cx="360" cy="210" r="168" fill="none" stroke="#a985ff" stroke-opacity=".24" stroke-width="1.5"/><circle cx="360" cy="210" r="142" fill="url(#glass)" stroke="#fff" stroke-opacity=".13" stroke-width="1.5"/><path d="M56 72h105M56 78h44M558 342h106M622 336h42" stroke="#f0bd62" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/><g fill="none" stroke="#f0bd62" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)" opacity=".25"><rect x="186" y="143" width="348" height="190" rx="64"/><rect x="293" y="176" width="135" height="120" rx="14"/><path d="M238 220v56m-28-28h56"/><circle cx="476" cy="214" r="12"/><circle cx="501" cy="248" r="12"/><circle cx="476" cy="282" r="12"/><path d="M262 333v20m196-20v20"/></g><g fill="none" stroke="#f0bd62" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><rect x="186" y="143" width="348" height="190" rx="64"/><rect x="293" y="176" width="135" height="120" rx="14"/><path d="M238 220v56m-28-28h56"/><circle cx="476" cy="214" r="12"/><circle cx="501" cy="248" r="12"/><circle cx="476" cy="282" r="12"/><path d="M262 333v20m196-20v20"/></g><circle cx="125" cy="147" r="4" fill="#a985ff"/><circle cx="593" cy="112" r="3" fill="#f0bd62"/><circle cx="567" cy="270" r="4" fill="#a985ff"/><circle cx="160" cy="315" r="3" fill="#f0bd62"/><rect x="12" y="12" width="696" height="396" rx="22" fill="none" stroke="#e2bd76" stroke-opacity=".22" stroke-width="1.5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 500" role="img" aria-labelledby="title desc">
+  <title id="title">M33 PPSSPP / PSP</title>
+  <desc id="desc">Arte HADES Store para emulador PPSSPP de PlayStation 4.</desc>
+  <defs>
+    <linearGradient id="bg-ppsspp" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152438"/><stop offset=".52" stop-color="#0b111c"/><stop offset="1" stop-color="#05070d"/></linearGradient>
+    <radialGradient id="glow-ppsspp"><stop stop-color="#59b8ff" stop-opacity=".35"/><stop offset="1" stop-color="#05070d" stop-opacity="0"/></radialGradient>
+    <linearGradient id="dpad-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b5e0ff"/><stop offset="100%" stop-color="#5d9bc9"/></linearGradient>
+    <linearGradient id="foil-ppsspp" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#59b8ff" stop-opacity=".15"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#e2bd76" stop-opacity=".15"/></linearGradient>
+  </defs>
+  <rect width="360" height="500" fill="url(#bg-ppsspp)"/>
+  <circle cx="180" cy="225" r="185" fill="url(#glow-ppsspp)"/>
+  <path d="M0 112h360M0 342h360" stroke="url(#foil-ppsspp)" stroke-width="2"/>
+  <rect x="10" y="10" width="340" height="480" rx="14" fill="none" stroke="#59b8ff" stroke-opacity=".65" stroke-width="2"/>
+  <text x="28" y="47" fill="#f4f0e8" font-family="Arial,sans-serif" font-size="17" font-weight="800" letter-spacing="2">HADES <tspan fill="#e2bd76">STORE</tspan></text>
+  <text x="28" y="75" fill="#9fb6d4" font-family="Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="2">EMULADOR  /  PS4</text>
+  <circle cx="180" cy="225" r="108" fill="#080c14" fill-opacity=".85" stroke="#59b8ff" stroke-opacity=".55" stroke-width="2"/>
+  <circle cx="180" cy="225" r="95" fill="none" stroke="#e2bd76" stroke-opacity=".28" stroke-width="1.5"/>
+  <g transform="translate(180, 225) rotate(-14)">
+    <polygon points="-20,-66 20,-66 20,-30 0,-10 -20,-30" fill="url(#dpad-fill)" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="-20,66 20,66 20,30 0,10 -20,30" fill="url(#dpad-fill)" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="-66,-20 -66,20 -30,20 -10,0 -30,-20" fill="url(#dpad-fill)" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/>
+    <polygon points="66,-20 66,20 30,20 10,0 30,-20" fill="url(#dpad-fill)" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <path d="M28 332h304" stroke="#e2bd76" stroke-opacity=".75" stroke-width="2"/>
+  <text x="28" y="380" fill="#fff" font-family="Arial,sans-serif" font-size="31" font-weight="900" letter-spacing=".8">M33 (PPSSPP)</text>
+  <text x="28" y="416" fill="#59b8ff" font-family="Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="1.2">PSP EMULATOR</text>
+  <text x="28" y="464" fill="#9fb6d4" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">HOMEBREW  •  PLAYSTATION 4</text>
+  <path d="M28 477h304" stroke="#59b8ff" stroke-opacity=".45"/>
+</svg>

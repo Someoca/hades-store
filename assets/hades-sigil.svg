@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#d4eeff"/><stop offset=".48" stop-color="#4cbcff"/><stop offset="1" stop-color="#0753bd"/></linearGradient><filter id="f"><feGaussianBlur stdDeviation="5"/></filter></defs><path d="M64 7 111 35v55l-47 31L17 90V35z" fill="#04112a" stroke="#5fd2ff" stroke-width="4" filter="url(#f)"/><path d="M64 12 106 37v51l-42 28L22 88V37z" fill="#04112a" stroke="url(#g)" stroke-width="5"/><path d="M64 25 41 42v53l23-15 23 15V42z" fill="none" stroke="#eaf8ff" stroke-width="7" stroke-linejoin="round"/><path d="M64 34v46m-23-7 23-17 23 17" fill="none" stroke="#62d3ff" stroke-width="5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="sigil-title">
+  <title id="sigil-title">Sigilo HADES Store</title>
+  <defs>
+    <radialGradient id="sigil-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#39d8ff" stop-opacity="0.45"/><stop offset="65%" stop-color="#087eff" stop-opacity="0.18"/><stop offset="100%" stop-color="#020817" stop-opacity="0"/></radialGradient>
+    <linearGradient id="hex-outer" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8ef0ff"/><stop offset="50%" stop-color="#39d8ff"/><stop offset="100%" stop-color="#087eff"/></linearGradient>
+    <linearGradient id="diamond-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7ce8ff" stop-opacity="0.4"/><stop offset="100%" stop-color="#087eff" stop-opacity="0.15"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#sigil-glow)"/>
+  <polygon points="60,12 102,36 102,84 60,108 18,84 18,36" fill="#07162e" fill-opacity="0.88" stroke="url(#hex-outer)" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="60,23 92,41.5 92,78.5 60,97 28,78.5 28,41.5" fill="none" stroke="#a6c8e8" stroke-opacity="0.7" stroke-width="1.8" stroke-linejoin="round"/>
+  <polygon points="60,33 76,60 60,87 44,60" fill="url(#diamond-fill)" stroke="#6ce5ff" stroke-width="3" stroke-linejoin="round"/>
+  <line x1="16" y1="114" x2="104" y2="114" stroke="#2ea8e6" stroke-opacity="0.75" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

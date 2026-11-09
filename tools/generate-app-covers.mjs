@@ -15,8 +15,22 @@ const covers = [
   { file: 'app-payload-guest.svg', title: ['PAYLOAD', 'GUEST'], accent: '#a995db', secondary: '#e2bd76', icon: '<rect x="98" y="151" width="164" height="137" rx="13" fill="#111219" stroke="currentColor" stroke-width="6"/><path d="M119 177h122" stroke="#e2bd76" stroke-width="5"/><circle cx="122" cy="164" r="4" fill="#e2bd76"/><circle cx="137" cy="164" r="4" fill="#a995db"/><path d="m127 212 19 17-19 17m39 0h48m-13-46 19 17-19 17" fill="none" stroke="#f4f0e8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' },
   { file: 'app-ps4-temperature.svg', title: ['PS4', 'TEMPERATURE'], accent: '#e2bd76', secondary: '#a995db', icon: '<path d="M164 151a16 16 0 0 1 32 0v91a48 48 0 1 1-32 0z" fill="#171821" stroke="currentColor" stroke-width="6"/><path d="M180 177v113" stroke="#f16a63" stroke-width="12" stroke-linecap="round"/><circle cx="180" cy="286" r="20" fill="#f16a63"/><path d="M204 177h27m-27 29h19m-19 29h27" stroke="#f4f0e8" stroke-width="4" stroke-linecap="round"/>' },
   { file: 'app-icon-mask.svg', title: ['ICON MASK', 'CUSTOMIZER'], accent: '#a995db', secondary: '#e2bd76', icon: '<path d="M180 139 249 178v78l-69 39-69-39v-78z" fill="#171821" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="m180 139 69 39-69 39-69-39m69 39v78" fill="none" stroke="#e2bd76" stroke-width="4"/><circle cx="180" cy="218" r="21" fill="#a995db"/><path d="M180 173v23m0 44v23m-45-45h23m44 0h23" stroke="#f4f0e8" stroke-width="5" stroke-linecap="round"/>' },
-  { file: 'emulator-dolphin.svg', title: ['DOLPHIN', 'GAMECUBE / WII'], accent: '#a995db', secondary: '#e2bd76', category: 'EMULADOR', icon: '<path d="M90 223q46-80 133-65 30 5 49 30-22-4-37 8 17 8 30 26-35-13-56-5-26 10-52 5-26-4-48 17 9-27 34-40-27-2-53 24z" fill="#a995db" stroke="#f4f0e8" stroke-width="4" stroke-linejoin="round"/><path d="M180 235q-5 29-24 48m29-43q19 17 42 19m-110 20h129" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="239" cy="199" r="4" fill="#08090e"/>' },
-  { file: 'emulator-m33.svg', title: ['M33', 'PPSSPP / PSP'], accent: '#e2bd76', secondary: '#a995db', category: 'EMULADOR', icon: '<rect x="89" y="168" width="182" height="101" rx="30" fill="#171821" stroke="currentColor" stroke-width="6"/><rect x="144" y="183" width="79" height="53" rx="6" fill="#252333" stroke="#a995db" stroke-width="4"/><path d="M118 199v31m-15-15h30m127-12h2m-20 27h2" stroke="#f4f0e8" stroke-width="7" stroke-linecap="round"/><circle cx="180" cy="257" r="3" fill="#e2bd76"/>' },
+  {
+    file: 'emulator-dolphin.svg',
+    title: ['DOLPHIN', 'GAMECUBE / WII'],
+    accent: '#5ce1ff',
+    secondary: '#c39eff',
+    category: 'EMULADOR',
+    icon: '<g transform="translate(86, 178) scale(0.95)"><path d="M12 72 C 36 22, 108 10, 152 38 C 138 38, 128 45, 124 54 C 148 56, 176 74, 192 98 C 166 80, 134 72, 102 74 C 92 84, 78 90, 64 90 C 72 80, 74 72, 70 66 C 48 68, 28 76, 12 72 Z" fill="#5ce1ff" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/><path d="M96 24 C 106 10, 122 8, 130 14 C 122 20, 118 26, 118 32 Z" fill="#c39eff" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/></g>'
+  },
+  {
+    file: 'emulator-m33.svg',
+    title: ['M33 (PPSSPP)', 'PSP EMULATOR'],
+    accent: '#e2bd76',
+    secondary: '#59b8ff',
+    category: 'EMULADOR',
+    icon: '<g transform="translate(180, 225) rotate(-14)"><polygon points="-20,-66 20,-66 20,-30 0,-10 -20,-30" fill="#8cc8f5" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/><polygon points="-20,66 20,66 20,30 0,10 -20,30" fill="#8cc8f5" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/><polygon points="-66,-20 -66,20 -30,20 -10,0 -30,-20" fill="#8cc8f5" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/><polygon points="66,-20 66,20 30,20 10,0 30,-20" fill="#8cc8f5" stroke="#2c587a" stroke-width="3" stroke-linejoin="round"/></g>'
+  },
 ];
 
 const xml = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
@@ -34,4 +48,5 @@ for (const [index, cover] of covers.entries()) {
 }
 
 console.log(`Generated ${covers.length} app and emulator covers.`);
+
 
