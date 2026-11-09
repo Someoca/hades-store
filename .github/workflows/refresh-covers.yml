@@ -1,0 +1,66 @@
+name: Atualizar capas reais e publicar
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/refresh-covers.yml'
+      - 'tools/cover-sources.json'
+      - 'tools/download-real-covers.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: real-covers-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar capas refinadas dos aplicativos e emuladores
+        run: node tools/generate-app-covers.mjs
+
+      - name: Baixar capas reais dos jogos para o repositório
+        run: node tools/download-real-covers.mjs
+
+      - name: Preservar capas locais e padronizar o restante
+        run: node tools/standardize-covers.mjs
+
+      - name: Validar catálogo
+        run: node tools/validate-catalog.mjs
+
+      - name: Registrar capas no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/covers/ catalog/catalog.json
+          git diff --staged --quiet || git commit -m "art: substituir capas genéricas por capas reais"
+          git push
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar arquivos do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Publicar atualização
+        id: deployment
+        uses: actions/deploy-pages@v4
