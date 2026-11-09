@@ -246,10 +246,22 @@ function createCard(item) {
   card.innerHTML = favoriteButton(item, true) + visual
     + '<h3>' + safe(item.name) + '</h3><p>' + safe(item.description) + '</p>'
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
-    + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span></div>';
+    + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
+    + (item.category === 'Jogos' && Array.isArray(item.packageLinks) && item.packageLinks.length ? '<button class="card-details" type="button" data-details>DETALHES</button>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
+    if (event && event.target.closest('[data-details]')) {
+      showDetails(item);
+      return;
+    }
+    const primaryPackage = Array.isArray(item.packageLinks)
+      ? item.packageLinks.find((entry) => entry && /^JOGO\\b/i.test(entry.label || '') && /^https:\\/\\//i.test(entry.url || ''))
+      : null;
+    if (primaryPackage) {
+      window.open(primaryPackage.url, '_blank', 'noopener,noreferrer');
+      return;
+    }
     showDetails(item);
   };
   card.addEventListener('click', open);
@@ -257,7 +269,7 @@ function createCard(item) {
     if (event.target.closest('[data-favorite]')) return;
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      showDetails(item);
+      open(event);
     }
   });
 
