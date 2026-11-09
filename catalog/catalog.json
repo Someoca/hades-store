@@ -4863,7 +4863,7 @@
     "size": "1.50 GB",
     "language": "Português do Brasil (conforme indicação da lista)",
     "format": "PKG",
-    "imageUrl": "assets/covers/game-cover.svg",
+    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA05442_00/image?w=800&h=1200",
     "packageLinks": [
       {
         "label": "JOGO (1.50 GB)",
@@ -4881,7 +4881,7 @@
     "downloadUrl": "https://espfile.com/go/?id=366053",
     "linkLabel": "BAIXAR JOGO",
     "packageCodes": [
-      "CUSA5442"
+      "CUSA05442"
     ]
   },
   {
@@ -9357,7 +9357,7 @@
     "size": "13.64 GB",
     "language": "Português do Brasil (dublado, conforme indicação da lista)",
     "format": "PKG",
-    "imageUrl": "assets/covers/game-cover.svg",
+    "imageUrl": "https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/CUSA00151_00/image?w=800&h=1200",
     "packageLinks": [
       {
         "label": "JOGO (13.64 GB)",
@@ -9375,7 +9375,7 @@
     "downloadUrl": "https://espfile.com/go/?id=cf1720",
     "linkLabel": "BAIXAR JOGO",
     "packageCodes": [
-      "CUSA0151"
+      "CUSA00151"
     ]
   },
   {
