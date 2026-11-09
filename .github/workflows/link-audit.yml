@@ -1,6 +1,8 @@
 name: HADES Store link audit
 
 on:
+  pull_request:
+    branches: [main]
   workflow_dispatch:
   schedule:
     - cron: '0 9 * * 1'
