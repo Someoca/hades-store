@@ -22,6 +22,8 @@ const staticFiles = new Map([
   ["/assets/hades-gamer.svg", ["assets/hades-gamer.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-sigil.svg", ["assets/hades-sigil.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-fire-avatar.svg", ["assets/hades-fire-avatar.svg", "image/svg+xml; charset=utf-8"]],
+  ["/assets/hades-avatar-premium.jpg", ["assets/hades-avatar-premium.jpg", "image/jpeg"]],
+  ["/assets/covers/apps/app-avatar-changer.png", ["assets/covers/apps/app-avatar-changer.png", "image/png"]],
   ["/assets/hades-home-banner.svg", ["assets/hades-home-banner.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/hades-underworld-bg.svg", ["assets/hades-underworld-bg.svg", "image/svg+xml; charset=utf-8"]],
   ["/assets/covers/game-cover.svg", ["assets/covers/game-cover.svg", "image/svg+xml; charset=utf-8"]],
@@ -44,7 +46,7 @@ const server = http.createServer((request, response) => {
   }
 
   let entry = staticFiles.get(route);
-  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|fallback\/[a-z0-9-]+\.svg|games\/[a-z0-9-]+\.svg|official\/(?:optimized\/)?[a-z0-9-]+\.(?:jpg|png|webp|avif)|emulator-(dolphin|m33)\.svg|dolphin-emulator-user\.png|ppsspp-emulator-user\.png|apps\/app-[a-z0-9-]+\.svg)$/.exec(route);
+  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|fallback\/[a-z0-9-]+\.svg|games\/[a-z0-9-]+\.svg|official\/(?:optimized\/)?[a-z0-9-]+\.(?:jpg|png|webp|avif)|emulator-(dolphin|m33)\.svg|dolphin-emulator-user\.png|ppsspp-emulator-user\.png|apps\/app-[a-z0-9-]+\.(?:svg|png))$/.exec(route);
   if (!entry && cover) {
     const extension = path.extname(cover[1]);
     const contentType = ({ ".jpg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif", ".png": "image/png", ".svg": "image/svg+xml; charset=utf-8" })[extension];

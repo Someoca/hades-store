@@ -244,7 +244,7 @@ function createCard(item) {
   }
 
   card.innerHTML = favoriteButton(item, true) + visual
-    + '<h3>' + safe(item.name) + '</h3>' + (item.description ? '<p>' + safe(item.description) + '</p>' : '')
+    + '<h3>' + safe(item.name) + '</h3>' + languageBadges(item, 'card-language-badges') + (item.description ? '<p>' + safe(item.description) + '</p>' : '')
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
     + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
     + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')).length : 0) + ')</button>' : '') + '</div>';
@@ -439,6 +439,25 @@ function updateDetailFavorite(item) {
   button.setAttribute('aria-pressed', String(active));
 }
 
+function languageBadges(item, className = 'detail-language-badges') {
+  const language = String(item.language || '');
+  const subtitleLanguage = String(item.subtitleLanguage || item.subtitles || '');
+  const audioLanguage = String(item.audio || '');
+  const ptBr = /portugu[eê]s do brasil|pt[- .]?br/i;
+  const badges = [];
+  const audioIsPtBr = ptBr.test(audioLanguage) || (ptBr.test(language) && /dublad/i.test(language));
+  const audioIsDubbed = /dublad/i.test(audioLanguage + ' ' + language);
+  if (audioIsPtBr) {
+    badges.push('<span class="language-badge audio-badge">' + (audioIsDubbed ? 'ÁUDIO DUBLADO · PT-BR' : 'ÁUDIO · PT-BR') + '</span>');
+  }
+  const subtitlesArePtBr = ptBr.test(subtitleLanguage) && /legend|subt[ií]t|traduz/i.test(subtitleLanguage)
+    || ptBr.test(language) && /legend|subt[ií]t|traduz/i.test(language);
+  if (subtitlesArePtBr) {
+    badges.push('<span class="language-badge subtitle-badge">LEGENDAS · PT-BR</span>');
+  }
+  return badges.length ? '<div class="' + className + '" aria-label="Idiomas disponíveis">' + badges.join('') + '</div>' : '';
+}
+
 function showDetails(item) {
   playUiSound('confirm');
   state.activeItem = item;
@@ -465,8 +484,26 @@ function showDetails(item) {
   $('#detail-category').textContent = String(item.category || '').toUpperCase();
   $('#detail-title').textContent = item.name;
   $('#detail-description').textContent = item.description || 'Sem descrição cadastrada.';
-  $('#detail-meta').textContent = 'Versão ' + (item.version || '—') + ' · ' + (item.size || 'Tamanho não informado')
-    + (item.language ? ' · ' + item.language : '') + (item.format ? ' · Formato: ' + item.format : '');
+  const detailMeta = $('#detail-meta');
+  detailMeta.replaceChildren();
+  const facts = [
+    ['VERSÃO', item.version || '—'],
+    ['TAMANHO', item.size || 'Tamanho não informado'],
+    ...(item.format ? [['FORMATO', item.format]] : [])
+  ];
+  for (const [label, value] of facts) {
+    const fact = document.createElement('span');
+    fact.className = 'detail-fact';
+    const factLabel = document.createElement('strong');
+    factLabel.textContent = label;
+    const factValue = document.createElement('span');
+    factValue.textContent = value;
+    fact.append(factLabel, factValue);
+    detailMeta.append(fact);
+  }
+  const badges = document.createElement('div');
+  badges.innerHTML = languageBadges(item);
+  if (badges.firstElementChild) detailMeta.append(badges.firstElementChild);
 
   const packageLinks = Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')) : [];
   $('#detail-actions').hidden = item.category === 'Jogos' ? packageLinks.length === 0 : false;
