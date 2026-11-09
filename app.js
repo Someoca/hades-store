@@ -145,6 +145,17 @@ function favoriteButton(item, compact = false) {
     + ' favoritos" aria-pressed="' + String(active) + '">' + (active ? '★' : '☆') + '</button>';
 }
 
+function uniquePackageLinks(item) {
+  if (!Array.isArray(item?.packageLinks)) return [];
+  const seenUrls = new Set();
+  return item.packageLinks.filter((entry) => {
+    if (!entry || typeof entry.label !== 'string' || !/^https:\/\//i.test(entry.url || '')) return false;
+    if (seenUrls.has(entry.url)) return false;
+    seenUrls.add(entry.url);
+    return true;
+  });
+}
+
 function generatedCover(item) {
   const seedText = String(item.id || item.name || 'PS4');
   let seed = 0;
@@ -247,7 +258,7 @@ function createCard(item) {
     + '<h3>' + safe(item.name) + '</h3>' + languageBadges(item, 'card-language-badges') + (item.description ? '<p>' + safe(item.description) + '</p>' : '')
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
     + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
-    + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')).length : 0) + ')</button>' : '') + '</div>';
+    + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + uniquePackageLinks(item).length + ')</button>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
@@ -505,7 +516,7 @@ function showDetails(item) {
   badges.innerHTML = languageBadges(item);
   if (badges.firstElementChild) detailMeta.append(badges.firstElementChild);
 
-  const packageLinks = Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')) : [];
+  const packageLinks = uniquePackageLinks(item);
   $('#detail-actions').hidden = item.category === 'Jogos' ? packageLinks.length === 0 : false;
   const packageLinksSection = $('#package-links');
   packageLinksSection.replaceChildren();
