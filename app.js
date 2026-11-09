@@ -244,7 +244,7 @@ function createCard(item) {
   }
 
   card.innerHTML = favoriteButton(item, true) + visual
-    + '<h3>' + safe(item.name) + '</h3><p>' + safe(item.description) + '</p>'
+    + '<h3>' + safe(item.name) + '</h3>' + (item.description ? '<p>' + safe(item.description) + '</p>' : '')
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
     + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
     + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')).length : 0) + ')</button>' : '') + '</div>';
@@ -655,7 +655,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=library-441-1')
+fetch('catalog/catalog.json?v=library-441-2')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
