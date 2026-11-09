@@ -12,8 +12,11 @@ atlas = Image.new("RGB", (cell_w * columns, cell_h * 6), (0, 0, 0))
 draw = ImageDraw.Draw(atlas)
 for code in range(32, 127):
     index = code - 32
-    bbox = font.getbbox(chr(code))
-    width, height = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    if hasattr(font, "getbbox"):
+        bbox = font.getbbox(chr(code))
+        width, height = bbox[2] - bbox[0], bbox[3] - bbox[1]
+    else:
+        width, height = font.getsize(chr(code))
     x = (index % columns) * cell_w + (cell_w - min(width, cell_w)) // 2
     y = (index // columns) * cell_h + max(0, (cell_h - height) // 2 - 3)
     draw.text((x, y), chr(code), font=font, fill=(255, 255, 255))
