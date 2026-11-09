@@ -637,6 +637,7 @@ function pollGamepadShoulders() {
     const current = {
       leftShoulder: pressed(4),
       rightShoulder: pressed(5),
+      triangle: pressed(3),
       cross: pressed(0),
       circle: pressed(1),
       up: pressed(12) || (axes[1] ?? 0) < -0.6,
