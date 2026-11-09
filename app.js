@@ -247,7 +247,7 @@ function createCard(item) {
     + '<h3>' + safe(item.name) + '</h3><p>' + safe(item.description) + '</p>'
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
     + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
-    + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.url === 'string' && entry.url.startsWith('https://')).length : 0) + ')</button>' : '') + '</div>';
+    + (item.category === 'Jogos' ? '<button class="card-details" type="button" data-details>VER LINKS (' + (Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')).length : 0) + ')</button>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
