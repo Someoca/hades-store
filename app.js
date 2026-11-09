@@ -146,10 +146,11 @@ function favoriteButton(item, compact = false) {
 }
 
 function uniquePackageLinks(item) {
-  if (!Array.isArray(item?.packageLinks)) return [];
+  const rawPackageLinks = Array.isArray(item.packageLinks)
+    ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || ''))
+    : [];
   const seenUrls = new Set();
-  return item.packageLinks.filter((entry) => {
-    if (!entry || typeof entry.label !== 'string' || !/^https:\/\//i.test(entry.url || '')) return false;
+  return rawPackageLinks.filter((entry) => {
     if (seenUrls.has(entry.url)) return false;
     seenUrls.add(entry.url);
     return true;
@@ -746,7 +747,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=hades-catalog-fixes-1')
+fetch('catalog/catalog.json?v=hades-covers-avatar-3')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
@@ -767,4 +768,3 @@ fetch('catalog/catalog.json?v=hades-catalog-fixes-1')
     $('#results-count').textContent = 'Não foi possível carregar os itens.';
     console.error('[HADES Store]', error);
   });
-

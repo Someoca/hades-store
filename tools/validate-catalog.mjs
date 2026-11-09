@@ -66,4 +66,3 @@ if (errors.length) {
   console.log('Catálogo válido: ' + catalog.length + ' itens; ' + ids.size + ' IDs únicos.');
   console.log(counts);
 }
-

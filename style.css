@@ -9,6 +9,8 @@
   --muted: #b7c9e5;
 }
 
+
+
 * {
   box-sizing: border-box;
 }
@@ -697,13 +699,79 @@ color: #fff;
 }
 .game-physical,
 .software-art {
-height: clamp(250px, 27vw, 360px);
-width: 100%;
-margin: 0 0 3px;
-position: relative;
-overflow: hidden;
-background: #061b3a;
-border: 1px solid #7fcaff66;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  margin: 0 0 6px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #092142, #040a17);
+  border: 1px solid #49b6ff88;
+  box-shadow: inset 0 0 14px #000c, 0 4px 10px #0008;
+}
+
+.game-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ps4-band {
+  height: 26px;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  background: linear-gradient(90deg, #087be8, #073f91);
+  border-bottom: 1px solid #b8eaff;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+}
+
+.game-cover-art {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 26px);
+  object-fit: cover;
+  object-position: center top;
+  background: #05070d;
+  transition: transform 0.25s ease;
+}
+
+.app-card:hover .game-cover-art,
+.app-card:focus-visible .game-cover-art {
+  transform: scale(1.04);
+}
+
+.software-art {
+  display: block;
+  border-color: #65caff;
+  background: linear-gradient(145deg, #0b192e, #050811);
+}
+
+.software-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 .game-cover {
 position: absolute;
@@ -1130,10 +1198,6 @@ grid-template-columns: clamp(100px, 15vw, 135px) minmax(0, 1fr);
 .game-grid > .app-card {
 flex-basis: calc((100% - 16px) / 2);
 }
-.game-physical,
-.software-art {
-height: clamp(260px, 40vw, 360px);
-}
 }
 @media (max-width: 560px) {
 .masthead {
@@ -1239,10 +1303,6 @@ flex: 1;
 .game-grid > .app-card {
 flex-basis: 82%;
 }
-.game-physical,
-.software-art {
-height: clamp(250px, 70vw, 360px);
-}
 .ps4-band {
 height: 30px;
 font-size: 16px;
@@ -1341,3 +1401,85 @@ scroll-behavior: auto;
   }
 }
 
+/* Moldura e proporção únicas para todas as capas do carrossel. */
+.game-physical,
+.software-art {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: 3 / 4;
+  margin: 0 0 6px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #092142, #040a17);
+  border: 1px solid #49b6ff99;
+  box-shadow: inset 0 0 14px #000c, 0 4px 12px #0009;
+}
+
+.game-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ps4-band {
+  height: 26px;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  background: linear-gradient(90deg, #087be8, #073f91);
+  border-bottom: 1px solid #b8eaff;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+}
+
+.game-cover-art {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 26px);
+  object-fit: cover;
+  object-position: center top;
+  background: #05070d;
+  transition: transform 0.25s ease;
+}
+
+.app-card:hover .game-cover-art,
+.app-card:focus-visible .game-cover-art {
+  transform: scale(1.04);
+}
+
+.software-art {
+  display: block;
+  border-color: #65caff;
+  background: linear-gradient(145deg, #0b192e, #050811);
+}
+
+.emulator-physical .game-cover-art,
+.software-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.app-card:hover .software-art img {
+  transform: scale(1.04);
+}

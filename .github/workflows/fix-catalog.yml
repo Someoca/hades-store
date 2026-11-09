@@ -31,4 +31,3 @@ jobs:
           git add catalog/catalog.json
           git diff --staged --quiet || git commit -m "chore: higienizar dados e links duplicados no catalogo"
           git push
-

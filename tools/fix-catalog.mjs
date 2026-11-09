@@ -62,4 +62,3 @@ for (const item of catalog) {
 
 await fs.writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
 console.log(`Catálogo atualizado: ${updatedCount} itens corrigidos.`);
-

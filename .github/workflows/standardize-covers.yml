@@ -1,0 +1,36 @@
+name: Padronizar Capas do Carrossel
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  standardize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Gerar capas de apps e emuladores
+        run: node tools/generate-app-covers.mjs
+
+      - name: Padronizar todas as capas do catálogo
+        run: node tools/standardize-covers.mjs
+
+      - name: Validar integridade do catálogo
+        run: node tools/validate-catalog.mjs
+
+      - name: Salvar no GitHub
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/covers/ catalog/catalog.json
+          git diff --staged --quiet || git commit -m "style: padronizar todas as capas do carrossel em 3:4"
+          git push
