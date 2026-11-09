@@ -242,3 +242,8 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .catalog-tools{display:flex!important;align-items:center;gap:8px}
 .catalog-meta p{display:block!important;font-size:11px;color:#9fc7f5}
 @media(max-width:560px){.catalog-tools{width:100%}.catalog-tools .search{flex:1}}
+
+
+/* HADES-PREMIUM-AVATAR */
+.profile img{display:block;width:clamp(84px,11vw,132px);height:clamp(84px,11vw,132px);max-width:none;object-fit:cover;border:0;border-radius:50%;box-shadow:0 0 22px #087fff}
+@media(max-width:560px){.profile img{width:92px;height:92px}}
