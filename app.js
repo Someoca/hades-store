@@ -727,7 +727,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=hades-covers-avatar-3')
+fetch('catalog/catalog.json?v=hades-app-covers-5')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
