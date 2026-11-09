@@ -470,6 +470,8 @@ function showDetails(item) {
   const packageLinksSection = $('#package-links');
   packageLinksSection.replaceChildren();
   packageLinksSection.hidden = packageLinks.length === 0;
+  const passwordNote = $('#download-password');
+  if (passwordNote) passwordNote.hidden = packageLinks.length === 0;
   for (const entry of packageLinks) {
     const anchor = document.createElement('a');
     anchor.className = 'primary-btn download';
@@ -503,9 +505,11 @@ function showDetails(item) {
     row.append(title, details);
     gamesList.append(row);
   }
-  $('.dialog-note').textContent = item.linkLabel
-    ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
-    : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
+  $('.dialog-note').textContent = packageLinks.length
+    ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 2888; o provedor pode exigir uma confirmação antes de iniciar o download.'
+    : item.linkLabel
+      ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
+      : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
   updateDetailFavorite(item);
   if (!dialog.open) dialog.showModal();
 }
