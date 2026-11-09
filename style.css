@@ -234,3 +234,5 @@ dialog::backdrop{background:#010714d9;backdrop-filter:blur(5px)}
 .app-card h3{font-size:clamp(16px,1.6vw,21px)}
 @media(max-width:560px){.app-card h3{font-size:18px}}
 .emulator-physical .game-cover-art{object-fit:contain;background:#050505}
+
+.card-details{margin-left:auto;padding:5px 8px;border:1px solid #3b9ee8;border-radius:3px;background:#071a36;color:#a9e8ff;font-size:9px;font-weight:900;letter-spacing:.6px;cursor:pointer}.package-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.package-links[hidden]{display:none!important}.download-password{margin:12px 0 0;padding:10px 12px;border:1px solid #2c83c9;border-radius:5px;background:#071a36;color:#dcecff;font-size:13px}.download-password code{margin-left:6px;color:#8de5ff;font-size:15px;font-weight:900}

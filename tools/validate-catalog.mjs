@@ -26,8 +26,15 @@ for (const [index, item] of catalog.entries()) {
     ids.add(item.id);
   }
   if (item.category && !allowedCategories.has(item.category)) errors.push(label + ': categoria desconhecida "' + item.category + '".');
-  if (typeof item.downloadUrl !== 'string' || !/^https:\/\//i.test(item.downloadUrl)) {
-    errors.push(label + ': downloadUrl precisa ser uma URL HTTPS.');
+  if (item.downloadUrl !== undefined && (typeof item.downloadUrl !== 'string' || !/^https:\/\//i.test(item.downloadUrl))) {
+    errors.push(label + ': downloadUrl, quando informado, precisa ser uma URL HTTPS.');
+  }
+  if (item.category === 'Jogos' && Array.isArray(item.packageLinks)) {
+    for (const [linkIndex, link] of item.packageLinks.entries()) {
+      if (!link || typeof link.label !== 'string' || !link.label.trim() || typeof link.url !== 'string' || !/^https:\/\//i.test(link.url)) {
+        errors.push(label + ': packageLinks[' + linkIndex + '] precisa conter label e URL HTTPS.');
+      }
+    }
   }
 
   if (typeof item.imageUrl !== 'string' || !item.imageUrl.trim()) {

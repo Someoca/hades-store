@@ -246,10 +246,22 @@ function createCard(item) {
   card.innerHTML = favoriteButton(item, true) + visual
     + '<h3>' + safe(item.name) + '</h3><p>' + safe(item.description) + '</p>'
     + '<div class="card-bottom"><span class="tag">' + safe(String(item.category || '').toUpperCase()) + '</span>'
-    + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span></div>';
+    + '<span class="version">' + safe(item.version === 'PS4' || item.version === 'PS5' ? item.version : 'v' + (item.version || '—')) + '</span>'
+    + (item.category === 'Jogos' && Array.isArray(item.packageLinks) && item.packageLinks.length ? '<button class="card-details" type="button" data-details>DETALHES</button>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
+    if (event && event.target.closest('[data-details]')) {
+      showDetails(item);
+      return;
+    }
+    const primaryPackage = Array.isArray(item.packageLinks)
+      ? item.packageLinks.find((entry) => entry && String(entry.label || '').toUpperCase().startsWith('JOGO') && typeof entry.url === 'string' && entry.url.startsWith('https://'))
+      : null;
+    if (primaryPackage) {
+      window.open(primaryPackage.url, '_blank', 'noopener,noreferrer');
+      return;
+    }
     showDetails(item);
   };
   card.addEventListener('click', open);
@@ -257,7 +269,7 @@ function createCard(item) {
     if (event.target.closest('[data-favorite]')) return;
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      showDetails(item);
+      open(event);
     }
   });
 
@@ -465,9 +477,24 @@ function showDetails(item) {
   $('#detail-meta').textContent = 'Versão ' + (item.version || '—') + ' · ' + (item.size || 'Tamanho não informado')
     + (item.language ? ' · ' + item.language : '') + (item.format ? ' · Formato: ' + item.format : '');
 
-  $('#detail-actions').hidden = item.category === 'Jogos';
+  const packageLinks = Array.isArray(item.packageLinks) ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || '')) : [];
+  $('#detail-actions').hidden = item.category === 'Jogos' ? packageLinks.length === 0 : false;
+  const packageLinksSection = $('#package-links');
+  packageLinksSection.replaceChildren();
+  packageLinksSection.hidden = packageLinks.length === 0;
+  const passwordNote = $('#download-password');
+  if (passwordNote) passwordNote.hidden = packageLinks.length === 0;
+  for (const entry of packageLinks) {
+    const anchor = document.createElement('a');
+    anchor.className = 'primary-btn download';
+    anchor.href = entry.url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
+    anchor.textContent = entry.label + ' ↗';
+    packageLinksSection.append(anchor);
+  }
   const link = $('#detail-download');
-  if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl)) {
+  if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl) && packageLinks.length === 0) {
     link.href = item.downloadUrl;
     link.textContent = item.linkLabel || (item.category === 'Jogos' ? 'VER NA PLAYSTATION STORE ↗' : 'ABRIR LINK CADASTRADO ↗');
     link.hidden = false;
@@ -490,9 +517,11 @@ function showDetails(item) {
     row.append(title, details);
     gamesList.append(row);
   }
-  $('.dialog-note').textContent = item.linkLabel
-    ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
-    : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
+  $('.dialog-note').textContent = packageLinks.length
+    ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 2888; o provedor pode exigir uma confirmação antes de iniciar o download.'
+    : item.linkLabel
+      ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
+      : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
   updateDetailFavorite(item);
   if (!dialog.open) dialog.showModal();
 }
@@ -629,7 +658,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json')
+fetch('catalog/catalog.json?v=library-441-1')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
