@@ -52,7 +52,7 @@ jobs:
           git add assets/covers/ catalog/catalog.json
           git diff --staged --quiet || git commit -m "art: substituir capas genéricas por capas reais"
           git pull --rebase origin main
-          git push
+          git push || { git pull --rebase origin main; git push; }
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
