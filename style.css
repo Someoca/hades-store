@@ -20,7 +20,7 @@ button,a{ -webkit-tap-highlight-color:transparent}
 .console-layout{display:grid;grid-template-columns:clamp(105px,14vw,190px) minmax(0,1fr);min-height:calc(100vh - 220px);position:relative;z-index:1}
 .sidebar{padding:18px 10px 24px;background:linear-gradient(90deg,#020817f2,#061a38e8);border-right:1px solid #178bff66;display:flex;flex-direction:column;align-items:stretch}
 .profile{display:flex;align-items:center;flex-direction:column;gap:4px;padding:4px 0 18px;text-align:center}
-.profile img{width:clamp(64px,9vw,104px);height:clamp(64px,9vw,104px);border-radius:50%;object-fit:cover;border:2px solid #31aaff;box-shadow:0 0 18px #087fff, inset 0 0 12px #fff}
+.profile img{width:clamp(72px,10vw,148px);height:clamp(72px,10vw,148px);border-radius:50%;object-fit:cover;border:2px solid #31aaff;box-shadow:0 0 18px #087fff, inset 0 0 12px #fff}
 .profile strong{font-size:12px;letter-spacing:2px}.profile small{font-size:11px;color:#b7c9e5}
 .side-nav{display:grid;gap:6px}
 .side-link{display:flex;align-items:center;gap:10px;min-height:32px;padding:7px 9px;border:1px solid transparent;border-radius:3px;background:transparent;color:#d8e7fb;text-decoration:none;font-size:clamp(11px,1.1vw,14px);cursor:pointer;text-align:left;white-space:nowrap}
