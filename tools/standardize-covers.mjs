@@ -141,7 +141,7 @@ function removeUnusedFallbacks(directory) {
     if (entry.isDirectory()) {
       removeUnusedFallbacks(entryPath);
       if (fs.readdirSync(entryPath).length === 0) fs.rmdirSync(entryPath);
-    } else if (entry.isFile() && /\\.svg$/i.test(entry.name) && !referencedFallbacks.has(path.resolve(entryPath))) {
+    } else if (entry.isFile() && /\.svg$/i.test(entry.name) && !referencedFallbacks.has(path.resolve(entryPath))) {
       fs.unlinkSync(entryPath);
       removedUnusedFallbacks += 1;
     }
