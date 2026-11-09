@@ -77,3 +77,5 @@ if (failures.length) {
   await fs.writeFile(catalogPath, JSON.stringify(catalog, null, 2) + '\n', 'utf8');
   console.log('Capas reais baixadas e catalogadas: ' + downloaded);
 }
+
+// Refresh trigger: app/emulator art and unused fallback cleanup are part of this cover pipeline.
