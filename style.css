@@ -2863,3 +2863,8 @@ body {
   }
   .catalog-section .carousel-controls button:disabled { opacity: .45; }
 }
+
+/* Remove o painel promocional lateral e libera toda a largura para as capas. */
+.details-sidebar { display: none !important; }
+.console-layout { grid-template-columns: minmax(0, 1fr) !important; }
+.main-panel { grid-column: 1 / -1; min-width: 0; }
