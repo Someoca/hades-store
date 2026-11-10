@@ -17,7 +17,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: real-covers-pages
+  group: app-covers-publish
   cancel-in-progress: true
 
 jobs:
