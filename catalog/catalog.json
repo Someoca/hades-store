@@ -1117,7 +1117,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=cf1efd",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-remote-pkg-installer.svg"
+    "imageUrl": "assets/covers/apps/official/remote-pkg-installer.png"
   },
   {
     "id": "app-itemzflow",
@@ -1131,7 +1131,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=025673",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-itemzflow.svg"
+    "imageUrl": "assets/covers/apps/official/itemzflow.png"
   },
   {
     "id": "app-apollo-save-tool",
@@ -1145,7 +1145,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=025673",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-apollo-save-tool.svg"
+    "imageUrl": "assets/covers/apps/official/apollo-save-tool.png"
   },
   {
     "id": "app-ps4-cheats-manager",
@@ -1159,7 +1159,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=bf0740",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ps4-cheats-manager.svg"
+    "imageUrl": "assets/covers/apps/official/ps4-cheats-manager.png"
   },
   {
     "id": "app-ps4-xplorer-134",
@@ -1173,7 +1173,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=b30484",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ps4-xplorer-134.svg"
+    "imageUrl": "assets/covers/apps/official/ps4-xplorer.png"
   },
   {
     "id": "app-ps4-xplorer-2",
@@ -1187,7 +1187,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=940ba5",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ps4-xplorer-2.svg"
+    "imageUrl": "assets/covers/apps/official/ps4-xplorer-2.png"
   },
   {
     "id": "app-youtube",
@@ -1229,7 +1229,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=82d3a8",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-avatar-changer.svg"
+    "imageUrl": "assets/covers/apps/official/avatar-changer.png"
   },
   {
     "id": "app-ps4-toolset",
@@ -1257,7 +1257,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=dae6a9",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ezremote-client.svg"
+    "imageUrl": "assets/covers/apps/official/ezremote-client.png"
   },
   {
     "id": "app-payload-guest",
@@ -1271,7 +1271,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=9faaa6",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-payload-guest.svg"
+    "imageUrl": "assets/covers/apps/official/payload-guest.png"
   },
   {
     "id": "app-ps4-temperature",
@@ -1285,7 +1285,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=a2749c",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ps4-temperature.svg"
+    "imageUrl": "assets/covers/apps/official/ps4-temperature.png"
   },
   {
     "id": "app-icon-mask",
@@ -1299,7 +1299,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=316e2e",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-icon-mask.svg"
+    "imageUrl": "assets/covers/apps/official/icon-mask.png"
   },
   {
     "id": "ps4-extra-001",
@@ -3268,7 +3268,7 @@
     "language": "Projeto em inglês",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/DolphinPS4/releases/download/v04.19/DolphinPS4-v04.19.pkg",
-    "imageUrl": "assets/covers/emulator-dolphin.svg",
+    "imageUrl": "assets/covers/apps/official/dolphin-ps4.png",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {
@@ -3329,7 +3329,7 @@
     "language": "Português disponível",
     "format": "PKG",
     "downloadUrl": "https://github.com/iHaiDeeZ/M33/releases/download/1.19/M33-v1.19.pkg",
-    "imageUrl": "assets/covers/emulator-m33.svg",
+    "imageUrl": "assets/covers/apps/official/ppsspp-logo.svg",
     "linkLabel": "BAIXAR PKG OFICIAL ↗",
     "recommendedGames": [
       {
