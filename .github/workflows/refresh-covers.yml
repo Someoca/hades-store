@@ -7,6 +7,7 @@ on:
       - '.github/workflows/refresh-covers.yml'
       - 'tools/cover-sources.json'
       - 'tools/download-real-covers.mjs'
+      - 'tools/download-missing-game-covers.mjs'
       - 'tools/standardize-covers.mjs'
       - 'tools/generate-app-covers.mjs'
   workflow_dispatch:
@@ -31,6 +32,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+
+      - name: Baixar capas reais que faltam no catálogo
+        run: node tools/download-missing-game-covers.mjs
 
       - name: Gerar capas refinadas dos aplicativos e emuladores
         run: node tools/generate-app-covers.mjs
