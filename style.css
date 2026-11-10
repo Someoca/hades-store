@@ -2321,6 +2321,163 @@ body {
   color: #bdcbd2;
 }
 
+/* Ajustes finais do mockup: logo em destaque, abas inclinadas e arte viva. */
+.masthead {
+  position: relative;
+  z-index: 4;
+  overflow: visible;
+  isolation: isolate;
+  height: 62px;
+  min-height: 62px;
+  padding-inline: clamp(16px, 3vw, 42px);
+  background: linear-gradient(180deg, #233641, #101a21 65%, #0b1116);
+  border-top: 2px solid rgba(170, 218, 236, .46);
+  border-bottom: 2px solid rgba(170, 218, 236, .24);
+  box-shadow: inset 0 0 24px rgba(136, 191, 212, .14), 0 7px 24px #000b;
+}
+.masthead::before {
+  z-index: -1;
+  opacity: .34;
+  background-image: url("assets/hades-underworld-bg.svg");
+  background-size: cover;
+  background-position: center 37%;
+}
+.masthead::after {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(8, 17, 23, .28), rgba(8, 17, 23, .58) 55%, rgba(8, 17, 23, .24));
+}
+.brand { position: relative; z-index: 2; gap: 11px; }
+.brand-mark {
+  position: relative;
+  z-index: 3;
+  width: 76px;
+  height: 76px;
+  margin-block: 4px -13px;
+  filter: drop-shadow(0 0 9px rgba(110, 207, 235, .6));
+  animation: avatar-aura 3.4s ease-in-out infinite;
+}
+.brand strong {
+  color: #d9e9f0;
+  font-size: clamp(21px, 2.5vw, 31px);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-shadow: 0 2px 7px #000, 0 0 16px rgba(134, 201, 224, .36);
+}
+.brand small { display: none; }
+.masthead-actions { position: relative; z-index: 2; }
+.platform-mark { color: #d3e2e9; font-size: clamp(12px, 1.5vw, 17px); }
+.sound-toggle { border-color: rgba(191, 222, 235, .28); }
+
+.store-intro {
+  position: relative;
+  z-index: 1;
+  height: clamp(184px, 19vw, 258px);
+  overflow: hidden;
+  border: 2px solid rgba(127, 178, 198, .43);
+  border-top: 0;
+  border-bottom: 3px solid rgba(157, 203, 221, .38);
+  box-shadow: inset 0 -28px 40px rgba(5, 12, 17, .48), 0 12px 24px rgba(0, 0, 0, .55);
+}
+.store-intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7, 13, 18, .06), transparent 65%, rgba(7, 13, 18, .2));
+  box-shadow: inset 0 0 30px rgba(136, 198, 220, .12);
+}
+.store-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 47%;
+  transform: scale(1.055) translate3d(var(--banner-x, 0px), var(--banner-y, 0px), 0);
+  transform-origin: center;
+  animation: banner-pan 30s ease-in-out infinite alternate;
+  will-change: transform, object-position;
+}
+
+.top-nav {
+  min-height: 60px;
+  height: 60px;
+  padding: 6px clamp(12px, 2vw, 28px);
+  gap: 3px;
+  border: 2px solid rgba(111, 157, 177, .38);
+  border-top: 0;
+  border-radius: 0;
+  background: linear-gradient(180deg, rgba(27, 46, 59, .97), rgba(9, 18, 25, .99));
+  box-shadow: inset 0 0 22px rgba(132, 193, 215, .12), 0 8px 20px rgba(0, 0, 0, .55);
+}
+.nav-tab {
+  min-height: 44px;
+  height: 44px;
+  padding-inline: clamp(12px, 2vw, 28px);
+  gap: 9px;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(180deg, rgba(39, 64, 80, .9), rgba(14, 28, 38, .94));
+  color: #b9cbd4;
+  font-size: clamp(10px, 1.2vw, 14px);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: .6px;
+}
+.nav-tab.active, .nav-tab.active:hover, .nav-tab.active:focus-visible {
+  background: linear-gradient(180deg, rgba(69, 119, 145, .92), rgba(21, 49, 64, .98));
+  color: #e2f4fa;
+  box-shadow: inset 0 0 18px rgba(164, 226, 247, .16), 0 0 14px rgba(101, 184, 211, .2);
+}
+.nav-tab:hover:not(.active), .nav-tab:focus-visible:not(.active) {
+  background: linear-gradient(180deg, rgba(67, 99, 116, .8), rgba(24, 42, 53, .95));
+  color: #fff;
+  box-shadow: inset 0 0 14px rgba(215, 240, 249, .12);
+}
+
+.controller-bar {
+  min-height: 52px;
+  border-top: 2px solid rgba(112, 170, 192, .38);
+  background: linear-gradient(180deg, rgba(21, 37, 48, .98), rgba(6, 12, 17, .99));
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, .8), inset 0 1px rgba(213, 238, 247, .08);
+  color: #cad9df;
+  font-size: 11px;
+}
+.controller-bar strong { color: #d6e8ef; font-style: italic; }
+
+@keyframes avatar-aura {
+  0%, 100% { transform: translateY(7px) scale(1); filter: drop-shadow(0 0 7px rgba(94, 184, 214, .5)); }
+  50% { transform: translateY(2px) scale(1.05); filter: drop-shadow(0 0 16px rgba(153, 225, 246, .92)); }
+}
+@keyframes banner-pan {
+  0% { object-position: 43% 45%; }
+  100% { object-position: 57% 52%; }
+}
+
+@media (max-width: 760px) {
+  .masthead { height: 58px; min-height: 58px; overflow: visible; }
+  .brand-mark { width: 62px; height: 62px; margin-block: 3px -8px; }
+  .store-intro { height: clamp(138px, 35vw, 200px); }
+  .top-nav { min-height: 52px; height: 52px; }
+  .nav-tab { min-height: 38px; height: 38px; }
+}
+@media (max-width: 520px) {
+  .masthead { padding-inline: 8px; }
+  .brand { gap: 5px; }
+  .brand-mark { width: 50px; height: 50px; margin-block: 2px -5px; }
+  .brand strong { font-size: 17px; }
+  .masthead-actions { gap: 4px; }
+  .sound-toggle { padding: 5px 6px; font-size: 7px; }
+  .platform-mark { font-size: 10px; }
+  .store-intro { height: 132px; }
+  .nav-tab { padding-inline: 11px; font-size: 9px; }
+  .controller-bar { min-height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark, .store-banner { animation: none !important; }
+  .store-banner { transform: none !important; }
+}
+
 @media (min-width: 1101px) {
   .game-grid > .app-card { flex-basis: calc((100% - 45px) / 6); }
 }

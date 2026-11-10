@@ -14,6 +14,22 @@ const empty = $('#empty');
 const dialog = $('#details');
 const status = $('#catalog-status');
 const backdropLayers = [...document.querySelectorAll('.catalog-backdrop-layer')];
+const storeIntro = document.querySelector('.store-intro');
+const storeBanner = document.querySelector('.store-banner');
+if (storeIntro && storeBanner && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  storeIntro.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    const bounds = storeIntro.getBoundingClientRect();
+    const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
+    storeBanner.style.setProperty('--banner-x', `${(-horizontal * 9).toFixed(1)}px`);
+    storeBanner.style.setProperty('--banner-y', `${(-vertical * 5).toFixed(1)}px`);
+  });
+  storeIntro.addEventListener('pointerleave', () => {
+    storeBanner.style.setProperty('--banner-x', '0px');
+    storeBanner.style.setProperty('--banner-y', '0px');
+  });
+}
 const FAVORITES_KEY = 'hades-store:favorites:v1';
 let visibleBackdropIndex = 0;
 let displayedBackdropId = '';
