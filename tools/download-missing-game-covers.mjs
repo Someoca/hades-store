@@ -91,6 +91,31 @@ async function searchProduct(item) {
   return ranked[0] || null;
 }
 
+async function coverFromProductCode(item) {
+  const codes = Array.isArray(item.packageCodes) ? item.packageCodes : [];
+  for (const code of codes) {
+    const normalizedCode = String(code).match(/CUSA\d{5}/i)?.[0];
+    if (!normalizedCode) continue;
+
+    // The official Store titlecontainer endpoint can return a product image
+    // directly from the PS4 title ID when search results use a different name.
+    const endpoint = `https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/${normalizedCode}_00/image?w=800&h=1200`;
+    try {
+      const response = await fetch(endpoint, {
+        headers: { accept: 'image/*', 'user-agent': 'Mozilla/5.0 HADESStoreCoverRefresh/1.0' },
+        signal: AbortSignal.timeout(15000),
+      });
+      const contentType = response.headers.get('content-type')?.toLowerCase() || '';
+      if (response.ok && contentType.startsWith('image/')) {
+        return { cover: endpoint, product: { name: `${item.name} (${normalizedCode})` } };
+      }
+    } catch (error) {
+      console.warn(`Busca por código falhou para ${item.id} (${normalizedCode}): ${error.message}`);
+    }
+  }
+  return null;
+}
+
 async function downloadCover(item, result) {
   const response = await fetch(result.cover, {
     headers: { accept: 'image/*', 'user-agent': 'Mozilla/5.0 HADESStoreCoverRefresh/1.0' },
@@ -118,7 +143,7 @@ let downloaded = 0;
 const unresolved = [];
 for (const item of missing) {
   try {
-    const result = await searchProduct(item);
+    const result = await searchProduct(item) || await coverFromProductCode(item);
     if (!result) {
       unresolved.push(item.id);
       console.warn(`Sem correspondência segura na PlayStation Store: ${item.name}`);
