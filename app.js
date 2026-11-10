@@ -42,6 +42,7 @@ let audioEnabled = false;
 let uiAudioContext = null;
 let requestedCarouselPage = null;
 let carouselTargetTimer = 0;
+let searchRenderTimer = 0;
 try {
   audioEnabled = localStorage.getItem(SOUND_PREFERENCE_KEY) === 'true';
 } catch (error) {
@@ -73,22 +74,12 @@ function saveFavorites() {
   } catch (error) {
     setStatus('FAVORITOS DISPONÍVEIS APENAS NESTA SESSÃO', 'warning');
   }
-  updateStats();
 }
 
 function setStatus(message, kind = 'online') {
   if (!status) return;
   status.className = 'status ' + kind;
   status.innerHTML = '<i></i> ' + safe(message);
-}
-
-function updateStats() {
-  const apps = $('#count-apps');
-  const categories = $('#count-categories');
-  const favorites = $('#count-favorites');
-  if (apps) apps.textContent = String(state.catalog.length).padStart(2, '0');
-  if (categories) categories.textContent = String(new Set(state.catalog.map((item) => item.category)).size).padStart(2, '0');
-  if (favorites) favorites.textContent = String(state.favorites.size).padStart(2, '0');
 }
 
 function setFeaturedItem(item) {
@@ -365,7 +356,6 @@ function render() {
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
-  updateStats();
 }
 
 function scheduleCatalogBackdropUpdate() {
@@ -492,10 +482,12 @@ function goToCarouselPage(direction) {
 }
 
 function toggleFavorite(id) {
+  const previousScroll = grid.scrollLeft;
   if (state.favorites.has(id)) state.favorites.delete(id);
   else state.favorites.add(id);
   saveFavorites();
   render();
+  grid.scrollLeft = previousScroll;
   if (state.activeItem && state.activeItem.id === id) updateDetailFavorite(state.activeItem);
 }
 
@@ -573,7 +565,7 @@ function showDetails(item) {
   if (badges.firstElementChild) detailMeta.append(badges.firstElementChild);
 
   const packageLinks = uniquePackageLinks(item);
-  $('#detail-actions').hidden = item.category === 'Jogos' ? packageLinks.length === 0 : false;
+  $('#detail-actions').hidden = false;
   const packageLinksSection = $('#package-links');
   packageLinksSection.replaceChildren();
   packageLinksSection.hidden = packageLinks.length === 0;
@@ -653,7 +645,10 @@ $('#search-shortcut').addEventListener('click', () => $('#search').focus());
 $('#featured-open').addEventListener('click', () => {
   if (state.featuredItem) showDetails(state.featuredItem);
 });
-search.addEventListener('input', render);
+search.addEventListener('input', () => {
+  window.clearTimeout(searchRenderTimer);
+  searchRenderTimer = window.setTimeout(render, 120);
+});
 $('#sort').addEventListener('change', (event) => {
   state.sort = event.target.value;
   render();
@@ -763,7 +758,9 @@ function focusables() {
 }
 
 document.addEventListener('keydown', (event) => {
-  if (event.key.toLowerCase() === 'h' && !dialog.open && event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+  if (event.key.toLowerCase() === 'h' && !dialog.open
+      && !['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)
+      && !event.target.isContentEditable) {
     event.preventDefault();
     location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -798,12 +795,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-function updateClock() {
-  const clock = $('#clock');
-  if (clock) clock.textContent = new Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit' }).format(new Date());
-}
-updateClock();
-window.setInterval(updateClock, 30000);
 loadFavorites();
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {

@@ -1,0 +1,20 @@
+# Dependências e artefatos locais
+node_modules/
+package-lock.json
+_pycache_/
+*.pyc
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Builds nativos
+ps4-native/dist/
+ps4-native/build/
+
+# Pacotes grandes mantidos apenas localmente
+emuladores/*.pkg
+*.pkg

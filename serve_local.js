@@ -6,34 +6,72 @@ const path = require("node:path");
 
 const root = __dirname;
 const args = process.argv.slice(2);
+
 function option(name, fallback) {
   const index = args.indexOf(name);
-  return index >= 0 ? args[index + 1] : fallback;
+  if (index === -1) return fallback;
+  const value = args[index + 1];
+  if (!value || value.startsWith("--")) throw new Error(`Informe um valor para ${name}.`);
+  return value;
 }
-const host = option("--host", "127.0.0.1");
-const port = Number(option("--port", "8000"));
 
-const staticFiles = new Map([
-  ["/", ["index.html", "text/html; charset=utf-8"]],
-  ["/index.html", ["index.html", "text/html; charset=utf-8"]],
-  ["/app.js", ["app.js", "text/javascript; charset=utf-8"]],
-  ["/style.css", ["style.css", "text/css; charset=utf-8"]],
-  ["/catalog/catalog.json", ["catalog/catalog.json", "application/json; charset=utf-8"]],
-  ["/assets/hades-gamer.svg", ["assets/hades-gamer.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/hades-sigil.svg", ["assets/hades-sigil.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/hades-fire-avatar.svg", ["assets/hades-fire-avatar.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/hades-avatar-premium.png", ["assets/hades-avatar-premium.png", "image/png"]],
-  ["/assets/hades-avatar-premium.jpg", ["assets/hades-avatar-premium.jpg", "image/jpeg"]],
-  ["/assets/covers/apps/app-avatar-changer.svg", ["assets/covers/apps/app-avatar-changer.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/covers/apps/app-avatar-changer.png", ["assets/covers/apps/app-avatar-changer.png", "image/png"]],
-  ["/assets/hades-home-banner.svg", ["assets/hades-home-banner.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/hades-underworld-bg.svg", ["assets/hades-underworld-bg.svg", "image/svg+xml; charset=utf-8"]],
-  ["/assets/covers/game-cover.svg", ["assets/covers/game-cover.svg", "image/svg+xml; charset=utf-8"]],
+let host;
+let port;
+try {
+  host = option("--host", "127.0.0.1");
+  const rawPort = option("--port", "8000");
+  port = Number(rawPort);
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    throw new Error(`Porta inválida: "${rawPort}". Use um número inteiro entre 1 e 65535.`);
+  }
+} catch (error) {
+  console.error(error.message);
+  process.exit(1);
+}
+
+const contentTypes = new Map([
+  [".html", "text/html; charset=utf-8"],
+  [".css", "text/css; charset=utf-8"],
+  [".js", "text/javascript; charset=utf-8"],
+  [".json", "application/json; charset=utf-8"],
+  [".txt", "text/plain; charset=utf-8"],
+  [".svg", "image/svg+xml; charset=utf-8"],
+  [".png", "image/png"],
+  [".jpg", "image/jpeg"],
+  [".jpeg", "image/jpeg"],
+  [".webp", "image/webp"],
+  [".avif", "image/avif"],
+  [".ico", "image/x-icon"],
+  [".woff2", "font/woff2"]
 ]);
+
+const rootRoutes = new Map([
+  ["/", "index.html"],
+  ["/index.html", "index.html"],
+  ["/app.js", "app.js"],
+  ["/style.css", "style.css"],
+  ["/sw.js", "sw.js"]
+]);
+const publicPrefixes = ["assets/", "catalog/"];
+
+function resolveRoute(route) {
+  const rootFile = rootRoutes.get(route);
+  if (rootFile) return rootFile;
+
+  const relative = route.replace(/^\/+/, "");
+  if (!relative || relative.includes("\0")) return null;
+  if (!publicPrefixes.some((prefix) => relative.startsWith(prefix))) return null;
+  if (!contentTypes.has(path.extname(relative).toLowerCase())) return null;
+  if (relative.split("/").some((segment) => segment === "." || segment === ".." || segment.startsWith("."))) return null;
+
+  const absolute = path.resolve(root, relative);
+  if (absolute !== root && !absolute.startsWith(root + path.sep)) return null;
+  return relative;
+}
 
 const server = http.createServer((request, response) => {
   if (request.method !== "GET" && request.method !== "HEAD") {
-    response.writeHead(405, { "Allow": "GET, HEAD" });
+    response.writeHead(405, { Allow: "GET, HEAD" });
     response.end();
     return;
   }
@@ -47,41 +85,37 @@ const server = http.createServer((request, response) => {
     return;
   }
 
-  let entry = staticFiles.get(route);
-  const cover = /^\/assets\/covers\/(ps4-extra-\d{3}\.svg|fallback\/[a-z0-9-]+\.svg|games\/[a-z0-9-]+\.svg|official\/(?:optimized\/)?[a-z0-9-]+\.(?:jpg|png|webp|avif)|emulator-(dolphin|m33)\.svg|dolphin-emulator-user\.png|ppsspp-emulator-user\.png|apps\/app-[a-z0-9-]+\.(?:svg|png))$/.exec(route);
-  if (!entry && cover) {
-    const extension = path.extname(cover[1]);
-    const contentType = ({ ".jpg": "image/jpeg", ".webp": "image/webp", ".avif": "image/avif", ".png": "image/png", ".svg": "image/svg+xml; charset=utf-8" })[extension];
-    entry = [`assets/covers/${cover[1]}`, contentType];
-  }
-  if (!entry) {
-    response.writeHead(404);
+  const relative = resolveRoute(route);
+  if (!relative) {
+    response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
     return;
   }
 
-  const filePath = path.join(root, entry[0]);
-  fs.stat(filePath, (statError, stat) => {
-    if (statError || !stat.isFile()) {
-      response.writeHead(404);
+  const filePath = path.join(root, relative);
+  fs.stat(filePath, (error, stat) => {
+    if (error || !stat.isFile()) {
+      response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
       response.end("Not found");
       return;
     }
+
     response.writeHead(200, {
-      "Content-Type": entry[1],
+      "Content-Type": contentTypes.get(path.extname(relative).toLowerCase()),
       "Content-Length": stat.size,
       "Cache-Control": "no-store",
-      "X-Content-Type-Options": "nosniff",
+      "X-Content-Type-Options": "nosniff"
     });
     if (request.method === "HEAD") response.end();
     else fs.createReadStream(filePath).pipe(response);
   });
 });
 
+server.on("error", (error) => {
+  console.error(`Não foi possível iniciar o servidor local em ${host}:${port}. ${error.message}`);
+  process.exit(1);
+});
+
 server.listen(port, host, () => {
   console.log(`HADES Store local host running at http://${host}:${port}/`);
 });
-
-
-
-

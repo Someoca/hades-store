@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalogPath = path.join(root, 'catalog/catalog.json');
 const catalog = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
 
-function desktopPath() {
+async function desktopPath() {
   const oneDrive = process.env.OneDrive || process.env.OneDriveConsumer || process.env.OneDriveCommercial;
   const home = os.homedir();
   const candidates = [

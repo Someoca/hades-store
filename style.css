@@ -2809,6 +2809,18 @@ body {
 .app-card .game-cover.padded-cover-art .game-cover-art { object-fit: cover; object-position: center; }
 .app-card .cover-fallback { inset: 0; }
 .app-card .game-cover.has-ps4-band .cover-fallback { inset: 35px 0 0; }
+.noscript-warning {
+  margin: 18px auto;
+  max-width: 640px;
+  padding: 16px 20px;
+  border: 1px solid rgba(213, 137, 86, .34);
+  border-radius: 10px;
+  background: rgba(27, 21, 24, .94);
+  color: #f2ded1;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
 .app-card > h3 {
   flex: 0 0 auto;
   min-height: 28px;

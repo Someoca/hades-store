@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b1116">
+  <meta name="description" content="HADES Store: catálogo comunitário de jogos, aplicativos e emuladores para PlayStation 4, com busca, filtros, favoritos e detalhes de cada item.">
+  <meta property="og:title" content="HADES STORE | PS4">
+  <meta property="og:description" content="Catálogo comunitário de jogos, aplicativos e emuladores para PlayStation 4.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://someoca.github.io/hades-store/assets/avatar_banner.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>HADES STORE | PS4</title>
   <link rel="icon" type="image/png" href="assets/hades-emblem.png?v=hades-emblem-v8">
-  <link rel="stylesheet" href="style.css?v=hades-cover-fit-pagination-v17">
+  <link rel="stylesheet" href="style.css?v=hades-app-fixes-v18">
 </head>
 <body>
   <div class="console-shell" id="home">
     <!-- Cabeçalho Principal -->
     <header class="masthead">
       <a class="brand" href="#home" aria-label="HADES Store Início">
-        <img class="brand-mark" src="assets/hades-emblem.png?v=hades-emblem-v8" alt="Emblema da HADES Store" width="96" height="96">
+        <img class="brand-mark" src="assets/hades-emblem.png?v=hades-emblem-v8" alt="Emblema da HADES Store" width="102" height="105" decoding="async">
         <div>
           <strong>HADES STORE</strong>
           <small>JOGOS • APLICATIVOS • EMULADORES</small>
@@ -33,7 +39,7 @@
     </header>
 
     <section class="store-intro" aria-label="Banner da HADES Store">
-      <img class="store-banner" src="assets/avatar_banner.png" alt="Arte de fantasia em tons azulados para a HADES Store">
+      <img class="store-banner" src="assets/avatar_banner.png" alt="Arte de fantasia em tons azulados para a HADES Store" width="1284" height="222" fetchpriority="high" decoding="async">
     </section>
 
     <!-- Barra de Categorias -->
@@ -163,6 +169,10 @@
     <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
   </dialog>
 
-  <script src="app.js?v=hades-auto-refresh-v11" defer></script>
+  <noscript>
+    <p class="noscript-warning">A HADES Store precisa de JavaScript ativo para carregar o catálogo.</p>
+  </noscript>
+
+  <script src="app.js?v=hades-app-fixes-v12" defer></script>
 </body>
 </html>
