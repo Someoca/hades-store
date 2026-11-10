@@ -2724,3 +2724,72 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .brand::before, .brand-mark { animation: none !important; }
 }
+
+/* Cartões sem chamadas sobre a arte: a capa deve aparecer por inteiro. */
+.app-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.app-card > .game-physical,
+.app-card > .software-art,
+.app-card > .app-icon {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #07131b;
+  box-shadow: none;
+}
+.app-card > .game-physical .game-cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #07131b;
+  box-shadow: none;
+}
+.app-card .ps4-band,
+.app-card .software-art > span,
+.app-card > .favorite-toggle,
+.app-card > p,
+.app-card > .card-language-badges,
+.app-card > .card-bottom { display: none !important; }
+.app-card .game-cover-art,
+.app-card .software-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #07131b;
+}
+.app-card .cover-fallback { inset: 0; }
+.app-card > h3 {
+  flex: 0 0 auto;
+  min-height: 28px;
+  margin: 0;
+  padding: 5px 3px 2px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Realça o arquivo de emblema enviado, mantendo o brilho azul em movimento. */
+.brand-mark {
+  mix-blend-mode: normal;
+  object-fit: contain;
+  border: 1px solid rgba(143, 222, 248, .56);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13, 41, 58, .28), rgba(5, 14, 22, .7));
+  filter: brightness(1.32) contrast(1.24) saturate(1.4)
+    drop-shadow(0 0 7px rgba(108, 218, 247, .95))
+    drop-shadow(0 0 18px rgba(38, 145, 189, .8));
+}
