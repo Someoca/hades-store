@@ -10,6 +10,22 @@ const missing = catalog.filter((item) =>
   (!item.imageUrl || item.imageUrl.includes('/fallback/') || item.imageUrl.endsWith('/game-cover.svg'))
 );
 
+// Official PS4 title IDs for the remaining legacy titles whose Store search
+// results are inconsistent or do not return a type-10 cover image.
+const knownTitleIds = {
+  'ps4-26': ['CUSA05855'], // Assassin's Creed Origins
+  'ps4-extra-006': ['CUSA06676'], // ARK: Survival Evolved
+  'ps4-extra-010': ['CUSA02389'], // Assassin's Creed Syndicate
+  'ps4-extra-013': ['CUSA00133'], // Batman: Arkham Knight
+  'ps4-extra-014': ['CUSA04601'], // Batman: Return to Arkham
+  'ps4-extra-047': ['CUSA12639'], // Tom Clancy's The Division 2
+  'ps4-extra-048': ['CUSA02218'], // Dishonored: Definitive Edition
+  'ps4-extra-049': ['CUSA03642'], // Dishonored 2
+  'ps4-extra-050': ['CUSA08793'], // Dishonored: Death of the Outsider
+  'ps4-extra-051': ['CUSA02085'], // DOOM (2016)
+  'ps4-extra-076': ['CUSA01227'], // FINAL FANTASY X/X-2 HD Remaster
+};
+
 const normalize = (value) => String(value || '')
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')
@@ -92,7 +108,10 @@ async function searchProduct(item) {
 }
 
 async function coverFromProductCode(item) {
-  const codes = Array.isArray(item.packageCodes) ? item.packageCodes : [];
+  const codes = [
+    ...(Array.isArray(item.packageCodes) ? item.packageCodes : []),
+    ...(knownTitleIds[item.id] || []),
+  ];
   for (const code of codes) {
     const normalizedCode = String(code).match(/CUSA\d{5}/i)?.[0];
     if (!normalizedCode) continue;
