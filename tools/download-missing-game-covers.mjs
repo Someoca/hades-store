@@ -126,7 +126,7 @@ async function coverFromProductCode(item) {
       });
       const contentType = response.headers.get('content-type')?.toLowerCase() || '';
       if (response.ok && contentType.startsWith('image/')) {
-        return { cover: endpoint, product: { name: `${item.name} (${normalizedCode})` } };
+        return { cover: endpoint, product: { name: `${item.name} (${normalizedCode})` }, external: true };
       }
     } catch (error) {
       console.warn(`Busca por código falhou para ${item.id} (${normalizedCode}): ${error.message}`);
@@ -136,6 +136,11 @@ async function coverFromProductCode(item) {
 }
 
 async function downloadCover(item, result) {
+  if (result.external) {
+    item.imageUrl = result.cover;
+    return result.cover;
+  }
+
   const response = await fetch(result.cover, {
     headers: { accept: 'image/*', 'user-agent': 'Mozilla/5.0 HADESStoreCoverRefresh/1.0' },
     signal: AbortSignal.timeout(20000),
@@ -162,7 +167,9 @@ let downloaded = 0;
 const unresolved = [];
 for (const item of missing) {
   try {
-    const result = await searchProduct(item) || await coverFromProductCode(item);
+    const result = knownTitleIds[item.id]
+      ? await coverFromProductCode(item)
+      : await searchProduct(item) || await coverFromProductCode(item);
     if (!result) {
       unresolved.push(item.id);
       console.warn(`Sem correspondência segura na PlayStation Store: ${item.name}`);
