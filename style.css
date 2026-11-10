@@ -2868,3 +2868,12 @@ body {
 .details-sidebar { display: none !important; }
 .console-layout { grid-template-columns: minmax(0, 1fr) !important; }
 .main-panel { grid-column: 1 / -1; min-width: 0; }
+
+/* Deixa a textura do cabeçalho aparecer sem enfraquecer sua moldura. */
+.masthead {
+  background: linear-gradient(180deg, rgba(35, 58, 72, .58), rgba(13, 28, 38, .66) 65%, rgba(8, 19, 27, .62));
+}
+.masthead::before { opacity: .62; }
+.masthead::after {
+  background: linear-gradient(90deg, rgba(6, 15, 22, .2), rgba(7, 18, 26, .3) 54%, rgba(6, 15, 22, .18));
+}
