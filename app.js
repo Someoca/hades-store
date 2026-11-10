@@ -319,8 +319,18 @@ function createCard(item) {
   const coverImage = card.querySelector('.game-cover-art');
   const gameCover = card.querySelector('.game-cover');
   if (coverImage && gameCover) {
+    const fitCover = () => {
+      const source = coverImage.getAttribute('src') || '';
+      const isGenerated = source.startsWith('data:image/svg+xml');
+      const isLandscape = coverImage.naturalWidth / Math.max(1, coverImage.naturalHeight) > 1.05;
+      gameCover.classList.toggle('has-ps4-band', isGenerated || isLandscape);
+      gameCover.classList.toggle('landscape-art', isLandscape);
+    };
+    coverImage.addEventListener('load', fitCover);
+    if (coverImage.complete && coverImage.naturalWidth) fitCover();
     installArtworkFallback(coverImage, item, () => {
       coverImage.remove();
+      gameCover.classList.add('has-ps4-band');
       gameCover.classList.add('cover-image-missing');
     });
   }

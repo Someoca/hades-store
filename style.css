@@ -2760,7 +2760,8 @@ body {
 .app-card > p,
 .app-card > .card-language-badges,
 .app-card > .card-bottom { display: none !important; }
-.app-card .ps4-band { display: block !important; }
+.app-card .ps4-band { display: none !important; }
+.app-card .game-cover.has-ps4-band .ps4-band { display: block !important; }
 .app-card > .game-physical {
   border: 2px solid rgba(105, 193, 232, .9);
   border-radius: 7px;
@@ -2770,10 +2771,10 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 27px;
+  height: 35px;
   border: 0;
   border-bottom: 1px solid rgba(182, 230, 247, .72);
-  background: #087be8 url("assets/ps4-cover-band.png") center / 100% 100% no-repeat;
+  background: #087be8 url("assets/ps4-cover-band.png") center / cover no-repeat;
   color: transparent;
   font-size: 0;
   letter-spacing: 0;
@@ -2788,8 +2789,11 @@ body {
   object-position: center;
   background: #07131b;
 }
-.app-card .game-cover-art { top: 27px; height: calc(100% - 27px); }
-.app-card .cover-fallback { inset: 27px 0 0; }
+.app-card .game-cover-art { top: 0; height: 100%; }
+.app-card .game-cover.has-ps4-band .game-cover-art { top: 35px; height: calc(100% - 35px); }
+.app-card .game-cover.landscape-art .game-cover-art { object-fit: cover; object-position: center; }
+.app-card .cover-fallback { inset: 0; }
+.app-card .game-cover.has-ps4-band .cover-fallback { inset: 35px 0 0; }
 .app-card > h3 {
   flex: 0 0 auto;
   min-height: 28px;
@@ -2841,18 +2845,45 @@ body {
 
 /* Mantém a paginação acessível no modo de vitrine em tela inteira. */
 @media (min-width: 761px) {
-  .catalog-section { position: relative; }
-  .catalog-section > .catalog-meta {
-    position: absolute;
-    z-index: 5;
-    top: 12px;
-    right: 24px;
+  .catalog-section {
+    position: relative;
     display: flex !important;
-    margin: 0;
-    pointer-events: none;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
-  .catalog-section > .catalog-meta > p { display: none !important; }
+  .catalog-section > .catalog-meta {
+    position: relative;
+    z-index: 5;
+    top: auto;
+    right: auto;
+    display: flex !important;
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 42px;
+    margin: 0;
+    padding: 3px clamp(8px, 2vw, 20px);
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    pointer-events: auto;
+  }
+  .catalog-section > .catalog-meta > p {
+    display: block !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    color: #bceeff;
+    font-size: clamp(10px, .78vw, 13px);
+    font-weight: 800;
+    letter-spacing: .35px;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 4px #06131d, 0 0 10px rgba(89, 207, 244, .35);
+    white-space: nowrap;
+  }
   .catalog-section .carousel-controls {
+    flex: 0 0 auto;
     gap: 8px;
     padding: 5px 8px;
     border: 1px solid rgba(149, 217, 239, .36);
@@ -2881,26 +2912,18 @@ body {
     outline-offset: 2px;
   }
   .catalog-section .carousel-controls button:disabled { opacity: .45; }
+  .catalog-section > .game-grid {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    padding-top: 7px;
+  }
 }
 
 /* Remove o painel promocional lateral e libera toda a largura para as capas. */
 .details-sidebar { display: none !important; }
 .console-layout { grid-template-columns: minmax(0, 1fr) !important; }
 .main-panel { grid-column: 1 / -1; min-width: 0; }
-
-/* Mostra o total do catálogo também na vitrine em tela cheia. */
-@media (min-width: 761px) {
-  .catalog-section > .catalog-meta > p {
-    display: block !important;
-    margin: 0;
-    color: #bceeff;
-    font-size: clamp(10px, .78vw, 13px);
-    font-weight: 800;
-    letter-spacing: .35px;
-    text-shadow: 0 1px 4px #06131d, 0 0 10px rgba(89, 207, 244, .35);
-    white-space: nowrap;
-  }
-}
 
 /* Deixa a textura do cabeçalho aparecer sem enfraquecer sua moldura. */
 .masthead {
