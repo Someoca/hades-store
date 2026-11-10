@@ -1201,7 +1201,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=57c42c",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-youtube.svg"
+    "imageUrl": "assets/covers/apps/official/youtube-brand-icon.svg"
   },
   {
     "id": "app-netflix",
@@ -1215,7 +1215,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=bfba56",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-netflix.svg"
+    "imageUrl": "assets/covers/apps/official/netflix-brand-icon.svg"
   },
   {
     "id": "app-avatar-changer",
@@ -1243,7 +1243,7 @@
     "format": "PKG informado por terceiros; verifique assinatura, compatibilidade e procedência.",
     "downloadUrl": "https://espfile.com/go/?id=00788f",
     "linkLabel": "ACESSAR LINK EXTERNO ↗",
-    "imageUrl": "assets/covers/apps/app-ps4-toolset.svg"
+    "imageUrl": "assets/covers/apps/official/ps4-toolset-real-cover.png"
   },
   {
     "id": "app-ezremote-client",
