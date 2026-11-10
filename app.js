@@ -237,10 +237,17 @@ function themedFallbackCover(item) {
   return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
 }
 
+function versionedArtworkUrl(url) {
+  if (!url || /^(?:data:|https?:|blob:)/i.test(url)) return url;
+  const [resource, fragment] = url.split('#', 2);
+  const versioned = resource + (resource.includes('?') ? '&' : '?') + 'v=hades-artwork-v2';
+  return fragment ? versioned + '#' + fragment : versioned;
+}
+
 function coverSource(item) {
   if (item.category === 'Jogos' && (!item.imageUrl || item.imageUrl.endsWith('game-cover.svg'))) return themedFallbackCover(item);
   if (item.category === 'Emuladores' && !item.imageUrl) return themedFallbackCover(item);
-  return item.imageUrl || '';
+  return versionedArtworkUrl(item.imageUrl || '');
 }
 
 function installArtworkFallback(image, item, onExhausted) {
@@ -280,11 +287,11 @@ function createCard(item) {
   if (item.category === 'Jogos') {
     visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Emuladores') {
-    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(versionedArtworkUrl(item.imageUrl || themedFallbackCover(item))) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Aplicativos' || item.category === 'Homebrews') {
-    visual = '<div class="software-art"><img src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"></div>';
+    visual = '<div class="software-art"><img src="' + safe(versionedArtworkUrl(item.imageUrl || themedFallbackCover(item))) + '" alt="" loading="lazy"></div>';
   } else if (item.imageUrl) {
-    visual = '<div class="software-art"><img src="' + safe(item.imageUrl) + '" alt="" loading="lazy"></div>';
+    visual = '<div class="software-art"><img src="' + safe(versionedArtworkUrl(item.imageUrl)) + '" alt="" loading="lazy"></div>';
   }
 
   card.innerHTML = favoriteButton(item, true) + visual
@@ -805,7 +812,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   }, { once: true });
 }
 
-fetch('catalog/catalog.json?v=hades-catalog-total-5')
+fetch('catalog/catalog.json?v=hades-catalog-total-6')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
