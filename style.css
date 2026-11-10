@@ -2793,3 +2793,73 @@ body {
     drop-shadow(0 0 7px rgba(108, 218, 247, .95))
     drop-shadow(0 0 18px rgba(38, 145, 189, .8));
 }
+
+/* Abas de categoria em azul gelo, seguindo o brilho do emblema enviado. */
+.top-nav {
+  gap: 5px;
+  border: 2px solid rgba(113, 190, 220, .62);
+  background: linear-gradient(180deg, rgba(74, 119, 143, .92), rgba(14, 36, 51, .98));
+  box-shadow: inset 0 0 20px rgba(163, 226, 247, .16), 0 5px 20px rgba(0, 0, 0, .58), 0 0 15px rgba(82, 184, 221, .18);
+}
+.nav-tab {
+  border: 1px solid rgba(162, 216, 237, .32);
+  background: linear-gradient(180deg, rgba(39, 77, 98, .94), rgba(8, 25, 38, .98));
+  color: #bfeeff;
+  text-shadow: 0 1px 4px #06131d, 0 0 10px rgba(89, 207, 244, .42);
+}
+.nav-tab.active, .nav-tab.active:hover, .nav-tab.active:focus-visible {
+  border-color: rgba(183, 241, 255, .9);
+  background: linear-gradient(180deg, rgba(110, 183, 211, .92), rgba(27, 77, 101, .98));
+  color: #e8fbff;
+  text-shadow: 0 1px 4px #06131d, 0 0 12px rgba(121, 227, 255, .88);
+  box-shadow: inset 0 0 18px rgba(204, 245, 255, .23), 0 0 13px rgba(88, 204, 242, .35);
+}
+.nav-tab:hover:not(.active), .nav-tab:focus-visible:not(.active) {
+  border-color: rgba(170, 230, 249, .68);
+  background: linear-gradient(180deg, rgba(68, 125, 152, .95), rgba(19, 52, 70, .98));
+  color: #f0fcff;
+}
+
+/* Mantém a paginação acessível no modo de vitrine em tela inteira. */
+@media (min-width: 761px) {
+  .catalog-section { position: relative; }
+  .catalog-section > .catalog-meta {
+    position: absolute;
+    z-index: 5;
+    top: 12px;
+    right: 24px;
+    display: flex !important;
+    margin: 0;
+    pointer-events: none;
+  }
+  .catalog-section > .catalog-meta > p { display: none !important; }
+  .catalog-section .carousel-controls {
+    gap: 8px;
+    padding: 5px 8px;
+    border: 1px solid rgba(149, 217, 239, .36);
+    border-radius: 24px;
+    background: rgba(5, 19, 29, .78);
+    color: #bceeff;
+    text-shadow: 0 0 8px rgba(81, 200, 239, .65);
+    backdrop-filter: blur(5px);
+    pointer-events: auto;
+  }
+  .catalog-section .carousel-controls button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(149, 217, 239, .65);
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(62, 119, 145, .96), rgba(10, 35, 49, .98));
+    color: #e3faff;
+    box-shadow: 0 0 10px rgba(59, 174, 214, .3), inset 0 1px rgba(255, 255, 255, .2);
+  }
+  .catalog-section .carousel-controls button:hover:not(:disabled),
+  .catalog-section .carousel-controls button:focus-visible {
+    border-color: #d2f7ff;
+    background: linear-gradient(180deg, #69b9d8, #18516c);
+    box-shadow: 0 0 14px rgba(96, 213, 249, .65);
+    outline: 2px solid rgba(183, 241, 255, .7);
+    outline-offset: 2px;
+  }
+  .catalog-section .carousel-controls button:disabled { opacity: .45; }
+}
