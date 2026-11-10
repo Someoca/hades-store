@@ -2779,6 +2779,20 @@ body {
   font-size: 0;
   letter-spacing: 0;
 }
+.app-card .game-cover::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image: var(--cover-art-src);
+  background-position: center;
+  background-size: cover;
+  filter: blur(14px) brightness(.42) saturate(.85);
+  opacity: .8;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+.app-card .game-cover.has-ps4-band::before { inset: 35px 0 0; }
 .app-card .game-cover-art,
 .app-card .software-art img {
   position: absolute;
@@ -2787,11 +2801,12 @@ body {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background: #07131b;
+  background: transparent;
+  z-index: 1;
 }
 .app-card .game-cover-art { top: 0; height: 100%; }
 .app-card .game-cover.has-ps4-band .game-cover-art { top: 35px; height: calc(100% - 35px); }
-.app-card .game-cover.landscape-art .game-cover-art { object-fit: cover; object-position: center; }
+.app-card .game-cover.padded-cover-art .game-cover-art { object-fit: cover; object-position: center; }
 .app-card .cover-fallback { inset: 0; }
 .app-card .game-cover.has-ps4-band .cover-fallback { inset: 35px 0 0; }
 .app-card > h3 {

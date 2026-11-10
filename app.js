@@ -323,8 +323,10 @@ function createCard(item) {
       const source = coverImage.getAttribute('src') || '';
       const isGenerated = source.startsWith('data:image/svg+xml');
       const isLandscape = coverImage.naturalWidth / Math.max(1, coverImage.naturalHeight) > 1.05;
+      const hasWhiteMatte = /(?:^|\/)ps4-(?:02|19)-hq\.jpg(?:[?#]|$)/i.test(source);
       gameCover.classList.toggle('has-ps4-band', isGenerated || isLandscape);
-      gameCover.classList.toggle('landscape-art', isLandscape);
+      gameCover.classList.toggle('padded-cover-art', hasWhiteMatte);
+      gameCover.style.setProperty('--cover-art-src', 'url(' + JSON.stringify(coverImage.currentSrc || coverImage.src) + ')');
     };
     coverImage.addEventListener('load', fitCover);
     if (coverImage.complete && coverImage.naturalWidth) fitCover();
@@ -804,7 +806,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=hades-catalog-total-4')
+fetch('catalog/catalog.json?v=hades-catalog-total-5')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
