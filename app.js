@@ -3,7 +3,8 @@ const state = {
   category: 'Todos',
   sort: 'featured',
   favorites: new Set(),
-  activeItem: null
+  activeItem: null,
+  featuredItem: null
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -72,6 +73,30 @@ function updateStats() {
   if (apps) apps.textContent = String(state.catalog.length).padStart(2, '0');
   if (categories) categories.textContent = String(new Set(state.catalog.map((item) => item.category)).size).padStart(2, '0');
   if (favorites) favorites.textContent = String(state.favorites.size).padStart(2, '0');
+}
+
+function setFeaturedItem(item) {
+  const category = $('#featured-category');
+  const title = $('#featured-title');
+  const description = $('#featured-description');
+  const open = $('#featured-open');
+  if (!category || !title || !description || !open) return;
+
+  if (!item) {
+    state.featuredItem = null;
+    category.textContent = '';
+    title.textContent = 'Nenhum item encontrado';
+    description.textContent = 'Altere a busca ou a categoria para continuar explorando.';
+    open.disabled = true;
+    return;
+  }
+
+  state.featuredItem = item;
+  category.textContent = String(item.category || 'CATÁLOGO').toLocaleUpperCase('pt-BR')
+    + (item.version ? ' · ' + item.version : '');
+  title.textContent = item.name || 'Item do catálogo';
+  description.textContent = item.description || 'Confira os detalhes e as opções disponíveis para este item.';
+  open.disabled = false;
 }
 
 function updateSoundToggle() {
@@ -268,6 +293,8 @@ function createCard(item) {
     showDetails(item);
   };
   card.addEventListener('click', open);
+  card.addEventListener('pointerenter', () => setFeaturedItem(item));
+  card.addEventListener('focus', () => setFeaturedItem(item));
   card.addEventListener('keydown', (event) => {
     if (event.target.closest('[data-favorite]')) return;
     if (event.key === 'Enter' || event.key === ' ') {
@@ -301,6 +328,7 @@ function render() {
   clearCarouselTarget();
   grid.replaceChildren(...items.map(createCard));
   grid.scrollLeft = 0;
+  setFeaturedItem(items[0]);
   empty.hidden = items.length > 0;
   $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
   updateCarouselControls();
@@ -595,6 +623,9 @@ $('#sound-toggle').addEventListener('click', () => {
   }
 });
 $('#search-shortcut').addEventListener('click', () => $('#search').focus());
+$('#featured-open').addEventListener('click', () => {
+  if (state.featuredItem) showDetails(state.featuredItem);
+});
 search.addEventListener('input', render);
 $('#sort').addEventListener('change', (event) => {
   state.sort = event.target.value;

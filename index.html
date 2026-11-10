@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#100e12">
+  <meta name="theme-color" content="#0b1116">
   <title>HADES STORE | PS4</title>
   <link rel="icon" type="image/svg+xml" href="assets/hades-sigil.svg">
-  <link rel="stylesheet" href="style.css?v=hades-store-editorial-v3">
+  <link rel="stylesheet" href="style.css?v=hades-night-banner-v4">
 </head>
 <body>
   <div class="console-shell" id="home">
@@ -28,6 +28,10 @@
         <span class="platform-mark" aria-label="PlayStation 4">◈ PS4</span>
       </div>
     </header>
+
+    <section class="store-intro" aria-label="Banner da HADES Store">
+      <img class="store-banner" src="assets/avatar_banner.png" alt="Arte de fantasia em tons azulados para a HADES Store">
+    </section>
 
     <!-- Barra de Categorias -->
     <nav class="top-nav" aria-label="Categorias do catálogo">
@@ -56,35 +60,16 @@
     <!-- Layout Principal -->
     <div class="console-layout">
       <!-- Barra Lateral -->
-      <aside class="sidebar" aria-label="Menu lateral">
-        <div class="profile">
-          <img
-            src="assets/hades-avatar-premium.png?v=hades-avatar-2"
-            onerror="this.onerror=null;this.src='assets/hades-avatar-premium.jpg?v=hades-avatar-premium-1';"
-            alt="Avatar HADES"
-            width="132"
-            height="132"
-          >
-          <strong>HADES</strong>
-          <small>Bem-vindo!</small>
-        </div>
-
-        <nav class="side-nav" aria-label="Atalhos principais">
-          <a class="side-link selected" href="#home">
-            <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg>
-            <span>Início</span>
-          </a>
-          <button class="side-link" id="search-shortcut" type="button">
-            <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <span>Buscar</span>
-          </button>
-          <a class="side-link" href="#home">
-            <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14 5-5-5-5m5 5H9"/></svg>
-            <span>Sair</span>
-          </a>
-        </nav>
-
-        <div class="ps-symbol" aria-hidden="true">P<span>S</span></div>
+      <aside class="sidebar details-sidebar" aria-label="Detalhes do item em destaque" aria-live="polite">
+        <span class="featured-kicker">EM DESTAQUE</span>
+        <span class="featured-category" id="featured-category">CATÁLOGO</span>
+        <h2 class="featured-title" id="featured-title">Explore o catálogo</h2>
+        <p class="featured-description" id="featured-description">Selecione uma capa para ver os detalhes do jogo.</p>
+        <button class="featured-open" id="featured-open" type="button" disabled>VER DETALHES</button>
+        <button class="side-link featured-search" id="search-shortcut" type="button">
+          <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span>Buscar no catálogo</span>
+        </button>
       </aside>
 
       <!-- Área do Catálogo -->
@@ -93,18 +78,6 @@
           <div class="catalog-backdrop-layer is-visible"></div>
           <div class="catalog-backdrop-layer"></div>
         </div>
-
-        <section class="store-intro" aria-label="Apresentação da HADES Store">
-          <div class="store-intro-copy">
-            <span class="store-kicker"><i></i> SEU REFÚGIO GAMER</span>
-            <h1>O próximo jogo<br><em>começa aqui.</em></h1>
-            <p>Explore uma coleção feita para quem vive o PlayStation.</p>
-          </div>
-          <div class="store-intro-mark" aria-hidden="true">
-            <img src="assets/hades-sigil.svg" alt="">
-          </div>
-          <div class="store-intro-foot"><span>CATÁLOGO HADES</span><span>PLAYSTATION 4</span></div>
-        </section>
 
         <section class="catalog-section" aria-labelledby="catalog-title">
           <div class="catalog-heading">
@@ -196,6 +169,6 @@
     <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
   </dialog>
 
-  <script src="app.js?v=hades-ps4-v2" defer></script>
+  <script src="app.js?v=hades-night-banner-v4" defer></script>
 </body>
 </html>
