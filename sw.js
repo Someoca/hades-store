@@ -1,4 +1,4 @@
-const OFFLINE_CACHE = 'hades-store-offline-v1';
+const OFFLINE_CACHE = 'hades-store-offline-v2';
 const CATALOG_PATH = new URL('catalog/catalog.json', self.registration.scope).pathname;
 
 self.addEventListener('install', (event) => {
@@ -6,7 +6,13 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil((async () => {
+    const cacheNames = await caches.keys();
+    await Promise.all(cacheNames
+      .filter((name) => name.startsWith('hades-store-offline-') && name !== OFFLINE_CACHE)
+      .map((name) => caches.delete(name)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener('fetch', (event) => {
