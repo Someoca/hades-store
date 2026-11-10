@@ -240,7 +240,7 @@ function themedFallbackCover(item) {
 function versionedArtworkUrl(url) {
   if (!url || /^(?:data:|https?:|blob:)/i.test(url)) return url;
   const [resource, fragment] = url.split('#', 2);
-  const versioned = resource + (resource.includes('?') ? '&' : '?') + 'v=hades-artwork-v2';
+  const versioned = resource + (resource.includes('?') ? '&' : '?') + 'v=hades-artwork-v3';
   return fragment ? versioned + '#' + fragment : versioned;
 }
 
@@ -812,7 +812,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   }, { once: true });
 }
 
-fetch('catalog/catalog.json?v=hades-catalog-total-6')
+fetch('catalog/catalog.json?v=hades-catalog-total-7')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
