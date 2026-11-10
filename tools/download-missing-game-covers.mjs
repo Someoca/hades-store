@@ -119,18 +119,7 @@ async function coverFromProductCode(item) {
     // The official Store titlecontainer endpoint can return a product image
     // directly from the PS4 title ID when search results use a different name.
     const endpoint = `https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/US/en/999/${normalizedCode}_00/image?w=800&h=1200`;
-    try {
-      const response = await fetch(endpoint, {
-        headers: { accept: 'image/*', 'user-agent': 'Mozilla/5.0 HADESStoreCoverRefresh/1.0' },
-        signal: AbortSignal.timeout(15000),
-      });
-      const contentType = response.headers.get('content-type')?.toLowerCase() || '';
-      if (response.ok && contentType.startsWith('image/')) {
-        return { cover: endpoint, product: { name: `${item.name} (${normalizedCode})` }, external: true };
-      }
-    } catch (error) {
-      console.warn(`Busca por código falhou para ${item.id} (${normalizedCode}): ${error.message}`);
-    }
+    return { cover: endpoint, product: { name: `${item.name} (${normalizedCode})` }, external: true };
   }
   return null;
 }
