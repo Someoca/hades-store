@@ -13,6 +13,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: real-covers-pages
@@ -51,3 +53,14 @@ jobs:
           git pull --rebase origin main
           git push || { git pull --rebase origin main; git push; }
 
+      - name: Preparar publicação do GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Enviar site atualizado para publicação
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Publicar loja atualizada
+        id: deployment
+        uses: actions/deploy-pages@v4
