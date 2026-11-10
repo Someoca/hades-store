@@ -343,7 +343,9 @@ function render() {
   grid.scrollLeft = 0;
   setFeaturedItem(items[0]);
   empty.hidden = items.length > 0;
-  $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
+  const totalGames = state.catalog.filter((item) => item.category === 'Jogos').length;
+  $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados')
+    + ' · ' + totalGames + ' jogos no catálogo';
   updateCarouselControls();
   scheduleCatalogBackdropUpdate();
   document.querySelectorAll('[data-category]').forEach((button) => {
@@ -792,7 +794,7 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
-fetch('catalog/catalog.json?v=hades-covers-avatar-3')
+fetch('catalog/catalog.json?v=hades-catalog-total-4')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
