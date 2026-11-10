@@ -287,9 +287,9 @@ function createCard(item) {
 
   let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
   if (item.category === 'Jogos') {
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Emuladores') {
-    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><img class="game-cover-art" src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
+    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
   } else if (item.category === 'Aplicativos' || item.category === 'Homebrews') {
     visual = '<div class="software-art"><img src="' + safe(item.imageUrl || themedFallbackCover(item)) + '" alt="" loading="lazy"></div>';
   } else if (item.imageUrl) {

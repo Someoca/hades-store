@@ -2760,6 +2760,24 @@ body {
 .app-card > p,
 .app-card > .card-language-badges,
 .app-card > .card-bottom { display: none !important; }
+.app-card .ps4-band { display: block !important; }
+.app-card > .game-physical {
+  border: 2px solid rgba(105, 193, 232, .9);
+  border-radius: 7px;
+  box-shadow: inset 0 0 0 1px rgba(219, 247, 255, .24), 0 5px 14px rgba(0, 0, 0, .7);
+}
+.app-card .ps4-band {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 27px;
+  border: 0;
+  border-bottom: 1px solid rgba(182, 230, 247, .72);
+  background: #087be8 url("assets/ps4-cover-band.png") center / 100% 100% no-repeat;
+  color: transparent;
+  font-size: 0;
+  letter-spacing: 0;
+}
 .app-card .game-cover-art,
 .app-card .software-art img {
   position: absolute;
@@ -2770,7 +2788,8 @@ body {
   object-position: center;
   background: #07131b;
 }
-.app-card .cover-fallback { inset: 0; }
+.app-card .game-cover-art { top: 27px; height: calc(100% - 27px); }
+.app-card .cover-fallback { inset: 27px 0 0; }
 .app-card > h3 {
   flex: 0 0 auto;
   min-height: 28px;
