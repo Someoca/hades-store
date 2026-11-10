@@ -806,6 +806,14 @@ updateClock();
 window.setInterval(updateClock, 30000);
 loadFavorites();
 
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js?v=hades-auto-refresh-v1', { updateViaCache: 'none' })
+      .then((registration) => registration.update())
+      .catch((error) => console.warn('[HADES Store] Atualização automática indisponível:', error));
+  }, { once: true });
+}
+
 fetch('catalog/catalog.json?v=hades-catalog-total-5')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
