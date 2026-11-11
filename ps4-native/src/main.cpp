@@ -26,6 +26,8 @@ static SDL_Texture* sigilTexture = nullptr;
 static std::vector<int> visible;
 static std::vector<unsigned char> favoriteItems;
 static bool favoritesOnly = false;
+static bool searchActive = false;
+static std::string searchQuery;
 static bool favoritesPersistenceAvailable = false;
 static const char* FAVORITES_FILE = "/data/hades-store-favorites.dat";
 static int selected = 0, filterIndex = 0;
@@ -87,6 +89,13 @@ static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int sc
 }
 static std::string trim(const char* s,int max){ std::string v=s?s:""; if((int)v.size()>max){v=v.substr(0,max-3)+"...";} return v; }
 static bool matches(const char* category, int itemIndex){
+    if(searchActive && !searchQuery.empty()){
+        std::string hay=STORE_ITEMS[itemIndex].name; hay+=' '; hay+=STORE_ITEMS[itemIndex].description;
+        std::string needle=searchQuery;
+        std::transform(hay.begin(),hay.end(),hay.begin(),[](unsigned char c){return (char)std::tolower(c);});
+        std::transform(needle.begin(),needle.end(),needle.begin(),[](unsigned char c){return (char)std::tolower(c);});
+        if(hay.find(needle)==std::string::npos)return false;
+    }
     if(favoritesOnly && (itemIndex<0 || itemIndex>=(int)favoriteItems.size() || !favoriteItems[itemIndex])) return false;
     if(filterIndex==0) return true;
     if(filterIndex==1) return !std::strcmp(category,"Jogos");
@@ -188,6 +197,7 @@ static void draw(){
     text(91,518,"BEM-VINDO!",174,204,239,1);
     text(30,566,"CASA",228,239,255,2);
     text(30,616,"BUSCAR",228,239,255,2);
+    text(300,330,searchActive?(std::string("BUSCA: ")+searchQuery+"  (ESC LIMPAR)"):"APERTE / PARA BUSCAR",150,210,255,2);
     text(30,666,"FAVORITOS",228,239,255,2);
     text(30,716,"DOWNLOADS",228,239,255,2);
     text(30,766,"CONFIGURACOES",228,239,255,2);
@@ -264,6 +274,10 @@ static void toggleFavorite(){
     refresh();
 }
 static void toggleFavoritesView(){favoritesOnly=!favoritesOnly;selected=0;refresh();}
+static void beginSearch(){searchActive=true;searchQuery.clear();selected=0;SDL_StartTextInput();refresh();}
+static void endSearch(){searchActive=false;searchQuery.clear();SDL_StopTextInput();selected=0;refresh();}
+static void handleSearchText(const char* input){if(!searchActive||!input)return;if(searchQuery.size()<48){searchQuery+=input;selected=0;refresh();}}
+static void backspaceSearch(){if(searchActive&&!searchQuery.empty()){searchQuery.pop_back();selected=0;refresh();}}
 static void moveHome(int dx,int dy){
     // The home menu has four valid actions arranged as a 3+1 grid.
     // Keep the selection in [0, 3] so enterCatalog() always maps safely.
@@ -325,7 +339,7 @@ static void handleKey(SDL_Keycode key){
     if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else running=false;}
     else if(key==SDLK_LEFT)handleDirection(-1,0);else if(key==SDLK_RIGHT)handleDirection(1,0);
     else if(key==SDLK_UP)handleDirection(0,-1);else if(key==SDLK_DOWN)handleDirection(0,1);
-    else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_f)toggleFavorite();else if(key==SDLK_v)toggleFavoritesView();else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
+    else if(key==SDLK_SLASH)beginSearch();else if(key==SDLK_BACKSPACE)backspaceSearch();else if(key==SDLK_ESCAPE&&searchActive)endSearch();else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_f)toggleFavorite();else if(key==SDLK_v)toggleFavoritesView();else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
 }
 static void handleButton(Uint8 button){
     if(homeScreen){if(button==0)enterCatalog();else if(button==1)running=false;return;}
@@ -377,6 +391,7 @@ int main(int argc,char** argv){
         if(e.type==SDL_QUIT)running=false;
         else if(e.type==SDL_KEYDOWN){handleKey(e.key.keysym.sym);frameDirty=true;}
         else if(e.type==SDL_CONTROLLERBUTTONDOWN){handleControllerButton((SDL_GameControllerButton)e.cbutton.button);frameDirty=true;}
+        else if(e.type==SDL_TEXTINPUT){handleSearchText(e.text.text);frameDirty=true;}
         else if(e.type==SDL_CONTROLLERAXISMOTION){
             static Uint32 lastAxisMove=0;
             Uint32 now=SDL_GetTicks();
