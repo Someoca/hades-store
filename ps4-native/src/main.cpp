@@ -417,7 +417,7 @@ int main(int argc,char** argv){
             if(now-lastAxisMove>160 && (e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTX || e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTY)){
                 int dx=(e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTX)?(e.caxis.value>16000?1:(e.caxis.value<-16000?-1:0)):0;
                 int dy=(e.caxis.axis==SDL_CONTROLLER_AXIS_LEFTY)?(e.caxis.value>16000?1:(e.caxis.value<-16000?-1:0)):0;
-                if(dx||dy){if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);lastAxisMove=now;frameDirty=true;}
+                if(dx||dy){if(searchActive)moveVirtualKeyboard(dx,dy);else if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);lastAxisMove=now;frameDirty=true;}
             }
         }
         else if(e.type==SDL_JOYBUTTONDOWN&&!gameController){handleButton(e.jbutton.button);frameDirty=true;}
