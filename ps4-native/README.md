@@ -10,10 +10,12 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Mudar categoria | L1 / R1 (Todos, Jogos, Aplicativos, Emuladores) |
 | Abrir detalhes | Cross (X) |
 | Abrir o link do item no navegador | Square |
+| Marcar/desmarcar favorito (sessão atual) | L3 (pressionar analógico esquerdo) |
+| Mostrar/ocultar apenas favoritos | R3 (pressionar analógico direito) |
 | Voltar / fechar detalhes | Circle |
 | Encerrar aplicativo | Options |
 
-Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo.
+Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo. Os favoritos são mantidos apenas enquanto o aplicativo está aberto; eles ainda não são gravados em armazenamento persistente.
 
 ## Gerar o PKG
 
