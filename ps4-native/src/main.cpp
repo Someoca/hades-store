@@ -205,6 +205,7 @@ static void draw(){
     fill(0,1001,SW,79,3,12,29,239);
     text(28,1025,"X SELECIONAR",79,208,255,2);
     text(270,1050,"L3 FAVORITAR   R3 FILTRAR FAVORITOS",130,190,235,2);
+    text(1430,1050,favoritesPersistenceAvailable?"FAVORITOS SALVOS":"SALVAMENTO NAO CONFIRMADO",favoritesPersistenceAvailable?120:235,favoritesPersistenceAvailable?220:170,180,1);
     text(270,1025,"O VOLTAR",255,82,137,2);
     text(495,1025,"L1 / R1 CATEGORIAS",70,229,176,2);
     text(790,1025,"TRIANGULO INICIO   DIRECIONAL NAVEGAR",204,225,242,2);
