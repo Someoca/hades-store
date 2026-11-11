@@ -256,7 +256,18 @@ static void draw(){
     }
     SDL_UpdateWindowSurface(windowHandle);
 }
-static void openSelected(){if(visible.empty())return;const char* url=STORE_ITEMS[visible[selected]].url;if(url&&url[0])sceSystemServiceLaunchWebBrowser(url,nullptr);}
+static bool isSafeHttpsUrl(const char* url){
+    if(!url)return false;
+    const std::string value(url);
+    if(value.size()<9||value.compare(0,8,"https://")!=0)return false;
+    for(unsigned char c:value){if(c<=32||c==127)return false;}
+    return value.find_first_of("\r\n\t")==std::string::npos;
+}
+static void openSelected(){
+    if(visible.empty()||selected<0||selected>=(int)visible.size())return;
+    const char* url=STORE_ITEMS[visible[selected]].url;
+    if(isSafeHttpsUrl(url))sceSystemServiceLaunchWebBrowser(url,nullptr);
+}
 static void handleDirection(int dx,int dy){
     if(showDetails)return;
     if(visible.empty())return;
