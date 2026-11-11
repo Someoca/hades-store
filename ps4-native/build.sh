@@ -6,8 +6,8 @@ NATIVE="$ROOT/ps4-native"
 BUILD="$NATIVE/build"
 OUT="$NATIVE/dist"
 CONTENT_ID="IV0000-HADS00001_00-HADESSTORE000001"
-SDK_ARCHIVE="${TMPDIR:-/tmp}/hades-openorbis-v0.5.4.tar.gz"
-SDK_URL="https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain/releases/download/v0.5.4/toolchain-llvm-18.tar.gz"
+SDK_ARCHIVE="${TMPDIR:-/tmp}/hades-openorbis-v0.5.1.tar.gz"
+SDK_URL="https://github.com/OpenOrbis/OpenOrbis-PS4-Toolchain/releases/download/v0.5.1/v0.5.1.tar.gz"
 
 : "${OO_PS4_TOOLCHAIN:?Run inside an OpenOrbis toolchain environment}"
 command -v clang++ >/dev/null
