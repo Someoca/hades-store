@@ -11,8 +11,8 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Abrir detalhes | Cross (X) |
 | Abrir o link do item no navegador | Square |
 | Marcar/desmarcar favorito (gravação local em /data) | L3 (pressionar analógico esquerdo) |
-| Iniciar pesquisa no catálogo | `/` em teclado conectado (ou atalho de busca na interface) |
-| Digitar na pesquisa | Teclado virtual: direcional/analógico para navegar, Cross para inserir, Circle para apagar, L1 para apagar e R1 para espaço; teclado físico também funciona |
+| Iniciar pesquisa no catálogo | Share (ou `/` em teclado conectado) |
+| Digitar na pesquisa | Teclado virtual: direcional/analógico para navegar, Cross para inserir, Circle ou L1 para apagar e R1 para espaço; teclado físico também funciona |
 | Fechar pesquisa | Triângulo ou Esc; Backspace apaga caractere no teclado físico |
 | Mostrar/ocultar apenas favoritos | R3 (pressionar analógico direito) |
 | Voltar / fechar detalhes | Circle |
