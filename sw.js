@@ -1,4 +1,4 @@
-const OFFLINE_CACHE = 'hades-store-offline-v3';
+const OFFLINE_CACHE = 'hades-store-offline-v4';
 const CATALOG_PATH = new URL('catalog/catalog.json', self.registration.scope).pathname;
 
 self.addEventListener('install', (event) => {
