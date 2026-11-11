@@ -10,12 +10,12 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Mudar categoria | L1 / R1 (Todos, Jogos, Aplicativos, Emuladores) |
 | Abrir detalhes | Cross (X) |
 | Abrir o link do item no navegador | Square |
-| Marcar/desmarcar favorito (sessão atual) | L3 (pressionar analógico esquerdo) |
+| Marcar/desmarcar favorito (gravação local em /data) | L3 (pressionar analógico esquerdo) |
 | Mostrar/ocultar apenas favoritos | R3 (pressionar analógico direito) |
 | Voltar / fechar detalhes | Circle |
 | Encerrar aplicativo | Options |
 
-Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo. Os favoritos são mantidos apenas enquanto o aplicativo está aberto; eles ainda não são gravados em armazenamento persistente.
+Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo. Os favoritos são carregados e gravados em `/data/hades-store-favorites.dat`. A interface indica quando a gravação foi confirmada; se o caminho não for gravável no firmware/ambiente, o app mantém a sessão sem afirmar que salvou. A persistência precisa ser confirmada em teste físico no console.
 
 ## Gerar o PKG
 
