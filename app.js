@@ -806,13 +806,13 @@ loadFavorites();
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=hades-auto-refresh-v3', { updateViaCache: 'none' })
+    navigator.serviceWorker.register('sw.js?v=hades-auto-refresh-v4', { updateViaCache: 'none' })
       .then((registration) => registration.update())
       .catch((error) => console.warn('[HADES Store] Atualização automática indisponível:', error));
   }, { once: true });
 }
 
-fetch('catalog/catalog.json?v=hades-catalog-total-10')
+fetch('catalog/catalog.json?v=hades-catalog-total-11')
   .then((response) => {
     if (!response.ok) throw new Error('Catálogo indisponível (' + response.status + ')');
     return response.json();
