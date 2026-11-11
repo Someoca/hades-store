@@ -29,6 +29,8 @@ static std::vector<unsigned char> favoriteItems;
 static bool favoritesOnly = false;
 static bool searchActive = false;
 static std::string searchQuery;
+static int keyboardIndex = 0;
+static const char* VIRTUAL_KEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -_";
 static bool favoritesPersistenceAvailable = false;
 static const char* FAVORITES_FILE = "/data/hades-store-favorites.dat";
 static int selected = 0, filterIndex = 0;
@@ -212,6 +214,7 @@ static void draw(){
         for(int slot=0;slot<ITEMS_PER_PAGE&&first+slot<(int)visible.size();slot++)
             drawCard(slot,visible[first+slot],first+slot==selected);
     }
+    drawVirtualKeyboard();
     fill(0,998,SW,3,33,139,227);
     fill(0,1001,SW,79,3,12,29,239);
     text(28,1025,"X SELECIONAR",79,208,255,2);
@@ -275,10 +278,25 @@ static void toggleFavorite(){
     refresh();
 }
 static void toggleFavoritesView(){favoritesOnly=!favoritesOnly;selected=0;refresh();}
-static void beginSearch(){searchActive=true;searchQuery.clear();selected=0;SDL_StartTextInput();refresh();}
+static void beginSearch(){searchActive=true;searchQuery.clear();keyboardIndex=0;selected=0;SDL_StartTextInput();refresh();}
 static void endSearch(){searchActive=false;searchQuery.clear();SDL_StopTextInput();selected=0;refresh();}
 static void handleSearchText(const char* input){if(!searchActive||!input)return;if(searchQuery.size()<48){searchQuery+=input;selected=0;refresh();}}
 static void backspaceSearch(){if(searchActive&&!searchQuery.empty()){searchQuery.pop_back();selected=0;refresh();}}
+static void moveVirtualKeyboard(int dx,int dy){
+    int next=keyboardIndex+dx+dy*10;
+    int count=(int)std::strlen(VIRTUAL_KEYS);
+    if(next<0)next=0;
+    if(next>=count)next=count-1;
+    keyboardIndex=next;
+}
+static void activateVirtualKey(){
+    int count=(int)std::strlen(VIRTUAL_KEYS);
+    if(keyboardIndex<0||keyboardIndex>=count)return;
+    char value=VIRTUAL_KEYS[keyboardIndex];
+    if(value==' '){if(searchQuery.size()<48)searchQuery+=' ';}
+    else if(searchQuery.size()<48)searchQuery+=value;
+    selected=0;refresh();
+}
 static void moveHome(int dx,int dy){
     // The home menu has four valid actions arranged as a 3+1 grid.
     // Keep the selection in [0, 3] so enterCatalog() always maps safely.
