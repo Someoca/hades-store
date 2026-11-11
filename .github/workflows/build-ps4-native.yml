@@ -38,7 +38,7 @@ jobs:
             -e OO_PS4_TOOLCHAIN=/lib/OpenOrbisSDK \
             -v "$GITHUB_WORKSPACE:/workspace" \
             -w /workspace \
-            openorbisofficial/toolchain:v0.5.4 \
+            openorbisofficial/toolchain:v0.5.1 \
             bash -lc "apt-get update && apt-get install -y python3 python3-pil fonts-dejavu-core librsvg2-bin curl tar && bash ps4-native/build.sh"
       - uses: actions/upload-artifact@v4
         with:
