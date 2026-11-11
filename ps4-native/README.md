@@ -1,6 +1,6 @@
 # HADES Store — aplicativo nativo para PS4
 
-O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicial apresenta o mascote Hades, resumo do catálogo e atalhos por categoria. A biblioteca usa a mesma fonte de dados `catalog/catalog.json` da loja web, com abas de Todos, Jogos, Aplicativos e Emuladores. As capas são empacotadas localmente para navegação offline; os detalhes dos emuladores também mostram a seleção de jogos recomendados cadastrada no catálogo.
+O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicial apresenta o mascote Hades, resumo do catálogo e atalhos por categoria. A biblioteca usa a mesma fonte de dados `catalog/catalog.json` da loja web, com abas de Todos, Jogos, Aplicativos e Emuladores. A pesquisa localiza termos no nome e na descrição dos itens; nesta versão, a digitação requer teclado conectado ao console. As capas são empacotadas localmente para navegação offline; os detalhes dos emuladores também mostram a seleção de jogos recomendados cadastrada no catálogo.
 
 ## Controles
 
@@ -11,6 +11,9 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Abrir detalhes | Cross (X) |
 | Abrir o link do item no navegador | Square |
 | Marcar/desmarcar favorito (gravação local em /data) | L3 (pressionar analógico esquerdo) |
+| Iniciar pesquisa no catálogo | `/` em teclado conectado |
+| Digitar na pesquisa | Teclado conectado (SDL text input) |
+| Limpar pesquisa | Esc (ou Backspace para apagar caractere) |
 | Mostrar/ocultar apenas favoritos | R3 (pressionar analógico direito) |
 | Voltar / fechar detalhes | Circle |
 | Encerrar aplicativo | Options |
