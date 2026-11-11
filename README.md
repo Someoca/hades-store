@@ -41,3 +41,19 @@ O código SDL2 e o processo de build estão em `ps4-native/`. Consulte [ps4-nati
 ## Segurança e procedência
 
 A HADES Store é um catálogo/launcher comunitário. Não distribui jogos comerciais, BIOS, chaves ou firmware. Verifique sempre a procedência e a licença dos arquivos externos antes de baixar ou instalar.
+
+## Publicar no Cloudflare Pages
+
+O site é estático e pode ser publicado diretamente da raiz deste repositório, sem etapa de build.
+
+1. No Cloudflare, abra **Workers & Pages** e crie um projeto Pages conectado ao GitHub.
+2. Selecione o repositório `Someoca/hades-store` e a branch `main`.
+3. Use **None** como framework preset, deixe o comando de build vazio e defina o diretório de saída como `.` (raiz do repositório).
+4. Faça o primeiro deploy e confirme que o endereço `*.pages.dev` abre o catálogo.
+5. Em **Custom domains**, escolha **Set up a domain** e informe `hadesstoneonline.com`. Siga a validação apresentada pelo Cloudflare.
+6. Se desejar também o endereço `www.hadesstoneonline.com`, adicione-o separadamente em **Custom domains** e configure o redirecionamento para o domínio principal.
+
+O arquivo `_headers` define cabeçalhos básicos de segurança e políticas de cache adequadas para catálogo, HTML, JavaScript, CSS e service worker. O catálogo e o service worker não devem ficar presos em cache antigo.
+
+**Importante:** a conexão do repositório, a ativação do domínio e a configuração DNS precisam ser concluídas no painel Cloudflare da conta proprietária. Não altere registros MX ou outros registros usados por e-mail. Não compartilhe tokens de API ou senhas no repositório.
+
