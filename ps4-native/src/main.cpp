@@ -386,6 +386,19 @@ static void handleButton(Uint8 button){
     else if(button==1)showDetails=false;else if(button==2)openSelected();else if(button==6)running=false;else if(button==8)toggleFavorite();else if(button==9)toggleFavoritesView();
 }
 static void handleControllerButton(SDL_GameControllerButton button){
+    if(searchActive){
+        if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)moveVirtualKeyboard(-1,0);
+        else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)moveVirtualKeyboard(1,0);
+        else if(button==SDL_CONTROLLER_BUTTON_DPAD_UP)moveVirtualKeyboard(0,-1);
+        else if(button==SDL_CONTROLLER_BUTTON_DPAD_DOWN)moveVirtualKeyboard(0,1);
+        else if(button==SDL_CONTROLLER_BUTTON_A)activateVirtualKey();
+        else if(button==SDL_CONTROLLER_BUTTON_B)backspaceSearch();
+        else if(button==SDL_CONTROLLER_BUTTON_LEFTSHOULDER)backspaceSearch();
+        else if(button==SDL_CONTROLLER_BUTTON_RIGHTSHOULDER){if(searchQuery.size()<48)searchQuery+=' ';selected=0;refresh();}
+        else if(button==SDL_CONTROLLER_BUTTON_Y)endSearch();
+        return;
+    }
+
     if(homeScreen){
         if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)moveHome(-1,0);
         else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)moveHome(1,0);
