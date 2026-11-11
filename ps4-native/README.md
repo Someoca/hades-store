@@ -22,9 +22,9 @@ Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo
 
 ## Gerar o PKG
 
-O build usa o contêiner OpenOrbis `v0.5.4` e roda automaticamente em alterações no código nativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
+O build usa o contêiner OpenOrbis `v0.5.1` e roda automaticamente em alterações no código nativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
 
-O artefato `HADES-Store-PS4-v1.3.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.4 instalado e `OO_PS4_TOOLCHAIN` configurado:
+O artefato `HADES-Store-PS4-v1.3.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 
 ```sh
 bash ps4-native/build.sh
