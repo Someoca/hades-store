@@ -259,9 +259,34 @@ static void draw(){
 static bool isSafeHttpsUrl(const char* url){
     if(!url)return false;
     const std::string value(url);
-    if(value.size()<9||value.compare(0,8,"https://")!=0)return false;
-    for(unsigned char c:value){if(c<=32||c==127)return false;}
-    return value.find_first_of("\r\n\t")==std::string::npos;
+    if(value.size()<10||value.size()>2048||value.compare(0,8,"https://")!=0)return false;
+    for(unsigned char c:value){if(c<=32||c==127||c=='\\')return false;}
+
+    const size_t authorityStart=8;
+    const size_t authorityEnd=value.find_first_of("/?#",authorityStart);
+    const std::string authority=value.substr(authorityStart,
+        authorityEnd==std::string::npos?std::string::npos:authorityEnd-authorityStart);
+    if(authority.empty()||authority.find('@')!=std::string::npos)return false;
+
+    const size_t colon=authority.rfind(':');
+    const std::string host=authority.substr(0,colon);
+    if(host.empty()||host.size()>253||host.front()=='.'||host.back()=='.'||
+       host.find("..")!=std::string::npos)return false;
+    for(unsigned char c:host){
+        if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||
+             (c>='0'&&c<='9')||c=='.'||c=='-'))return false;
+    }
+    if(colon!=std::string::npos){
+        const std::string port=authority.substr(colon+1);
+        if(port.empty()||port.size()>5)return false;
+        unsigned int number=0;
+        for(unsigned char c:port){
+            if(c<'0'||c>'9')return false;
+            number=number*10u+(unsigned int)(c-'0');
+        }
+        if(number==0||number>65535)return false;
+    }
+    return true;
 }
 static void openSelected(){
     if(visible.empty()||selected<0||selected>=(int)visible.size())return;
