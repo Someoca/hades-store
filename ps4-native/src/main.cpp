@@ -454,7 +454,7 @@ int main(int argc,char** argv){
             }
         }
         else if(e.type==SDL_JOYBUTTONDOWN&&!gameController){handleButton(e.jbutton.button);frameDirty=true;}
-        else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);frameDirty=true;}
+        else if(e.type==SDL_JOYHATMOTION){int dx=(e.jhat.value&SDL_HAT_RIGHT)?1:(e.jhat.value&SDL_HAT_LEFT)?-1:0;int dy=(e.jhat.value&SDL_HAT_DOWN)?1:(e.jhat.value&SDL_HAT_UP)?-1:0;if(searchActive)moveVirtualKeyboard(dx,dy);else if(homeScreen)moveHome(dx,dy);else handleDirection(dx,dy);frameDirty=true;}
         else if(e.type==SDL_WINDOWEVENT)frameDirty=true;
     }while(SDL_PollEvent(&e));if(frameDirty){if(homeScreen)drawHome();else draw();frameDirty=false;}}
     if(hadesTexture)SDL_DestroyTexture(hadesTexture);if(avatarTexture)SDL_DestroyTexture(avatarTexture);if(bannerTexture)SDL_DestroyTexture(bannerTexture);if(sigilTexture)SDL_DestroyTexture(sigilTexture);for(SDL_Texture* texture:coverTextures)if(texture)SDL_DestroyTexture(texture);
