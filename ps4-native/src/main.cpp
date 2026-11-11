@@ -24,6 +24,8 @@ static SDL_Texture* avatarTexture = nullptr;
 static SDL_Texture* bannerTexture = nullptr;
 static SDL_Texture* sigilTexture = nullptr;
 static std::vector<int> visible;
+static std::vector<unsigned char> favoriteItems;
+static bool favoritesOnly = false;
 static int selected = 0, filterIndex = 0;
 static int homeAction = 0;
 static bool homeScreen = false, showDetails = false, running = true;
@@ -82,7 +84,8 @@ static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int sc
     }
 }
 static std::string trim(const char* s,int max){ std::string v=s?s:""; if((int)v.size()>max){v=v.substr(0,max-3)+"...";} return v; }
-static bool matches(const char* category){
+static bool matches(const char* category, int itemIndex){
+    if(favoritesOnly && (itemIndex<0 || itemIndex>=(int)favoriteItems.size() || !favoriteItems[itemIndex])) return false;
     if(filterIndex==0) return true;
     if(filterIndex==1) return !std::strcmp(category,"Jogos");
     if(filterIndex==2) return !std::strcmp(category,"Aplicativos");
@@ -90,7 +93,7 @@ static bool matches(const char* category){
 }
 static void refresh(){
     visible.clear();
-    for(int i=0;i<STORE_ITEM_COUNT;i++) if(matches(STORE_ITEMS[i].category)) visible.push_back(i);
+    for(int i=0;i<STORE_ITEM_COUNT;i++) if(matches(STORE_ITEMS[i].category,i)) visible.push_back(i);
     if(visible.empty()) selected=0; else selected=std::min(selected,(int)visible.size()-1);
 }
 static void circle(int cx,int cy,int radius,Uint8 r,Uint8 g,Uint8 b){
@@ -186,7 +189,7 @@ static void draw(){
     text(30,716,"DOWNLOADS",228,239,255,2);
     text(30,766,"CONFIGURACOES",228,239,255,2);
     text(30,816,"SAIR",228,239,255,2);
-    text(280,307,"CATALOGO",246,248,255,4);
+    text(280,307,favoritesOnly?"FAVORITOS":"CATALOGO",246,248,255,4);
     char page[48];std::snprintf(page,sizeof(page),"%d / %d",visible.empty()?0:selected+1,(int)visible.size());
     text(1695,312,page,194,221,249,2);
     if(visible.empty()){text(315,530,"NENHUM ITEM NESTA CATEGORIA",241,239,247,4);}
@@ -198,6 +201,7 @@ static void draw(){
     fill(0,998,SW,3,33,139,227);
     fill(0,1001,SW,79,3,12,29,239);
     text(28,1025,"X SELECIONAR",79,208,255,2);
+    text(270,1050,"L3 FAVORITAR   R3 FILTRAR FAVORITOS",130,190,235,2);
     text(270,1025,"O VOLTAR",255,82,137,2);
     text(495,1025,"L1 / R1 CATEGORIAS",70,229,176,2);
     text(790,1025,"TRIANGULO INICIO   DIRECIONAL NAVEGAR",204,225,242,2);
@@ -221,7 +225,15 @@ static void handleDirection(int dx,int dy){
     if(visible.empty())return;
     int next=selected+dx+dy*5; if(next<0)next=0;if(next>=(int)visible.size())next=(int)visible.size()-1;selected=next;
 }
-static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;refresh();}
+static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;favoritesOnly=false;refresh();}
+static void toggleFavorite(){
+    if(visible.empty() || selected<0 || selected>=(int)visible.size()) return;
+    int itemIndex=visible[selected];
+    if(itemIndex<0 || itemIndex>=(int)favoriteItems.size()) return;
+    favoriteItems[itemIndex]=favoriteItems[itemIndex]?0:1;
+    refresh();
+}
+static void toggleFavoritesView(){favoritesOnly=!favoritesOnly;selected=0;refresh();}
 static void moveHome(int dx,int dy){
     // The home menu has four valid actions arranged as a 3+1 grid.
     // Keep the selection in [0, 3] so enterCatalog() always maps safely.
@@ -283,13 +295,13 @@ static void handleKey(SDL_Keycode key){
     if(key==SDLK_ESCAPE){if(showDetails)showDetails=false;else running=false;}
     else if(key==SDLK_LEFT)handleDirection(-1,0);else if(key==SDLK_RIGHT)handleDirection(1,0);
     else if(key==SDLK_UP)handleDirection(0,-1);else if(key==SDLK_DOWN)handleDirection(0,1);
-    else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
+    else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_f)toggleFavorite();else if(key==SDLK_v)toggleFavoritesView();else if(key==SDLK_RETURN){if(showDetails)openSelected();else showDetails=true;}
 }
 static void handleButton(Uint8 button){
     if(homeScreen){if(button==0)enterCatalog();else if(button==1)running=false;return;}
     if(button==4)changeFilter(-1);else if(button==5)changeFilter(1);
     else if(button==0){if(showDetails)openSelected();else showDetails=true;}
-    else if(button==1)showDetails=false;else if(button==2)openSelected();else if(button==6)running=false;
+    else if(button==1)showDetails=false;else if(button==2)openSelected();else if(button==6)running=false;else if(button==8)toggleFavorite();else if(button==9)toggleFavoritesView();
 }
 static void handleControllerButton(SDL_GameControllerButton button){
     if(homeScreen){
@@ -307,6 +319,8 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_A){if(showDetails)openSelected();else showDetails=true;}
     else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else running=false;}
     else if(button==SDL_CONTROLLER_BUTTON_X)openSelected();
+    else if(button==SDL_CONTROLLER_BUTTON_LEFTSTICK)toggleFavorite();
+    else if(button==SDL_CONTROLLER_BUTTON_RIGHTSTICK)toggleFavoritesView();
     else if(button==SDL_CONTROLLER_BUTTON_Y){homeScreen=true;showDetails=false;}else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_UP)handleDirection(0,-1);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_DOWN)handleDirection(0,1);
@@ -314,7 +328,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)handleDirection(1,0);
 }
 int main(int argc,char** argv){
-    (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
+    (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);favoriteItems.assign(STORE_ITEM_COUNT,0);refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK|SDL_INIT_GAMECONTROLLER)!=0)return 1;
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"2");
     windowHandle=SDL_CreateWindow("HADES STORE",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SW,SH,0);
