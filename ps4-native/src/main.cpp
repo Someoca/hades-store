@@ -26,6 +26,8 @@ static SDL_Texture* sigilTexture = nullptr;
 static std::vector<int> visible;
 static std::vector<unsigned char> favoriteItems;
 static bool favoritesOnly = false;
+static bool favoritesPersistenceAvailable = false;
+static const char* FAVORITES_FILE = "/data/hades-store-favorites.dat";
 static int selected = 0, filterIndex = 0;
 static int homeAction = 0;
 static bool homeScreen = false, showDetails = false, running = true;
@@ -227,11 +229,37 @@ static void handleDirection(int dx,int dy){
     int next=selected+dx+dy*5; if(next<0)next=0;if(next>=(int)visible.size())next=(int)visible.size()-1;selected=next;
 }
 static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;favoritesOnly=false;refresh();}
+static void loadFavorites(){
+    FILE* file=std::fopen(FAVORITES_FILE,"rb");
+    if(!file) return;
+    char magic[4]={0,0,0,0};
+    unsigned int count=0;
+    bool valid=std::fread(magic,1,4,file)==4 && std::memcmp(magic,"HDSF",4)==0 &&
+        std::fread(&count,sizeof(count),1,file)==1 && count==STORE_ITEM_COUNT &&
+        std::fread(favoriteItems.data(),1,favoriteItems.size(),file)==favoriteItems.size();
+    std::fclose(file);
+    if(!valid){std::fill(favoriteItems.begin(),favoriteItems.end(),0);return;}
+    favoritesPersistenceAvailable=true;
+}
+static void saveFavorites(){
+    const char* temporary="/data/hades-store-favorites.tmp";
+    FILE* file=std::fopen(temporary,"wb");
+    if(!file){favoritesPersistenceAvailable=false;return;}
+    const char magic[4]={'H','D','S','F'};
+    unsigned int count=(unsigned int)favoriteItems.size();
+    bool ok=std::fwrite(magic,1,4,file)==4 &&
+        std::fwrite(&count,sizeof(count),1,file)==1 &&
+        std::fwrite(favoriteItems.data(),1,favoriteItems.size(),file)==favoriteItems.size();
+    if(std::fclose(file)!=0) ok=false;
+    if(ok && std::rename(temporary,FAVORITES_FILE)==0) favoritesPersistenceAvailable=true;
+    else {std::remove(temporary);favoritesPersistenceAvailable=false;}
+}
 static void toggleFavorite(){
     if(visible.empty() || selected<0 || selected>=(int)visible.size()) return;
     int itemIndex=visible[selected];
     if(itemIndex<0 || itemIndex>=(int)favoriteItems.size()) return;
     favoriteItems[itemIndex]=favoriteItems[itemIndex]?0:1;
+    saveFavorites();
     refresh();
 }
 static void toggleFavoritesView(){favoritesOnly=!favoritesOnly;selected=0;refresh();}
@@ -329,7 +357,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)handleDirection(1,0);
 }
 int main(int argc,char** argv){
-    (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);favoriteItems.assign(STORE_ITEM_COUNT,0);refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
+    (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);favoriteItems.assign(STORE_ITEM_COUNT,0);loadFavorites();refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK|SDL_INIT_GAMECONTROLLER)!=0)return 1;
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY,"2");
     windowHandle=SDL_CreateWindow("HADES STORE",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,SW,SH,0);
