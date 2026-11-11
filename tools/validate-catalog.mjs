@@ -44,6 +44,8 @@ for (const [index, item] of catalog.entries()) {
 
   if (typeof item.imageUrl !== 'string' || !item.imageUrl.trim()) {
     errors.push(label + ': imageUrl ausente.');
+  } else if (item.category === 'Jogos' && /(?:^|\\/)fallback\\//i.test(item.imageUrl)) {
+    errors.push(label + ': capa genérica de fallback não permitida.');
   } else if (/^https:\/\//i.test(item.imageUrl)) {
     // Remote cover from an HTTPS image host.
   } else {
