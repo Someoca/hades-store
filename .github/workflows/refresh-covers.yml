@@ -39,9 +39,6 @@ jobs:
       - name: Gerar capas refinadas dos aplicativos e emuladores
         run: node tools/generate-app-covers.mjs
 
-      - name: Preservar capas locais e padronizar o restante
-        run: node tools/standardize-covers.mjs
-
       - name: Validar catálogo
         run: node tools/validate-catalog.mjs
 
