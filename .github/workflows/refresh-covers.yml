@@ -9,6 +9,7 @@ on:
       - 'tools/download-real-covers.mjs'
       - 'tools/download-missing-game-covers.mjs'
       - 'tools/standardize-covers.mjs'
+      - 'tools/validate-catalog.mjs'
       - 'tools/generate-app-covers.mjs'
   workflow_dispatch:
 
