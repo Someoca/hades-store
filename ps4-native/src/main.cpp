@@ -222,7 +222,6 @@ static void draw(){
     text(91,518,"BEM-VINDO!",174,204,239,1);
     const char* sideLabels[]={"CASA","BUSCAR","FAVORITOS","DOWNLOADS","CONFIGURACOES","SAIR"};
     for(int i=0;i<6;i++){int sy=566+i*50;if(sidebarFocus&&sidebarIndex==i){fill(12,sy-9,250,38,8,67,112);outline(12,sy-9,250,38,55,170,235,2);}text(30,sy,sideLabels[i],sidebarFocus&&sidebarIndex==i?255:228,239,255,2);}
-    text(30,616,"BUSCAR",0,0,0,1);
     text(300,330,searchActive?(std::string("BUSCA: ")+searchQuery+"  (ESC LIMPAR)"):"APERTE / PARA BUSCAR",150,210,255,2);
     text(280,307,favoritesOnly?"FAVORITOS":"CATALOGO",246,248,255,4);
     char page[48];std::snprintf(page,sizeof(page),"%d / %d",visible.empty()?0:selected+1,(int)visible.size());
@@ -294,6 +293,7 @@ static void openSelected(){
     const char* url=STORE_ITEMS[visible[selected]].url;
     if(isSafeHttpsUrl(url))sceSystemServiceLaunchWebBrowser(url,nullptr);
 }
+static void beginSearch();
 static void activateSidebar(){sidebarFocus=false;switch(sidebarIndex){case 0:homeScreen=true;showDetails=false;utilityPanel=0;break;case 1:beginSearch();break;case 2:favoritesOnly=true;selected=0;refresh();break;case 3:utilityPanel=1;showDetails=false;break;case 4:utilityPanel=2;showDetails=false;break;case 5:running=false;break;}}
 static void handleDirection(int dx,int dy){
     if(showDetails||utilityPanel)return;
