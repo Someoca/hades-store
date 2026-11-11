@@ -10,6 +10,7 @@ on:
       - 'assets/hades-sigil.svg'
       - 'assets/covers/**'
       - 'catalog/catalog.json'
+      - 'tools/validate-catalog.mjs'
       - '.github/workflows/build-ps4-native.yml'
   pull_request:
     branches: [main]
