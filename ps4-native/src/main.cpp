@@ -223,9 +223,16 @@ static void handleDirection(int dx,int dy){
 }
 static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;refresh();}
 static void moveHome(int dx,int dy){
-    if(dx){if(homeAction<3)homeAction=std::max(0,std::min(2,homeAction+dx));else homeAction=dx<0?3:4;}
-    else if(dy>0){if(homeAction<3)homeAction=std::min(4,homeAction+3);else homeAction-=3;}
-    else if(dy<0&&homeAction>=3)homeAction-=3;
+    // The home menu has four valid actions arranged as a 3+1 grid.
+    // Keep the selection in [0, 3] so enterCatalog() always maps safely.
+    if(dx){
+        if(homeAction==3){ if(dx<0)homeAction=2; }
+        else homeAction=std::max(0,std::min(2,homeAction+dx));
+    } else if(dy>0){
+        if(homeAction<3)homeAction=3;
+    } else if(dy<0){
+        if(homeAction==3)homeAction=0;
+    }
 }
 static void enterCatalog(){
     static const int actionFilters[]={0,1,2,3};
