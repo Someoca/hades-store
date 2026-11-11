@@ -173,6 +173,25 @@ static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int cha
     std::string s=raw?raw:""; int line=0;
     while(!s.empty()&&line<5){size_t n=std::min((size_t)chars,s.size());if(n<s.size()){size_t k=s.rfind(' ',n);if(k!=std::string::npos&&k>0)n=k;}text(x,y+line*36,s.substr(0,n),r,g,b,3);s.erase(0,n);while(!s.empty()&&s[0]==' ')s.erase(0,1);line++;}
 }
+static void drawVirtualKeyboard(){
+    if(!searchActive)return;
+    fill(270,610,1380,360,3,12,29,248);
+    outline(270,610,1380,360,55,170,235,3);
+    text(300,628,"TECLADO VIRTUAL - DIRECIONAL NAVEGAR / X INSERIR / O APAGAR",150,210,255,2);
+    const int keyCount=(int)std::strlen(VIRTUAL_KEYS);
+    for(int i=0;i<keyCount;i++){
+        int x=300+(i%10)*128,y=666+(i/10)*66;
+        bool active=i==keyboardIndex;
+        fill(x,y,116,54,active?8:5,active?85:25,active?160:48);
+        outline(x,y,116,54,active?100:35,active?220:100,active?255:145,active?3:1);
+        char label[2]={VIRTUAL_KEYS[i],0};
+        if(label[0]==' ')std::strcpy(label,"ESP");
+        text(x+20,y+18,label,245,248,255,2);
+    }
+    fill(300,930,250,30,20,70,110);text(315,937,"L1 APAGAR",210,230,250,2);
+    fill(570,930,250,30,20,70,110);text(585,937,"R1 ESPACO",210,230,250,2);
+    fill(840,930,250,30,20,70,110);text(855,937,"TRIANGULO FECHAR",210,230,250,2);
+}
 static void draw(){
     fill(0,0,SW,SH,2,8,22);
     if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,20);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
