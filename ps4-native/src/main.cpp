@@ -382,6 +382,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_A){if(showDetails)openSelected();else showDetails=true;}
     else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else running=false;}
     else if(button==SDL_CONTROLLER_BUTTON_X)openSelected();
+    else if(button==SDL_CONTROLLER_BUTTON_BACK)beginSearch();
     else if(button==SDL_CONTROLLER_BUTTON_LEFTSTICK)toggleFavorite();
     else if(button==SDL_CONTROLLER_BUTTON_RIGHTSTICK)toggleFavoritesView();
     else if(button==SDL_CONTROLLER_BUTTON_Y){homeScreen=true;showDetails=false;}else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
