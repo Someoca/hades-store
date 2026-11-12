@@ -39,3 +39,11 @@ jobs:
 
       - name: Confirm Cloudflare Pages entry point
         run: test -f index.html && test -f _headers
+
+      - name: Validate SEO files and canonical domain
+        run: |
+          test -s robots.txt
+          test -s sitemap.xml
+          grep -Fq 'Sitemap: https://loja.hadesstoneonline.com/sitemap.xml' robots.txt
+          grep -Fq '<loc>https://loja.hadesstoneonline.com/</loc>' sitemap.xml
+          grep -Fq '<link rel="canonical" href="https://loja.hadesstoneonline.com/"' index.html
