@@ -2994,3 +2994,40 @@ body {
 @media (prefers-reduced-motion: reduce) {
   #details::before { animation: none; transform: none; }
 }
+
+
+/* Destaque da senha para download */
+.download-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 22px 0;
+  padding: 20px 16px;
+  border: 2px solid #55dfff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(4,39,59,.98), rgba(28,17,65,.96));
+  box-shadow: 0 0 18px rgba(45,205,255,.45), inset 0 0 18px rgba(100,90,255,.2);
+  color: #eafaff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.download-password strong {
+  color: #9deeff;
+  text-transform: uppercase;
+}
+.download-password code {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 8px;
+  background: rgba(0,0,0,.42);
+  color: #fff;
+  font-size: clamp(30px,5vw,42px);
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-shadow: 0 0 12px #35dfff;
+}

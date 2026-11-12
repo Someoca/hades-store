@@ -618,7 +618,7 @@ function showDetails(item) {
     gamesList.append(row);
   }
   $('.dialog-note').textContent = packageLinks.length
-    ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 2888; o provedor pode exigir uma confirmação antes de iniciar o download.'
+    ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 201055; o provedor pode exigir uma confirmação antes de iniciar o download.'
     : item.linkLabel
       ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
       : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
