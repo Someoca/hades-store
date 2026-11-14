@@ -3855,3 +3855,67 @@ body {
     height: clamp(250px, 72vw, 390px) !important;
   }
 }
+
+
+/* HADES Store — layout consolidado das capas: proporção fixa, sem alturas conflitantes. */
+#grid.game-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+#grid.game-grid > .app-card {
+  min-width: 0 !important;
+  height: auto !important;
+  align-self: stretch !important;
+}
+#grid.game-grid > .app-card > .game-physical {
+  display: block !important;
+  position: relative !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 3 / 4 !important;
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+#grid.game-grid > .app-card > .game-physical > .game-cover {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+#grid.game-grid > .app-card > .game-physical > .game-cover > .game-cover-art {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+}
+#grid.game-grid > .app-card .game-cover .ps4-band { display: none !important; }
+#grid.game-grid > .app-card .game-cover .cover-fallback {
+  inset: 0 !important;
+}
+@media (max-width: 760px) {
+  #grid.game-grid > .app-card > .game-physical {
+    aspect-ratio: 3 / 4 !important;
+  }
+}
