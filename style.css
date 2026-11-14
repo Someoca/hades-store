@@ -3760,3 +3760,75 @@ body {
     object-position: center center !important;
   }
 }
+
+
+/* HADES Store — capas ampliadas, mais respiro e divulgação PS4/TikTok */
+@media (min-width: 1151px) {
+  #grid.game-grid > .app-card { flex-basis: calc((100% - 42px) / 4) !important; }
+  #grid.game-grid > .app-card > .game-physical { aspect-ratio: 3 / 4 !important; }
+}
+@media (min-width: 761px) and (max-width: 1150px) {
+  #grid.game-grid > .app-card { flex-basis: calc((100% - 28px) / 3) !important; }
+}
+.console-shell { padding-bottom: 54px; }
+.main-panel { padding-bottom: clamp(72px, 9vw, 132px) !important; }
+.catalog-section { padding-bottom: clamp(46px, 6vw, 84px) !important; }
+.ps4-promo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 clamp(14px,3.5vw,54px) 30px;
+  padding: clamp(22px,3vw,38px);
+  min-height: 168px;
+  overflow: hidden;
+  border: 1px solid #258bd7;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 82% 50%, #087fff55, transparent 42%),
+    linear-gradient(110deg,#102d50 0%,#09182d 58%,#071326 100%);
+  box-shadow: 0 16px 40px #0007, inset 0 1px #ffffff18, 0 0 24px #087fff22;
+}
+.ps4-promo::after {
+  content: "PS4";
+  position: absolute;
+  right: 25%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-10deg);
+  color: #c5e7ff0b;
+  font-size: clamp(72px,12vw,150px);
+  font-weight: 1000;
+  font-style: italic;
+  pointer-events: none;
+}
+.ps4-promo-copy { position:relative; z-index:1; max-width:680px; }
+.ps4-promo-kicker { color:#67d8ff; font-size:11px; font-weight:900; letter-spacing:2px; }
+.ps4-promo h2 { margin:9px 0 8px; color:#fff; font-size:clamp(21px,2.8vw,34px); line-height:1.12; letter-spacing:-.6px; }
+.ps4-promo p { margin:0; color:#bfd3ec; font-size:14px; line-height:1.6; }
+.tiktok-feature {
+  position:relative; z-index:2; flex:0 0 auto;
+  display:flex; align-items:center; gap:12px;
+  min-width:250px; padding:15px 18px;
+  color:#fff; text-decoration:none;
+  border:1px solid #67dfff; border-radius:13px;
+  background:linear-gradient(135deg,#087fff,#063d82);
+  box-shadow:0 8px 26px #007bff55, inset 0 1px #ffffff45;
+  transition:transform .18s ease,filter .18s ease,box-shadow .18s ease;
+}
+.tiktok-feature:hover,.tiktok-feature:focus-visible {
+  transform:translateY(-3px); filter:brightness(1.15);
+  box-shadow:0 12px 32px #007bff88,0 0 0 3px #53caff30;
+  outline:none;
+}
+.tiktok-symbol { display:grid; place-items:center; width:42px; height:42px; border-radius:11px; background:#06172c; font-size:29px; font-weight:900; text-shadow:2px 0 #25f4ee,-2px 0 #fe2c55; }
+.tiktok-feature small,.tiktok-feature strong { display:block; }
+.tiktok-feature small { color:#bdeaff; font-size:9px; font-weight:900; letter-spacing:1px; }
+.tiktok-feature strong { margin-top:4px; font-size:15px; }
+.tiktok-arrow { margin-left:auto; font-size:23px; }
+@media (max-width:760px) {
+  .ps4-promo { display:grid; gap:18px; margin:0 12px 22px; padding:20px 16px; border-radius:14px; }
+  .ps4-promo p { font-size:12px; }
+  .tiktok-feature { min-width:0; width:100%; }
+  .main-panel { padding-bottom:76px !important; }
+}
