@@ -3724,44 +3724,6 @@ body {
 }
 
 
-/* FIX 2026-11-14: keep full cover artwork visible at its natural 3:4 card ratio. */
-@media (min-width: 761px) {
-  #grid.game-grid > .app-card > .game-physical {
-    display: block !important;
-    position: relative !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    aspect-ratio: 3 / 4 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-  #grid.game-grid > .app-card > .game-physical > .game-cover {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-  #grid.game-grid > .app-card > .game-physical .game-cover-art {
-    position: absolute !important;
-    top: 26px !important;
-    right: 0 !important;
-    bottom: auto !important;
-    left: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: calc(100% - 26px) !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-  }
-}
-
-
 /* HADES Store — capas ampliadas, mais respiro e divulgação PS4/TikTok */
 @media (min-width: 1151px) {
   #grid.game-grid > .app-card { flex-basis: calc((100% - 42px) / 4) !important; }
@@ -3834,62 +3796,62 @@ body {
 }
 
 
-/* HADES Store cover framing fix: show the complete original artwork without cropping. */
-@media (min-width: 761px) {
-  #grid.game-grid > .app-card > .game-physical {
-    display: block !important; position: relative !important; width: 100% !important;
-    height: auto !important; min-height: 0 !important; max-height: none !important;
-    aspect-ratio: 3 / 4 !important; padding: 0 !important; overflow: hidden !important;
-  }
-  #grid.game-grid > .app-card > .game-physical > .game-cover {
-    position: absolute !important; inset: 0 !important; width: 100% !important;
-    height: 100% !important; overflow: hidden !important; background: #080e19 !important;
-  }
-  #grid.game-grid > .app-card > .game-physical .game-cover-art {
-    position: absolute !important; inset: 0 !important; width: 100% !important;
-    height: 100% !important; max-height: none !important; object-fit: contain !important;
-    object-position: center center !important; transform: none !important; background: #080e19 !important;
-  }
+
+/* HADES Store — moldura única e estável das capas (desktop e mobile). */
+#grid.game-grid > .app-card > .game-physical {
+  display: block !important;
+  position: relative !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: clamp(280px, 28vw, 370px) !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background: #080e19 !important;
+}
+#grid.game-grid > .app-card > .game-physical > .game-cover {
+  display: block !important;
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #080e19 !important;
+}
+#grid.game-grid > .app-card > .game-physical .game-cover-art {
+  display: block !important;
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+  background: #080e19 !important;
 }
 #grid.game-grid > .app-card .game-cover .ps4-band { display: none !important; }
-#grid.game-grid > .app-card .game-cover.has-ps4-band .game-cover-art { top: 0 !important; height: 100% !important; }
-
-
-/* HADES Store: final desktop cover sizing — explicit box height prevents collapsed artwork. */
-@media (min-width: 761px) {
+#grid.game-grid > .app-card .game-cover .cover-fallback {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+@media (max-width: 760px) {
   #grid.game-grid > .app-card > .game-physical {
-    display: block !important;
-    position: relative !important;
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    height: clamp(280px, 30vw, 390px) !important;
-    min-height: 280px !important;
-    max-height: none !important;
-    aspect-ratio: auto !important;
-    padding: 0 !important;
-    overflow: hidden !important;
+    height: clamp(250px, 72vw, 390px) !important;
   }
-  #grid.game-grid > .app-card > .game-physical > .game-cover {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-  #grid.game-grid > .app-card > .game-physical .game-cover-art {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-    transform: none !important;
-  }
-  #grid.game-grid > .app-card .game-cover .ps4-band { display: none !important; }
 }
