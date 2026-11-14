@@ -46,32 +46,33 @@ jobs:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: |
-          if [ -z "$R2_ACCOUNT_ID" ] || [ -z "$R2_ACCESS_KEY_ID" ] || [ -z "$R2_SECRET_ACCESS_KEY" ]; then
-            echo "::warning::PKG built successfully but R2 upload skipped: GitHub Actions R2 secrets are not configured."
-            exit 0
+          set -euo pipefail
+          if [ -z "${R2_ACCOUNT_ID:-}" ] || [ -z "${R2_ACCESS_KEY_ID:-}" ] || [ -z "${R2_SECRET_ACCESS_KEY:-}" ]; then
+            echo "::error::R2 secrets are missing. Configure R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY."
+            exit 1
           fi
+
+          # Accept only the Cloudflare account ID; trim accidental whitespace.
+          R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | tr -d '[:space:]')"
+          if [[ ! "$R2_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
+            echo "::error::R2_ACCOUNT_ID must contain only the 32-character Cloudflare Account ID (not the endpoint URL)."
+            exit 1
+          fi
+          R2_ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+
           python3 -m pip install --user awscli
           export PATH="$HOME/.local/bin:$PATH"
+
           aws s3 cp ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
             s3://hades-store-downloads/HADES-Store-PS4-v1.4.pkg \
-            --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com" \
+            --endpoint-url "$R2_ENDPOINT" \
             --region auto \
             --content-type "application/vnd.playstation.pkg" \
             --cache-control "public, max-age=300"
+
           aws s3 cp ps4-native/dist/SHA256SUMS.txt \
             s3://hades-store-downloads/HADES-Store-PS4-v1.4-SHA256SUMS.txt \
-            --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com" \
+            --endpoint-url "$R2_ENDPOINT" \
             --region auto \
             --content-type "text/plain" \
             --cache-control "public, max-age=300"
-      - name: Upload installable PKG and checksum (optional backup)
-        if: always()
-        continue-on-error: true
-        uses: actions/upload-artifact@v4
-        with:
-          name: HADES-Store-PS4-PKG-v1.4
-          path: |
-            ps4-native/dist/HADES-Store-PS4-v1.4.pkg
-            ps4-native/dist/SHA256SUMS.txt
-          if-no-files-found: warn
-          retention-days: 1
