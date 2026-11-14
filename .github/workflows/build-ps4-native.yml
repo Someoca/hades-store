@@ -41,24 +41,27 @@ jobs:
             openorbisofficial/toolchain:v0.5.1 \
             bash -lc "apt-get update && apt-get install -y python3 python3-pil fonts-dejavu-core librsvg2-bin curl tar && bash ps4-native/build.sh"
       - name: Publish PKG to Cloudflare R2
+        if: github.event_name != 'pull_request'
         env:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
         run: |
           set -euo pipefail
-          if [ -z "${R2_ACCOUNT_ID:-}" ] || [ -z "${R2_ACCESS_KEY_ID:-}" ] || [ -z "${R2_SECRET_ACCESS_KEY:-}" ]; then
+          if [ -z "${R2_ACCOUNT_ID:-}" ] || [ -z "${AWS_ACCESS_KEY_ID:-}" ] || [ -z "${AWS_SECRET_ACCESS_KEY:-}" ]; then
             echo "::error::R2 secrets are missing. Configure R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY."
             exit 1
           fi
 
-          # Accept only the Cloudflare account ID; trim accidental whitespace.
-          R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | tr -d '[:space:]')"
-          if [[ ! "$R2_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
-            echo "::error::R2_ACCOUNT_ID must contain only the 32-character Cloudflare Account ID (not the endpoint URL)."
+          R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          if [[ "$R2_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
+            R2_ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+          elif [[ "$R2_ACCOUNT_ID" =~ ^https://[a-fA-F0-9]{32}\.r2\.cloudflarestorage\.com/?$ ]]; then
+            R2_ENDPOINT="${R2_ACCOUNT_ID%/}"
+          else
+            echo "::error::R2_ACCOUNT_ID must be a 32-character Cloudflare account ID or its HTTPS R2 endpoint."
             exit 1
           fi
-          R2_ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
 
           python3 -m pip install --user awscli
           export PATH="$HOME/.local/bin:$PATH"
