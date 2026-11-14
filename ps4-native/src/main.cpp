@@ -12,9 +12,9 @@
 
 extern "C" int sceSystemServiceLaunchWebBrowser(const char* uri, void* reserved);
 
-static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 10;
-static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "EMULADORES"};
-static const int FILTER_COUNT = 4;
+static const int SW = 1920, SH = 1080, ITEMS_PER_PAGE = 8;
+static const char* FILTERS[] = {"TODOS", "JOGOS", "APLICATIVOS", "EMULADORES", "FAVORITOS"};
+static const int FILTER_COUNT = 5;
 static SDL_Window* windowHandle = nullptr;
 static SDL_Renderer* renderer = nullptr;
 static SDL_GameController* gameController = nullptr;
@@ -38,7 +38,7 @@ static int sidebarIndex = 0;
 static bool sidebarFocus = false;
 static int utilityPanel = 0;
 static int homeAction = 0;
-static bool homeScreen = false, showDetails = false, running = true;
+static bool homeScreen = true, showDetails = false, running = true;
 static bool frameDirty = true;
 
 struct Glyph { char key; unsigned char rows[7]; };
@@ -93,6 +93,12 @@ static void text(int x,int y,const std::string& s,Uint8 r,Uint8 g,Uint8 b,int sc
         x+=6*scale;
     }
 }
+static void wordmark(int x, int y, const std::string& label, int scale) {
+    // Layered charcoal and ember strokes give the title a darker, engraved look.
+    text(x + 5, y + 5, label, 3, 2, 5, scale);
+    text(x + 2, y + 2, label, 117, 49, 45, scale);
+    text(x, y, label, 232, 223, 215, scale);
+}
 static std::string trim(const char* s,int max){ std::string v=s?s:""; if((int)v.size()>max){v=v.substr(0,max-3)+"...";} return v; }
 static bool matches(const char* category, int itemIndex){
     if(searchActive && !searchQuery.empty()){
@@ -102,11 +108,12 @@ static bool matches(const char* category, int itemIndex){
         std::transform(needle.begin(),needle.end(),needle.begin(),[](unsigned char c){return (char)std::tolower(c);});
         if(hay.find(needle)==std::string::npos)return false;
     }
-    if(favoritesOnly && (itemIndex<0 || itemIndex>=(int)favoriteItems.size() || !favoriteItems[itemIndex])) return false;
+    if((favoritesOnly || filterIndex==4) && (itemIndex<0 || itemIndex>=(int)favoriteItems.size() || !favoriteItems[itemIndex])) return false;
     if(filterIndex==0) return true;
     if(filterIndex==1) return !std::strcmp(category,"Jogos");
     if(filterIndex==2) return !std::strcmp(category,"Aplicativos");
-    return !std::strcmp(category,"Emuladores");
+    if(filterIndex==3) return !std::strcmp(category,"Emuladores");
+    return true;
 }
 static void refresh(){
     visible.clear();
@@ -158,19 +165,19 @@ static void drawCover(int itemIndex,int x,int y,int w,int h){
     }
 }
 static void drawCard(int slot,int itemIndex,bool active){
-    int col=slot%5,row=slot/5,x=300+col*318,y=344+row*300,w=296,h=282;
-    fill(x,y,w,h,active?8:5,active?40:20,active?80:37);
-    outline(x,y,w,h,active?112:31,active?216:105,active?255:170,active?4:2);
+    int col=slot%4,row=slot/4,x=300+col*392,y=350+row*300,w=366,h=278;
+    fill(x,y,w,h,active?24:17,active?44:27,active?56:37);
+    outline(x,y,w,h,active?109:44,active?176:83,active?199:110,active?4:2);
     const StoreItem& it=STORE_ITEMS[itemIndex];
-    fill(x+10,y+8,w-20,24,7,94,180);
+    fill(x+10,y+8,w-20,24,22,40,51);
     const char* platform=(std::string(it.category)=="Jogos"&&std::string(it.version)=="PS5")?"PS5":"PS4";
     text(x+19,y+12,platform,255,255,255,2);
     if(itemIndex<(int)favoriteItems.size()&&favoriteItems[itemIndex])text(x+w-112,y+12,"FAVORITO",255,224,120,2);
-    const int coverW=178,coverH=205,coverX=x+(w-coverW)/2,coverY=y+38;
+    const int coverW=218,coverH=200,coverX=x+(w-coverW)/2,coverY=y+36;
     drawCover(itemIndex,coverX,coverY,coverW,coverH);
-    text(x+12,y+250,trim(it.name,30),244,248,255,2,x+w-12);
-    text(x+14,y+272,trim(it.category,19),105,195,255,2);
-    if(active)text(x+w-104,y+272,"X ABRIR",180,220,255,2);
+    text(x+14,y+243,trim(it.name,36),238,240,238,2,x+w-14);
+    text(x+14,y+264,trim(it.category,19),153,192,207,1);
+    if(active)text(x+w-126,y+264,"X DETALHES",193,220,229,1);
 }
 static void wrapText(int x,int y,const char* raw,Uint8 r,Uint8 g,Uint8 b,int chars=70){
     std::string s=raw?raw:""; int line=0;
@@ -187,8 +194,8 @@ static void drawVirtualKeyboard(){
         bool active=i==keyboardIndex;
         fill(x,y,116,54,active?8:5,active?85:25,active?160:48);
         outline(x,y,116,54,active?100:35,active?220:100,active?255:145,active?3:1);
-        char label[2]={VIRTUAL_KEYS[i],0};
-        if(label[0]==' ')std::strcpy(label,"ESP");
+        char keyLabel[2]={VIRTUAL_KEYS[i],0};
+        const char* label=keyLabel[0]==' '?"ESP":keyLabel;
         text(x+20,y+18,label,245,248,255,2);
     }
     fill(300,930,250,30,20,70,110);text(315,937,"L1 APAGAR",210,230,250,2);
@@ -199,22 +206,22 @@ static void draw(){
     fill(0,0,SW,SH,2,8,22);
     if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,20);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,hadesTexture,nullptr,&bg);SDL_SetTextureAlphaMod(hadesTexture,255);}
     fill(0,0,SW,SH,2,9,23,195);
-    if(bannerTexture){SDL_Rect banner{920,0,1000,220};SDL_RenderCopy(renderer,bannerTexture,nullptr,&banner);}
-    fill(0,216,SW,3,24,139,235);
+    if(bannerTexture){SDL_SetTextureAlphaMod(bannerTexture,105);SDL_Rect banner{920,0,1000,220};SDL_RenderCopy(renderer,bannerTexture,nullptr,&banner);SDL_SetTextureAlphaMod(bannerTexture,255);}
+    fill(0,216,SW,3,88,133,151);
     if(sigilTexture){SDL_Rect mark{28,22,96,96};SDL_RenderCopy(renderer,sigilTexture,nullptr,&mark);}
-    text(137,30,"HADES STORE",245,248,255,5);
-    text(139,86,"JOGOS  /  APLICATIVOS  /  EMULADORES",176,211,247,2);
+    wordmark(137,30,"HADES STORE",5);
+    text(139,86,"JOGOS  /  APLICATIVOS  /  EMULADORES",155,183,195,2);
 
     int tabX=256;
     for(int i=0;i<FILTER_COUNT;i++){
-        int width=340,x=tabX+i*350;
+        int width=300,x=tabX+i*330;
         bool active=i==filterIndex;
-        fill(x,226,width,58,active?8:4,active?83:20,active?168:38);
-        outline(x,226,width,58,active?91:28,active?208:80,active?255:125,active?3:1);
-        text(x+24,246,FILTERS[i],active?255:205,active?255:220,active?255:239,3);
+        fill(x,226,width,58,active?24:15,active?43:25,active?53:34);
+        outline(x,226,width,58,active?119:52,active?164:86,active?175:104,active?3:1);
+        text(x+18,246,FILTERS[i],active?239:196,active?229:210,active?216:217,3);
     }
 
-    fill(0,292,280,704,2,10,25,235);fill(278,292,2,704,16,115,210);
+    fill(0,292,280,704,8,13,19,245);fill(278,292,2,704,55,82,91);
     if(avatarTexture){SDL_Rect avatar{66,310,170,170};SDL_RenderCopy(renderer,avatarTexture,nullptr,&avatar);}
     else if(hadesTexture){SDL_Rect avatar{66,310,170,170};SDL_RenderCopy(renderer,hadesTexture,nullptr,&avatar);}
     outline(66,310,170,170,67,190,255,3);
@@ -303,11 +310,11 @@ static void activateSidebar(){sidebarFocus=false;switch(sidebarIndex){case 0:hom
 static void handleDirection(int dx,int dy){
     if(showDetails||utilityPanel)return;
     if(sidebarFocus){if(dy)sidebarIndex=(sidebarIndex+(dy>0?1:5))%6;if(dx>0)sidebarFocus=false;return;}
-    if(dx<0&&selected%5==0){sidebarFocus=true;sidebarIndex=2;return;}
+    if(dx<0&&selected%4==0){sidebarFocus=true;sidebarIndex=1;return;}
     if(visible.empty())return;
     int next=selected+dx+dy*5; if(next<0)next=0;if(next>=(int)visible.size())next=(int)visible.size()-1;selected=next;
 }
-static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;favoritesOnly=false;refresh();}
+static void changeFilter(int amount){filterIndex=(filterIndex+amount+FILTER_COUNT)%FILTER_COUNT;selected=0;favoritesOnly=filterIndex==4;refresh();}
 static void loadFavorites(){
     FILE* file=std::fopen(FAVORITES_FILE,"rb");
     if(!file) return;
@@ -362,51 +369,53 @@ static void activateVirtualKey(){
     selected=0;refresh();
 }
 static void moveHome(int dx,int dy){
-    // The home menu has four valid actions arranged as a 3+1 grid.
-    // Keep the selection in [0, 3] so enterCatalog() always maps safely.
+    // Five categories in a 3+2 grid, matching the catalog tabs.
     if(dx){
-        if(homeAction==3){ if(dx<0)homeAction=2; }
-        else homeAction=std::max(0,std::min(2,homeAction+dx));
+        if(homeAction<3)homeAction=std::max(0,std::min(2,homeAction+dx));
+        else homeAction=std::max(3,std::min(4,homeAction+dx));
     } else if(dy>0){
-        if(homeAction<3)homeAction=3;
-    } else if(dy<0){
-        if(homeAction==3)homeAction=0;
+        if(homeAction<3)homeAction=std::min(4,homeAction+3);
+    } else if(dy<0 && homeAction>=3){
+        homeAction-=3;
     }
 }
 static void enterCatalog(){
-    static const int actionFilters[]={0,1,2,3};
-    filterIndex=actionFilters[homeAction];selected=0;showDetails=false;homeScreen=false;refresh();
+    static const int actionFilters[]={0,1,2,3,4};
+    filterIndex=actionFilters[homeAction];favoritesOnly=filterIndex==4;selected=0;showDetails=false;homeScreen=false;refresh();
 }
 static void drawHome(){
-    fill(0,0,SW,SH,3,10,25);
-    fill(0,0,SW,106,4,16,38);fill(0,104,SW,2,24,139,235);
-    text(58,26,"HADES STORE",244,240,232,5);
-    text(58,73,"CATALOGO PARA PS4",170,166,161,2);
-    text(1470,54,"CENTRAL HOMEBREW",226,189,118,2);
-    text(105,190,"CENTRAL HOMEBREW",226,189,118,3);
-    text(100,274,"SEU UNIVERSO.",244,240,232,8);
-    text(100,368,"SUAS POSSIBILIDADES.",169,149,219,6);
-    text(105,480,"JOGOS, APLICATIVOS E EMULADORES",142,203,255,3);
-    text(105,520,"TUDO PARA SEU PS4 EM UM SO LUGAR.",170,205,242,3);
-    const char* actions[]={"EXPLORAR CATALOGO","JOGOS","APLICATIVOS","EMULADORES"};
-    for(int i=0;i<4;i++){
-        int x=105+(i%3)*280,y=615+(i/3)*72;
+    fill(0,0,SW,SH,7,11,17);
+    if(bannerTexture){SDL_SetTextureAlphaMod(bannerTexture,95);SDL_Rect bg{900,0,1020,1080};SDL_RenderCopy(renderer,bannerTexture,nullptr,&bg);SDL_SetTextureAlphaMod(bannerTexture,255);}
+    fill(0,0,SW,SH,5,9,15,185);
+    fill(0,0,SW,112,11,17,23);fill(0,110,SW,2,88,133,151);
+    if(sigilTexture){SDL_Rect mark{52,22,68,68};SDL_RenderCopy(renderer,sigilTexture,nullptr,&mark);}
+    wordmark(142,24,"HADES STORE",5);
+    text(145,78,"PORTAL DE JOGOS, APLICATIVOS E EMULADORES",155,183,195,2);
+    text(1495,52,"NAVEGUE PELO CONTROLE",143,172,184,2);
+    text(96,174,"O SUBMUNDO DOS GAMES",123,177,192,2);
+    wordmark(92,234,"DESCUBRA SEU PROXIMO MUNDO",5);
+    text(98,300,"Uma loja feita para explorar o universo homebrew do PS4.",169,190,199,2);
+    text(98,342,"Escolha uma categoria para abrir o catalogo atualizado.",139,164,176,2);
+    const char* actions[]={"TODOS","JOGOS","APLICATIVOS","EMULADORES","FAVORITOS"};
+    for(int i=0;i<5;i++){
+        int x=96+(i%3)*250,y=438+(i/3)*90;
         bool active=i==homeAction;
-        fill(x,y,252,52,active?8:5,active?91:22,active?190:39);
-        outline(x,y,252,52,active?76:27,active?196:76,active?255:116,active?3:1);
-        text(x+15,y+18,actions[i],255,255,255,2);
+        fill(x,y,224,66,active?24:15,active?43:25,active?53:34);
+        outline(x,y,224,66,active?119:52,active?164:86,active?175:104,active?3:1);
+        text(x+19,y+14,active?">":"",active?180:100,active?104:124,active?85:135,2);
+        text(x+43,y+23,actions[i],active?239:196,active?229:210,active?216:217,2);
     }
-    if(hadesTexture){SDL_Rect dst{1185,136,640,725};SDL_RenderCopy(renderer,hadesTexture,nullptr,&dst);}
+    if(hadesTexture){SDL_SetTextureAlphaMod(hadesTexture,225);SDL_Rect dst{1170,134,650,745};SDL_RenderCopy(renderer,hadesTexture,nullptr,&dst);SDL_SetTextureAlphaMod(hadesTexture,255);}
     else {
         circle(1505,476,190,226,189,118);circle(1505,476,135,24,25,34);
         text(1378,435,"HADES",244,240,232,8);
     }
-    text(105,825,"HADES  /  SEU PORTAL PS4",105,195,255,2);
-    char count[64];std::snprintf(count,sizeof(count),"%d ITENS   %d CATEGORIAS",STORE_ITEM_COUNT,4);
-    text(105,905,count,226,189,118,2);
-    fill(55,976,1810,2,52,49,58);
-    text(58,1000,"X SELECIONAR   DIRECIONAL NAVEGAR   O SAIR",170,166,161,2);
-    text(1520,1000,"INTERFACE PARA CONTROLE",169,149,219,2);
+    text(98,704,"CATALOGO NATIVO PARA PLAYSTATION 4",137,163,174,2);
+    char count[64];std::snprintf(count,sizeof(count),"%d ITENS  /  5 CATEGORIAS",STORE_ITEM_COUNT);
+    text(98,750,count,180,129,111,2);
+    fill(55,962,1810,2,55,82,91);
+    text(58,988,"X ABRIR CATEGORIA   DIRECIONAL NAVEGAR   O SAIR",158,181,190,2);
+    text(1520,988,"HADES STORE  /  PS4",174,144,127,2);
     SDL_UpdateWindowSurface(windowHandle);
 }
 static void handleKey(SDL_Keycode key){
@@ -470,6 +479,42 @@ static void handleControllerButton(SDL_GameControllerButton button){
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)handleDirection(-1,0);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)handleDirection(1,0);
 }
+static void playIntro(){
+    const Uint32 start=SDL_GetTicks();
+    SDL_Event event;
+    while(SDL_GetTicks()-start<4400){
+        while(SDL_PollEvent(&event)){
+            if(event.type==SDL_QUIT){running=false;return;}
+            if(event.type==SDL_KEYDOWN||event.type==SDL_CONTROLLERBUTTONDOWN||event.type==SDL_JOYBUTTONDOWN){return;}
+        }
+        const Uint32 elapsed=SDL_GetTicks()-start;
+        fill(0,0,SW,SH,5,8,14);
+        if(bannerTexture){SDL_SetTextureAlphaMod(bannerTexture,75);SDL_Rect bg{0,0,SW,SH};SDL_RenderCopy(renderer,bannerTexture,nullptr,&bg);SDL_SetTextureAlphaMod(bannerTexture,255);}
+        fill(0,0,SW,SH,4,7,12,155);
+        if(elapsed<1900){
+            const int pulse=(int)(elapsed%900);
+            circle(960,470,150+pulse/12,95,31,34);
+            if(sigilTexture){SDL_Rect seal{830,335,260,260};SDL_RenderCopy(renderer,sigilTexture,nullptr,&seal);}
+            wordmark(650,670,"HADES STORE",8);
+            text(760,770,"O SUBMUNDO ABRE SUAS PORTAS",173,143,127,2);
+        }else{
+            const int phase=(int)((elapsed-1900)%1700);
+            if(hadesTexture){SDL_Rect god{310+(phase<850?phase/12:70-(phase-850)/12),170,470,610};SDL_RenderCopy(renderer,hadesTexture,nullptr,&god);}
+            // A stylized wraith made from simple shapes keeps the intro self-contained.
+            circle(1450,440,118,30,42,55);circle(1450,390,78,18,25,34);
+            circle(1422,384,9,224,93,71);circle(1478,384,9,224,93,71);
+            fill(1383,490,134,220,17,26,35);
+            color(136,72,67);SDL_RenderDrawLine(renderer,850,520,1390,430);
+            color(222,143,102);SDL_RenderDrawLine(renderer,850,515,1400,420);
+            if((phase/120)%2==0){circle(1130,474,35,222,114,76);circle(1192,457,20,240,190,137);}
+            wordmark(790,820,"HADES  VS  ESPECTRO",4);
+            text(820,900,"UMA JORNADA PELO SUBMUNDO",154,179,189,2);
+        }
+        text(760,1030,"PRESSIONE QUALQUER BOTAO PARA PULAR",126,146,155,1);
+        SDL_UpdateWindowSurface(windowHandle);
+        SDL_Delay(33);
+    }
+}
 int main(int argc,char** argv){
     (void)argc;(void)argv;setvbuf(stdout,nullptr,_IONBF,0);favoriteItems.assign(STORE_ITEM_COUNT,0);loadFavorites();refresh();coverTextures.resize(STORE_ITEM_COUNT,nullptr);
     if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK|SDL_INIT_GAMECONTROLLER)!=0)return 1;
@@ -486,6 +531,7 @@ int main(int argc,char** argv){
     sigilTexture=loadTexture("/app0/sce_sys/hades-sigil.bmp");
     SDL_JoystickEventState(SDL_ENABLE);SDL_GameControllerEventState(SDL_ENABLE);
     if(SDL_NumJoysticks()>0){if(SDL_IsGameController(0))gameController=SDL_GameControllerOpen(0);else SDL_JoystickOpen(0);}
+    playIntro();
     while(running){SDL_Event e;if(SDL_WaitEventTimeout(&e,16))do{
         if(e.type==SDL_QUIT)running=false;
         else if(e.type==SDL_KEYDOWN){handleKey(e.key.keysym.sym);frameDirty=true;}
