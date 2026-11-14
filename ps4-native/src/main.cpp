@@ -250,8 +250,12 @@ static void draw(){
         text(625,265,"DETALHES DO ITEM",105,211,255,3);text(625,325,trim(it.name,54),244,248,255,5);
         text(625,395,trim(it.category,30),169,214,255,3);wrapText(625,455,it.description,203,222,244,75);
         if(it.recommendedGames && it.recommendedGames[0]){text(625,650,"JOGOS RECOMENDADOS",105,195,255,2);wrapText(625,690,it.recommendedGames,210,225,245,92);}
-        text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
-        text(625,748,trim(it.url,100),170,198,224,2);
+        if(it.pending){wrapText(625,748,"Download temporariamente indisponivel. O pacote ja foi gerado; o link publico sera ativado apos a configuracao do armazenamento permanente da HADES Store.",255,214,140,75);}
+        else{
+            if(it.hasPackages)text(625,790,"SENHA DOS ARQUIVOS: 201055",157,238,255,3);
+            text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
+            text(625,748,trim(it.url,100),170,198,224,2);
+        }
         text(625,930,"O VOLTAR AO CATALOGO",170,205,235,2);
     }
     SDL_UpdateWindowSurface(windowHandle);
@@ -290,6 +294,7 @@ static bool isSafeHttpsUrl(const char* url){
 }
 static void openSelected(){
     if(visible.empty()||selected<0||selected>=(int)visible.size())return;
+    if(STORE_ITEMS[visible[selected]].pending)return;
     const char* url=STORE_ITEMS[visible[selected]].url;
     if(isSafeHttpsUrl(url))sceSystemServiceLaunchWebBrowser(url,nullptr);
 }
