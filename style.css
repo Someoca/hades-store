@@ -3289,34 +3289,68 @@ body {
 }
 
 
-/* HADES Store: corrigir a geometria do contêiner das capas em todas as telas */
-.app-card > .game-physical {
-  position: relative !important;
-  display: block !important;
-  flex: 0 0 auto !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 0 !important;
-  aspect-ratio: 3 / 4 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+/* Geometria das capas: mantém o preenchimento do cartão no desktop. */
+@media (min-width: 761px) {
+  .app-card > .game-physical {
+    flex: 1 1 0 !important;
+    width: 100% !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical > .game-cover {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical .game-cover-art {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
 }
-.app-card > .game-physical > .game-cover {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 0 !important;
-  aspect-ratio: auto !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-.app-card > .game-physical .game-cover-art {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-height: none !important;
-  object-fit: contain !important;
-  display: block !important;
+
+/* Em telas menores, preserva a proporção vertical da capa. */
+@media (max-width: 760px) {
+  .app-card > .game-physical {
+    position: relative !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 3 / 4 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical > .game-cover {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical .game-cover-art {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
 }
