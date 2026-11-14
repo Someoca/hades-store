@@ -48,10 +48,16 @@ jobs:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
         run: |
           set -euo pipefail
+          AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID#"${AWS_ACCESS_KEY_ID%%[![:space:]]*}"}"
+          AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID%"${AWS_ACCESS_KEY_ID##*[![:space:]]}"}"
+          AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY#"${AWS_SECRET_ACCESS_KEY%%[![:space:]]*}"}"
+          AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY%"${AWS_SECRET_ACCESS_KEY##*[![:space:]]}"}"
           if [ -z "${AWS_ACCESS_KEY_ID:-}" ] || [ -z "${AWS_SECRET_ACCESS_KEY:-}" ] || [ -z "${R2_ACCOUNT_ID:-}" ]; then
             echo "::error::Missing R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, or R2_ACCOUNT_ID GitHub Actions secret."
             exit 1
           fi
+          echo "::add-mask::$AWS_ACCESS_KEY_ID"
+          echo "::add-mask::$AWS_SECRET_ACCESS_KEY"
 
           if [[ ! "$R2_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
             echo "::error::R2_ACCOUNT_ID must be the 32-character Cloudflare Account ID."
