@@ -12964,13 +12964,16 @@
     "id": "hades-store-ps4-v1-3",
     "name": "HADES Store — Aplicativo PS4",
     "category": "Aplicativos",
-    "version": "1.03",
+    "version": "1.4",
     "icon": "HADES",
-    "description": "Aplicativo nativo da HADES Store para PlayStation 4. Pacote oficial gerado pelo projeto. O download público será liberado assim que o armazenamento permanente da loja (Cloudflare R2) estiver configurado.",
-    "size": "Aproximadamente 152 MB",
+    "description": "Aplicativo nativo da HADES Store para PlayStation 4. Versão 1.4. Pacote oficial disponível para download.",
+    "size": "Aproximadamente 155,56 MB",
     "language": "Português (Brasil)",
     "format": "PKG — TITLE_ID HADS00001",
     "imageUrl": "assets/hades-emblem.png",
-    "downloadStatus": "pending"
+    "downloadStatus": "available",
+    "downloadUrl": "https://downloads.hadesstoneonline.com/HADES-Store-PS4-v1.4-download.zip",
+    "linkLabel": "BAIXAR HADES STORE v1.4 (ZIP)",
+    "packageLinks": []
   }
 ]
