@@ -3380,6 +3380,20 @@
     ]
   },
   {
+    "id": "emulator-emulador-ps4",
+    "name": "Emulador (frontend)",
+    "category": "Emuladores",
+    "version": "v0.1.1-pre",
+    "icon": "203",
+    "description": "Frontend homebrew para PS4: biblioteca de jogos com capas, leitura de USB e detec??o de formatos de ROM; abre o DolphinPS4 quando instalado. Vers?o de teste, ainda n?o verificada em PS4 real. N?o inclui jogos nem firmware.",
+    "size": "6,3 MiB",
+    "language": "Portugu?s (Brasil)",
+    "format": "PKG",
+    "downloadUrl": "https://github.com/Someoca/Emulador/releases/download/v0.1.1-pre/IV0000-EMUL00001_00-EMULADOR00000000.pkg",
+    "imageUrl": "assets/hades-emblem.png",
+    "linkLabel": "BAIXAR PKG ?"
+  },
+  {
     "id": "pkg-003-f1-22",
     "name": "F1 22",
     "category": "Jogos",
