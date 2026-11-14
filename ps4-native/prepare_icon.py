@@ -5,7 +5,7 @@ import pathlib
 import subprocess
 import sys
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 source, target = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 hero_target = pathlib.Path(sys.argv[3]) if len(sys.argv) > 3 else target.with_name("hades-hero.bmp")
@@ -24,9 +24,24 @@ for y in range(size):
         glow = max(0.0, 1.0 - ((dx * dx + dy * dy) ** 0.5) / 340.0)
         pixels[x, y] = (int(8 + glow * 43), int(10 + glow * 21), int(18 + glow * 31))
 background = background.convert("RGBA")
-background.alpha_composite(mascot, ((size - mascot.width) // 2, 12))
+# Keep the familiar HADES emblem from the package artwork and frame it with a
+# darker, horror-inspired wordmark that remains legible on the PS4 home screen.
+emblem_path = source.parent / "hades-emblem.png"
+emblem = Image.open(emblem_path).convert("RGBA") if emblem_path.exists() else mascot
+emblem.thumbnail((430, 430), Image.Resampling.LANCZOS)
+background.alpha_composite(emblem, ((size - emblem.width) // 2, 0))
 draw = ImageDraw.Draw(background)
 draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
+draw.rectangle((0, 326, size, size), fill=(5, 8, 12, 205))
+font_candidates = [
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-Bold.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+]
+font_path = next((pathlib.Path(p) for p in font_candidates if pathlib.Path(p).exists()), None)
+title_font = ImageFont.truetype(str(font_path), 54) if font_path else ImageFont.load_default()
+store_font = ImageFont.truetype(str(font_path), 32) if font_path else ImageFont.load_default()
+draw.text((size // 2, 365), "HADES", font=title_font, anchor="mm", fill=(241, 230, 216), stroke_width=2, stroke_fill=(38, 19, 20))
+draw.text((size // 2, 433), "S T O R E", font=store_font, anchor="mm", fill=(191, 92, 78))
 target.parent.mkdir(parents=True, exist_ok=True)
 background.convert("RGB").save(target, format="PNG", optimize=True)
 

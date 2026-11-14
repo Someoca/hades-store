@@ -1,13 +1,13 @@
 # HADES Store — aplicativo nativo para PS4
 
-O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicial apresenta o mascote Hades, resumo do catálogo e atalhos por categoria. A biblioteca usa a mesma fonte de dados `catalog/catalog.json` da loja web, com abas de Todos, Jogos, Aplicativos e Emuladores. A pesquisa localiza termos no nome e na descrição dos itens e inclui teclado virtual navegável pelo DualShock 4; também aceita teclado físico conectado. As capas são empacotadas localmente para navegação offline; os detalhes dos emuladores também mostram a seleção de jogos recomendados cadastrada no catálogo.
+O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicial da versão 1.4 usa um visual carvão e cobre, atalhos interativos para Todos, Jogos, Aplicativos, Emuladores e Favoritos, além de uma breve animação de abertura que pode ser pulada pelo controle. A biblioteca usa a mesma fonte de dados `catalog/catalog.json` da loja web. A pesquisa localiza termos no nome e na descrição dos itens e inclui teclado virtual navegável pelo DualShock 4; também aceita teclado físico conectado. As capas são empacotadas localmente para navegação offline; os detalhes dos emuladores também mostram a seleção de jogos recomendados cadastrada no catálogo.
 
 ## Controles
 
 | Ação | DualShock 4 |
 | --- | --- |
 | Navegar | Direcional |
-| Mudar categoria | L1 / R1 (Todos, Jogos, Aplicativos, Emuladores) |
+| Mudar categoria | L1 / R1 (Todos, Jogos, Aplicativos, Emuladores, Favoritos) |
 | Abrir detalhes | Cross (X) |
 | Abrir o link do item no navegador | Square |
 | Marcar/desmarcar favorito (gravação local em /data) | L3 (pressionar analógico esquerdo) |
@@ -18,13 +18,13 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Voltar / fechar detalhes | Circle |
 | Encerrar aplicativo | Options |
 
-Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo. Os favoritos são carregados e gravados em `/data/hades-store-favorites.dat`. A interface indica quando a gravação foi confirmada; se o caminho não for gravável no firmware/ambiente, o app mantém a sessão sem afirmar que salvou. A persistência precisa ser confirmada em teste físico no console.
+Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo, e qualquer botão pula a introdução animada. Os favoritos são carregados e gravados em `/data/hades-store-favorites.dat`. A interface indica quando a gravação foi confirmada; se o caminho não for gravável no firmware/ambiente, o app mantém a sessão sem afirmar que salvou. A persistência precisa ser confirmada em teste físico no console.
 
 ## Gerar o PKG
 
 O build usa o contêiner OpenOrbis `v0.5.1` e roda automaticamente em alterações no código nativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
 
-O artefato `HADES-Store-PS4-v1.3.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
+O artefato `HADES-Store-PS4-v1.4.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 
 ```sh
 bash ps4-native/build.sh
@@ -41,7 +41,7 @@ O pacote será gravado em `ps4-native/dist/` e requer um PS4 configurado para ex
 - `prepare_font.py`: cria a atlas BMP da fonte usada na interface.
 - `tools/generate-app-covers.mjs`: gera capas vetoriais para aplicativos e emuladores.
 
-O app não contém jogos comerciais, BIOS, chaves ou firmware. Os jogos apontam para a PlayStation Store; aplicativos e emuladores usam os destinos cadastrados. Confirme procedência e compatibilidade antes de instalar arquivos externos.
+O app não contém jogos comerciais, BIOS, chaves ou firmware. No PKG nativo, os botões de abrir item usam somente `downloadUrl` HTTPS de terceiros; URLs oficiais Sony/PlayStation não são incluídas como destino de abertura. Itens sem destino externo válido continuam visíveis no catálogo, mas não abrem um link.
 
 ## Validação no console
 
