@@ -3391,3 +3391,53 @@ body {
     height: calc(100% - 35px) !important;
   }
 }
+
+/* HADES Store desktop cover fix v2: fixed intrinsic height prevents flex/grid collapse. */
+@media (min-width: 761px) {
+  #grid.game-grid {
+    display: flex !important;
+    align-items: flex-start !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+  #grid.game-grid > .app-card {
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: flex-start !important;
+  }
+  #grid.game-grid > .app-card > .game-physical {
+    display: block !important;
+    position: relative !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: clamp(210px, 21vw, 300px) !important;
+    min-height: 210px !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  #grid.game-grid > .app-card > .game-physical > .game-cover {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  #grid.game-grid > .app-card .game-cover-art {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
