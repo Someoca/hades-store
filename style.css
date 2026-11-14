@@ -3289,14 +3289,15 @@ body {
 }
 
 
-/* HADES Store: correção definitiva da altura das capas no catálogo */
+/* HADES Store: corrigir a geometria do contêiner das capas em todas as telas */
 .app-card > .game-physical {
+  position: relative !important;
   display: block !important;
-  flex: 1 1 auto !important;
+  flex: 0 0 auto !important;
   width: 100% !important;
   height: auto !important;
-  min-height: 220px !important;
-  aspect-ratio: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 3 / 4 !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
@@ -3318,7 +3319,4 @@ body {
   max-height: none !important;
   object-fit: contain !important;
   display: block !important;
-}
-@media (max-width: 760px) {
-  .app-card > .game-physical { min-height: 0 !important; }
 }
