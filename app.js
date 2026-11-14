@@ -620,7 +620,7 @@ function showDetails(item) {
   $('.dialog-note').textContent = item.downloadStatus === 'pending'
     ? 'Download temporariamente indisponível. O pacote já foi gerado; o link público será ativado após a configuração do armazenamento permanente da HADES Store.'
     : packageLinks.length
-      ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 201055; o provedor pode exigir uma confirmação antes de iniciar o download.'
+      ? 'Os links abrem a página do serviço de hospedagem. A senha informada para os arquivos compactados é 866919; o provedor pode exigir uma confirmação antes de iniciar o download.'
       : item.linkLabel
         ? 'Link externo cadastrado. Confira o destino, a procedência e a compatibilidade do arquivo antes de instalar.'
         : 'Confira edição, idioma, região e compatibilidade na página oficial antes de adquirir.';
