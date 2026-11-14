@@ -43,9 +43,9 @@ jobs:
       - name: Upload installable PKG and checksum
         uses: actions/upload-artifact@v4
         with:
-          name: HADES-Store-PS4-PKG-v1.3
+          name: HADES-Store-PS4-PKG-v1.4
           path: |
-            ps4-native/dist/HADES-Store-PS4-v1.3.pkg
+            ps4-native/dist/HADES-Store-PS4-v1.4.pkg
             ps4-native/dist/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
@@ -61,8 +61,8 @@ jobs:
           fi
           python3 -m pip install --user awscli
           export PATH="$HOME/.local/bin:$PATH"
-          aws s3 cp ps4-native/dist/HADES-Store-PS4-v1.3.pkg \
-            s3://hades-aplicativos/HADES-Store-PS4-v1.3.pkg \
+          aws s3 cp ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
+            s3://hades-aplicativos/HADES-Store-PS4-v1.4.pkg \
             --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com" \
             --region auto \
             --content-type "application/vnd.playstation.pkg" \
