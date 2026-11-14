@@ -12,17 +12,17 @@ O aplicativo nativo usa SDL2 e a toolchain comunitária OpenOrbis. A tela inicia
 | Abrir o link do item no navegador | Square |
 | Marcar/desmarcar favorito (gravação local em /data) | L3 (pressionar analógico esquerdo) |
 | Iniciar pesquisa no catálogo | Share (ou `/` em teclado conectado) |
-| Digitar na pesquisa | Teclado virtual: direcional/analógico para navegar, Cross para inserir, Circle ou L1 para apagar e R1 para espaço; teclado físico também funciona |
+| Digitar na pesquisa | Teclado virtual: direcional/analógico para navegar, Cross para inserir, L1 para apagar e R1 para espaço; teclado físico também funciona |
 | Fechar pesquisa | Triângulo ou Esc; Backspace apaga caractere no teclado físico |
 | Mostrar/ocultar apenas favoritos | R3 (pressionar analógico direito) |
-| Voltar / fechar detalhes | Circle |
-| Encerrar aplicativo | Options |
+| Voltar / fechar detalhes | Triângulo |
+| Encerrar aplicativo em qualquer tela | Circle |
 
-Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo. Os favoritos são carregados e gravados em `/data/hades-store-favorites.dat`. A interface indica quando a gravação foi confirmada; se o caminho não for gravável no firmware/ambiente, o app mantém a sessão sem afirmar que salvou. A persistência precisa ser confirmada em teste físico no console.
+Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo em qualquer tela, inclusive durante busca, detalhes e painéis; Triângulo fecha a busca e retorna dos detalhes ou painéis. O ícone do aplicativo usa a nova arte em `assets/hades-store-app-icon.png`. Os favoritos são carregados e gravados em `/data/hades-store-favorites.dat`. A interface indica quando a gravação foi confirmada; se o caminho não for gravável no firmware/ambiente, o app mantém a sessão sem afirmar que salvou. A persistência precisa ser confirmada em teste físico no console.
 
 ## Gerar o PKG
 
-O build usa o contêiner OpenOrbis `v0.5.1` e roda automaticamente em alterações no código nativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
+O build usa o contêiner OpenOrbis `v0.5.1` e roda automaticamente em alterações no código nativo, no ícone do aplicativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. O aplicativo usa `catalog/catalog.json`, a mesma fonte de catálogo do site. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
 
 O artefato `HADES-Store-PS4-v1.3.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 

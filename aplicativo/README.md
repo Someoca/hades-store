@@ -8,3 +8,5 @@ Quando a compilação for concluída com sucesso, os arquivos serão publicados 
 - [SHA256SUMS.txt](./SHA256SUMS.txt)
 
 O pacote destina-se a consoles PS4 preparados para executar homebrew. A compilação automatizada não substitui o teste de instalação e execução no console físico.
+
+O app usa o catálogo atual de `catalog/catalog.json` e a arte de `assets/hades-store-app-icon.png`. No controle, Circle encerra o app em qualquer tela; Triângulo volta dos detalhes ou fecha painéis.

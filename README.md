@@ -11,7 +11,8 @@ Loja comunitária para PS4 com catálogo web e aplicativo nativo. A versão web 
 - Efeitos sonoros sintetizados para a navegação, ativados manualmente e com preferência salva no navegador.
 - Validação automática de campos, IDs únicos, categorias e URLs HTTPS.
 - Deploy do site pelo GitHub Actions após validação.
-- Build do aplicativo nativo PS4 com OpenOrbis e SDL2.
+- Build do aplicativo nativo PS4 com OpenOrbis e SDL2, compartilhando o catálogo do site; o ícone usa a arte do aplicativo em `assets/hades-store-app-icon.png`.
+- No app nativo, Circle encerra o aplicativo em qualquer tela e Triângulo volta ou fecha painéis.
 
 ## Executar localmente
 

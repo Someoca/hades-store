@@ -16,19 +16,26 @@ rendered = subprocess.run(
 ).stdout
 mascot = Image.open(io.BytesIO(rendered)).convert("RGBA")
 size = 512
-background = Image.new("RGB", (size, size), (8, 10, 18))
-pixels = background.load()
-for y in range(size):
-    for x in range(size):
-        dx, dy = x - 256, y - 255
-        glow = max(0.0, 1.0 - ((dx * dx + dy * dy) ** 0.5) / 340.0)
-        pixels[x, y] = (int(8 + glow * 43), int(10 + glow * 21), int(18 + glow * 31))
-background = background.convert("RGBA")
-background.alpha_composite(mascot, ((size - mascot.width) // 2, 12))
-draw = ImageDraw.Draw(background)
-draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
 target.parent.mkdir(parents=True, exist_ok=True)
-background.convert("RGB").save(target, format="PNG", optimize=True)
+if len(sys.argv) > 10:
+    app_icon = Image.open(sys.argv[10]).convert("RGBA")
+    app_icon.thumbnail((480, 480), Image.LANCZOS)
+    background = Image.new("RGBA", (size, size), (8, 10, 18, 255))
+    background.alpha_composite(app_icon, ((size - app_icon.width) // 2, (size - app_icon.height) // 2))
+    background.convert("RGB").save(target, format="PNG", optimize=True)
+else:
+    background = Image.new("RGB", (size, size), (8, 10, 18))
+    pixels = background.load()
+    for y in range(size):
+        for x in range(size):
+            dx, dy = x - 256, y - 255
+            glow = max(0.0, 1.0 - ((dx * dx + dy * dy) ** 0.5) / 340.0)
+            pixels[x, y] = (int(8 + glow * 43), int(10 + glow * 21), int(18 + glow * 31))
+    background = background.convert("RGBA")
+    background.alpha_composite(mascot, ((size - mascot.width) // 2, 12))
+    draw = ImageDraw.Draw(background)
+    draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
+    background.convert("RGB").save(target, format="PNG", optimize=True)
 
 # Use an uncompressed BMP for the runtime hero so SDL's built-in BMP loader
 # can render it on the console without relying on SDL_image's PNG support.
