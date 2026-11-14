@@ -40,41 +40,30 @@ jobs:
             -w /workspace \
             openorbisofficial/toolchain:v0.5.1 \
             bash -lc "apt-get update && apt-get install -y python3 python3-pil fonts-dejavu-core librsvg2-bin curl tar && bash ps4-native/build.sh"
-      - name: Publish PKG to Cloudflare R2
+      - name: Publish PKG and checksum to Cloudflare R2 with Wrangler
         env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
         run: |
           set -euo pipefail
-          if [ -z "${R2_ACCOUNT_ID:-}" ] || [ -z "${R2_ACCESS_KEY_ID:-}" ] || [ -z "${R2_SECRET_ACCESS_KEY:-}" ]; then
-            echo "::error::R2 secrets are missing. Configure R2_ACCOUNT_ID, R2_ACCESS_KEY_ID and R2_SECRET_ACCESS_KEY."
+          if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+            echo "::error::Missing CLOUDFLARE_API_TOKEN or R2_ACCOUNT_ID GitHub Actions secret."
             exit 1
           fi
 
-          # Accept only the Cloudflare account ID; trim accidental whitespace.
-          R2_ACCOUNT_ID="$(printf '%s' "$R2_ACCOUNT_ID" | tr -d '[:space:]')"
-          if [[ ! "$R2_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
-            echo "::error::R2_ACCOUNT_ID must contain only the 32-character Cloudflare Account ID (not the endpoint URL)."
+          if [[ ! "$CLOUDFLARE_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
+            echo "::error::R2_ACCOUNT_ID must be the 32-character Cloudflare Account ID."
             exit 1
           fi
-          R2_ENDPOINT="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
 
-          python3 -m pip install --user awscli
-          export PATH="$HOME/.local/bin:$PATH"
+          npx --yes wrangler@4.162.0 r2 object put hades-store-downloads/HADES-Store-PS4-v1.4.pkg \
+            --file=ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
+            --remote \
+            --content-type="application/vnd.playstation.pkg" \
+            --cache-control="public, max-age=300"
 
-          aws s3 cp ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
-            s3://hades-store-downloads/HADES-Store-PS4-v1.4.pkg \
-            --endpoint-url "$R2_ENDPOINT" \
-            --region auto \
-            --content-type "application/vnd.playstation.pkg" \
-            --cache-control "public, max-age=300"
-
-          aws s3 cp ps4-native/dist/SHA256SUMS.txt \
-            s3://hades-store-downloads/HADES-Store-PS4-v1.4-SHA256SUMS.txt \
-            --endpoint-url "$R2_ENDPOINT" \
-            --region auto \
-            --content-type "text/plain" \
-            --cache-control "public, max-age=300"
+          npx --yes wrangler@4.162.0 r2 object put hades-store-downloads/HADES-Store-PS4-v1.4-SHA256SUMS.txt \
+            --file=ps4-native/dist/SHA256SUMS.txt \
+            --remote \
+            --content-type="text/plain" \
+            --cache-control="public, max-age=300"
