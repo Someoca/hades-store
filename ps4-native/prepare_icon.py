@@ -28,7 +28,8 @@ background = background.convert("RGBA")
 # darker, horror-inspired wordmark that remains legible on the PS4 home screen.
 emblem_path = source.parent / "hades-emblem.png"
 emblem = Image.open(emblem_path).convert("RGBA") if emblem_path.exists() else mascot
-emblem.thumbnail((430, 430), Image.Resampling.LANCZOS)
+resampling = getattr(Image, "Resampling", Image)
+emblem.thumbnail((430, 430), resampling.LANCZOS)
 background.alpha_composite(emblem, ((size - emblem.width) // 2, 0))
 draw = ImageDraw.Draw(background)
 draw.rectangle((5, 5, size - 6, size - 6), outline=(235, 105, 77, 210), width=5)
