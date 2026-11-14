@@ -63,15 +63,19 @@ jobs:
           "$RUNNER_TEMP/awscli-venv/bin/pip" install --disable-pip-version-check awscli
           AWS="$RUNNER_TEMP/awscli-venv/bin/aws"
 
-          "$AWS" s3 cp ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
-            "s3://hades-store-downloads/HADES-Store-PS4-v1.4.pkg" \
+          "$AWS" s3api put-object \
+            --bucket hades-store-downloads \
+            --key HADES-Store-PS4-v1.4.pkg \
+            --body ps4-native/dist/HADES-Store-PS4-v1.4.pkg \
             --endpoint-url "$R2_ENDPOINT" \
             --region auto \
             --content-type "application/vnd.playstation.pkg" \
             --cache-control "public, max-age=300"
 
-          "$AWS" s3 cp ps4-native/dist/SHA256SUMS.txt \
-            "s3://hades-store-downloads/HADES-Store-PS4-v1.4-SHA256SUMS.txt" \
+          "$AWS" s3api put-object \
+            --bucket hades-store-downloads \
+            --key HADES-Store-PS4-v1.4-SHA256SUMS.txt \
+            --body ps4-native/dist/SHA256SUMS.txt \
             --endpoint-url "$R2_ENDPOINT" \
             --region auto \
             --content-type "text/plain" \
