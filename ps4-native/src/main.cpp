@@ -180,7 +180,7 @@ static void drawVirtualKeyboard(){
     if(!searchActive)return;
     fill(270,610,1380,360,3,12,29,248);
     outline(270,610,1380,360,55,170,235,3);
-    text(300,628,"TECLADO VIRTUAL - DIRECIONAL NAVEGAR / X INSERIR / O APAGAR",150,210,255,2);
+    text(300,628,"TECLADO VIRTUAL - DIRECIONAL NAVEGAR / X INSERIR / L1 APAGAR / O SAIR",150,210,255,2);
     const int keyCount=(int)std::strlen(VIRTUAL_KEYS);
     for(int i=0;i<keyCount;i++){
         int x=300+(i%10)*128,y=666+(i/10)*66;
@@ -238,11 +238,11 @@ static void draw(){
     text(28,1025,"X SELECIONAR",79,208,255,2);
     text(270,1050,"L3 FAVORITAR   R3 FILTRAR FAVORITOS",130,190,235,2);
     text(1430,1050,favoritesPersistenceAvailable?"FAVORITOS SALVOS":"SALVAMENTO NAO CONFIRMADO",favoritesPersistenceAvailable?120:235,favoritesPersistenceAvailable?220:170,180,1);
-    text(270,1025,"O VOLTAR",255,82,137,2);
+    text(270,1025,"O SAIR",255,82,137,2);
     text(495,1025,"L1 / R1 CATEGORIAS",70,229,176,2);
     text(790,1025,"TRIANGULO INICIO   DIRECIONAL NAVEGAR",204,225,242,2);
     text(1510,1025,"SUA LOJA DE GAMES NO PS4",126,191,255,2);
-    if(utilityPanel){fill(0,0,SW,SH,0,0,0,210);fill(340,250,1240,580,10,24,46);outline(340,250,1240,580,76,190,255,3);if(utilityPanel==1){text(410,320,"CENTRAL DE DOWNLOADS",105,211,255,4);text(410,410,"INFRAESTRUTURA EM PREPARACAO",244,248,255,3);text(410,480,"Somente homebrews e aplicativos com distribuicao autorizada.",190,215,240,2);text(410,540,"HTTPS, certificado, tamanho e SHA-256 serao obrigatorios.",190,215,240,2);}else{text(410,320,"CONFIGURACOES",105,211,255,4);text(410,410,"HADES STORE - PS4",244,248,255,3);text(410,480,"Controles: X selecionar | O voltar | L1/R1 categorias",190,215,240,2);text(410,540,"Favoritos armazenados localmente em /data",190,215,240,2);}text(410,750,"O / B VOLTAR AO CATALOGO",170,205,235,2);}
+    if(utilityPanel){fill(0,0,SW,SH,0,0,0,210);fill(340,250,1240,580,10,24,46);outline(340,250,1240,580,76,190,255,3);if(utilityPanel==1){text(410,320,"CENTRAL DE DOWNLOADS",105,211,255,4);text(410,410,"INFRAESTRUTURA EM PREPARACAO",244,248,255,3);text(410,480,"Somente homebrews e aplicativos com distribuicao autorizada.",190,215,240,2);text(410,540,"HTTPS, certificado, tamanho e SHA-256 serao obrigatorios.",190,215,240,2);}else{text(410,320,"CONFIGURACOES",105,211,255,4);text(410,410,"HADES STORE - PS4",244,248,255,3);text(410,480,"Controles: X selecionar | O sair | L1/R1 categorias",190,215,240,2);text(410,540,"Favoritos armazenados localmente em /data",190,215,240,2);}text(410,750,"TRIANGULO FECHAR  |  O SAIR",170,205,235,2);}
     if(showDetails&&!visible.empty()&&!utilityPanel){
         fill(0,0,SW,SH,0,0,0,210);fill(235,145,1450,790,12,24,47);outline(235,145,1450,790,76,190,255,3);
         const StoreItem& it=STORE_ITEMS[visible[selected]];
@@ -256,7 +256,7 @@ static void draw(){
             text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
             text(625,748,trim(it.url,100),170,198,224,2);
         }
-        text(625,930,"O VOLTAR AO CATALOGO",170,205,235,2);
+        text(625,930,"TRIANGULO VOLTAR AO CATALOGO  |  O SAIR",170,205,235,2);
     }
     SDL_UpdateWindowSurface(windowHandle);
 }
@@ -425,12 +425,14 @@ static void handleKey(SDL_Keycode key){
     else if(key==SDLK_SLASH)beginSearch();else if(key==SDLK_BACKSPACE)backspaceSearch();else if(key==SDLK_ESCAPE&&searchActive)endSearch();else if(key==SDLK_TAB)changeFilter(1);else if(key==SDLK_f)toggleFavorite();else if(key==SDLK_v)toggleFavoritesView();else if(key==SDLK_RETURN){if(utilityPanel)utilityPanel=0;else if(sidebarFocus)activateSidebar();else if(showDetails)openSelected();else showDetails=true;}
 }
 static void handleButton(Uint8 button){
-    if(homeScreen){if(button==0)enterCatalog();else if(button==1)running=false;return;}
+    if(button==1){running=false;return;}
+    if(homeScreen){if(button==0)enterCatalog();return;}
     if(button==4)changeFilter(-1);else if(button==5)changeFilter(1);
     else if(button==0){if(showDetails)openSelected();else showDetails=true;}
-    else if(button==1)showDetails=false;else if(button==2)openSelected();else if(button==6)running=false;else if(button==8)toggleFavorite();else if(button==9)toggleFavoritesView();
+    else if(button==2)openSelected();else if(button==6)running=false;else if(button==8)toggleFavorite();else if(button==9)toggleFavoritesView();
 }
 static void handleControllerButton(SDL_GameControllerButton button){
+    if(button==SDL_CONTROLLER_BUTTON_B){running=false;return;}
     if(searchActive){
         if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)moveVirtualKeyboard(-1,0);
         else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)moveVirtualKeyboard(1,0);
@@ -444,7 +446,7 @@ static void handleControllerButton(SDL_GameControllerButton button){
         return;
     }
 
-    if(utilityPanel){if(button==SDL_CONTROLLER_BUTTON_B||button==SDL_CONTROLLER_BUTTON_A)utilityPanel=0;return;}
+    if(utilityPanel){if(button==SDL_CONTROLLER_BUTTON_A||button==SDL_CONTROLLER_BUTTON_Y)utilityPanel=0;return;}
     if(homeScreen){
         if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)moveHome(-1,0);
         else if(button==SDL_CONTROLLER_BUTTON_DPAD_RIGHT)moveHome(1,0);
@@ -459,12 +461,11 @@ static void handleControllerButton(SDL_GameControllerButton button){
     if(button==SDL_CONTROLLER_BUTTON_LEFTSHOULDER)changeFilter(-1);
     else if(button==SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)changeFilter(1);
     else if(button==SDL_CONTROLLER_BUTTON_A){if(showDetails)openSelected();else showDetails=true;}
-    else if(button==SDL_CONTROLLER_BUTTON_B){if(showDetails)showDetails=false;else running=false;}
     else if(button==SDL_CONTROLLER_BUTTON_X)openSelected();
     else if(button==SDL_CONTROLLER_BUTTON_BACK)beginSearch();
     else if(button==SDL_CONTROLLER_BUTTON_LEFTSTICK)toggleFavorite();
     else if(button==SDL_CONTROLLER_BUTTON_RIGHTSTICK)toggleFavoritesView();
-    else if(button==SDL_CONTROLLER_BUTTON_Y){homeScreen=true;showDetails=false;}else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
+    else if(button==SDL_CONTROLLER_BUTTON_Y){if(showDetails)showDetails=false;else homeScreen=true;}else if(button==SDL_CONTROLLER_BUTTON_START)running=false;
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_UP)handleDirection(0,-1);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_DOWN)handleDirection(0,1);
     else if(button==SDL_CONTROLLER_BUTTON_DPAD_LEFT)handleDirection(-1,0);
