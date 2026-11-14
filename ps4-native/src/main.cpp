@@ -259,7 +259,7 @@ static void draw(){
         if(it.recommendedGames && it.recommendedGames[0]){text(625,650,"JOGOS RECOMENDADOS",105,195,255,2);wrapText(625,690,it.recommendedGames,210,225,245,92);}
         if(it.pending){wrapText(625,748,"Download temporariamente indisponivel. O pacote ja foi gerado; o link publico sera ativado apos a configuracao do armazenamento permanente da HADES Store.",255,214,140,75);}
         else{
-            if(it.hasPackages)text(625,790,"SENHA DOS ARQUIVOS: 201055",157,238,255,3);
+            if(it.hasPackages)text(625,790,"SENHA DOS ARQUIVOS: 866919",157,238,255,3);
             text(625,850,"X ABRIR LINK NO NAVEGADOR DO PS4",105,195,255,3);
             text(625,748,trim(it.url,100),170,198,224,2);
         }
