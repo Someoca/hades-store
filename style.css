@@ -3441,3 +3441,284 @@ body {
     object-position: center center !important;
   }
 }
+
+
+/* HADES STORE PREMIUM UI — 2026-11-14 */
+:root {
+  --blue: #168bff;
+  --cyan: #55ddff;
+  --deep: #050b18;
+  --panel: #0b1426;
+  --line: #1e83e8;
+  --text: #f4f8ff;
+  --muted: #a9bad3;
+}
+body {
+  background-color: #050a14;
+  background-image: radial-gradient(ellipse at 50% -12%, #174a83 0, transparent 48%), linear-gradient(180deg,#050a14 0%,#081326 56%,#040914 100%);
+}
+.console-shell {
+  max-width: 1920px;
+  background: linear-gradient(180deg,#071326f5,#081326fa 70%,#050b16);
+}
+.masthead {
+  height: clamp(108px,12vw,150px);
+  min-height: 108px;
+  padding-inline: clamp(18px,4vw,64px);
+  border-bottom: 1px solid #42c7ff;
+  background-image: linear-gradient(90deg,#061329 0%,#071b36 52%,#061329 100%);
+  box-shadow: 0 8px 30px #007bff30;
+}
+.masthead::after {
+  background: linear-gradient(90deg,#061329eF 0%,#0613299c 38%,#06132922 76%,#06132966 100%),linear-gradient(105deg,transparent 35%,#168bff22 58%,transparent 80%);
+}
+.brand-mark { filter:drop-shadow(0 0 14px #168bff); }
+.brand strong { letter-spacing:-1.5px; text-shadow:0 2px 12px #000,0 0 22px #087fff; }
+.store-intro {
+  min-height:0;
+  height:clamp(210px,25vw,330px);
+  margin:clamp(14px,2vw,24px) clamp(14px,3.5vw,54px) 22px;
+  padding:0;
+  border:1px solid #267fc8;
+  border-radius:18px;
+  background:#071326;
+  box-shadow:0 18px 48px #0008,0 0 24px #087fff22;
+}
+.store-intro::before {
+  background:linear-gradient(90deg,#041022e8 0%,#0410229c 38%,#04102212 78%),linear-gradient(0deg,#04102299,transparent 45%),radial-gradient(ellipse at 75% 50%,#168bff2b,transparent 52%);
+}
+.store-intro::after {
+  padding:34px clamp(18px,3vw,42px) 22px;
+  color:#f4f9ff;
+  font-size:clamp(19px,2.5vw,32px);
+  letter-spacing:2.8px;
+  background:linear-gradient(0deg,#030a18d9,transparent);
+}
+.store-banner {
+  object-position:center 42%;
+  filter:saturate(1.02) brightness(.88);
+}
+.top-nav {
+  position:relative;
+  top:auto;
+  margin:0 clamp(14px,3.5vw,54px) 24px;
+  width:auto;
+  height:auto;
+  min-height:58px;
+  padding:7px;
+  gap:8px;
+  border:1px solid #237fd0;
+  border-radius:14px;
+  background:linear-gradient(180deg,#102c4d,#09172b);
+  box-shadow:0 10px 28px #0005,inset 0 1px #ffffff12;
+}
+.nav-tab {
+  height:42px;
+  min-height:42px;
+  max-width:none;
+  border:1px solid transparent;
+  border-radius:9px;
+  clip-path:none;
+  background:transparent;
+  font-size:12px;
+  letter-spacing:.7px;
+}
+.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible {
+  background:linear-gradient(135deg,#168bff,#0754ad);
+  border-color:#73d9ff;
+  box-shadow:0 0 18px #078dff66,inset 0 1px #ffffff40;
+}
+.console-layout {
+  display:block;
+  min-height:0;
+}
+.sidebar.details-sidebar {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:18px;
+  margin:0 clamp(14px,3.5vw,54px) 24px;
+  padding:18px clamp(18px,2.5vw,32px);
+  min-height:132px;
+  border:1px solid #1b5d99;
+  border-radius:16px;
+  background:linear-gradient(110deg,#102b4b,#0b172a 70%,#0b1424);
+  box-shadow:0 14px 34px #0005,inset 0 1px #ffffff0c;
+}
+.featured-kicker { color:#58cfff; }
+.featured-category { color:#8ba8c8; }
+.featured-title { color:#fff; font-size:clamp(20px,2.2vw,28px); }
+.featured-description { color:#b5c7df; }
+.featured-open {
+  min-height:44px;
+  padding:0 20px;
+  border:1px solid #5bcfff;
+  border-radius:10px;
+  background:linear-gradient(135deg,#168bff,#0752ad);
+  box-shadow:0 6px 18px #007bff33;
+  letter-spacing:.5px;
+}
+.featured-open:hover:not(:disabled) { filter:brightness(1.15); transform:translateY(-1px); }
+.main-panel {
+  padding:0 clamp(14px,3.5vw,54px) 48px;
+  background-color:#07101e;
+  background-image:linear-gradient(180deg,#07101ed9,#07101ef2),url("assets/hades-underworld-bg.svg");
+  border-radius:18px 18px 0 0;
+}
+.catalog-section { padding:22px 0 28px; }
+.catalog-heading {
+  min-height:64px;
+  margin-bottom:14px;
+  align-items:flex-end;
+}
+.catalog-title-group h2 {
+  margin:5px 0 0;
+  color:#f5f9ff;
+  font-size:clamp(24px,3vw,36px);
+  font-weight:850;
+  letter-spacing:-.7px;
+  text-shadow:0 3px 16px #0008;
+}
+.section-kicker { color:#58cfff; letter-spacing:2px; }
+.catalog-tools { gap:10px; }
+.search {
+  min-height:44px;
+  border:1px solid #245b91;
+  border-radius:11px;
+  background:#091a30;
+  box-shadow:inset 0 1px #ffffff0c;
+}
+.search:focus-within { border-color:#53caff; box-shadow:0 0 0 3px #168bff24; }
+.search input { font-size:14px; }
+.sort-control select {
+  min-height:44px;
+  max-width:170px;
+  border:1px solid #245b91;
+  border-radius:10px;
+  background:#091a30;
+  font-size:13px;
+}
+.status { margin:10px 0 14px; letter-spacing:1.2px; }
+.catalog-meta {
+  margin:8px 0 12px;
+  color:#b8cce5;
+  font-size:12px;
+}
+.catalog-meta p { color:#b8cce5; font-size:12px; }
+.game-grid {
+  gap:14px;
+  padding:8px 4px 18px;
+  scrollbar-color:#168bff #09172a;
+}
+.game-grid > .app-card {
+  flex:0 0 calc((100% - 56px)/5);
+  margin-right:0;
+}
+.app-card {
+  padding:8px;
+  border:1px solid #21476e;
+  border-radius:15px;
+  background:linear-gradient(180deg,#122b48 0%,#0b192d 54%,#091322 100%);
+  box-shadow:0 12px 26px #0006,inset 0 1px #ffffff0c;
+}
+.app-card::before {
+  left:12px;right:12px;top:0;height:2px;
+  border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,transparent,#48caff,transparent);
+}
+.app-card:hover,.app-card:focus-visible,.app-card.selected {
+  transform:translateY(-5px);
+  border-color:#59cfff;
+  box-shadow:0 0 0 1px #39baff55,0 16px 32px #0009,0 0 24px #078dff30;
+}
+.app-card > .game-physical,
+.app-card > .software-art,
+.app-card > .app-icon {
+  width:100%;
+  height:auto;
+  aspect-ratio:3/4;
+  min-height:0;
+  margin:0 0 10px;
+  padding:0;
+  border-radius:10px;
+  overflow:hidden;
+  flex:0 0 auto;
+  background:#050c18;
+  border:1px solid #315779;
+  box-shadow:0 8px 20px #0007;
+}
+.app-card > .game-physical > .game-cover {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  aspect-ratio:auto;
+  border:0;
+  border-radius:0;
+}
+.app-card > .game-physical .game-cover-art {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+.app-card .game-cover .ps4-band { display:flex; height:26px; }
+.app-card .game-cover .game-cover-art { top:26px; height:calc(100% - 26px); }
+.app-card > .software-art img { width:100%; height:100%; object-fit:cover; border:0; border-radius:0; }
+.app-card h3 {
+  min-height:44px;
+  margin:2px 4px 4px;
+  color:#f4f8ff;
+  font-size:clamp(12px,1.05vw,15px);
+  line-height:1.35;
+  font-weight:800;
+  text-align:left;
+}
+.favorite-toggle {
+  top:13px;right:13px;
+  width:32px;height:32px;
+  border:1px solid #d4edff99;
+  background:#06172ddd;
+  font-size:17px;
+}
+.carousel-controls button {
+  width:34px;height:34px;
+  border-radius:9px;
+  border:1px solid #286aa6;
+  background:#0c2541;
+}
+#details {
+  border:1px solid #2b83c6;
+  border-radius:18px;
+  background:linear-gradient(145deg,#10243d,#081322);
+  box-shadow:0 24px 80px #000b,0 0 30px #087fff22;
+}
+#details .close { border-radius:10px; }
+@media (min-width:761px) and (max-width:1150px) {
+  .game-grid > .app-card { flex-basis:calc((100% - 42px)/4); }
+  .sidebar.details-sidebar { gap:12px; }
+}
+@media (max-width:760px) {
+  .masthead { height:94px; min-height:94px; padding:7px 12px; }
+  .store-intro { height:clamp(150px,42vw,230px); min-height:0; margin:12px; border-radius:12px; }
+  .top-nav { margin:0 12px 18px; min-height:48px; gap:4px; border-radius:12px; }
+  .nav-tab { height:34px; min-height:34px; font-size:10px; }
+  .sidebar.details-sidebar { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:7px 12px; margin:0 12px 18px; padding:14px; }
+  .featured-kicker,.featured-category { grid-column:1/-1; }
+  .featured-title,.featured-description { grid-column:1; }
+  .featured-open { grid-column:2; grid-row:3/5; align-self:center; }
+  .main-panel { padding:0 12px 32px; }
+  .catalog-section { padding:14px 0 22px; }
+  .catalog-heading { display:block; }
+  .catalog-tools { margin-top:12px; display:grid; grid-template-columns:minmax(0,1fr) auto; }
+  .game-grid { gap:12px; }
+  .game-grid > .app-card { flex-basis:82%; }
+  .app-card { padding:7px; border-radius:13px; }
+  .app-card > .game-physical,.app-card > .software-art,.app-card > .app-icon { aspect-ratio:3/4; height:auto; }
+  .app-card h3 { font-size:14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .masthead,.masthead::before,.masthead::after { animation:none!important; }
+}
