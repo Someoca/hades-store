@@ -3354,3 +3354,40 @@ body {
     display: block !important;
   }
 }
+
+/* Correção definitiva das capas no desktop: evita colapso do item flex para altura zero. */
+@media (min-width: 761px) {
+  .app-card > .game-physical {
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 3 / 4 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical > .game-cover {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    overflow: hidden !important;
+  }
+  .app-card > .game-physical .game-cover-art {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+  .app-card .game-cover.has-ps4-band .game-cover-art {
+    top: 35px !important;
+    height: calc(100% - 35px) !important;
+  }
+}
