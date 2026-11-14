@@ -3832,3 +3832,24 @@ body {
   .tiktok-feature { min-width:0; width:100%; }
   .main-panel { padding-bottom:76px !important; }
 }
+
+
+/* HADES Store cover framing fix: show the complete original artwork without cropping. */
+@media (min-width: 761px) {
+  #grid.game-grid > .app-card > .game-physical {
+    display: block !important; position: relative !important; width: 100% !important;
+    height: auto !important; min-height: 0 !important; max-height: none !important;
+    aspect-ratio: 3 / 4 !important; padding: 0 !important; overflow: hidden !important;
+  }
+  #grid.game-grid > .app-card > .game-physical > .game-cover {
+    position: absolute !important; inset: 0 !important; width: 100% !important;
+    height: 100% !important; overflow: hidden !important; background: #080e19 !important;
+  }
+  #grid.game-grid > .app-card > .game-physical .game-cover-art {
+    position: absolute !important; inset: 0 !important; width: 100% !important;
+    height: 100% !important; max-height: none !important; object-fit: contain !important;
+    object-position: center center !important; transform: none !important; background: #080e19 !important;
+  }
+}
+#grid.game-grid > .app-card .game-cover .ps4-band { display: none !important; }
+#grid.game-grid > .app-card .game-cover.has-ps4-band .game-cover-art { top: 0 !important; height: 100% !important; }
