@@ -3287,3 +3287,38 @@ body {
   .game-physical,.software-art { padding:8px 8px 0; }
   .app-icon { width:calc(100% - 16px); margin:8px 8px 0; }
 }
+
+
+/* HADES Store: correção definitiva da altura das capas no catálogo */
+.app-card > .game-physical {
+  display: block !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 220px !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+.app-card > .game-physical > .game-cover {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+.app-card > .game-physical .game-cover-art {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+@media (max-width: 760px) {
+  .app-card > .game-physical { min-height: 0 !important; }
+}
