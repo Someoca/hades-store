@@ -24,7 +24,9 @@ Na tela inicial, Cross abre a categoria selecionada. Circle encerra o aplicativo
 
 O build usa o contêiner OpenOrbis `v0.5.1` e roda automaticamente em alterações no código nativo, nas artes do avatar, banner, símbolo e mascote, nas capas ou no catálogo, tanto em commits para `main` quanto em pull requests destinados a `main`. Também pode ser iniciado manualmente em **Actions → Build HADES Store native PS4 PKG → Run workflow**.
 
-O artefato `HADES-Store-PS4-v1.4.pkg` e o arquivo `SHA256SUMS.txt` ficam disponíveis no workflow por 30 dias. Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
+O workflow publica `HADES-Store-PS4-v1.4.pkg` e `SHA256SUMS.txt` no bucket Cloudflare R2 `hades-store-downloads`; ele não salva um artefato no GitHub. Configure os secrets do GitHub Actions `R2_ACCOUNT_ID` (o ID de conta Cloudflare de 32 caracteres hexadecimais ou o endpoint HTTPS R2 da conta), `R2_ACCESS_KEY_ID` e `R2_SECRET_ACCESS_KEY` (credenciais R2 com permissão de escrita no bucket). Secrets ausentes ou inválidos fazem a publicação falhar; pull requests de forks não recebem esses secrets.
+
+Para compilar em Linux com OpenOrbis v0.5.1 instalado e `OO_PS4_TOOLCHAIN` configurado:
 
 ```sh
 bash ps4-native/build.sh
