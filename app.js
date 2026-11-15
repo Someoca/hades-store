@@ -13,36 +13,17 @@ const search = $('#search');
 const empty = $('#empty');
 const dialog = $('#details');
 const status = $('#catalog-status');
-const backdropLayers = [...document.querySelectorAll('.catalog-backdrop-layer')];
-const storeIntro = document.querySelector('.store-intro');
-const storeBanner = document.querySelector('.store-banner');
-if (storeIntro && storeBanner && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  storeIntro.addEventListener('pointermove', (event) => {
-    if (event.pointerType !== 'mouse') return;
-    const bounds = storeIntro.getBoundingClientRect();
-    const horizontal = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const vertical = (event.clientY - bounds.top) / bounds.height - 0.5;
-    storeBanner.style.setProperty('--banner-x', `${(-horizontal * 9).toFixed(1)}px`);
-    storeBanner.style.setProperty('--banner-y', `${(-vertical * 5).toFixed(1)}px`);
-  });
-  storeIntro.addEventListener('pointerleave', () => {
-    storeBanner.style.setProperty('--banner-x', '0px');
-    storeBanner.style.setProperty('--banner-y', '0px');
-  });
-}
+const masthead = $('#masthead');
 const FAVORITES_KEY = 'hades-store:favorites:v1';
-let visibleBackdropIndex = 0;
-let displayedBackdropId = '';
-let pendingBackdropId = '';
-let backdropUpdateTimer = 0;
+const OPTIONS_KEY = 'hades-store:options:v1';
 const gamepadShoulders = new Map();
 let gamepadPolling = false;
 const SOUND_PREFERENCE_KEY = 'hades-store:ui-sounds:v1';
 let audioEnabled = false;
 let uiAudioContext = null;
-let requestedCarouselPage = null;
-let carouselTargetTimer = 0;
 let searchRenderTimer = 0;
+let lastFocusBeforePanel = null;
+const options = { tv: false, gamepad: true, reduceMotion: false, size: 'default' };
 try {
   audioEnabled = localStorage.getItem(SOUND_PREFERENCE_KEY) === 'true';
 } catch (error) {
@@ -83,37 +64,111 @@ function setStatus(message, kind = 'online') {
 }
 
 function setFeaturedItem(item) {
-  const category = $('#featured-category');
-  const title = $('#featured-title');
-  const description = $('#featured-description');
-  const open = $('#featured-open');
-  if (!category || !title || !description || !open) return;
-
-  if (!item) {
-    state.featuredItem = null;
-    category.textContent = '';
-    title.textContent = 'Nenhum item encontrado';
-    description.textContent = 'Altere a busca ou a categoria para continuar explorando.';
-    open.disabled = true;
-    return;
-  }
-
-  state.featuredItem = item;
-  category.textContent = String(item.category || 'CATÁLOGO').toLocaleUpperCase('pt-BR')
-    + (item.version ? ' · ' + item.version : '');
-  title.textContent = item.name || 'Item do catálogo';
-  description.textContent = item.description || 'Confira os detalhes e as opções disponíveis para este item.';
-  open.disabled = false;
+  const button = $('#hero-feature');
+  const label = $('#hero-feature-label');
+  if (!button || !label) return;
+  state.featuredItem = item || null;
+  button.disabled = !item;
+  label.textContent = item ? 'Destaque: ' + item.name : 'Nenhum destaque disponível';
 }
 
-function updateSoundToggle() {
-  const button = $('#sound-toggle');
-  const label = $('#sound-label');
-  if (!button || !label) return;
-  button.setAttribute('aria-pressed', String(audioEnabled));
-  button.setAttribute('aria-label', audioEnabled ? 'Desativar sons da interface' : 'Ativar sons da interface');
-  button.classList.toggle('is-enabled', audioEnabled);
-  label.textContent = audioEnabled ? 'SOM ON' : 'SOM OFF';
+function itemCode(item) {
+  return Array.isArray(item.packageCodes) && item.packageCodes.length ? String(item.packageCodes[0]) : '';
+}
+
+function applyOptions() {
+  document.body.classList.toggle('tv-mode', options.tv);
+  document.body.classList.toggle('reduce-motion', options.reduceMotion);
+  document.body.dataset.coverSize = options.size;
+  document.documentElement.dataset.coverSize = options.size;
+  document.querySelectorAll('[data-option]').forEach((button) => {
+    const value = button.dataset.option === 'sound' ? audioEnabled : options[button.dataset.option];
+    button.setAttribute('aria-checked', String(Boolean(value)));
+  });
+  document.querySelectorAll('[data-size]').forEach((button) => {
+    button.setAttribute('aria-pressed', String(button.dataset.size === options.size));
+  });
+}
+
+function saveOptions() {
+  try {
+    localStorage.setItem(OPTIONS_KEY, JSON.stringify(options));
+  } catch (error) {
+    // As opções continuam valendo durante a sessão.
+  }
+}
+
+function loadOptions() {
+  let stored = null;
+  try {
+    stored = JSON.parse(localStorage.getItem(OPTIONS_KEY) || 'null');
+  } catch (error) {
+    stored = null;
+  }
+  if (stored && typeof stored === 'object') {
+    if (typeof stored.tv === 'boolean') options.tv = stored.tv;
+    if (typeof stored.gamepad === 'boolean') options.gamepad = stored.gamepad;
+    if (typeof stored.reduceMotion === 'boolean') options.reduceMotion = stored.reduceMotion;
+    if (['compact', 'default', 'large'].includes(stored.size)) options.size = stored.size;
+  } else if (/PlayStation|PS4/i.test(navigator.userAgent)) {
+    options.tv = true;
+    options.reduceMotion = true;
+  }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) options.reduceMotion = true;
+}
+
+function setSound(enabled) {
+  audioEnabled = enabled;
+  try {
+    localStorage.setItem(SOUND_PREFERENCE_KEY, String(audioEnabled));
+  } catch (error) {
+    // Mantém a preferência apenas na sessão quando o armazenamento não está disponível.
+  }
+  if (audioEnabled) playUiSound('confirm');
+  else if (uiAudioContext) {
+    const context = uiAudioContext;
+    uiAudioContext = null;
+    context.close().catch(() => {});
+  }
+  applyOptions();
+}
+
+function optionsPanelOpen() {
+  return $('#options-panel').classList.contains('is-open');
+}
+
+function openOptions() {
+  const panel = $('#options-panel');
+  lastFocusBeforePanel = document.activeElement;
+  panel.removeAttribute('inert');
+  panel.setAttribute('aria-hidden', 'false');
+  panel.classList.add('is-open');
+  $('#options-scrim').hidden = false;
+  playUiSound('confirm');
+  $('#options-close').focus();
+}
+
+function closeOptions() {
+  const panel = $('#options-panel');
+  if (!panel.classList.contains('is-open')) return;
+  panel.classList.remove('is-open');
+  panel.setAttribute('aria-hidden', 'true');
+  panel.setAttribute('inert', '');
+  $('#options-scrim').hidden = true;
+  playUiSound('back');
+  if (lastFocusBeforePanel && lastFocusBeforePanel.isConnected) lastFocusBeforePanel.focus();
+}
+
+function categoryList() {
+  return [...document.querySelectorAll('.tab[data-category]')].map((button) => button.dataset.category);
+}
+
+function shiftCategory(direction) {
+  const list = categoryList();
+  const index = list.indexOf(state.category);
+  state.category = list[(index + direction + list.length) % list.length];
+  playUiSound('move');
+  render();
 }
 
 function playUiSound(kind = 'move') {
@@ -153,14 +208,12 @@ function playUiSound(kind = 'move') {
   }
 }
 
-updateSoundToggle();
-
 function filteredItems() {
   const query = normalize(search.value);
   const items = state.catalog.filter((item) => {
     const matchesCategory = state.category === 'Todos'
       || (state.category === 'Favoritos' ? state.favorites.has(item.id) : item.category === state.category);
-    const haystack = normalize([item.name, item.description, item.language, item.version, item.category].join(' '));
+    const haystack = normalize([item.name, item.description, item.language, item.version, item.category, ...(item.packageCodes || [])].join(' '));
     return matchesCategory && (!query || haystack.includes(query));
   });
 
@@ -278,34 +331,22 @@ function createCard(item) {
   card.className = 'app-card';
   card.dataset.itemId = item.id;
   card.tabIndex = 0;
-  card.setAttribute('role', 'group');
+  card.setAttribute('role', 'listitem');
   card.setAttribute('aria-label', 'Ver detalhes de ' + item.name);
-  const seed = Number.parseInt(item.icon, 10);
-  card.dataset.cover = String(Number.isFinite(seed) ? (seed - 1 + 8) % 8 : state.catalog.indexOf(item) % 8);
 
-  let visual = '<div class="app-icon">' + safe(item.icon || 'H') + '</div>';
-  if (item.category === 'Jogos') {
-    visual = '<div class="game-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(coverSource(item)) + '" alt="" loading="lazy" decoding="async"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
-  } else if (item.category === 'Emuladores') {
-    visual = '<div class="game-physical emulator-physical" aria-hidden="true"><div class="game-cover"><div class="ps4-band"></div><img class="game-cover-art" src="' + safe(versionedArtworkUrl(item.imageUrl || themedFallbackCover(item))) + '" alt="" loading="lazy" decoding="async"><span class="cover-fallback">' + safe(item.name) + '</span></div></div>';
-  } else if (item.category === 'Aplicativos' || item.category === 'Homebrews') {
-    visual = '<div class="software-art"><img src="' + safe(versionedArtworkUrl(item.imageUrl || themedFallbackCover(item))) + '" alt="" loading="lazy" decoding="async"></div>';
-  } else if (item.imageUrl) {
-    visual = '<div class="software-art"><img src="' + safe(versionedArtworkUrl(item.imageUrl)) + '" alt="" loading="lazy" decoding="async"></div>';
-  }
-
-  card.innerHTML = favoriteButton(item, true) + visual
-    + '<h3>' + safe(item.name) + '</h3>';
+  const isGame = item.category === 'Jogos' || item.category === 'Emuladores';
+  const code = itemCode(item);
+  const artSource = isGame ? coverSource(item) || themedFallbackCover(item) : versionedArtworkUrl(item.imageUrl || themedFallbackCover(item));
+  const badge = isGame ? '' : '<span class="card-badge">' + (item.category === 'Emuladores' ? 'EMU' : 'APP') + '</span>';
+  card.innerHTML = badge + favoriteButton(item, true)
+    + '<img class="card-art' + (isGame ? '' : ' card-art-app') + '" src="' + safe(artSource) + '" alt="" loading="lazy" decoding="async">'
+    + '<div class="card-meta"><h3>' + safe(item.name) + '</h3>' + (code ? '<small>' + safe(code) + '</small>' : '') + '</div>';
 
   const open = (event) => {
     if (event && event.target.closest('[data-favorite]')) return;
-    // Abrir primeiro os detalhes: assim o usuário vê JOGO, UPDATE e DLC
-    // antes de escolher qual link externo deseja acessar.
     showDetails(item);
   };
   card.addEventListener('click', open);
-  card.addEventListener('pointerenter', () => setFeaturedItem(item));
-  card.addEventListener('focus', () => setFeaturedItem(item));
   card.addEventListener('keydown', (event) => {
     if (event.target.closest('[data-favorite]')) return;
     if (event.key === 'Enter' || event.key === ' ') {
@@ -314,50 +355,60 @@ function createCard(item) {
     }
   });
 
-  const coverImage = card.querySelector('.game-cover-art');
-  const gameCover = card.querySelector('.game-cover');
-  if (coverImage && gameCover) {
-    const fitCover = () => {
-      const source = coverImage.getAttribute('src') || '';
-      const isGenerated = source.startsWith('data:image/svg+xml');
-      const isLandscape = coverImage.naturalWidth / Math.max(1, coverImage.naturalHeight) > 1.05;
-      const hasWhiteMatte = /(?:^|\/)ps4-(?:02|19)-hq\.jpg(?:[?#]|$)/i.test(source);
-      gameCover.classList.toggle('has-ps4-band', isGenerated || isLandscape);
-      gameCover.classList.toggle('padded-cover-art', hasWhiteMatte);
-      gameCover.style.setProperty('--cover-art-src', 'url(' + JSON.stringify(coverImage.currentSrc || coverImage.src) + ')');
-    };
-    coverImage.addEventListener('load', fitCover);
-    if (coverImage.complete && coverImage.naturalWidth) fitCover();
-    installArtworkFallback(coverImage, item, () => {
-      coverImage.remove();
-      gameCover.classList.add('has-ps4-band');
-      gameCover.classList.add('cover-image-missing');
-    });
-  }
-  const softwareImage = card.querySelector('.software-art img');
-  if (softwareImage) {
-    const softwareArt = card.querySelector('.software-art');
-    softwareArt.dataset.fallbackName = item.name;
-    installArtworkFallback(softwareImage, item, () => {
-      softwareImage.remove();
-      softwareArt.classList.add('art-image-missing');
-    });
-  }
+  const art = card.querySelector('.card-art');
+  installArtworkFallback(art, item, () => {
+    art.remove();
+    const missing = document.createElement('span');
+    missing.className = 'cover-fallback';
+    missing.textContent = item.name;
+    card.prepend(missing);
+  });
   return card;
+}
+
+function renderHeroShelf() {
+  const shelf = $('#hero-shelf');
+  if (!shelf) return;
+  const featured = state.catalog.filter((item) => item.category === 'Jogos').slice(0, 4);
+  shelf.replaceChildren(...featured.map((item) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'shelf-card';
+    button.setAttribute('aria-label', 'Ver detalhes de ' + item.name);
+    const image = document.createElement('img');
+    image.src = coverSource(item) || themedFallbackCover(item);
+    image.alt = '';
+    image.decoding = 'async';
+    installArtworkFallback(image, item, () => image.remove());
+    const label = document.createElement('span');
+    label.textContent = item.name;
+    button.append(image, label);
+    button.addEventListener('click', () => showDetails(item));
+    return button;
+  }));
+  setFeaturedItem(featured[0]);
+}
+
+function updateCounts() {
+  const count = (category) => category === 'Todos'
+    ? state.catalog.length
+    : category === 'Favoritos'
+      ? state.favorites.size
+      : state.catalog.filter((item) => item.category === category).length;
+  document.querySelectorAll('[data-count]').forEach((element) => {
+    element.textContent = String(count(element.dataset.count));
+  });
+  $('#stat-games').textContent = String(count('Jogos'));
+  $('#stat-apps').textContent = String(count('Aplicativos'));
+  $('#stat-emulators').textContent = String(count('Emuladores'));
 }
 
 function render() {
   const items = filteredItems();
-  clearCarouselTarget();
   grid.replaceChildren(...items.map(createCard));
-  grid.scrollLeft = 0;
-  setFeaturedItem(items[0]);
   empty.hidden = items.length > 0;
-  const totalGames = state.catalog.filter((item) => item.category === 'Jogos').length;
-  $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados')
-    + ' · ' + totalGames + ' jogos no catálogo';
-  updateCarouselControls();
-  scheduleCatalogBackdropUpdate();
+  $('#results-count').textContent = items.length + (items.length === 1 ? ' item encontrado' : ' itens encontrados');
+  updateCounts();
   document.querySelectorAll('[data-category]').forEach((button) => {
     const active = button.dataset.category === state.category;
     button.classList.toggle('active', active);
@@ -365,136 +416,11 @@ function render() {
   });
 }
 
-function scheduleCatalogBackdropUpdate() {
-  if (backdropLayers.length < 2) return;
-  window.clearTimeout(backdropUpdateTimer);
-  backdropUpdateTimer = window.setTimeout(updateCatalogBackdrop, 100);
-}
-
-function updateCatalogBackdrop() {
-  const viewport = grid.getBoundingClientRect();
-  const center = viewport.left + viewport.width / 2;
-  let selectedCard = null;
-  let selectedDistance = Infinity;
-
-  for (const card of grid.querySelectorAll('.app-card')) {
-    const bounds = card.getBoundingClientRect();
-    if (bounds.right <= viewport.left || bounds.left >= viewport.right) continue;
-    const distance = Math.abs((bounds.left + bounds.right) / 2 - center);
-    if (distance < selectedDistance) {
-      selectedCard = card;
-      selectedDistance = distance;
-    }
-  }
-
-  if (!selectedCard) return;
-  const itemId = selectedCard.dataset.itemId;
-  if (!itemId || itemId === displayedBackdropId || itemId === pendingBackdropId) return;
-  const artwork = selectedCard.querySelector('.game-cover-art, .software-art img');
-  const imageUrl = artwork?.currentSrc || artwork?.src;
-  if (!imageUrl) return;
-
-  pendingBackdropId = itemId;
-  const nextIndex = 1 - visibleBackdropIndex;
-  const nextLayer = backdropLayers[nextIndex];
-  nextLayer.style.backgroundImage = 'linear-gradient(180deg,rgba(4,8,20,.54),rgba(5,9,22,.72) 48%,rgba(5,8,17,.84)),url(' + JSON.stringify(imageUrl) + ')';
-  nextLayer.dataset.itemId = itemId;
-  window.requestAnimationFrame(() => {
-    if (pendingBackdropId !== itemId) return;
-    nextLayer.classList.add('is-visible');
-    backdropLayers[visibleBackdropIndex].classList.remove('is-visible');
-    visibleBackdropIndex = nextIndex;
-    displayedBackdropId = itemId;
-    pendingBackdropId = '';
-  });
-}
-
-function updateCarouselControls() {
-  const pageCount = $('#page-count');
-  const previous = $('#carousel-previous');
-  const next = $('#carousel-next');
-  if (!pageCount || !previous || !next) return;
-  const metrics = carouselMetrics();
-  const pages = metrics.pages;
-  const currentPageIndex = requestedCarouselPage ?? currentCarouselPageIndex(metrics);
-  const currentPage = pages ? currentPageIndex + 1 : 0;
-  pageCount.textContent = currentPage + ' / ' + pages;
-  previous.disabled = currentPage <= 1;
-  next.disabled = currentPage === 0 || currentPage >= pages;
-}
-
-function carouselMetrics() {
-  const cards = [...grid.querySelectorAll('.app-card')];
-  if (!cards.length) {
-    grid.style.setProperty('--carousel-trailing-space', '0px');
-    return { cards, perPage: 1, pages: 0, pageStep: Math.max(1, grid.clientWidth) };
-  }
-
-  const styles = window.getComputedStyle(grid);
-  const gap = Number.parseFloat(styles.columnGap) || 0;
-  const paddingLeft = Number.parseFloat(styles.paddingLeft) || 0;
-  const paddingRight = Number.parseFloat(styles.paddingRight) || 0;
-  const usableWidth = Math.max(1, grid.clientWidth - paddingLeft - paddingRight);
-  const cardWidth = cards[0].getBoundingClientRect().width;
-  const step = Math.max(1, cardWidth + gap);
-  const perPage = Math.max(1, Math.floor((usableWidth + gap + 0.5) / step));
-  const pages = Math.ceil(cards.length / perPage);
-  const lastPageCount = cards.length - (pages - 1) * perPage;
-  const trailingSpace = Math.max(0, usableWidth - lastPageCount * step);
-  grid.style.setProperty('--carousel-trailing-space', trailingSpace + 'px');
-  return { cards, perPage, pages, pageStep: step * perPage };
-}
-
-function carouselPageOffset(pageIndex, metrics) {
-  const firstCard = metrics.cards[pageIndex * metrics.perPage];
-  if (!firstCard) return 0;
-  const gridBounds = grid.getBoundingClientRect();
-  const paddingLeft = Number.parseFloat(window.getComputedStyle(grid).paddingLeft) || 0;
-  const offset = grid.scrollLeft + firstCard.getBoundingClientRect().left - gridBounds.left - paddingLeft;
-  const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth);
-  return Math.min(maxScroll, Math.max(0, offset));
-}
-
-function currentCarouselPageIndex(metrics) {
-  if (!metrics.pages) return 0;
-  return Math.min(metrics.pages - 1, Math.max(0, Math.round(grid.scrollLeft / metrics.pageStep)));
-}
-
-function clearCarouselTarget() {
-  requestedCarouselPage = null;
-  window.clearTimeout(carouselTargetTimer);
-}
-
-function scheduleCarouselTargetReset() {
-  if (requestedCarouselPage === null) return;
-  window.clearTimeout(carouselTargetTimer);
-  carouselTargetTimer = window.setTimeout(() => {
-    clearCarouselTarget();
-    updateCarouselControls();
-  }, 140);
-}
-
-function goToCarouselPage(direction) {
-  const metrics = carouselMetrics();
-  const { pages } = metrics;
-  if (!pages) return;
-  const currentPage = requestedCarouselPage ?? currentCarouselPageIndex(metrics);
-  const targetPage = Math.min(pages - 1, Math.max(0, currentPage + direction));
-  if (targetPage === currentPage) return;
-  requestedCarouselPage = targetPage;
-  window.clearTimeout(carouselTargetTimer);
-  grid.scrollTo({ left: carouselPageOffset(targetPage, metrics), behavior: 'smooth' });
-  updateCarouselControls();
-  playUiSound('move');
-}
-
 function toggleFavorite(id) {
-  const previousScroll = grid.scrollLeft;
   if (state.favorites.has(id)) state.favorites.delete(id);
   else state.favorites.add(id);
   saveFavorites();
   render();
-  grid.scrollLeft = previousScroll;
   if (state.activeItem && state.activeItem.id === id) updateDetailFavorite(state.activeItem);
 }
 
@@ -550,6 +476,9 @@ function showDetails(item) {
   $('#detail-category').textContent = String(item.category || '').toUpperCase();
   $('#detail-title').textContent = item.name;
   $('#detail-description').textContent = item.description || 'Sem descrição cadastrada.';
+  const codeRow = $('#detail-code');
+  codeRow.hidden = !itemCode(item);
+  $('#detail-code-text').textContent = itemCode(item);
   const detailMeta = $('#detail-meta');
   detailMeta.replaceChildren();
   const facts = [
@@ -635,25 +564,42 @@ document.querySelectorAll('[data-category]').forEach((button) => {
     render();
   });
 });
-$('#sound-toggle').addEventListener('click', () => {
-  audioEnabled = !audioEnabled;
-  try {
-    localStorage.setItem(SOUND_PREFERENCE_KEY, String(audioEnabled));
-  } catch (error) {
-    // Keep the preference for the current session when storage is unavailable.
-  }
-  updateSoundToggle();
-  if (audioEnabled) playUiSound('confirm');
-  else if (uiAudioContext) {
-    const context = uiAudioContext;
-    uiAudioContext = null;
-    context.close().catch(() => {});
-  }
-});
-$('#search-shortcut').addEventListener('click', () => $('#search').focus());
-$('#featured-open').addEventListener('click', () => {
+$('#hero-feature').addEventListener('click', () => {
   if (state.featuredItem) showDetails(state.featuredItem);
 });
+$('#hero-explore').addEventListener('click', () => {
+  $('#catalogo').scrollIntoView({ behavior: options.reduceMotion ? 'auto' : 'smooth' });
+});
+$('#options-open').addEventListener('click', openOptions);
+$('#options-close').addEventListener('click', closeOptions);
+$('#options-scrim').addEventListener('click', closeOptions);
+document.querySelectorAll('[data-option]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const key = button.dataset.option;
+    if (key === 'sound') {
+      setSound(!audioEnabled);
+      return;
+    }
+    options[key] = !options[key];
+    if (key === 'gamepad' && options.gamepad) startGamepadPolling();
+    saveOptions();
+    applyOptions();
+  });
+});
+document.querySelectorAll('[data-size]').forEach((button) => {
+  button.addEventListener('click', () => {
+    options.size = button.dataset.size;
+    saveOptions();
+    applyOptions();
+  });
+});
+$('#detail-code-copy').addEventListener('click', () => {
+  const text = $('#detail-code-text').textContent;
+  if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+});
+window.addEventListener('scroll', () => {
+  masthead.classList.toggle('is-solid', window.scrollY > 40);
+}, { passive: true });
 search.addEventListener('input', () => {
   window.clearTimeout(searchRenderTimer);
   searchRenderTimer = window.setTimeout(render, 120);
@@ -668,21 +614,6 @@ grid.addEventListener('click', (event) => {
     event.stopPropagation();
     toggleFavorite(button.dataset.favorite);
   }
-});
-$('#carousel-previous').addEventListener('click', () => goToCarouselPage(-1));
-$('#carousel-next').addEventListener('click', () => goToCarouselPage(1));
-grid.addEventListener('scroll', updateCarouselControls, { passive: true });
-grid.addEventListener('scroll', scheduleCarouselTargetReset, { passive: true });
-grid.addEventListener('scrollend', () => {
-  clearCarouselTarget();
-  updateCarouselControls();
-});
-grid.addEventListener('pointerdown', clearCarouselTarget);
-grid.addEventListener('scroll', scheduleCatalogBackdropUpdate, { passive: true });
-grid.addEventListener('focusin', scheduleCatalogBackdropUpdate);
-window.addEventListener('resize', () => {
-  clearCarouselTarget();
-  updateCarouselControls();
 });
 
 /* HADES-GAMEPAD-FULL */
@@ -708,12 +639,21 @@ function pollGamepadShoulders() {
       right: pressed(15) || (axes[0] ?? 0) > 0.6,
     };
 
-    if (!dialog.open && current.leftShoulder && !previous.leftShoulder) goToCarouselPage(-1);
-    if (!dialog.open && current.rightShoulder && !previous.rightShoulder) goToCarouselPage(1);
+    if (!options.gamepad) {
+      gamepadShoulders.set(gamepad.index, current);
+      continue;
+    }
+    const panelOpen = optionsPanelOpen();
+    if (!dialog.open && !panelOpen && current.leftShoulder && !previous.leftShoulder) shiftCategory(-1);
+    if (!dialog.open && !panelOpen && current.rightShoulder && !previous.rightShoulder) shiftCategory(1);
 
-    if (!dialog.open && current.triangle && !previous.triangle) {
+    if (!dialog.open && !panelOpen && current.triangle && !previous.triangle) {
+      const card = document.activeElement?.closest?.('.app-card');
+      if (card) toggleFavorite(card.dataset.itemId);
+      else search.focus();
       playUiSound('move');
-      search.focus();
+    } else if (panelOpen && current.circle && !previous.circle) {
+      closeOptions();
     } else if (dialog.open && current.circle && !previous.circle) {
       playUiSound('back');
       dialog.close();
@@ -722,6 +662,7 @@ function pollGamepadShoulders() {
       const modalControls = [...dialog.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled])')]
         .filter((element) => element.getClientRects().length);
       const elements = dialog.open ? modalControls : focusables();
+      if (panelOpen) continue;
       const index = elements.indexOf(document.activeElement);
       const forward = (current.right && !previous.right) || (current.down && !previous.down);
       const offset = forward ? 1 : -1;
@@ -778,19 +719,16 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault();
     search.focus();
   }
-  if (!dialog.open && event.key === 'PageUp') {
+  if (event.key === 'Escape' && optionsPanelOpen()) {
     event.preventDefault();
-    goToCarouselPage(-1);
-  }
-  if (!dialog.open && event.key === 'PageDown') {
-    event.preventDefault();
-    goToCarouselPage(1);
+    closeOptions();
+    return;
   }
   if (event.key === 'Escape' && !dialog.open) search.blur();
   const isEditable = event.target instanceof HTMLElement
     && (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName));
   if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)
-      && !dialog.open && !isEditable) {
+      && !dialog.open && !isEditable && !optionsPanelOpen()) {
     const elements = focusables();
     const index = elements.indexOf(document.activeElement);
     const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
@@ -805,6 +743,9 @@ document.addEventListener('keydown', (event) => {
 });
 
 loadFavorites();
+loadOptions();
+applyOptions();
+if (options.gamepad) startGamepadPolling();
 
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
   window.addEventListener('load', () => {
@@ -826,6 +767,7 @@ fetch('catalog/catalog.json?v=hades-catalog-total-11')
     state.favorites = new Set([...state.favorites].filter((id) => knownIds.has(id)));
     saveFavorites();
     render();
+    renderHeroShelf();
     setStatus('CATÁLOGO ONLINE');
   })
   .catch((error) => {
