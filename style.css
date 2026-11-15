@@ -3808,3 +3808,268 @@ body {
     overflow-y: hidden !important;
   }
 }
+
+
+/* HADES STORE — identidade visual preto e dourado inspirada no Lovable.
+   Mantém o catálogo estático, o carrossel compacto, o enquadramento integral
+   das capas e todos os destinos de links existentes. */
+:root {
+  color-scheme: dark;
+  --blue: #b58a42;
+  --cyan: #e8c879;
+  --deep: #080706;
+  --panel: #17130e;
+  --line: #8e6b32;
+  --text: #f7f0e2;
+  --muted: #c5b99f;
+  --gold: #d6ad62;
+  --gold-bright: #f1d99b;
+  --black: #090806;
+}
+html { background:#080706; }
+body {
+  color:var(--text);
+  background-color:#080706;
+  background-image:
+    radial-gradient(ellipse at 50% -15%,#60451f55 0,transparent 48%),
+    linear-gradient(180deg,#090806 0%,#15110b 52%,#080706 100%);
+}
+.console-shell {
+  background:linear-gradient(180deg,#0b0907f7,#100d09fa 70%,#080706);
+}
+.console-shell::before {
+  opacity:.2;
+  background:
+    radial-gradient(ellipse at 78% 8%,#d6ad6222 0,transparent 25%),
+    repeating-linear-gradient(115deg,transparent 0 82px,#d6ad6208 83px 85px);
+}
+.console-shell::after {
+  background:linear-gradient(180deg,transparent 0,#d6ad6212 64%,#080706aa 100%);
+  border-top-color:#b58a4277;
+  box-shadow:0 -5px 24px #b58a4220;
+}
+.masthead {
+  border-bottom-color:#b58a42;
+  background-color:#090806;
+  background-image:linear-gradient(90deg,#090806 0%,#1b150c 52%,#090806 100%);
+  box-shadow:0 5px 28px #000a,0 1px 0 #e2c17b55;
+  animation:none;
+}
+.masthead::before {
+  filter:sepia(.5) saturate(.72) brightness(.68);
+}
+.masthead::after {
+  background:linear-gradient(90deg,#090806f5 0%,#090806b8 40%,#09080620 78%,#09080688 100%),
+    linear-gradient(105deg,transparent 35%,#d6ad6218 58%,transparent 80%);
+  opacity:1;
+  animation:none;
+}
+.brand-mark { filter:drop-shadow(0 0 13px #d6ad6270); }
+.brand strong {
+  color:#f5e8c9;
+  text-shadow:0 2px 12px #000,0 0 22px #c69a4b55;
+}
+.brand small { color:#cbbb9d; }
+.platform-mark { color:#e8d5aa; text-shadow:0 0 12px #b58a42; }
+.sound-toggle {
+  border-color:#8f6c37;
+  background:linear-gradient(180deg,#2b2113dd,#0c0906e8);
+  color:#ead9b5;
+  box-shadow:0 0 10px #b58a4222;
+}
+.sound-toggle > span:first-child { color:#e4c27b; }
+.sound-toggle:hover,.sound-toggle:focus-visible {
+  border-color:#f1d99b;
+  box-shadow:0 0 13px #c99c4d66;
+}
+.sound-toggle.is-enabled {
+  background:linear-gradient(180deg,#7b5a25,#3d2a10);
+  color:#fff8e8;
+  border-color:#f1d99b;
+}
+.store-intro {
+  border-color:#80602f;
+  background:#100d08;
+  box-shadow:0 18px 48px #000a,0 0 24px #b58a4218;
+}
+.store-intro::before {
+  background:linear-gradient(90deg,#090806e8 0%,#09080699 38%,#09080618 78%),
+    linear-gradient(0deg,#090806aa,transparent 45%),
+    radial-gradient(ellipse at 75% 50%,#d6ad6220,transparent 52%);
+}
+.store-intro::after {
+  color:#f4e8ce;
+  text-shadow:0 2px 14px #000;
+}
+.store-banner { filter:sepia(.16) saturate(.82) brightness(.78); }
+.top-nav {
+  border-color:#76572c;
+  border-bottom-color:#d0a85d;
+  background:linear-gradient(180deg,#241b10,#100c07);
+  box-shadow:0 10px 28px #0008,inset 0 1px #f5e4c012;
+}
+.nav-tab {
+  color:#d9c9a9;
+  background:transparent;
+  border-color:transparent;
+}
+.nav-tab:hover { color:#fff0ce; background:#d6ad6212; }
+.nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible {
+  color:#fff7e8;
+  background:linear-gradient(135deg,#b88b43,#6e4a1b);
+  border-color:#f0d18b;
+  box-shadow:0 0 18px #b58a4240,inset 0 1px #ffffff40;
+}
+.ps4-promo {
+  border-color:#80602f;
+  background:radial-gradient(ellipse at 82% 50%,#b58a4230,transparent 42%),
+    linear-gradient(110deg,#21180d 0%,#120e08 58%,#0b0906 100%);
+  box-shadow:0 16px 40px #0008,inset 0 1px #f5e4c012,0 0 24px #b58a4215;
+}
+.ps4-promo-kicker,.section-kicker { color:#d8b46d; }
+.ps4-promo h2 { color:#f6ead0; }
+.ps4-promo p { color:#c9bda5; }
+.ps4-promo::after { color:#f2dca10b; }
+.tiktok-feature {
+  color:#fff8e9;
+  border-color:#d6b36f;
+  background:linear-gradient(135deg,#9b702e,#543713);
+  box-shadow:0 8px 26px #0008,inset 0 1px #ffffff45;
+}
+.tiktok-feature:hover,.tiktok-feature:focus-visible {
+  box-shadow:0 12px 32px #b58a4255,0 0 0 3px #d6ad6225;
+}
+.tiktok-symbol { background:#100c07; text-shadow:2px 0 #d6ad62,-2px 0 #f4e6c5; }
+.tiktok-feature small { color:#f0dfbc; }
+.sidebar.details-sidebar {
+  border-color:#72552d;
+  background:linear-gradient(110deg,#21190e,#120e08 70%,#0d0a06);
+  box-shadow:0 14px 34px #0008,inset 0 1px #f5e4c010;
+}
+.featured-kicker { color:#d7b36d; }
+.featured-category { color:#bca77e; }
+.featured-title { color:#f8efdD; }
+.featured-description { color:#c8bda8; }
+.featured-open {
+  border-color:#e2c27d;
+  color:#fff7e6;
+  background:linear-gradient(135deg,#a77a35,#614117);
+  box-shadow:0 6px 18px #0006;
+}
+.featured-open:hover:not(:disabled) { filter:brightness(1.15); }
+.side-link { color:#e1c98e; }
+.main-panel {
+  background-color:#0d0a07;
+  background-image:linear-gradient(180deg,#0d0a07e8,#0d0a07f4),url("assets/hades-underworld-bg.svg");
+}
+.catalog-title-group h2 {
+  color:#f5ead2;
+  text-shadow:0 3px 16px #000;
+}
+.search {
+  border-color:#6d512b;
+  background:#151008;
+  box-shadow:inset 0 1px #ffffff0a;
+}
+.search:focus-within { border-color:#d6ad62; box-shadow:0 0 0 3px #d6ad6222; }
+.search input { color:#f5ead2; }
+.search input::placeholder { color:#9f927a; }
+.sort-control select {
+  border-color:#6d512b;
+  color:#eadbbd;
+  background:#151008;
+}
+.sort-control select:focus { border-color:#d6ad62; }
+.status { color:#bfae8d; }
+.status.online { color:#d6bd83; }
+.status i { background:#d6ad62; box-shadow:0 0 9px #d6ad6280; }
+.catalog-meta,.catalog-meta p { color:#c5b99f; }
+.carousel-controls button {
+  border-color:#76572c;
+  color:#f1dfba;
+  background:#21180e;
+}
+.carousel-controls button:hover:not(:disabled) {
+  border-color:#e0bd73;
+  background:#3a2913;
+}
+.game-grid { scrollbar-color:#9b7337 #120e08; }
+.app-card {
+  border-color:#584323;
+  background:linear-gradient(180deg,#241b10 0%,#171108 54%,#100c07 100%);
+  box-shadow:0 12px 26px #0009,inset 0 1px #f5e4c010;
+}
+.app-card::before {
+  background:linear-gradient(90deg,transparent,#d6ad62,transparent);
+}
+.app-card:hover,.app-card:focus-visible,.app-card.selected {
+  border-color:#d6ad62;
+  box-shadow:0 0 0 1px #d6ad6238,0 16px 32px #000b,0 0 24px #b58a4228;
+}
+.app-card > .game-physical,.app-card > .software-art,.app-card > .app-icon {
+  border-color:#72572f;
+  background:#090806;
+  box-shadow:0 8px 20px #0009;
+}
+.app-card h3 { color:#f4e8cf; }
+.app-card:hover h3,.app-card.selected h3 { color:#e4c27b; }
+.favorite-toggle {
+  border-color:#a78954aa;
+  color:#e5c985;
+  background:#100c07e8;
+}
+.favorite-toggle[aria-pressed="true"] {
+  background:#6c4b1d;
+  color:#fff1c9;
+}
+.game-cover { background:#090806; }
+.game-cover-art { background:#090806; }
+.cover-fallback {
+  color:#f5e8cc;
+  background:linear-gradient(145deg,#4b3519,#100c07);
+}
+#details {
+  color:#f5ead2;
+  border-color:#9a743b;
+  border-radius:18px;
+  background:linear-gradient(145deg,#241a0d,#0d0a06);
+  box-shadow:0 24px 80px #000d,0 0 30px #b58a4222;
+}
+#details::backdrop { background:#000c; backdrop-filter:blur(7px); }
+#details .close {
+  color:#f0d9a4;
+  border:1px solid #80602f;
+  background:#171008;
+}
+#detail-title { color:#f6e8ca; }
+#detail-description,.dialog-note { color:#c6b99e; }
+.detail-fact,.package-links {
+  border-color:#604923;
+  background:#171108;
+}
+.detail-fact strong,.eyebrow,.package-links-heading { color:#d6ad62; }
+.primary-btn.download {
+  border-color:#e0bd73;
+  color:#fff6e4;
+  background:linear-gradient(135deg,#a77a35,#614117);
+}
+.secondary-btn {
+  border-color:#80602f;
+  color:#ead9b5;
+  background:#1a1309;
+}
+.download-password {
+  border-color:#8d6b35;
+  color:#f0dfbc;
+  background:#21180c;
+}
+.empty { color:#c7b99e; }
+@media (max-width:760px) {
+  .top-nav { border-color:#76572c; }
+  .nav-tab.active,.nav-tab.active:hover,.nav-tab:focus-visible {
+    background:linear-gradient(135deg,#a77a35,#614117);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; }
+}
