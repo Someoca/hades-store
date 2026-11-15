@@ -3,9 +3,9 @@
 ## Regras de preservação do catálogo
 
 - `catalog/catalog.json` é a fonte de dados compartilhada pelo site e pelo aplicativo nativo.
-- A migração do catálogo direciona `downloadUrl`, `packageLinks` e `storeProductUrl` dos jogos para o novo site. Os links de pacote são consolidados em uma única ação para evitar botões duplicados; aplicativos e emuladores não são alterados.
+- Esta etapa não altera o catálogo, `downloadUrl`, `packageLinks`, `storeProductUrl`, rótulos, IDs ou qualquer URL já cadastrada em jogos.
 - Recursos de download novos devem ser aditivos e limitados a homebrews e aplicativos cuja distribuição seja autorizada.
-- Não converter links de jogos em URLs de download direto.
+- Não converter links existentes de jogos em URLs de download direto nem trocar seus destinos.
 
 ## Estado atual da navegação nativa
 
@@ -33,8 +33,7 @@ Fluxo obrigatório:
 
 ## Critérios de aceite
 
-- Todos os campos de link dos jogos direcionam ao novo site, e cada item tem no máximo uma ação de pacote.
-- Links de aplicativos e emuladores permanecem inalterados.
+- Nenhum link existente de jogo é removido, substituído ou reescrito.
 - Os fluxos de navegação não bloqueiam a interface e sempre permitem voltar.
 - Download só é habilitado para homebrew/aplicativo com distribuição autorizada, host permitido e hash esperado.
 - Certificados TLS são verificados; falhas deixam o arquivo final indisponível.
