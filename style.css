@@ -3961,3 +3961,51 @@ body {
     font-size: 11px !important;
   }
 }
+
+
+/* CORREÇÃO: manter a imagem inteira dentro da área da capa do carrossel. */
+#grid.game-grid > .app-card > .game-physical {
+  display: block !important;
+  position: relative !important;
+  flex: 1 1 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+#grid.game-grid > .app-card > .game-physical > .game-cover {
+  display: block !important;
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  aspect-ratio: auto !important;
+}
+#grid.game-grid > .app-card > .game-physical .game-cover-art {
+  display: block !important;
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  transform: none !important;
+}
+#grid.game-grid > .app-card > .game-physical .ps4-band { display: none !important; }
+#grid.game-grid > .app-card > .software-art img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
