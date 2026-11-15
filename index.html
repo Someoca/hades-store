@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1116">
+  <meta name="theme-color" content="#050b18">
   <meta name="description" content="HADES Store: catálogo comunitário de jogos, aplicativos e emuladores para PlayStation 4, com busca, filtros, favoritos e detalhes de cada item.">
   <meta property="og:title" content="HADES STORE | PS4">
   <meta property="og:description" content="Catálogo comunitário de jogos, aplicativos e emuladores para PlayStation 4.">
@@ -18,177 +18,229 @@
   <meta http-equiv="Expires" content="0">
   <title>HADES STORE | PS4</title>
   <link rel="icon" type="image/png" href="assets/hades-emblem.png?v=hades-emblem-v8">
-  <link rel="stylesheet" href="style.css?v=hades-carousel-container-height-v2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=hades-console-v1">
 </head>
 <body>
-  <div class="console-shell" id="home">
-    <!-- Cabeçalho Principal -->
-    <header class="masthead">
-      <a class="brand" href="#home" aria-label="HADES Store Início">
-        <img class="brand-mark" src="assets/hades-emblem.png?v=hades-emblem-v8" alt="Emblema da HADES Store" width="102" height="105" decoding="async">
-        <div>
-          <strong>HADES STORE</strong>
-          <small>JOGOS • APLICATIVOS • EMULADORES</small>
-        </div>
+  <header class="masthead" id="masthead">
+    <a class="brand" href="#home" aria-label="HADES Store — início">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-1.8 10H4.8L3 8Zm2.3 12h13.4v1.5H5.3V20Z"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>HADES</strong>
+        <small>STORE · PS4</small>
+      </span>
+    </a>
+
+    <div class="masthead-actions">
+      <a class="pill-link" href="https://www.tiktok.com/@emerson.sotano" target="_blank" rel="noopener noreferrer" aria-label="Visitar TikTok de Emerson Sotano">
+        <span>TikTok @emerson.sotano</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
-
-      <div class="masthead-actions">
-        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" aria-label="Ativar sons da interface">
-          <span aria-hidden="true">♪</span>
-          <span id="sound-label">SOM OFF</span>
-        </button>
-        <span class="platform-mark" aria-label="PlayStation 4">◈ PS4</span>
-      </div>
-    </header>
-
-    <section class="store-intro" aria-label="Banner da HADES Store">
-      <img class="store-banner" src="assets/avatar_banner.png" alt="Arte de fantasia em tons azulados para a HADES Store" width="1284" height="222" fetchpriority="high" decoding="async">
-    </section>
-
-    <!-- Barra de Categorias -->
-    <nav class="top-nav" aria-label="Categorias do catálogo">
-      <button class="nav-tab active" type="button" data-category="Todos" aria-pressed="true">
-        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        <span>TODOS</span>
+      <button class="primary-pill" id="options-open" type="button" aria-haspopup="dialog" aria-controls="options-panel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>
+        <span>Opções PS4</span>
       </button>
-      <button class="nav-tab" type="button" data-category="Jogos" aria-pressed="false">
-        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2-2v4m7-3h.01M18 13h.01M7 7h10a4 4 0 0 1 3.9 4.8l-1 5A3 3 0 0 1 17 19h-1.5l-2-2h-3l-2 2H7a3 3 0 0 1-2.9-2.2l-1-5A4 4 0 0 1 7 7Z"/></svg>
-        <span>JOGOS</span>
-      </button>
-      <button class="nav-tab" type="button" data-category="Aplicativos" aria-pressed="false">
-        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Zm0 0v9m0 0 8-4.5M12 12 4 7.5"/></svg>
-        <span>APLICATIVOS</span>
-      </button>
-      <button class="nav-tab" type="button" data-category="Emuladores" aria-pressed="false">
-        <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M6 12h4m-2-2v4m7-2h.01M18 12h.01"/></svg>
-        <span>EMULADORES</span>
-      </button>
-      <button class="nav-tab" type="button" data-category="Favoritos" aria-pressed="false">
-        <svg class="nav-icon solid" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5-4.8-4.6 6.6-.9L12 2.5Z"/></svg>
-        <span>FAVORITOS</span>
-      </button>
-    </nav>
-
-    <section class="ps4-promo" aria-label="Propaganda HADES Store para PlayStation 4">
-      <div class="ps4-promo-copy">
-        <span class="ps4-promo-kicker">HADES STORE • PLAYSTATION 4</span>
-        <h2>SEU UNIVERSO PS4 COMEÇA AQUI</h2>
-        <p>Explore jogos, aplicativos e emuladores em um só lugar. Confira as novidades do catálogo!</p>
-      </div>
-      <a class="tiktok-feature" href="https://www.tiktok.com/@emerson.sotano" target="_blank" rel="noopener noreferrer" aria-label="Visitar TikTok de Emerson Sotano">
-        <span class="tiktok-symbol" aria-hidden="true">♪</span>
-        <span><small>ACOMPANHE NO TIKTOK</small><strong>@emerson.sotano</strong></span>
-        <span class="tiktok-arrow" aria-hidden="true">↗</span>
-      </a>
-    </section>
-
-    <!-- Layout Principal -->
-    <div class="console-layout">
-      <!-- Barra Lateral -->
-      <aside class="sidebar details-sidebar" aria-label="Detalhes do item em destaque" aria-live="polite">
-        <span class="featured-kicker">EM DESTAQUE</span>
-        <span class="featured-category" id="featured-category">CATÁLOGO</span>
-        <h2 class="featured-title" id="featured-title">Explore o catálogo</h2>
-        <p class="featured-description" id="featured-description">Selecione uma capa para ver os detalhes do jogo.</p>
-        <button class="featured-open" id="featured-open" type="button" disabled>VER DETALHES</button>
-        <button class="side-link featured-search" id="search-shortcut" type="button">
-          <svg class="side-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <span>Buscar no catálogo</span>
-        </button>
-      </aside>
-
-      <!-- Área do Catálogo -->
-      <main class="main-panel">
-        <div class="catalog-backdrop" aria-hidden="true">
-          <div class="catalog-backdrop-layer is-visible"></div>
-          <div class="catalog-backdrop-layer"></div>
-        </div>
-
-        <section class="catalog-section" aria-labelledby="catalog-title">
-          <div class="catalog-heading">
-            <div class="catalog-title-group">
-              <span class="section-kicker">ENCONTRE SUA PRÓXIMA AVENTURA</span>
-              <h2 id="catalog-title">Explore o catálogo</h2>
-            </div>
-
-            <div class="catalog-tools">
-              <label class="search" for="search">
-                <span aria-hidden="true">⌕</span>
-                <input id="search" type="search" placeholder="Buscar jogo ou app..." autocomplete="off">
-              </label>
-
-              <div class="sort-control">
-                <label class="sr-only" for="sort">Ordenar por</label>
-                <select id="sort" aria-label="Ordenar catálogo">
-                  <option value="featured">Destaques</option>
-                  <option value="name-asc">Nome A–Z</option>
-                  <option value="name-desc">Nome Z–A</option>
-                  <option value="category">Categoria</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="status online" id="catalog-status" role="status">
-            <i></i> INICIANDO CATÁLOGO
-          </div>
-
-          <div class="catalog-meta">
-            <p id="results-count">Carregando catálogo...</p>
-            <div class="carousel-controls" aria-label="Paginação do carrossel">
-              <button id="carousel-previous" type="button" aria-label="Página anterior">‹</button>
-              <span id="page-count">1 / 1</span>
-              <button id="carousel-next" type="button" aria-label="Próxima página">›</button>
-            </div>
-          </div>
-
-          <div class="game-grid" id="grid" role="region" aria-label="Itens do catálogo"></div>
-
-          <div class="empty" id="empty" hidden>
-            <p>Nenhum item encontrado. Altere a busca ou categoria.</p>
-          </div>
-        </section>
-      </main>
     </div>
+  </header>
 
-  </div>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="hero-badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2-2v4m7-3h.01M18 13h.01M7 7h10a4 4 0 0 1 3.9 4.8l-1 5A3 3 0 0 1 17 19h-1.5l-2-2h-3l-2 2H7a3 3 0 0 1-2.9-2.2l-1-5A4 4 0 0 1 7 7Z"/></svg>
+            EDIÇÃO PLAYSTATION 4
+          </span>
+          <h1 id="hero-title">Seu universo <span class="accent-blue">PS4</span> começa <span class="accent-gold">aqui.</span></h1>
+          <p>Jogos, aplicativos e emuladores reunidos em uma vitrine feita para a TV — navegue inteiramente pelo controle.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" id="hero-explore" href="#catalogo">
+              Explorar catálogo
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </a>
+            <button class="ghost-btn" id="hero-feature" type="button" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+              <span id="hero-feature-label">Carregando destaque…</span>
+            </button>
+          </div>
+          <dl class="hero-stats" aria-label="Resumo do catálogo">
+            <div><dt id="stat-games-label">JOGOS</dt><dd id="stat-games">—</dd></div>
+            <div><dt>APPS</dt><dd id="stat-apps">—</dd></div>
+            <div><dt>EMULADORES</dt><dd id="stat-emulators">—</dd></div>
+          </dl>
+        </div>
 
-  <!-- Modal de Detalhes e Links de Download -->
+        <div class="hero-shelf" id="hero-shelf" aria-label="Capas em destaque"></div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <span class="section-kicker">ENCONTRE SUA PRÓXIMA AVENTURA</span>
+        <h2 id="catalog-title">Explore o catálogo</h2>
+      </div>
+
+      <div class="toolbar" id="toolbar">
+        <nav class="tabs" aria-label="Categorias do catálogo">
+          <button class="tab active" type="button" data-category="Todos" aria-pressed="true">TODOS <span class="tab-count" data-count="Todos">0</span></button>
+          <button class="tab" type="button" data-category="Jogos" aria-pressed="false">JOGOS <span class="tab-count" data-count="Jogos">0</span></button>
+          <button class="tab" type="button" data-category="Aplicativos" aria-pressed="false">APLICATIVOS <span class="tab-count" data-count="Aplicativos">0</span></button>
+          <button class="tab" type="button" data-category="Emuladores" aria-pressed="false">EMULADORES <span class="tab-count" data-count="Emuladores">0</span></button>
+          <button class="tab" type="button" data-category="Favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg>
+            FAVORITOS <span class="tab-count" data-count="Favoritos">0</span>
+          </button>
+        </nav>
+
+        <label class="search" for="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="search" type="search" placeholder="Buscar jogo, app ou CUSA" autocomplete="off">
+        </label>
+
+        <div class="sort-control">
+          <label class="sr-only" for="sort">Ordenar por</label>
+          <select id="sort" aria-label="Ordenar catálogo">
+            <option value="featured">Destaques</option>
+            <option value="name-asc">Nome A–Z</option>
+            <option value="name-desc">Nome Z–A</option>
+            <option value="category">Categoria</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="status online" id="catalog-status" role="status"><i></i> INICIANDO CATÁLOGO</div>
+      <p class="results-count" id="results-count">Carregando catálogo...</p>
+
+      <div class="game-grid" id="grid" role="list" aria-label="Itens do catálogo"></div>
+
+      <div class="empty" id="empty" hidden>
+        <p>Nenhum item encontrado. Altere a busca ou categoria.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="hint-bar" aria-label="Atalhos do controle">
+    <span><i class="btn-glyph cross">✕</i> Abrir</span>
+    <span><i class="btn-glyph circle">◯</i> Voltar</span>
+    <span><i class="btn-glyph triangle">△</i> Favoritar</span>
+    <span><i class="btn-glyph square">▢</i> Buscar</span>
+    <span><b>L1 R1</b> Abas</span>
+    <span><b>OPTIONS</b> Opções</span>
+  </nav>
+
   <dialog id="details" aria-labelledby="detail-title">
-    <button class="close" type="button" aria-label="Fechar janela">×</button>
+    <button class="close" type="button" aria-label="Fechar janela">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
     <div class="detail-icon">
       <img id="detail-image" src="" alt="" hidden>
     </div>
-    <span class="eyebrow" id="detail-category">CATEGORIA</span>
-    <h2 id="detail-title">Título</h2>
-    <p id="detail-description"></p>
+    <div class="detail-body">
+      <span class="eyebrow" id="detail-category">CATEGORIA</span>
+      <h2 id="detail-title">Título</h2>
+      <p id="detail-description"></p>
 
-    <div class="detail-meta" id="detail-meta"></div>
+      <div class="detail-code" id="detail-code" hidden>
+        <span class="detail-label">CÓDIGO DO TÍTULO</span>
+        <button class="code-chip" id="detail-code-copy" type="button" aria-label="Copiar código do título">
+          <span id="detail-code-text"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+        </button>
+      </div>
 
-    <div class="package-links" id="package-links" hidden></div>
+      <div class="detail-meta" id="detail-meta"></div>
 
-    <p class="download-password" id="download-password" hidden>
-      <strong>Senha dos arquivos:</strong> <code>866919</code>
-    </p>
+      <div class="package-links" id="package-links" hidden></div>
 
-    <div class="detail-actions" id="detail-actions">
-      <a class="primary-btn download" id="detail-download" href="#" target="_blank" rel="noopener noreferrer" hidden>ABRIR LINK OFICIAL ↗</a>
-      <button class="secondary-btn" id="detail-favorite" type="button" aria-pressed="false">☆ Salvar favorito</button>
+      <p class="download-password" id="download-password" hidden>
+        <strong>Senha dos arquivos:</strong> <code>866919</code>
+      </p>
+
+      <div class="detail-actions" id="detail-actions">
+        <a class="primary-btn download" id="detail-download" href="#" target="_blank" rel="noopener noreferrer" hidden>ABRIR LINK OFICIAL ↗</a>
+        <button class="secondary-btn" id="detail-favorite" type="button" aria-pressed="false">☆ Favoritar</button>
+      </div>
+
+      <section class="emulator-games" id="emulator-games" hidden>
+        <h3>JOGOS RECOMENDADOS</h3>
+        <p class="emulator-games-note">Use somente jogos obtidos legalmente e compatíveis com o emulador.</p>
+        <ul id="emulator-games-list"></ul>
+      </section>
+
+      <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
+    </div>
+  </dialog>
+
+  <div class="scrim" id="options-scrim" hidden></div>
+  <aside class="options-panel" id="options-panel" role="dialog" aria-modal="true" aria-labelledby="options-title" aria-hidden="true" inert>
+    <button class="close" id="options-close" type="button" aria-label="Fechar opções">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m8.5 8.5 7 7M15.5 8.5l-7 7"/></svg>
+    </button>
+    <span class="section-kicker">CONFIGURAÇÕES</span>
+    <h2 id="options-title">Opções do console PS4</h2>
+    <p class="options-lead">Ajuste a loja para jogar do sofá, na TV, com o controle.</p>
+
+    <div class="option-card">
+      <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8m-4-4v4"/></svg></span>
+      <div class="option-text">
+        <strong>Modo TV</strong>
+        <small>Aumenta textos e capas para leitura à distância. Liga sozinho no navegador do PS4.</small>
+      </div>
+      <button class="switch" type="button" role="switch" aria-checked="false" data-option="tv" aria-label="Modo TV"></button>
     </div>
 
-    <section class="emulator-games" id="emulator-games" hidden>
-      <h3>JOGOS RECOMENDADOS</h3>
-      <p class="emulator-games-note">Use somente jogos obtidos legalmente e compatíveis com o emulador.</p>
-      <ul id="emulator-games-list"></ul>
-    </section>
+    <div class="option-card">
+      <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2-2v4m7-3h.01M18 13h.01M7 7h10a4 4 0 0 1 3.9 4.8l-1 5A3 3 0 0 1 17 19h-1.5l-2-2h-3l-2 2H7a3 3 0 0 1-2.9-2.2l-1-5A4 4 0 0 1 7 7Z"/></svg></span>
+      <div class="option-text">
+        <strong>Navegação por controle</strong>
+        <small>Use o direcional do DualShock 4 ou as setas. ✕ abre, ◯ volta, L1/R1 trocam de aba.</small>
+      </div>
+      <button class="switch" type="button" role="switch" aria-checked="true" data-option="gamepad" aria-label="Navegação por controle"></button>
+    </div>
 
-    <p class="dialog-note">Confira a procedência, o destino e a compatibilidade antes de instalar arquivos externos.</p>
-  </dialog>
+    <div class="option-card">
+      <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l5 4V6L7 10H4Z"/><path d="M16 9a4 4 0 0 1 0 6m2.5-9a8 8 0 0 1 0 12"/></svg></span>
+      <div class="option-text">
+        <strong>Sons da interface</strong>
+        <small>Toca um som curto ao navegar e selecionar, como no menu do console.</small>
+      </div>
+      <button class="switch" type="button" role="switch" aria-checked="false" data-option="sound" aria-label="Sons da interface"></button>
+    </div>
+
+    <div class="option-card">
+      <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M18 6l-2.5 2.5m-7 7L6 18"/></svg></span>
+      <div class="option-text">
+        <strong>Reduzir animações</strong>
+        <small>Deixa a navegação mais leve em consoles mais antigos.</small>
+      </div>
+      <button class="switch" type="button" role="switch" aria-checked="false" data-option="reduceMotion" aria-label="Reduzir animações"></button>
+    </div>
+
+    <div class="option-card option-size">
+      <div class="option-row">
+        <span class="option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></span>
+        <div class="option-text">
+          <strong>Tamanho das capas</strong>
+          <small>Quantas capas aparecem por linha.</small>
+        </div>
+      </div>
+      <div class="segmented" role="group" aria-label="Tamanho das capas">
+        <button type="button" data-size="compact" aria-pressed="false">Compacta</button>
+        <button type="button" data-size="default" aria-pressed="true">Padrão</button>
+        <button type="button" data-size="large" aria-pressed="false">Ampla</button>
+      </div>
+    </div>
+  </aside>
 
   <noscript>
     <p class="noscript-warning">A HADES Store precisa de JavaScript ativo para carregar o catálogo.</p>
   </noscript>
 
-  <script src="app.js?v=hades-premium-v1" defer></script>
+  <script src="app.js?v=hades-console-v1" defer></script>
 </body>
 </html>
