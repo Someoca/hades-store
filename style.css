@@ -3784,3 +3784,27 @@ body {
     max-height: 195px !important;
   }
 }
+
+
+/* FIX DO RECORTE DO CARROSSEL: reservar altura real no contêiner da lista. */
+@media (min-width: 761px) {
+  #grid.game-grid {
+    flex: 0 0 320px !important;
+    height: 320px !important;
+    min-height: 320px !important;
+    max-height: none !important;
+    align-self: stretch !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+}
+@media (max-width: 760px) {
+  #grid.game-grid {
+    flex: 0 0 275px !important;
+    height: 275px !important;
+    min-height: 275px !important;
+    max-height: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+}
