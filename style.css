@@ -3748,3 +3748,39 @@ body {
     font-size: 11px !important;
   }
 }
+
+/* FIX DEFINITIVO DA ALTURA DAS CAPAS: não depender de flex-basis com altura zero. */
+#grid.game-grid > .app-card > .game-physical,
+#grid.game-grid > .app-card > .software-art {
+  flex: 0 0 230px !important;
+  height: 230px !important;
+  min-height: 230px !important;
+  max-height: 230px !important;
+}
+#grid.game-grid > .app-card > .game-physical > .game-cover {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+#grid.game-grid > .app-card > .game-physical .game-cover-art,
+#grid.game-grid > .app-card > .software-art img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+#grid.game-grid > .app-card .game-cover .ps4-band {
+  display: none !important;
+}
+@media (max-width: 760px) {
+  #grid.game-grid > .app-card > .game-physical,
+  #grid.game-grid > .app-card > .software-art {
+    flex-basis: 195px !important;
+    height: 195px !important;
+    min-height: 195px !important;
+    max-height: 195px !important;
+  }
+}
