@@ -190,9 +190,9 @@ function safeExternalUrl(value) {
 
 function packageLinkKind(label) {
   const value = normalize(label);
-  if (/^(jogo|game)\\b/.test(value)) return 'game';
-  if (/^(update|atualizacao|patch)\\b/.test(value)) return 'update';
-  if (/^(dlc|dlcs|expansao|expansoes)\\b/.test(value)) return 'dlc';
+  if (/^(jogo|game)\b/.test(value)) return 'game';
+  if (/^(update|atualizacao|patch)\b/.test(value)) return 'update';
+  if (/^(dlc|dlcs|expansao|expansoes)\b/.test(value)) return 'dlc';
   return 'extra';
 }
 
