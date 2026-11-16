@@ -206,7 +206,8 @@ function uniquePackageLinks(item) {
     : [];
   const seenUrls = new Set();
   return rawPackageLinks.filter((entry) => {
-    if (seenUrls.has(entry.url)) return false;
+    const kind = packageLinkKind(entry.label);
+    if (!['game', 'dlc', 'update'].includes(kind) || seenUrls.has(entry.url)) return false;
     seenUrls.add(entry.url);
     return true;
   });
