@@ -177,9 +177,32 @@ function favoriteButton(item, compact = false) {
     + ' favoritos" aria-pressed="' + String(active) + '">' + (active ? '★' : '☆') + '</button>';
 }
 
+function safeExternalUrl(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || !url.hostname || url.username || url.password) return '';
+    return url.href;
+  } catch (error) {
+    return '';
+  }
+}
+
+function packageLinkKind(label) {
+  const value = normalize(label);
+  if (/^(jogo|game)\\b/.test(value)) return 'game';
+  if (/^(update|atualizacao|patch)\\b/.test(value)) return 'update';
+  if (/^(dlc|dlcs|expansao|expansoes)\\b/.test(value)) return 'dlc';
+  return 'extra';
+}
+
 function uniquePackageLinks(item) {
   const rawPackageLinks = Array.isArray(item.packageLinks)
-    ? item.packageLinks.filter((entry) => entry && typeof entry.label === 'string' && /^https:\/\//i.test(entry.url || ''))
+    ? item.packageLinks.map((entry) => {
+      if (!entry || typeof entry.label !== 'string' || !entry.label.trim()) return null;
+      const url = safeExternalUrl(entry.url);
+      return url ? { ...entry, url } : null;
+    }).filter(Boolean)
     : [];
   const seenUrls = new Set();
   return rawPackageLinks.filter((entry) => {
@@ -586,16 +609,18 @@ function showDetails(item) {
   if (passwordNote) passwordNote.hidden = packageLinks.length === 0;
   for (const entry of packageLinks) {
     const anchor = document.createElement('a');
-    anchor.className = 'primary-btn download';
+    anchor.className = 'primary-btn download package-link package-link--' + packageLinkKind(entry.label);
     anchor.href = entry.url;
     anchor.target = '_blank';
     anchor.rel = 'noopener noreferrer';
+    anchor.setAttribute('aria-label', entry.label + ' — abrir link externo em nova aba');
     anchor.textContent = entry.label + ' ↗';
     packageLinksSection.append(anchor);
   }
   const link = $('#detail-download');
-  if (item.downloadUrl && /^https:\/\//i.test(item.downloadUrl) && packageLinks.length === 0) {
-    link.href = item.downloadUrl;
+  const directDownloadUrl = safeExternalUrl(item.downloadUrl);
+  if (directDownloadUrl && packageLinks.length === 0) {
+    link.href = directDownloadUrl;
     link.textContent = item.linkLabel || (item.category === 'Jogos' ? 'VER NA PLAYSTATION STORE ↗' : 'ABRIR LINK CADASTRADO ↗');
     link.hidden = false;
   } else {
